@@ -2,10 +2,12 @@
 
 namespace Database\Seeders;
 
-use App\Models\Post;
-use App\Models\User;
+
 use App\Models\Category;
-use App\Models\Schedule;
+use App\Models\Post;
+use App\Models\Teacher;
+use App\Models\Gallery;
+use App\Models\Setting;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -15,16 +17,34 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // 2. Buat 3 Kategori Palsu
+        
+        $this->call([
+            UserSeeder::class,
+            ScheduleSeeder::class,
+        ]);
+
+
+
+        // Buat Kategori Berita
         Category::factory(3)->create();
 
-        // 3. Buat 10 Berita Palsu
+        // Buat 10 Berita Palsu
+        // (Berita ini otomatis akan menumpang ke user_id 1 milik Admin)
         Post::factory(10)->create();
-        // User::factory(10)->create();
+        
+        // Buat 5 Data Guru
+        Teacher::factory(5)->create();
 
-        Schedule::factory(10)->create();
+        // Buat 6 Data Foto Galeri
+        Gallery::factory(6)->create();
 
-        $this->call(UserSeeder::class);
-        $this->call(ScheduleSeeder::class);
+        // Buat Pengaturan Website
+        // pakai pengecekan 'if' agar aman jika dijalankan berulang
+        if (Setting::count() == 0) {
+            Setting::create(['key' => 'judul_web', 'value' => 'SD Negeri Bringin 01']);
+            Setting::create(['key' => 'alamat', 'value' => 'Jl. Bringin No. 1, Semarang']);
+            Setting::create(['key' => 'telepon', 'value' => '024-1234567']);
+            Setting::create(['key' => 'email', 'value' => 'info@sdnbringin01.sch.id']);
+        }
     }
 }
