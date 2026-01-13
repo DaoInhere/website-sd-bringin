@@ -1,0 +1,7 @@
+// Migrasi & Seeder
+php artisan migrate:fresh --seed
+
+// Generate Data Jadwal (Schedule)
+php artisan tinker
+App\Models\Schedule::factory(10)->create();
+
