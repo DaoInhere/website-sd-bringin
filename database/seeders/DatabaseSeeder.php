@@ -14,6 +14,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
+<<<<<<< HEAD
         // 1. Buat Akun Admin Kita (Biar bisa login)
         User::create([
             'name' => 'Admin Sekolah',
@@ -26,5 +27,11 @@ class DatabaseSeeder extends Seeder
 
         // 3. Buat 10 Berita Palsu
         Post::factory(10)->create();
+=======
+        // User::factory(10)->create();
+
+        $this->call(UserSeeder::class);
+        $this->call(ScheduleSeeder::class);
+>>>>>>> 47265a4096cc86dbaecee11fbf6e8820d663e9fd
     }
 }
