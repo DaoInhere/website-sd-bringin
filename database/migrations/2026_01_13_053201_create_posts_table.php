@@ -16,10 +16,16 @@ return new class extends Migration
             
             // RELASI (FOREIGN KEYS)
             // Menghubungkan ke tabel categories. Jika kategori dihapus, berita ikut terhapus (cascade)
-            $table->foreignId('category_id')->constrained('categories')->onDelete('cascade');
+            $table->foreignId('category_id')->constrained(
+                table: 'categories',
+                indexName: 'posts_category_id'
+            );
             
             // Menghubungkan ke tabel users (penulis). Jika user dihapus, berita ikut terhapus
-            $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
+            $table->foreignId('user_id')->constrained(
+                table: 'users',
+                indexName: 'posts_user_id'
+            );
             
             // DATA BERITA
             $table->string('title'); // Judul

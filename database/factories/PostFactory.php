@@ -3,6 +3,8 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use App\Models\User;
+use App\Models\Category;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Post>
@@ -18,10 +20,10 @@ class PostFactory extends Factory
     {
         return [
             // Kita set penulisnya selalu User ID 1 (Admin yang nanti kita buat)
-            'user_id' => 1,
+            'user_id' => User::factory(),
             
             // Pilih kategori secara acak antara ID 1 sampai 3
-            'category_id' => mt_rand(1, 3),
+            'category_id' => Category::factory(),
             
             // Judul acak (antara 3 sampai 8 kata)
             'title' => $this->faker->sentence(mt_rand(3, 8)),
