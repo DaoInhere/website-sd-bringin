@@ -9,11 +9,8 @@ class Gallery extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['user_id', 'title', 'image', 'description'];
-
-    // Relasi: Galeri di-upload oleh satu User
-    public function user()
-    {
-        return $this->belongsTo(User::class);
-    }
+    protected $fillable = [
+        'title',
+        'image',
+    ];
 }

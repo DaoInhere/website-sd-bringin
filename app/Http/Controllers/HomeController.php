@@ -3,24 +3,20 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Post;      // Import Model Berita
-use App\Models\Gallery;   // Import Model Galeri
-use App\Models\Teacher;   // Import Model Guru
+use App\Models\Post;    // Model Berita
+use App\Models\Gallery; // <--- Model Galeri (PENTING)
 
 class HomeController extends Controller
 {
     public function index()
     {
-        // 1. Ambil 3 Berita Terbaru yang statusnya 'published'
-        $posts = Post::where('status', 'published')
-                    ->latest()
-                    ->take(3)
-                    ->get();
+        // 1. Ambil 3 Berita Terbaru
+        $posts = Post::latest()->take(3)->get();
 
-        // 2. Ambil semua data Guru
-        $teachers = Teacher::all();
+        // 2. Ambil 6 Foto Galeri Terbaru (BARU)
+        $galleries = Gallery::latest()->take(6)->get();
 
-        // 3. Kirim data ke tampilan 'welcome' (Halaman Depan)
-        return view('welcome', compact('posts', 'teachers'));
+        // 3. Kirim kedua data (posts & galleries) ke halaman depan
+        return view('welcome', compact('posts', 'galleries'));
     }
 }

@@ -29,7 +29,7 @@
                 <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
                     <h3 class="text-lg font-bold mb-2" style="color: #16a34a;">📷 Galeri Foto</h3>
                     <p class="text-gray-600 mb-4">Upload foto kegiatan siswa dan guru.</p>
-                    <a href="#" 
+                    <a href="{{ route('galleries.index') }}" ...
                        style="background-color: #16a34a; color: white; padding: 8px 16px; border-radius: 6px; display: inline-block; text-decoration: none;">
                         Kelola Galeri &rarr;
                     </a>

@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PostController; 
+use App\Http\Controllers\GalleryController; // <--- PENTING: Panggil Controller Galeri
 
 // 1. HALAMAN DEPAN
 Route::get('/', [HomeController::class, 'index'])->name('home');
@@ -20,8 +21,11 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
-    // FITUR BARU: CRUD BERITA
+    // FITUR: CRUD BERITA
     Route::resource('posts', PostController::class);
+
+    // FITUR BARU: CRUD GALERI
+    Route::resource('galleries', GalleryController::class);
 });
 
 // 4. SISTEM LOGIN

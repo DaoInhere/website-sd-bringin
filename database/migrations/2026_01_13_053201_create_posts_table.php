@@ -13,27 +13,19 @@ return new class extends Migration
     {
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
+
+            // 1. RELASI KATEGORI
+            // Kita sederhanakan penulisan foreign key-nya
+            $table->foreignId('category_id')->constrained('categories')->onDelete('cascade');
             
-            // RELASI (FOREIGN KEYS)
-            // Menghubungkan ke tabel categories. Jika kategori dihapus, berita ikut terhapus (cascade)
-            $table->foreignId('category_id')->constrained(
-                table: 'categories',
-                indexName: 'posts_category_id'
-            );
-            
-            // Menghubungkan ke tabel users (penulis). Jika user dihapus, berita ikut terhapus
-            $table->foreignId('user_id')->constrained(
-                table: 'users',
-                indexName: 'posts_user_id'
-            );
-            
-            // DATA BERITA
-            $table->string('title'); // Judul
-            $table->string('slug')->unique(); // URL unik
-            $table->string('image')->nullable(); // Foto (boleh kosong)
-            $table->text('excerpt'); // Kutipan singkat
-            $table->longText('body'); // Isi lengkap
-            $table->enum('status', ['published', 'draft'])->default('draft'); // Status tayang
+            // 2. DATA BERITA (Sesuai Form Input Kita)
+            $table->string('image')->nullable();    // Foto
+            $table->string('title');                // Judul
+            $table->text('content');                // Isi Berita (INI YANG TADI ERROR, sekarang sudah bernama 'content')
+
+            // Catatan:
+            // Kolom 'slug', 'excerpt', 'user_id' kita hapus dulu biar tidak error
+            // karena controller kita belum support fitur canggih itu.
             
             $table->timestamps();
         });
