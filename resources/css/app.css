@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Nunito:wght@300;400;500;600;700&display=swap');
 
 @tailwind base;
@@ -103,3 +104,8 @@
     to { opacity: 1; transform: translateY(0); }
   }
 }
+=======
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+>>>>>>> 20b2a43e8eef9bdcc3fa18c7822ed2dfddd2d793

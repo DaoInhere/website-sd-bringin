@@ -1,0 +1,27 @@
+<?php
+
+namespace Database\Factories;
+
+use Illuminate\Database\Eloquent\Factories\Factory;
+
+/**
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Category>
+ */
+class CategoryFactory extends Factory
+{
+    /**
+     * Define the model's default state.
+     *
+     * @return array<string, mixed>
+     */
+    public function definition(): array
+    {
+        return [
+            // Kita minta Faker membuatkan kata acak yang unik untuk Judul Kategori
+            'title' => $this->faker->unique()->word(),
+            
+            // Kita minta Faker membuatkan slug (URL) acak
+            'slug' => $this->faker->slug(),
+        ];
+    }
+}

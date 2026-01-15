@@ -1,5 +1,6 @@
 import './bootstrap';
 
+<<<<<<< HEAD
 document.addEventListener('DOMContentLoaded', function() {
     // Cek dulu apakah ada slider di halaman ini supaya tidak error di halaman lain
     const track = document.getElementById('slider-track');
@@ -65,3 +66,10 @@ document.addEventListener('DOMContentLoaded', function() {
         startTimer();
     }
 });
+=======
+import Alpine from 'alpinejs';
+
+window.Alpine = Alpine;
+
+Alpine.start();
+>>>>>>> 20b2a43e8eef9bdcc3fa18c7822ed2dfddd2d793
