@@ -3,11 +3,12 @@
 namespace Database\Seeders;
 
 
-use App\Models\Category;
 use App\Models\Post;
-use App\Models\Teacher;
 use App\Models\Gallery;
 use App\Models\Setting;
+use App\Models\Teacher;
+use App\Models\Category;
+use App\Models\Schedule;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -17,13 +18,14 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        
+        // Buat 10 Jadwal Pelajaran
+        Schedule::factory(10)->create();
+
+        // Memanggil Seeder
         $this->call([
             UserSeeder::class,
             ScheduleSeeder::class,
         ]);
-
-
 
         // Buat Kategori Berita
         Category::factory(3)->create();
@@ -37,7 +39,7 @@ class DatabaseSeeder extends Seeder
 
         // Buat 6 Data Foto Galeri
         Gallery::factory(6)->create();
-
+        
         // Buat Pengaturan Website
         // pakai pengecekan 'if' agar aman jika dijalankan berulang
         if (Setting::count() == 0) {

@@ -16,9 +16,11 @@ class ScheduleSeeder extends Seeder
     {
         // Query Tambah Data
         Schedule::create([
+            'hour' => '07:00 - 08:00',
             'day' => 'Senin',
-            'subject' => 'Matematika',
-            'class' => 'Kelas 1',
+            'subject' => 'Upacara',
+            'class' => 'Semua Kelas',
+            'Uniform' => 'Merah Putih',
             'created_at' => now(),
             'updated_at' => now()
         ]);
