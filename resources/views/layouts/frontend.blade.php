@@ -33,21 +33,19 @@
             <li class="nav-item"><a class="nav-link" href="#">Berita</a></li>
             <li class="nav-item"><a class="nav-link" href="#">Galeri</a></li>
 
-            @if (Route::has('login'))
-                @auth
-                    <li class="nav-item">
-                        <a href="{{ url('/dashboard') }}" class="nav-link btn btn-success text-white ms-lg-3 px-4 rounded-pill">
-                            Dashboard
-                        </a>
-                    </li>
-                @else
-                    <li class="nav-item">
-                        <a href="{{ route('login') }}" class="nav-link btn btn-primary text-white ms-lg-3 px-4 rounded-pill">
-                            Login Admin
-                        </a>
-                    </li>
-                @endauth
-            @endif
+            @auth
+                <li class="nav-item ms-lg-3">
+                    <a href="{{ url('/dashboard') }}" class="btn btn-success px-4 rounded-pill">
+                        Dashboard
+                    </a>
+                </li>
+            @else
+                <li class="nav-item ms-lg-3">
+                    <a href="{{ route('login') }}" class="btn btn-primary px-4 rounded-pill">
+                        Login Admin
+                    </a>
+                </li>
+            @endauth
 
           </ul>
         </div>
