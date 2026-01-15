@@ -9,26 +9,18 @@ class Post extends Model
 {
     use HasFactory;
 
+    // INI KUNCI PENTINGNYA!
+    // Kita harus mendaftarkan kolom apa saja yang boleh diisi
     protected $fillable = [
-        'category_id',
-        'user_id',
-        'title',
-        'slug',
         'image',
-        'excerpt',
-        'body',
-        'status'
+        'title',
+        'category_id',
+        'content',
     ];
 
-    // Relasi: Berita ini milik satu Kategori
+    // Relasi ke Kategori
     public function category()
     {
         return $this->belongsTo(Category::class);
-    }
-
-    // Relasi: Berita ini ditulis oleh satu User
-    public function user()
-    {
-        return $this->belongsTo(User::class);
     }
 }
