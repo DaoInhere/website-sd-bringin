@@ -17,14 +17,36 @@ class ScheduleFactory extends Factory
      */
     public function definition(): array
     {
-        return [
-            'day' => Carbon::parse(fake()->date())->translatedFormat('l'),
-            'subject' => fake()->randomElement([
+        $days = ['Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat'];
+        $hours = [
+            '07:00 - 08:00',
+            '08:00 - 09:00',
+            '09:00 - 10:00',
+        ];
+
+        $day  = fake()->randomElement($days);
+        $hour = fake()->randomElement($hours);
+
+        $uniform = match ($day) {
+            'Senin', 'Selasa' => 'Merah Putih',
+            'Rabu', 'Kamis'   => 'Batik',
+            'Jumat'           => 'Pramuka',
+        };
+
+        $subject = ($day === 'Senin' && $hour === '07:00 - 08:00')
+            ? 'Upacara'
+            : fake()->randomElement([
                 'Matematika',
                 'IPA',
                 'IPS',
-            ]),
-            'class' => 'Kelas ' . fake()->numberBetween(1, 6),
+            ]);
+
+        return [
+            'day'     => $day,
+            'hour'    => $hour,
+            'subject' => $subject,
+            'class'   => 'Kelas ' . fake()->numberBetween(1, 6),
+            'uniform' => $uniform,
         ];
     }
 }

@@ -1,10 +1,8 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PostController; 
-use App\Http\Controllers\GalleryController; // <--- PENTING: Panggil Controller Galeri
 
 // 1. HALAMAN DEPAN
 Route::get('/', [HomeController::class, 'index'])->name('home');
@@ -14,7 +12,13 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-// 3. FITUR ADMIN (Harus Login)
+Route::get('/schedules', function() {
+    return view('schedules');
+});
+
+Route::get('/schedule', [ScheduleController::class, 'index']);
+
+// 3. FITUR PROFIL
 Route::middleware('auth')->group(function () {
     // Fitur Profil Bawaan
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
