@@ -30,8 +30,8 @@
             <tr>
                 <th>Jam</th>
                 <th>Mata Pelajaran / Kegiatan</th>
-                <th>Seragam Sekolah</th>
-                <th>Kurikulum</th>
+                {{-- <th>Seragam Sekolah</th>
+                <th>Kurikulum</th> --}}
             </tr>
         </thead>
         <tbody>
@@ -39,8 +39,8 @@
                 <tr>
                     <td>{{ $schedule->hour }}</td>
                     <td>{{ $schedule->subject }}</td>
-                    <td>{{ $schedule->uniform }}</td>
-                    <td>{{ $schedule->curriculum }}</td>
+                    {{-- <td>{{ $schedule->uniform }}</td>
+                    <td>{{ $schedule->curriculum }}</td> --}}
                 </tr>
             @empty
                 <tr>

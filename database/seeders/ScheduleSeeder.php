@@ -25,5 +25,16 @@ class ScheduleSeeder extends Seeder
             'created_at' => now(),
             'updated_at' => now()
         ]);
+
+        Schedule::create([
+            'hour' => '09:00 - 09:30',
+            'day' => 'Semua',
+            'subject' => 'Istirahat',
+            'type' => 'Kegiatan',
+            'uniform' => '-',
+            'curriculum' => 'Semua',
+            'created_at' => now(),
+            'updated_at' => now()
+        ]);
     }
 }

@@ -33,13 +33,14 @@ class ScheduleFactory extends Factory
             'Jumat'           => 'Pramuka',
         };
 
-        $subject = ($day === 'Senin' && $hour === '07:00 - 08:00')
-            ? 'Upacara'
-            : fake()->randomElement([
+        do {
+            $subject = fake()->randomElement([
                 'Matematika',
                 'IPA',
                 'IPS',
+                'Upacara',
             ]);
+        } while ($subject === 'Upacara');
 
         $type = ($subject === 'Upacara') ? 'Kegiatan' : 'Mapel';
 
@@ -49,6 +50,7 @@ class ScheduleFactory extends Factory
                 '2025/2026',
                 '2026/2027',
                 '2027/2028',
+                '2028/2029',
             ]);
 
         return [

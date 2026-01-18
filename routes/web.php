@@ -17,9 +17,7 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 // 3. FITUR SCHEDULE (Punya Ronalda)
-Route::get('/schedules', function () {
-    return view('schedules');
-});
+Route::get('/schedules', [ScheduleController::class, 'schedules']);
 
 Route::get('/schedule', [ScheduleController::class, 'index']);
 
