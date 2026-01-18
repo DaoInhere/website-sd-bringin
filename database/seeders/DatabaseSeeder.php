@@ -32,13 +32,13 @@ class DatabaseSeeder extends Seeder
 
         // Buat 10 Berita Palsu
         // (Berita ini otomatis akan menumpang ke user_id 1 milik Admin)
-        Post::factory(10)->create();
+        // Post::factory(10)->create();
         
         // Buat 5 Data Guru
         Teacher::factory(5)->create();
 
         // Buat 6 Data Foto Galeri
-        Gallery::factory(6)->create();
+        // Gallery::factory(6)->create();
         
         // Buat Pengaturan Website
         // pakai pengecekan 'if' agar aman jika dijalankan berulang

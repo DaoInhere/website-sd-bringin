@@ -5,136 +5,53 @@
 <header class="hero-section text-center">
     <div class="container">
         <h1 class="display-4 fw-bold">Jadwal Kegiatan Belajar Mengajar</h1>
-        <p class="lead">Profil &rarr; Jadwal KBM &rarr; Kelas 1</p>
+        <p class="lead">Profil &rarr; <a href="/schedules" class="text-white hover:text-gray-500 transition">Jadwal KBM</a> &rarr; Kelas {{ $class }}</p>
     </div>
 </header>
 
 <div class="container py-5">
     <a href="/schedules">&laquo; Kembali ke semua jadwal</a>
-    <h2 class="text-center">Jadwal Kelas 1</h2>
+    <h2 class="text-center">
+        Jadwal {{ 'Kelas ' . $class }}
+    </h2>
+
     
-    <h4 class="me-4">Senin</h4>
+@php
+    $days = ['Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat'];
+@endphp
+
+@foreach ($days as $day)
+    <h4 class="me-4">{{ $day }}</h4>
     <hr>
-    <table class="table table-striped table-hover table-bordered mt-4" style="table-layout: fixed; width: 100%;">
-    <thead>
-        <tr>
-        <th scope="col">Jam</th>
-        <th scope="col">Mata Pelajaran / Kegiatan</th>
-        <th scope="col">Seragam Sekolah</th>
-        {{-- <th scope="col">Kelas</th> --}}
-        </tr>
-    </thead>
-    <tbody>
 
-    @foreach ($schedules as $schedule)
-        @if ($schedule->day === 'Senin')
+    <table class="table table-striped table-hover table-bordered mt-4"
+           style="table-layout: fixed; width: 100%;">
+        <thead>
             <tr>
-                <td>{{ $schedule->hour }}</th>
-                <td>{{ $schedule->subject }}</td>
-                <td>{{ $schedule->uniform }}</td>
-                {{-- <td>{{ $schedule->class }}</td> --}}
+                <th>Jam</th>
+                <th>Mata Pelajaran / Kegiatan</th>
+                <th>Seragam Sekolah</th>
+                <th>Kurikulum</th>
             </tr>
-        @endif
-    @endforeach
-
-    </tbody>
+        </thead>
+        <tbody>
+            @forelse ($schedules[$day] ?? [] as $schedule)
+                <tr>
+                    <td>{{ $schedule->hour }}</td>
+                    <td>{{ $schedule->subject }}</td>
+                    <td>{{ $schedule->uniform }}</td>
+                    <td>{{ $schedule->curriculum }}</td>
+                </tr>
+            @empty
+                <tr>
+                    <td colspan="4" class="text-center text-muted">
+                        Tidak ada jadwal
+                    </td>
+                </tr>
+            @endforelse
+        </tbody>
     </table>
-    <h4 class="me-4 mt-4">Selasa</h4>
-    <hr>
-    <table class="table table-striped table-hover table-bordered mt-4" style="table-layout: fixed; width: 100%;">
-    <thead>
-        <tr>
-        <th scope="col">Jam</th>
-        <th scope="col">Mata Pelajaran / Kegiatan</th>
-        <th scope="col">Seragam Sekolah</th>
-        </tr>
-    </thead>
-    <tbody>
-
-    @foreach ($schedules as $schedule)
-        @if ($schedule->day === 'Selasa')
-            <tr>
-                <td>{{ $schedule->hour }}</th>
-                <td>{{ $schedule->subject }}</td>
-                <td>{{ $schedule->uniform }}</td>
-            </tr>
-        @endif
-    @endforeach
-
-    </tbody>
-    </table>
-    <h4 class="me-4 mt-4">Rabu</h4>
-    <hr>
-        <table class="table table-striped table-hover table-bordered mt-4" style="table-layout: fixed; width: 100%;">
-    <thead>
-        <tr>
-        <th scope="col">Jam</th>
-        <th scope="col">Mata Pelajaran / Kegiatan</th>
-        <th scope="col">Seragam Sekolah</th>
-        </tr>
-    </thead>
-    <tbody>
-
-    @foreach ($schedules as $schedule)
-        @if ($schedule->day === 'Rabu')
-            <tr>
-                <td>{{ $schedule->hour }}</th>
-                <td>{{ $schedule->subject }}</td>
-                <td>{{ $schedule->uniform }}</td>
-            </tr>
-        @endif
-    @endforeach
-
-    </tbody>
-    </table>
-    <h4 class="me-4 mt-4">Kamis</h4>
-    <hr>
-        <table class="table table-striped table-hover table-bordered mt-4" style="table-layout: fixed; width: 100%;">
-    <thead>
-        <tr>
-        <th scope="col">Jam</th>
-        <th scope="col">Mata Pelajaran / Kegiatan</th>
-        <th scope="col">Seragam Sekolah</th>
-        </tr>
-    </thead>
-    <tbody>
-
-    @foreach ($schedules as $schedule)
-        @if ($schedule->day === 'Kamis')
-            <tr>
-                <td>{{ $schedule->hour }}</th>
-                <td>{{ $schedule->subject }}</td>
-                <td>{{ $schedule->uniform }}</td>
-            </tr>
-        @endif
-    @endforeach
-
-    </tbody>
-    </table>
-    <h4 class="me-4 mt-4">Jumat</h4>
-    <hr>
-        <table class="table table-striped table-hover table-bordered mt-4" style="table-layout: fixed; width: 100%;">
-    <thead>
-        <tr>
-        <th scope="col">Jam</th>
-        <th scope="col">Mata Pelajaran / Kegiatan</th>
-        <th scope="col">Seragam Sekolah</th>
-        </tr>
-    </thead>
-    <tbody>
-
-    @foreach ($schedules as $schedule)
-        @if ($schedule->day === 'Jumat')
-            <tr>
-                <td>{{ $schedule->hour }}</th>
-                <td>{{ $schedule->subject }}</td>
-                <td>{{ $schedule->uniform }}</td>
-            </tr>
-        @endif
-    @endforeach
-
-    </tbody>
-    </table>
+@endforeach
     
 
 {{-- <table class="table table-striped table-hover table-bordered">

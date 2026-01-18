@@ -26,13 +26,13 @@
     <div>
         <div class="d-flex flex-wrap gap-2">
             <a class="btn btn-primary btn-sm flex-fill text-center" href="/schedule?class=1">Kelas 1</a>
-            <a class="btn btn-primary btn-sm flex-fill text-center" href="#">Kelas 2</a>
-            <a class="btn btn-primary btn-sm flex-fill text-center" href="#">Kelas 3</a>
-            <a class="btn btn-primary btn-sm flex-fill text-center" href="#">Kelas 4</a>
-            <a class="btn btn-primary btn-sm flex-fill text-center" href="#">Kelas 5</a>
-            <a class="btn btn-primary btn-sm flex-fill text-center" href="#">Kelas 6</a>
-            <a class="btn btn-primary btn-sm flex-fill text-center disabled" href="#">UTS</a>
-            <a class="btn btn-primary btn-sm flex-fill text-center disabled" href="#">UAS</a>
+            <a class="btn btn-primary btn-sm flex-fill text-center" href="/schedule?class=2">Kelas 2</a>
+            <a class="btn btn-primary btn-sm flex-fill text-center" href="/schedule?class=3">Kelas 3</a>
+            <a class="btn btn-primary btn-sm flex-fill text-center" href="/schedule?class=4">Kelas 4</a>
+            <a class="btn btn-primary btn-sm flex-fill text-center" href="/schedule?class=5">Kelas 5</a>
+            <a class="btn btn-primary btn-sm flex-fill text-center" href="/schedule?class=6">Kelas 6</a>
+            <a class="btn btn-primary btn-sm flex-fill text-center disabled" href="/schedule?class=uts">UTS</a>
+            <a class="btn btn-primary btn-sm flex-fill text-center disabled" href="/schedule?class=uas">UAS</a>
         </div>
     </div>
 </div>
