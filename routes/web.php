@@ -7,8 +7,12 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\ScheduleController; 
 
-// 1. HALAMAN DEPAN
-Route::get('/', [HomeController::class, 'index'])->name('home');
+
+Route::get('/', function () {
+    $posts = \App\Models\Post::latest()->take(3)->get();
+    
+    return view('home', compact('posts'));
+})->name('home');
 
 // 2. DASHBOARD ADMIN
 Route::get('/dashboard', function () {
