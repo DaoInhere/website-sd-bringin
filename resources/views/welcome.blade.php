@@ -4,7 +4,7 @@
 
 <header class="hero-section text-center py-5 bg-light border-bottom">
     <div class="container">
-        <h1 class="display-4 fw-bold">Selamat Datang di SDN Bringin 011</h1>
+        <h1 class="display-4 fw-bold">Selamat Datang di SDN Bringin 01</h1>
         <p class="lead text-muted">Mewujudkan Generasi Cerdas, Berkarakter, dan Berakhlak Mulia</p>
     </div>
 </header>

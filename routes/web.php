@@ -1,6 +1,5 @@
 <?php
 
-use App\Models\Schedule;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PostController; 
@@ -8,16 +7,28 @@ use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ScheduleController; 
 use App\Http\Controllers\TeacherController;
+use App\Http\Controllers\PageController;
 
-// 1. HALAMAN DEPAN
+// 1. HALAMAN DEPAN (HOME)
 Route::get('/', [HomeController::class, 'index'])->name('home');
+
+// === JALUR PUBLIK (Halaman Frontend / Tanpa Login) ===
+Route::get('/profil/sejarah', [PageController::class, 'sejarah'])->name('public.sejarah');
+Route::get('/profil/visi-misi', [PageController::class, 'visi'])->name('public.visi');
+Route::get('/profil/struktur', [PageController::class, 'struktur'])->name('public.struktur');
+Route::get('/profil/sarana', [PageController::class, 'sarana'])->name('public.sarana');
+
+Route::get('/guru', [PageController::class, 'teachers'])->name('public.teachers');
+Route::get('/galeri', [PageController::class, 'galleries'])->name('public.galleries');
+Route::get('/berita', [PageController::class, 'posts'])->name('public.posts');
+
 
 // 2. DASHBOARD ADMIN
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-// 3. FITUR SCHEDULE 
+// 3. FITUR SCHEDULE (Jadwal)
 Route::get('/schedules', [ScheduleController::class, 'schedules']);
 Route::get('/schedule', [ScheduleController::class, 'index']);
 
