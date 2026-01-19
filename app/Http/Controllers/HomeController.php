@@ -20,6 +20,6 @@ class HomeController extends Controller
         $teachers = Teacher::all();
 
         // Kirim semua data ke halaman depan
-        return view('welcome', compact('posts', 'galleries', 'teachers'));
+        return view('home', compact('posts', 'galleries', 'teachers'));
     }
 }

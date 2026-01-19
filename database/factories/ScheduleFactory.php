@@ -50,7 +50,6 @@ class ScheduleFactory extends Factory
                 '2025/2026',
                 '2026/2027',
                 '2027/2028',
-                '2028/2029',
             ]);
 
         return [
