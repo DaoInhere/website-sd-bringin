@@ -9,11 +9,11 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('teachers', function (Blueprint $table) {
-            $table->id();
+            $table->id('nip');
             
             $table->string('name');              // Nama Guru
-            $table->string('subject');           // Mapel / Jabatan
-            $table->string('image')->nullable(); // Foto
+            $table->string('position');     
+            $table->string('photo')->nullable(); // Foto
 
             $table->timestamps();
         });
