@@ -19,7 +19,7 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         // Buat 10 Jadwal Pelajaran
-        Schedule::factory(10)->create();
+        Schedule::factory(100)->create();
 
         // Memanggil Seeder
         $this->call([
