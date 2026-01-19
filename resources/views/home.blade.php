@@ -2,12 +2,13 @@
 
 @section('content')
 
+  
     <section id="hero-slider" class="relative h-[600px] overflow-hidden group bg-gray-100">
         <div id="slider-track" class="flex transition-transform duration-700 ease-in-out h-full">
             
+           
             <div class="w-full flex-shrink-0 relative h-full bg-cover bg-center" style="background-image: url('/asset/galeri foto.jpg');">
                 <div class="absolute inset-0 bg-black/60"></div>
-                
                 <div class="absolute inset-0 flex items-center justify-center text-center px-4">
                     <div class="max-w-4xl animate-fade-in-up">
                         <div class="mb-4">
@@ -31,9 +32,9 @@
                 </div>
             </div>
 
+           
             <div class="w-full flex-shrink-0 relative h-full bg-cover bg-center" style="background-image: url('/asset/gerbang sdn bringin 01.jpg');">
                 <div class="absolute inset-0 bg-black/60"></div>
-                
                 <div class="absolute inset-0 flex items-center justify-center text-center px-4">
                     <div class="max-w-4xl">
                         <div class="mb-4">
@@ -57,9 +58,9 @@
                 </div>
             </div>
 
+          
             <div class="w-full flex-shrink-0 relative h-full bg-cover bg-center" style="background-image: url('/asset/seragam luri sdn bringin 01.jpg');">
                 <div class="absolute inset-0 bg-black/60"></div>
-                
                 <div class="absolute inset-0 flex items-center justify-center text-center px-4">
                     <div class="max-w-4xl animate-fade-in-up">
                         <div class="mb-4">
@@ -99,6 +100,7 @@
         </div>
     </section>
 
+    
     <section class="relative -mt-16 z-20 px-4">
         <div class="container-sekolah">
             <div class="grid grid-cols-1 md:grid-cols-3 shadow-2xl rounded-lg overflow-hidden">
@@ -123,30 +125,51 @@
 
     <section class="py-20 bg-white">
         <div class="container-sekolah">
-            <div class="flex flex-col md:flex-row items-center gap-12">
-                <div class="md:w-1/2">
+            <div class="flex flex-col md:flex-row items-center justify-center gap-8 lg:gap-12">
+                
+                <div class="md:w-5/12">
                     <h4 class="text-3xl font-bold text-sekolah-hijau mb-4 border-b-4 border-sekolah-kuning inline-block pb-2">Sambutan Kepala Sekolah</h4>
                     <h2 class="text-4xl font-bold text-gray-800 mb-6">Mewujudkan Pendidikan Berkualitas</h2>
-                    <p class="text-gray-600 mb-4 leading-relaxed">
-                        Assalamu'alaikum Warahmatullahi Wabarakatuh. Puji syukur kita panjatkan ke hadirat Allah SWT. SD Negeri 1 Bringin berkomitmen untuk memberikan layanan pendidikan terbaik yang ramah anak.
-                    </p>
-                    <p class="text-gray-600 mb-8 leading-relaxed">
-                        Website ini kami hadirkan sebagai sarana informasi dan komunikasi antara sekolah, orang tua, dan masyarakat. Mari bersama majukan pendidikan Indonesia.
-                    </p>
-                    <a href="#" class="btn-primary">Baca Selengkapnya</a>
+                    
+                    <div class="text-gray-600 mb-4 leading-relaxed text-justify space-y-4">
+                        <p>
+                            Assalamu'alaikum Warahmatullahi Wabarakatuh.
+                        </p>
+                        <p>
+                            Salam sehat, salam semangat untuk kita semua. Puji Syukur kami panjatkan kehadirat Allah Swt atas segala limpahan rahmat dan karunia-Nya, sehingga SD Negeri Bringin 01 berhasil membangun website sekolah.
+                        </p>
+                        <p>
+                            Kehadiran website SD Negeri Bringin 01 diharapkan dapat memudahkan penyampaian informasi secara terbuka kepada warga sekolah, alumni, dan masyarakat serta instansi lain yang terkait. Semoga dengan kehadiran website sekolah ini akan terjalin informasi dan komunikasi dengan cepat sehingga semuanya dapat mengikuti perkembangan kegiatan yang ada di SD Negeri Bringin 01, Kecamatan Ngaliyan, Kota Semarang.
+                        </p>
+                        <p>
+                            Di era global dan pesatnya teknologi informasi dan komunikasi ini, tidak dipungkiri bahwa keberadaan website untuk suatu organisasi, termasuk SD Negeri Bringin 01 sangatlah penting. Wahana website dapat digunakan sebagai media penyebarluasan informasi-informasi dari sekolah yang harus diketahui oleh stakeholder secara luas.
+                        </p>
+                        <p>
+                            Oleh karena itu, kami sangat berharap, melalui website ini SD Negeri Bringin 01 akan semakin berkembang lebih maju dan solid. Terimakasih.
+                        </p>
+                        <p class="font-semibold text-sekolah-hijau">
+                            Wassalamu'alaikum Warahmatullahi Wabarakatuh.
+                        </p>
+                    </div>
                 </div>
-                <div class="md:w-1/2 flex justify-center md:justify-start mt-8 md:mt-0">
+
+                {{-- Image Content: Lebar disamakan 5/12 agar seimbang --}}
+                <div class="md:w-5/12 flex justify-center mt-8 md:mt-0">
                     <div class="relative rounded-xl overflow-hidden shadow-xl inline-block group">
-                        <img src="/asset/kepala sekolah new.png" alt="Kepala Sekolah Drs. Budi Santoso, M.Pd" class="max-h-96 w-auto object-contain bg-gray-100 transition-transform duration-500 group-hover:scale-105">
+                        <img src="/asset/kepala sekolah new.png" alt="Kepala Sekolah Dwi Priyani, S.Pd.SD" class="max-h-96 w-auto object-contain bg-gray-100 transition-transform duration-500 group-hover:scale-105">
+                        
                         <div class="absolute bottom-4 right-4 bg-white/95 backdrop-blur-sm p-3 rounded-lg shadow-md border-l-4 border-sekolah-kuning">
-                            <p class="font-bold text-gray-800 text-base">Drs. Budi Santoso, M.Pd</p> <p class="text-sekolah-hijau text-xs">Kepala Sekolah</p>
+                            <p class="font-bold text-gray-800 text-base">Dwi Priyani, S.Pd.SD</p> 
+                            <p class="text-sekolah-hijau text-xs">Kepala Sekolah</p>
                         </div>
                     </div>
                 </div>
+
             </div>
         </div>
     </section>
 
+   
     <section class="py-20 bg-gray-50">
         <div class="container-sekolah">
             <div class="text-center mb-16">
@@ -180,6 +203,7 @@
             </div>
         </div>
     </section>
+
 
     <section class="py-20 bg-white border-t border-gray-100">
         <div class="container-sekolah">
@@ -245,4 +269,4 @@
         </div>
     </section>
 
-    @endsection
+@endsection
