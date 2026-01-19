@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Post;    // Model Berita
-use App\Models\Gallery; // <--- Model Galeri (PENTING)
+use App\Models\Gallery; // Model Galeri
+use App\Models\Teacher; // Model Guru
 
 class HomeController extends Controller
 {
@@ -13,10 +14,13 @@ class HomeController extends Controller
         // 1. Ambil 3 Berita Terbaru
         $posts = Post::latest()->take(3)->get();
 
-        // 2. Ambil 6 Foto Galeri Terbaru (BARU)
+        // 2. Ambil 6 Foto Galeri Terbaru
         $galleries = Gallery::latest()->take(6)->get();
 
-        // 3. Kirim kedua data (posts & galleries) ke halaman depan
-        return view('welcome', compact('posts', 'galleries'));
+        // 3. Ambil Semua Data Guru
+        $teachers = Teacher::all();
+
+        // Kirim semua data ke halaman depan
+        return view('welcome', compact('posts', 'galleries', 'teachers'));
     }
 }

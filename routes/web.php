@@ -6,6 +6,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PostController; 
 use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\ScheduleController; 
+use App\Http\Controllers\TeacherController;
 
 // 1. HALAMAN DEPAN
 Route::get('/', [HomeController::class, 'index'])->name('home');
@@ -15,7 +16,7 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-// 3. FITUR SCHEDULE (Punya Ronalda)
+// 3. FITUR SCHEDULE
 Route::get('/schedules', function () {
     return view('schedules');
 });
@@ -32,6 +33,9 @@ Route::middleware('auth')->group(function () {
 
     // CRUD GALERI
     Route::resource('galleries', GalleryController::class);
+
+    // CRUD GURU
+    Route::resource('teachers', TeacherController::class);
 });
 
 require __DIR__.'/auth.php';
