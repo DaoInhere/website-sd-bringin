@@ -14,10 +14,10 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 
 // === JALUR PUBLIK (Halaman Frontend / Tanpa Login) ===
 // Menu Dropdown Profil
-Route::get('/profil/sejarah', [PageController::class, 'sejarah'])->name('public.sejarah');
-Route::get('/profil/visi-misi', [PageController::class, 'visi'])->name('public.visi');
-Route::get('/profil/struktur', [PageController::class, 'struktur'])->name('public.struktur');
-Route::get('/profil/sarana', [PageController::class, 'sarana'])->name('public.sarana');
+Route::get('/profile/sejarah', [PageController::class, 'sejarah'])->name('public.sejarah');
+Route::get('/profile/visi-misi', [PageController::class, 'visi'])->name('public.visi');
+Route::get('/profile/struktur', [PageController::class, 'struktur'])->name('public.struktur');
+Route::get('/profile/sarana', [PageController::class, 'sarana'])->name('public.sarana');
 
 // Menu Informasi & Galeri & Berita
 Route::get('/guru', [PageController::class, 'teachers'])->name('public.teachers');
