@@ -1,3 +1,111 @@
+<<<<<<< HEAD
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Nunito:wght@300;400;500;600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply font-nunito text-gray-800 antialiased;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-poppins font-bold;
+  }
+}
+
+@layer components {
+  /* Tombol */
+  .btn-primary {
+    @apply bg-sekolah-hijau hover:bg-sekolah-hijau-dark text-white font-bold py-3 px-6 rounded-lg shadow-md transition-all duration-300 hover:-translate-y-1 hover:shadow-lg;
+  }
+  .btn-accent {
+    @apply bg-sekolah-kuning hover:bg-sekolah-kuning-dark text-gray-800 font-bold py-3 px-6 rounded-lg shadow-md transition-all duration-300 hover:-translate-y-1 hover:shadow-lg;
+  }
+  .btn-outline {
+    @apply border-2 border-sekolah-hijau text-sekolah-hijau hover:bg-sekolah-hijau hover:text-white font-bold py-3 px-6 rounded-lg transition-all duration-300 hover:-translate-y-1;
+  }
+  
+  /* Card */
+  .card-sekolah {
+    @apply bg-white rounded-xl shadow-sekolah hover:shadow-sekolah-lg transition-all duration-300 hover:-translate-y-2;
+  }
+  .stat-card {
+    @apply bg-white rounded-xl shadow-lg p-8 text-center border-t-4 border-sekolah-kuning;
+  }
+  .news-card {
+    @apply bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:-translate-y-2 hover:shadow-xl;
+  }
+  
+  /* Utilities Custom */
+  .section-padding {
+    @apply py-16 md:py-20;
+  }
+  .container-sekolah {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+  
+  /* Navbar */
+  .nav-link {
+    @apply relative font-medium text-gray-700 hover:text-sekolah-hijau transition-colors duration-300;
+  }
+  .nav-link::after {
+    @apply content-[''] absolute left-0 -bottom-1 w-0 h-0.5 bg-sekolah-kuning transition-all duration-300;
+  }
+  .nav-link:hover::after {
+    @apply w-full;
+  }
+  
+  /* Lain-lain */
+  .feature-icon {
+    @apply w-16 h-16 rounded-full bg-sekolah-hijau/10 flex items-center justify-center text-2xl text-sekolah-hijau mb-6;
+  }
+  .badge-new {
+    @apply absolute top-4 right-4 bg-red-500 text-white text-xs font-bold px-3 py-1 rounded-full;
+  }
+  
+  /* Background Hero */
+  .hero-bg {
+    background: linear-gradient(rgba(26, 93, 26, 0.85), rgba(46, 139, 87, 0.9)), 
+                url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80');
+    @apply bg-cover bg-center bg-fixed;
+  }
+  
+  /* Footer Wave SVG */
+  .footer-wave {
+    @apply relative;
+  }
+  .footer-wave::before {
+    @apply content-[''] absolute top-0 left-0 w-full h-20 -translate-y-full;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='%231a5d1a' fill-opacity='1' d='M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,112C672,96,768,96,864,112C960,128,1056,160,1152,160C1248,160,1344,128,1392,112L1440,96L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z'%3E%3C/path%3E%3C/svg%3E");
+    background-size: cover;
+    background-position: center;
+  }
+}
+
+/* Animasi Manual di CSS biasa */
+@layer utilities {
+  .text-shadow { text-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+  .text-shadow-lg { text-shadow: 0 4px 8px rgba(0,0,0,0.2); }
+  .backdrop-blur-xs { backdrop-filter: blur(4px); }
+  
+  .animate-fade-in-up { animation: fadeInUp 0.6s ease-out; }
+  .animate-slide-down { animation: slideDown 0.3s ease-out; }
+  
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes slideDown {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+}
+=======
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+>>>>>>> 20b2a43e8eef9bdcc3fa18c7822ed2dfddd2d793

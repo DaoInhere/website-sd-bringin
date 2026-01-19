@@ -16,8 +16,10 @@ return new class extends Migration
             $table->string('hour');
             $table->string('day');
             $table->string('subject');
-            $table->string('class');
+            $table->string('class')->default('0');
+            $table->string('type');
             $table->string('uniform');
+            $table->string('curriculum');
             $table->timestamps();
         });
     }
