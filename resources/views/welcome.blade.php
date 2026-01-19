@@ -87,4 +87,41 @@
     </div>
 </div>
 
+<section class="py-5 bg-white border-top">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="fw-bold">Guru & Staf Pengajar</h2>
+            <p class="text-muted">Pendidik profesional yang siap membimbing siswa-siswi.</p>
+        </div>
+
+        <div class="row justify-content-center">
+            @forelse($teachers as $teacher)
+            <div class="col-md-3 col-sm-6 mb-4">
+                <div class="card border-0 text-center shadow-sm h-100">
+                    <div class="card-body">
+                        <div class="mb-3 mx-auto" style="width: 120px; height: 120px; overflow: hidden; border-radius: 50%;">
+                            @if($teacher->image)
+                                <img src="{{ asset('storage/' . $teacher->image) }}" 
+                                     alt="{{ $teacher->name }}" 
+                                     class="w-100 h-100" style="object-fit: cover;">
+                            @else
+                                <img src="https://ui-avatars.com/api/?name={{ urlencode($teacher->name) }}&background=random" 
+                                     class="w-100 h-100" style="object-fit: cover;">
+                            @endif
+                        </div>
+                        
+                        <h5 class="fw-bold mb-1">{{ $teacher->name }}</h5>
+                        <p class="text-primary small mb-0">{{ $teacher->subject }}</p>
+                    </div>
+                </div>
+            </div>
+            @empty
+            <div class="col-12 text-center text-muted">
+                <p>Data guru belum tersedia.</p>
+            </div>
+            @endforelse
+        </div>
+    </div>
+</section>
+
 @endsection

@@ -33,20 +33,34 @@ class ScheduleFactory extends Factory
             'Jumat'           => 'Pramuka',
         };
 
-        $subject = ($day === 'Senin' && $hour === '07:00 - 08:00')
-            ? 'Upacara'
-            : fake()->randomElement([
+        do {
+            $subject = fake()->randomElement([
                 'Matematika',
                 'IPA',
                 'IPS',
+                'Upacara',
+            ]);
+        } while ($subject === 'Upacara');
+
+        $type = ($subject === 'Upacara') ? 'Kegiatan' : 'Mapel';
+
+        $curriculum = ($subject === 'Upacara')
+            ? 'Semua'
+            : fake()->randomElement([
+                '2025/2026',
+                '2026/2027',
+                '2027/2028',
+                '2028/2029',
             ]);
 
         return [
             'day'     => $day,
             'hour'    => $hour,
             'subject' => $subject,
-            'class'   => 'Kelas ' . fake()->numberBetween(1, 6),
+            'type' => $type,
+            'class'   => fake()->numberBetween(1, 6),
             'uniform' => $uniform,
+            'curriculum' => $curriculum,
         ];
     }
 }

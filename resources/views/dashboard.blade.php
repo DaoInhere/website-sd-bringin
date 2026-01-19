@@ -29,9 +29,18 @@
                 <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
                     <h3 class="text-lg font-bold mb-2" style="color: #16a34a;">📷 Galeri Foto</h3>
                     <p class="text-gray-600 mb-4">Upload foto kegiatan siswa dan guru.</p>
-                    <a href="{{ route('galleries.index') }}" ...
+                    <a href="{{ route('galleries.index') }}" 
                        style="background-color: #16a34a; color: white; padding: 8px 16px; border-radius: 6px; display: inline-block; text-decoration: none;">
                         Kelola Galeri &rarr;
+                    </a>
+                </div>
+
+                <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
+                    <h3 class="text-lg font-bold mb-2" style="color: #d97706;">👨‍🏫 Data Guru</h3>
+                    <p class="text-gray-600 mb-4">Kelola profil guru dan staf pengajar.</p>
+                    <a href="{{ route('teachers.index') }}" 
+                       style="background-color: #d97706; color: white; padding: 8px 16px; border-radius: 6px; display: inline-block; text-decoration: none;">
+                        Kelola Guru &rarr;
                     </a>
                 </div>
 

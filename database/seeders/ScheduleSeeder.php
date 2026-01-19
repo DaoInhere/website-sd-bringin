@@ -19,8 +19,20 @@ class ScheduleSeeder extends Seeder
             'hour' => '07:00 - 08:00',
             'day' => 'Senin',
             'subject' => 'Upacara',
-            'class' => 'Semua Kelas',
-            'Uniform' => 'Merah Putih',
+            'type' => 'Kegiatan',
+            'uniform' => 'Merah Putih',
+            'curriculum' => 'Semua',
+            'created_at' => now(),
+            'updated_at' => now()
+        ]);
+
+        Schedule::create([
+            'hour' => '09:00 - 09:30',
+            'day' => 'Semua',
+            'subject' => 'Istirahat',
+            'type' => 'Kegiatan',
+            'uniform' => '-',
+            'curriculum' => 'Semua',
             'created_at' => now(),
             'updated_at' => now()
         ]);
