@@ -34,7 +34,7 @@ Route::middleware('auth')->group(function () {
     // CRUD GALERI
     Route::resource('galleries', GalleryController::class);
 
-    // CRUD GURU (Fitur Kamu)
+    // CRUD GURU
     Route::resource('teachers', TeacherController::class);
 });
 
