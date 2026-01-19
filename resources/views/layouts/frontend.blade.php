@@ -40,7 +40,7 @@
             </div>
 
             <div class="hidden md:flex items-center gap-6 lg:gap-8">
-                <a href="#" class="nav-link text-gray-800 font-bold hover:text-sekolah-hijau transition">Beranda</a>
+                <a href="{{ route('home') }}" class="nav-link text-gray-800 font-bold hover:text-sekolah-hijau transition">Beranda</a>
                 
                 <div class="relative group h-full flex items-center py-2">
                     <button class="nav-link text-gray-800 font-bold hover:text-sekolah-hijau transition flex items-center gap-1">
@@ -48,10 +48,10 @@
                         <i class="fas fa-chevron-down text-xs transition-transform group-hover:rotate-180"></i>
                     </button>
                     <ul class="absolute top-full right-0 mt-0 w-56 bg-white shadow-xl rounded-b-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 border-t-4 border-sekolah-hijau transform origin-top scale-95 group-hover:scale-100">
-                        <li><a href="#" class="block px-6 py-3 text-gray-700 hover:text-sekolah-hijau hover:bg-gray-50 transition font-medium border-b border-gray-100">Sejarah Sekolah</a></li>
-                        <li><a href="#" class="block px-6 py-3 text-gray-700 hover:text-sekolah-hijau hover:bg-gray-50 transition font-medium border-b border-gray-100">Visi & Misi</a></li>
-                        <li><a href="#" class="block px-6 py-3 text-gray-700 hover:text-sekolah-hijau hover:bg-gray-50 transition font-medium border-b border-gray-100">Struktur Organisasi</a></li>
-                        <li><a href="#" class="block px-6 py-3 text-gray-700 hover:text-sekolah-hijau hover:bg-gray-50 transition font-medium rounded-b-lg">Sarana Prasarana</a></li>
+                        <li><a href="{{ route('public.sejarah') }}" class="block px-6 py-3 text-gray-700 hover:text-sekolah-hijau hover:bg-gray-50 transition font-medium border-b border-gray-100">Sejarah Sekolah</a></li>
+                        <li><a href="{{ route('public.visi') }}" class="block px-6 py-3 text-gray-700 hover:text-sekolah-hijau hover:bg-gray-50 transition font-medium border-b border-gray-100">Visi & Misi</a></li>
+                        <li><a href="{{ route('public.struktur') }}" class="block px-6 py-3 text-gray-700 hover:text-sekolah-hijau hover:bg-gray-50 transition font-medium border-b border-gray-100">Struktur Organisasi</a></li>
+                        <li><a href="{{ route('public.sarana') }}" class="block px-6 py-3 text-gray-700 hover:text-sekolah-hijau hover:bg-gray-50 transition font-medium rounded-b-lg">Sarana Prasarana</a></li>
                     </ul>
                 </div>
 
@@ -61,10 +61,9 @@
                         <i class="fas fa-chevron-down text-xs transition-transform group-hover:rotate-180"></i>
                     </button>
                     <ul class="absolute top-full right-0 mt-0 w-56 bg-white shadow-xl rounded-b-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 border-t-4 border-sekolah-hijau transform origin-top scale-95 group-hover:scale-100">
-                        <li><a href="#" class="block px-6 py-3 text-gray-700 hover:text-sekolah-hijau hover:bg-gray-50 transition font-medium border-b border-gray-100">Beasiswa</a></li>
                         <li class="relative group/sub">
                             <a href="#" class="flex justify-between items-center px-6 py-3 text-gray-700 hover:text-sekolah-hijau hover:bg-gray-50 transition font-medium border-b border-gray-100">
-                                Ekstrakurikuler <i class="fas fa-chevron-right text-xs"></i>
+                                Ekstrakurikuler</i>
                             </a>
                         </li>
                         <li><a href="#" class="block px-6 py-3 text-gray-700 hover:text-sekolah-hijau hover:bg-gray-50 transition font-medium rounded-b-lg">Prestasi</a></li>
@@ -77,34 +76,30 @@
                         <i class="fas fa-chevron-down text-xs transition-transform group-hover:rotate-180"></i>
                     </button>
                     <ul class="absolute top-full right-0 mt-0 w-56 bg-white shadow-xl rounded-b-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 border-t-4 border-sekolah-hijau transform origin-top scale-95 group-hover:scale-100">
-                        <li><a href="#" class="block px-6 py-3 text-gray-700 hover:text-sekolah-hijau hover:bg-gray-50 transition font-medium border-b border-gray-100">Pengumuman</a></li>
-                        <li><a href="#" class="block px-6 py-3 text-gray-700 hover:text-sekolah-hijau hover:bg-gray-50 transition font-medium border-b border-gray-100">Jadwal Pelajaran</a></li>
-                        <li><a href="#" class="block px-6 py-3 text-gray-700 hover:text-sekolah-hijau hover:bg-gray-50 transition font-medium border-b border-gray-100">Data Guru & Staff</a></li>
-                        <li><a href="#" class="block px-6 py-3 text-gray-700 hover:text-sekolah-hijau hover:bg-gray-50 transition font-medium rounded-b-lg">Data Alumni</a></li>
+                        <li><a href="{{ route('public.posts') }}" class="block px-6 py-3 text-gray-700 hover:text-sekolah-hijau hover:bg-gray-50 transition font-medium border-b border-gray-100">Berita & Pengumuman</a></li>
+                        <li><a href="{{ url('/schedule') }}" class="block px-6 py-3 text-gray-700 hover:text-sekolah-hijau hover:bg-gray-50 transition font-medium border-b border-gray-100">Jadwal Pelajaran</a></li>
+                        <li><a href="{{ route('public.teachers') }}" class="block px-6 py-3 text-gray-700 hover:text-sekolah-hijau hover:bg-gray-50 transition font-medium border-b border-gray-100">Data Guru & Staff</a></li>
                     </ul>
                 </div>
 
                 <div class="relative group h-full flex items-center py-2">
                     <button class="nav-link text-gray-800 font-bold hover:text-sekolah-hijau transition flex items-center gap-1">
-                        Galeri
-                        <i class="fas fa-chevron-down text-xs transition-transform group-hover:rotate-180"></i>
+                        <a class="nav-link {{ request()->routeIs('public.galleries') ? 'active' : '' }}" href="{{ route('public.galleries') }}">Galeri</a>
                     </button>
-                    <ul class="absolute top-full right-0 mt-0 w-56 bg-white shadow-xl rounded-b-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 border-t-4 border-sekolah-hijau transform origin-top scale-95 group-hover:scale-100">
-                        <li><a href="#" class="block px-6 py-3 text-gray-700 hover:text-sekolah-hijau hover:bg-gray-50 transition font-medium border-b border-gray-100">Kegiatan Sekolah</a></li>
-                        <li class="relative group/sub">
-                            <a href="#" class="flex justify-between items-center px-6 py-3 text-gray-700 hover:text-sekolah-hijau hover:bg-gray-50 transition font-medium border-b border-gray-100">
-                                Foto Album <i class="fas fa-chevron-right text-xs"></i>
-                            </a>
-                        </li>
-                        <li><a href="#" class="block px-6 py-3 text-gray-700 hover:text-sekolah-hijau hover:bg-gray-50 transition font-medium rounded-b-lg">Video</a></li>
-                    </ul>
                 </div>
 
                 <a href="#" class="nav-link text-gray-800 font-bold hover:text-sekolah-hijau transition">Kontak</a>
                 
-                <a href="#" class="bg-sekolah-kuning hover:bg-yellow-500 text-gray-900 font-bold py-2 px-5 rounded shadow-lg transform hover:-translate-y-1 transition text-sm uppercase tracking-wide">
-                    PPDB Online
-                </a>
+                @auth
+                    <a href="{{ url('/dashboard') }}" class="bg-sekolah-kuning hover:bg-yellow-500 text-gray-900 font-bold py-2 px-5 rounded shadow-lg transform hover:-translate-y-1 transition text-sm uppercase tracking-wide">
+                        Dashboard
+                    </a>
+                @else
+                    <a href="{{ route('login') }}" class="bg-sekolah-kuning hover:bg-yellow-500 text-gray-900 font-bold py-2 px-5 rounded shadow-lg transform hover:-translate-y-1 transition text-sm uppercase tracking-wide">
+                        Login Admin
+                    </a>
+                @endauth
+
             </div>
 
             </div>
