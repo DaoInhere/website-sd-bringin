@@ -1,8 +1,7 @@
 import './bootstrap';
 
-<<<<<<< HEAD
 document.addEventListener('DOMContentLoaded', function() {
-    // Cek dulu apakah ada slider di halaman ini supaya tidak error di halaman lain
+   
     const track = document.getElementById('slider-track');
     
     if (track) {
@@ -14,9 +13,11 @@ document.addEventListener('DOMContentLoaded', function() {
         const totalSlides = dots.length;
         let slideInterval;
 
-        // Fungsi Ganti Slide
+        
         function updateSlide() {
+            
             track.style.transform = `translateX(-${currentIndex * 100}%)`;
+            
             
             dots.forEach((dot, index) => {
                 if(index === currentIndex) {
@@ -39,10 +40,11 @@ document.addEventListener('DOMContentLoaded', function() {
             updateSlide();
         }
 
-        // Event Listeners
+        
         if(nextBtn) nextBtn.addEventListener('click', () => { nextSlide(); resetTimer(); });
         if(prevBtn) prevBtn.addEventListener('click', () => { prevSlide(); resetTimer(); });
 
+        
         dots.forEach(dot => {
             dot.addEventListener('click', (e) => {
                 currentIndex = parseInt(e.target.dataset.index);
@@ -51,7 +53,7 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         });
 
-        // Auto Play
+        
         function startTimer() {
             slideInterval = setInterval(nextSlide, 5000);
         }
@@ -61,15 +63,8 @@ document.addEventListener('DOMContentLoaded', function() {
             startTimer();
         }
 
-        // Jalankan
+        
         updateSlide();
         startTimer();
     }
 });
-=======
-import Alpine from 'alpinejs';
-
-window.Alpine = Alpine;
-
-Alpine.start();
->>>>>>> 20b2a43e8eef9bdcc3fa18c7822ed2dfddd2d793
