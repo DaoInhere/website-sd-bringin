@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Post;
-use App\Models\Teacher;
 use App\Models\Gallery;
+use App\Models\Teacher;
+use App\Models\Schedule;
+use Illuminate\Http\Request;
 
 class PageController extends Controller
 {
