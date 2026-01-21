@@ -1,39 +1,66 @@
 @extends('layouts.frontend')
 
 @section('content')
-<div class="container py-5">
-    <div class="text-center mb-5">
-        <h2 class="fw-bold">Daftar Guru & Staf Pengajar</h2>
-        <p class="text-muted">SD Negeri Bringin 01</p>
-    </div>
+<main class="pb-16">
+    <section class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-10">
+        {{-- Header --}}
+        <div class="text-center mb-10">
+            <h2 class="text-2xl sm:text-3xl font-extrabold text-gray-900">Daftar Guru & Staf Pengajar</h2>
+            <p class="mt-2 text-gray-500">SD Negeri Bringin 01</p>
+        </div>
 
-    <div class="row justify-content-center">
-        @forelse($teachers as $teacher)
-        <div class="col-md-3 col-sm-6 mb-4">
-            <div class="card border-0 text-center shadow-sm h-100 hover-shadow transition">
-                <div class="card-body">
-                    <div class="mb-3 mx-auto" style="width: 120px; height: 120px; overflow: hidden; border-radius: 50%; border: 3px solid #f8f9fa;">
-                        @if($teacher->image)
-                            <img src="{{ asset('storage/' . $teacher->image) }}" 
-                                 class="w-100 h-100 object-fit-cover" 
-                                 alt="{{ $teacher->name }}">
-                        @else
-                            <img src="https://ui-avatars.com/api/?name={{ urlencode($teacher->name) }}&background=random" 
-                                 class="w-100 h-100 object-fit-cover" 
-                                 alt="{{ $teacher->name }}">
-                        @endif
-                    </div>
-                    
-                    <h5 class="fw-bold mb-1">{{ $teacher->name }}</h5>
-                    <p class="text-primary small mb-0">{{ $teacher->subject }}</p>
-                </div>
+        @if($teachers->isEmpty())
+            <div class="rounded-2xl bg-white p-6 text-center text-gray-600 shadow-sm ring-1 ring-black/5">
+                Belum ada data guru yang diinput.
             </div>
-        </div>
-        @empty
-        <div class="col-12 text-center text-muted">
-            <div class="alert alert-info d-inline-block">Belum ada data guru yang diinput.</div>
-        </div>
-        @endforelse
-    </div>
-</div>
+        @else
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                @foreach($teachers as $teacher)
+                    @php
+                        $photoPath = $teacher->photo ?? $teacher->image ?? null;
+                        $hasPhoto  = !empty($photoPath);
+                        $avatarUrl = "https://ui-avatars.com/api/?name=" . urlencode($teacher->name) . "&background=0D9488&color=ffffff";
+                    @endphp
+
+                    <div class="rounded-2xl bg-white shadow-sm ring-1 ring-black/5 overflow-hidden hover:shadow-md transition">
+                        <div class="p-6 sm:p-7 flex items-center gap-6">
+                            {{-- Photo (lebih besar) --}}
+                            <div class="shrink-0">
+                                <div class="h-28 w-28 rounded-full overflow-hidden bg-gray-50 ring-4 ring-white shadow-sm">
+                                    @if($hasPhoto)
+                                        <img
+                                            src="{{ asset('asset/' . $photoPath) }}"
+                                            alt="{{ $teacher->name }}"
+                                            class="h-full w-full object-cover"
+                                        />
+                                    @else
+                                        <img
+                                            src="{{ $avatarUrl }}"
+                                            alt="{{ $teacher->name }}"
+                                            class="h-full w-full object-cover"
+                                        />
+                                    @endif
+                                </div>
+                            </div>
+
+                            {{-- Info --}}
+                            <div class="min-w-0">
+                                <p class="text-xs font-semibold text-gray-500 uppercase tracking-wide">
+                                    {{ $teacher->position ?? '-' }}
+                                </p>
+
+                                <h3 class="mt-1 text-xl font-extrabold text-gray-900 truncate">
+                                    {{ $teacher->name }}
+                                </h3>
+
+                                {{-- Kalau mau tambahin deskripsi kecil opsional --}}
+                                {{-- <p class="mt-1 text-sm text-gray-600 truncate">Guru & Staf Pengajar</p> --}}
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+        @endif
+    </section>
+</main>
 @endsection

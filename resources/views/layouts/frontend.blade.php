@@ -9,6 +9,7 @@
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
+@stack('scripts')
 <body class="font-nunito text-gray-700 antialiased bg-gray-50">
 
     <div class="bg-sekolah-hijau text-white py-2 text-sm hidden md:block">
@@ -50,8 +51,6 @@
                     <ul class="absolute top-full right-0 mt-0 w-56 bg-white shadow-xl rounded-b-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 border-t-4 border-sekolah-hijau transform origin-top scale-95 group-hover:scale-100">
                         <li><a href="{{ route('public.sejarah') }}" class="block px-6 py-3 text-gray-700 hover:text-sekolah-hijau hover:bg-gray-50 transition font-medium border-b border-gray-100">Sejarah Sekolah</a></li>
                         <li><a href="{{ route('public.visi') }}" class="block px-6 py-3 text-gray-700 hover:text-sekolah-hijau hover:bg-gray-50 transition font-medium border-b border-gray-100">Visi & Misi</a></li>
-                        <li><a href="{{ route('public.struktur') }}" class="block px-6 py-3 text-gray-700 hover:text-sekolah-hijau hover:bg-gray-50 transition font-medium border-b border-gray-100">Struktur Organisasi</a></li>
-                        <li><a href="{{ route('public.sarana') }}" class="block px-6 py-3 text-gray-700 hover:text-sekolah-hijau hover:bg-gray-50 transition font-medium rounded-b-lg">Sarana Prasarana</a></li>
                     </ul>
                 </div>
 
@@ -78,7 +77,7 @@
                     <ul class="absolute top-full right-0 mt-0 w-56 bg-white shadow-xl rounded-b-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 border-t-4 border-sekolah-hijau transform origin-top scale-95 group-hover:scale-100">
                         <li><a href="{{ route('public.posts') }}" class="block px-6 py-3 text-gray-700 hover:text-sekolah-hijau hover:bg-gray-50 transition font-medium border-b border-gray-100">Berita & Pengumuman</a></li>
                         <li><a href="{{ url('/informasi/jadwalkbm') }}" class="block px-6 py-3 text-gray-700 hover:text-sekolah-hijau hover:bg-gray-50 transition font-medium border-b border-gray-100">Jadwal KBM</a></li>
-                        <li><a href="{{ route('public.teachers') }}" class="block px-6 py-3 text-gray-700 hover:text-sekolah-hijau hover:bg-gray-50 transition font-medium border-b border-gray-100">Data Guru & Staff</a></li>
+                        <li><a href="{{ route('public.teachers') }}" class="block px-6 py-3 text-gray-700 hover:text-sekolah-hijau hover:bg-gray-50 transition font-medium border-b border-gray-100">Daftar Guru & Staff</a></li>
                     </ul>
                 </div>
 
