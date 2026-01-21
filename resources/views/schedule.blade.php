@@ -10,7 +10,7 @@
 </header>
 
 <div class="container py-5">
-    <a href="/schedules">&laquo; Kembali ke semua jadwal</a>
+    <a href="/informasi/jadwalkbm">&laquo; Kembali ke semua jadwal</a>
     <h2 class="text-center">
         Jadwal {{ 'Kelas ' . $class }}
     </h2>

@@ -17,10 +17,13 @@ Route::get('/test', function () {
 
 // === JALUR PUBLIK (Halaman Frontend / Tanpa Login) ===
 // Menu Dropdown Profil
-Route::get('/profile/sejarah', [PageController::class, 'sejarah'])->name('public.sejarah');
-Route::get('/profile/visi-misi', [PageController::class, 'visi'])->name('public.visi');
-Route::get('/profile/struktur', [PageController::class, 'struktur'])->name('public.struktur');
-Route::get('/profile/sarana', [PageController::class, 'sarana'])->name('public.sarana');
+Route::get('/profil/sejarah', [PageController::class, 'sejarah'])->name('public.sejarah');
+Route::get('/profil/visi-misi', [PageController::class, 'visi'])->name('public.visi');
+Route::get('/profil/struktur', [PageController::class, 'struktur'])->name('public.struktur');
+Route::get('/profil/sarana', [PageController::class, 'sarana'])->name('public.sarana');
+
+// Menu Informasi
+Route::get('/informasi/jadwalkbm', [ScheduleController::class, 'index']);
 
 // Menu Informasi & Galeri & Berita
 Route::get('/guru', [PageController::class, 'teachers'])->name('public.teachers');
@@ -32,10 +35,6 @@ Route::get('/berita', [PageController::class, 'posts'])->name('public.posts');
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
-
-// 3. FITUR SCHEDULE (Jadwal)
-Route::get('/schedules', [ScheduleController::class, 'schedules']);
-Route::get('/schedule', [ScheduleController::class, 'index']);
 
 // 4. FITUR ADMIN (Harus Login)
 Route::middleware('auth')->group(function () {
