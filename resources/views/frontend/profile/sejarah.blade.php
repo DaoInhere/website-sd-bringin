@@ -2,9 +2,13 @@
 
 @section('content')
 <div class="container mx-auto pb-16">
-    <!-- Header with Green Background -->
-    <div class="bg-green-500 text-white text-center py-36">
-        <h2 class="text-4xl font-bold">Sejarah Sekolah</h2>
+    <!-- Header with Background Image and Blur Effect -->
+    <div class="relative text-center py-36 bg-cover bg-center" style="background-image: url('{{ asset('asset/galeri foto.jpg') }}')">
+        <!-- Apply a blur effect to the background image -->
+        <div class="absolute inset-0 bg-black bg-opacity-50 backdrop-blur-sm"></div>
+        
+        <!-- Title text, keeping it above the background -->
+        <h2 class="relative z-10 text-4xl font-bold text-white">Sejarah Sekolah</h2>
     </div>
 
     <!-- Main Content -->
@@ -22,11 +26,6 @@
             Dengan fasilitas yang memadai, SMK Muhammadiyah Tumijajar menyediakan program pendidikan yang memberikan keterampilan yang dibutuhkan oleh industri.
             Kami juga menyediakan berbagai kegiatan ekstrakurikuler untuk mengembangkan potensi siswa di bidang olahraga, seni, dan sosial.
         </p>
-
-        <!-- Emblem or Logo Image -->
-        <div class="text-center mt-8">
-            <img src="{{ asset('storage/d4343423-534f-4bed-a7f7-76bfdda97738.png') }}" alt="Logo SMK Muhammadiyah Tumijajar" class="w-48 mx-auto">
-        </div>
     </div>
 </div>
 @endsection
