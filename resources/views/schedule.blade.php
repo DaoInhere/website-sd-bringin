@@ -20,7 +20,7 @@
 
                     <p class="mt-2 text-white/90">
                         Profil &rarr;
-                        <a href="{{ url('/schedules') }}" class="underline underline-offset-4 hover:text-white/80 transition">
+                        <a href="{{ url('/informasi/jadwalkbm') }}" class="underline underline-offset-4 hover:text-white/80 transition">
                             Jadwal KBM
                         </a>
                         &rarr; Kelas {{ $class }}
@@ -35,7 +35,7 @@
         <div class="flex items-center justify-between gap-4 flex-wrap">
             <a
                 href="{{ url('/informasi/jadwalkbm') }}"
-                class="inline-flex items-center gap-2 text-sm font-semibold text-gray-700 hover:text-sekolah-hijau transition font-bold"
+                class="inline-flex items-center gap-2 text-sm font-semibold text-gray-700 hover:text-sekolah-hijau"
             >
                 <span aria-hidden="true">&larr;</span>
                 Kembali ke semua jadwal
@@ -44,6 +44,9 @@
             <h2 class="text-xl sm:text-2xl font-extrabold text-sekolah-hijau">
                 Jadwal Kelas {{ $class }}
             </h2>
+            <h3 class="text-gray-400 font-semibold">
+                Kurikulum {{ $curriculum }}
+            </h3>
         </div>
 
         @php

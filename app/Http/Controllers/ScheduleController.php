@@ -10,30 +10,44 @@ class ScheduleController extends Controller
 {
     public function index(Request $request)
     {
-        if ($request->query()) {    // Ada query di URL
-            if (collect($request->query())->keys()->diff(['kelas'])->isNotEmpty()) {
+        // =========================
+        // JIKA ADA QUERY DI URL
+        // =========================
+        if ($request->query()) {
+
+            // Ambil semua query key
+            $queryKeys = collect($request->query())->keys();
+
+            // Hanya izinkan query tertentu
+            $allowedKeys = ['kelas', 'kurikulum'];
+
+            if ($queryKeys->diff($allowedKeys)->isNotEmpty()) {
                 return redirect('/informasi/jadwalkbm');
             }
-        
-            $class = $request->query('kelas', '0');
 
-            // Ambil data
+            // Default value
+            $class = $request->query('kelas', '0');
+            $curriculum = $request->query('kurikulum', '2000/2000');
+
+            // Ambil jadwal (kelas + kurikulum)
             $schedules = Schedule::when(
-                $class !== '0',
-                function ($query) use ($class) {
-                    $query->whereIn('class', [$class, '0']);
-                }
-            )
-            ->orderBy('hour')
-            ->get();
+                    $class !== '0',
+                    fn ($q) => $q->whereIn('class', [$class, '0'])
+                )
+                ->when(
+                    $curriculum !== '2000/2000',
+                    fn ($q) => $q->whereIn('curriculum', [$curriculum, '2000/2000'])
+                )
+                ->orderBy('hour')
+                ->get();
 
             // Daftar hari
             $days = ['Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat'];
 
-            // Ambil data
+            // Jadwal global
             $globalSchedules = $schedules->where('day', 'Semua');
 
-            // Gabungkan data
+            // Gabungkan per hari
             $schedulesByDay = collect();
 
             foreach ($days as $day) {
@@ -45,19 +59,22 @@ class ScheduleController extends Controller
             }
 
             return view('schedule', [
-                'schedules' => $schedulesByDay,
-                'class' => $class
+                'schedules'  => $schedulesByDay,
+                'class'      => $class,
+                'curriculum' => $curriculum,
             ]);
         }
 
-        // Tidak ada query di URL
+        // =========================
+        // JIKA TIDAK ADA QUERY
+        // =========================
+
         $curriculums = Schedule::select('curriculum')
             ->where('curriculum', '!=', 'Semua')
             ->distinct()
             ->orderBy('curriculum')
             ->pluck('curriculum');
 
-        // Daftar kelas
         $classes = ['1', '2', '3', '4', '5', '6'];
 
         return view('schedules', compact('curriculums', 'classes'));
