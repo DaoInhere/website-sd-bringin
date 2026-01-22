@@ -15,7 +15,7 @@
             <div class="relative z-10 flex h-full items-center justify-center px-4 sm:px-6 lg:px-8">
                 <div class="text-center text-white">
                     <h1 class="text-3xl sm:text-4xl font-extrabold tracking-tight drop-shadow text-white">
-                        Jadwal Kegiatan Belajar Mengajar
+                        Kurikulum Pelajaran
                     </h1>
                     <p class="mt-2 text-white/90">
                         Informasi &rarr; Jadwal KBM
@@ -48,7 +48,7 @@
                         <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
                             @foreach ($classes as $class)
                                 <a
-                                    href="{{ url('/schedule') }}?class={{ $class }}&year={{ $year }}"
+                                    href="{{ url('/informasi/jadwalkbm') }}?kelas={{ $class }}&kurikulum={{ $year }}"
                                     class="inline-flex items-center justify-center rounded-xl bg-sekolah-hijau px-4 py-2 text-sm font-semibold text-white shadow-sm ring-1 ring-black/5 hover:opacity-90 transition"
                                 >
                                     Kelas {{ $class }}
