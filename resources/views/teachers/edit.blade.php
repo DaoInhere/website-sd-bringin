@@ -9,18 +9,18 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg p-6">
                 
-                <form action="{{ route('teachers.update', $teacher->id) }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('teachers.update', $teacher->nip) }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
 
                     <div class="mb-4">
                         <label class="block text-gray-700 font-bold mb-2">Ganti Foto (Opsional)</label>
-                        <input type="file" name="image" class="w-full border p-2 rounded">
+                        <input type="file" name="photo" class="w-full border p-2 rounded">
                         
                         <div class="mt-2">
                             <p class="text-sm text-gray-500">Foto Saat Ini:</p>
-                            @if($teacher->image)
-                                <img src="{{ asset('storage/' . $teacher->image) }}" class="w-32 h-32 object-cover rounded border">
+                            @if($teacher->photo)
+                                <img src="{{ $teacher->photo_url }}" class="w-32 h-32 object-cover rounded border">
                             @else
                                 <span class="text-red-500 text-sm">Belum ada foto</span>
                             @endif
@@ -34,7 +34,7 @@
 
                     <div class="mb-4">
                         <label class="block text-gray-700 font-bold mb-2">Jabatan / Mata Pelajaran</label>
-                        <input type="text" name="subject" value="{{ old('subject', $teacher->subject) }}" class="w-full border p-2 rounded" required>
+                        <input type="text" name="position" value="{{ old('position', $teacher->position) }}" class="w-full border p-2 rounded" required>
                     </div>
 
                     <button type="submit" 

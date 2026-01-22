@@ -37,18 +37,18 @@
                             <tr class="text-center">
                                 <td class="border p-2">{{ $index + 1 }}</td>
                                 <td class="border p-2">
-                                    @if($teacher->image)
-                                        <img src="{{ asset('storage/' . $teacher->image) }}" class="w-16 h-16 object-cover mx-auto rounded-full">
+                                    @if($teacher->photo)
+                                        <img src="{{ $teacher->photo_url }}" class="w-16 h-16 object-cover mx-auto rounded-full">
                                     @else
-                                        <span class="text-gray-400">No Image</span>
+                                        <span class="text-gray-400">No Photo</span>
                                     @endif
                                 </td>
                                 <td class="border p-2 font-bold">{{ $teacher->name }}</td>
-                                <td class="border p-2">{{ $teacher->subject }}</td>
+                                <td class="border p-2">{{ $teacher->position }}</td>
                                 <td class="border p-2">
-                                    <a href="{{ route('teachers.edit', $teacher->id) }}" class="text-yellow-600 hover:underline mr-2">Edit</a>
+                                    <a href="{{ route('teachers.edit', $teacher->nip) }}" class="text-yellow-600 hover:underline mr-2">Edit</a>
                                     
-                                    <form action="{{ route('teachers.destroy', $teacher->id) }}" method="POST" class="inline" onsubmit="return confirm('Yakin hapus data guru ini?')">
+                                    <form action="{{ route('teachers.destroy', $teacher->nip) }}" method="POST" class="inline" onsubmit="return confirm('Yakin hapus data guru ini?')">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" class="text-red-600 hover:underline">Hapus</button>

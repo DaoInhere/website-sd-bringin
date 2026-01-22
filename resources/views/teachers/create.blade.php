@@ -14,7 +14,7 @@
 
                     <div class="mb-4">
                         <label class="block text-gray-700 font-bold mb-2">Foto Guru</label>
-                        <input type="file" name="image" class="w-full border p-2 rounded" required>
+                        <input type="file" name="photo" class="w-full border p-2 rounded" required>
                     </div>
 
                     <div class="mb-4">
@@ -24,7 +24,7 @@
 
                     <div class="mb-4">
                         <label class="block text-gray-700 font-bold mb-2">Jabatan / Mata Pelajaran</label>
-                        <input type="text" name="subject" class="w-full border p-2 rounded" placeholder="Contoh: Guru Matematika / Kepala Sekolah" required>
+                        <input type="text" name="position" class="w-full border p-2 rounded" placeholder="Contoh: Guru Matematika / Kepala Sekolah" required>
                     </div>
 
                     <button type="submit" 

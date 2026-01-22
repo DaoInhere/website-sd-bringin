@@ -36,7 +36,7 @@
                             <tr class="text-center">
                                 <td class="border p-2">{{ $index + 1 }}</td>
                                 <td class="border p-2">
-                                    <img src="{{ asset('storage/' . $gallery->image) }}" class="w-24 h-24 object-cover mx-auto rounded">
+                                    <img src="{{ asset('asset/' . $gallery->image) }}" class="w-24 h-24 object-cover mx-auto rounded">
                                 </td>
                                 <td class="border p-2">{{ $gallery->title ?? '-' }}</td>
                                 <td class="border p-2">

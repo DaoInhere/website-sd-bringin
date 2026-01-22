@@ -25,61 +25,62 @@ class TeacherController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'image'   => 'required|image|mimes:jpeg,png,jpg|max:2048',
+            'photo'   => 'required|image|mimes:jpeg,png,jpg|max:2048',
             'name'    => 'required|string|max:255',
-            'subject' => 'required|string|max:255',
+            'position'   => 'required|string|max:255'
         ]);
 
         // Upload gambar
-        $imagePath = $request->file('image')->store('teachers', 'public');
+        $imagePath = $request->file('photo')->store('teachers', 'public');
+        $filename = basename($imagePath);
 
         Teacher::create([
-            'image'   => $imagePath,
             'name'    => $request->name,
-            'subject' => $request->subject,
+            'position' => $request->position,
+            'photo'   => $imagePath
         ]);
 
         return redirect()->route('teachers.index')->with(['success' => 'Data Guru Berhasil Disimpan!']);
     }
 
     // 4. FORM EDIT
-    public function edit(string $id)
+    public function edit(string $nip)
     {
-        $teacher = Teacher::findOrFail($id);
+        $teacher = Teacher::where('nip', $nip)->firstOrFail();
         return view('teachers.edit', compact('teacher'));
     }
 
     // 5. PROSES UPDATE
-    public function update(Request $request, string $id)
+    public function update(Request $request, string $nip)
     {
         $request->validate([
-            'image'   => 'image|mimes:jpeg,png,jpg|max:2048',
+            'photo'   => 'image|mimes:jpeg,png,jpg|max:2048',
             'name'    => 'required|string|max:255',
-            'subject' => 'required|string|max:255',
+            'position' => 'required|string|max:255',
         ]);
 
-        $teacher = Teacher::findOrFail($id);
+        $teacher = Teacher::where('nip', $nip)->firstOrFail();
 
-        if ($request->hasFile('image')) {
+        if ($request->hasFile('photo')) {
             // Upload baru
-            $imagePath = $request->file('image')->store('teachers', 'public');
+            $imagePath = $request->file('photo')->store('teachers', 'public');
             
             // Hapus foto lama
-            if ($teacher->image) {
-                Storage::delete('public/' . $teacher->image);
+            if ($teacher->photo) {
+                Storage::disk('public')->delete($teacher->photo);
             }
 
             // Update DB dengan gambar baru
             $teacher->update([
-                'image'   => $imagePath,
+                'photo'   => $imagePath,
                 'name'    => $request->name,
-                'subject' => $request->subject,
+                'position' => $request->position,
             ]);
         } else {
             // Update tulisan saja
             $teacher->update([
                 'name'    => $request->name,
-                'subject' => $request->subject,
+                'position' => $request->position,
             ]);
         }
 
@@ -87,13 +88,13 @@ class TeacherController extends Controller
     }
 
     // 6. HAPUS DATA
-    public function destroy(string $id)
+    public function destroy(string $nip)
     {
-        $teacher = Teacher::findOrFail($id);
+        $teacher = Teacher::where('nip', $nip)->firstOrFail();
         
         // Hapus file gambar
-        if ($teacher->image) {
-            Storage::delete('public/' . $teacher->image);
+        if ($teacher->photo) {
+            Storage::disk('public')->delete($teacher->photo);
         }
         
         $teacher->delete();

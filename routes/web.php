@@ -29,7 +29,9 @@ Route::get('/informasi/jadwalkbm', [ScheduleController::class, 'index']);
 Route::get('/guru', [PageController::class, 'teachers'])->name('public.teachers');
 Route::get('/galeri', [PageController::class, 'galleries'])->name('public.galleries');
 Route::get('/berita', [PageController::class, 'posts'])->name('public.posts');
-
+Route::get('/kesiswaan/ekstrakurikuler', function () {
+return view('ekstrakurikuler');
+});
 
 // 2. DASHBOARD ADMIN
 Route::get('/dashboard', function () {
