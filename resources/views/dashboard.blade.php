@@ -47,7 +47,7 @@
                 <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
                     <h3 class="text-lg font-bold mb-2" style="color: #9333ea;">⚙️ Pengaturan</h3>
                     <p class="text-gray-600 mb-4">Ubah profil dan password admin.</p>
-                    <a href="{{ route('profile.edit') }}" 
+                    <a href="{{ route('profile (admin).edit') }}" 
                        style="background-color: #9333ea; color: white; padding: 8px 16px; border-radius: 6px; display: inline-block; text-decoration: none;">
                         Edit Profil &rarr;
                     </a>

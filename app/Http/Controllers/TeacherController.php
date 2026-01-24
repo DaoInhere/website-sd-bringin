@@ -37,7 +37,7 @@ class TeacherController extends Controller
         Teacher::create([
             'name'    => $request->name,
             'position' => $request->position,
-            'photo'   => $imagePath
+            'photo'   => $filename
         ]);
 
         return redirect()->route('teachers.index')->with(['success' => 'Data Guru Berhasil Disimpan!']);

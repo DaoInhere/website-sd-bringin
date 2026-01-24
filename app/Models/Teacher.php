@@ -35,6 +35,6 @@ class Teacher extends Model
 
         // Cek 3: Fallback / Default
         // Jika tidak ditemukan di kedua tempat, tampilkan avatar default
-        return asset('assets/images/default-avatar.png');
+        return asset($this->photo);
     }
 }
