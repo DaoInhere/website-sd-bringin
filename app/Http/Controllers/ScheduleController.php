@@ -27,7 +27,7 @@ class ScheduleController extends Controller
 
             // Default value
             $class = $request->query('kelas', '0');
-            $curriculum = $request->query('kurikulum', '2000/2000');
+            $curriculum = $request->query('kurikulum', 'Semua');
 
             // Ambil jadwal (kelas + kurikulum)
             $schedules = Schedule::when(
@@ -35,8 +35,8 @@ class ScheduleController extends Controller
                     fn ($q) => $q->whereIn('class', [$class, '0'])
                 )
                 ->when(
-                    $curriculum !== '2000/2000',
-                    fn ($q) => $q->whereIn('curriculum', [$curriculum, '2000/2000'])
+                    $curriculum !== 'Semua',
+                    fn ($q) => $q->whereIn('curriculum', [$curriculum, 'Semua'])
                 )
                 ->orderBy('hour')
                 ->get();
@@ -72,8 +72,9 @@ class ScheduleController extends Controller
         $curriculums = Schedule::select('curriculum')
             ->where('curriculum', '!=', 'Semua')
             ->distinct()
-            ->orderBy('curriculum')
-            ->pluck('curriculum');
+            ->orderByRaw('CAST(curriculum AS UNSIGNED) DESC')
+            ->pluck('curriculum')
+            ->values();
 
         $classes = ['1', '2', '3', '4', '5', '6'];
 

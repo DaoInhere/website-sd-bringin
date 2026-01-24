@@ -1,0 +1,1 @@
+<h1 class="text-ms md:text-1xl font-bold text-sekolah-hijau leading-none ml-2">SDN 1 BRINGIN</h1>

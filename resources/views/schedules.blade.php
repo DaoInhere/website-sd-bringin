@@ -28,10 +28,14 @@
     {{-- CONTENT --}}
     <section class="mx-auto mt-10 max-w-7xl px-4 sm:px-6 lg:px-8">
         <div class="space-y-3">
-            @forelse ($curriculums as $index => $year)
+            @forelse ($curriculums as $index => $curriculum)
                 <details class="group rounded-2xl bg-white shadow-sm ring-1 ring-black/5 overflow-hidden">
                     <summary class="cursor-pointer list-none px-5 py-4 flex items-center justify-between">
-                        <span class="font-semibold text-gray-900">{{ $year }}</span>
+                        @if ($loop->first)
+                            <span class="font-semibold text-gray-900">{{ $curriculum }} (Terbaru)</span>
+                        @else
+                            <span class="font-semibold text-gray-900">{{ $curriculum }}</span>
+                        @endif
 
                         {{-- icon caret --}}
                         <span class="ml-3 inline-flex h-9 w-9 items-center justify-center rounded-xl bg-gray-50 ring-1 ring-black/5">
@@ -48,7 +52,7 @@
                         <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
                             @foreach ($classes as $class)
                                 <a
-                                    href="{{ url('/informasi/jadwalkbm') }}?kelas={{ $class }}&kurikulum={{ $year }}"
+                                    href="{{ url('/informasi/jadwalkbm') }}?kelas={{ $class }}&kurikulum={{ $curriculum }}"
                                     class="inline-flex items-center justify-center rounded-xl bg-sekolah-hijau px-4 py-2 text-sm font-semibold text-white shadow-sm ring-1 ring-black/5 hover:opacity-90 transition"
                                 >
                                     Kelas {{ $class }}

@@ -37,11 +37,7 @@
                             <tr class="text-center">
                                 <td class="border p-2">{{ $index + 1 }}</td>
                                 <td class="border p-2">
-                                    @if($teacher->photo)
-                                        <img src="{{ $teacher->photo_url }}" class="w-16 h-16 object-cover mx-auto rounded-full">
-                                    @else
-                                        <span class="text-gray-400">No Photo</span>
-                                    @endif
+                                    <img src="{{ $teacher->photo_url }}" class="w-16 h-16 object-cover mx-auto rounded-full">
                                 </td>
                                 <td class="border p-2 font-bold">{{ $teacher->name }}</td>
                                 <td class="border p-2">{{ $teacher->position }}</td>

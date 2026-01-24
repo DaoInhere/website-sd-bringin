@@ -29,19 +29,19 @@ class PostFactory extends Factory
             'title' => $this->faker->sentence(mt_rand(3, 8)),
             
             // URL acak
-            'slug' => $this->faker->slug(),
+            // 'slug' => $this->faker->slug(),
             
             // Gambar kita biarkan null (kosong) dulu
             'image' => null,
             
             // Kutipan pendek (1 paragraf)
-            'excerpt' => $this->faker->paragraph(),
+            // 'excerpt' => $this->faker->paragraph(),
             
             // Isi berita panjang (5 paragraf digabung jadi satu teks)
-            'body' => $this->faker->paragraphs(5, true),
+            'content' => $this->faker->paragraphs(5, true),
             
             // Status kita buat langsung 'published' biar muncul di web
-            'status' => 'published',
+            // 'status' => 'published',
         ];
     }
 }

@@ -17,6 +17,8 @@ class ScheduleFactory extends Factory
      */
     public function definition(): array
     {
+        static $used = [];
+
         $days = ['Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat'];
         $hours = [
             '07:00 - 08:00',
@@ -24,8 +26,13 @@ class ScheduleFactory extends Factory
             '09:00 - 10:00',
         ];
 
-        $day  = fake()->randomElement($days);
-        $hour = fake()->randomElement($hours);
+        do {
+            $day  = fake()->randomElement($days);
+            $hour = fake()->randomElement($hours);
+            $key  = $day.'|'.$hour;
+        } while (isset($used[$key]));
+
+        $used[$key] = true;
 
         $uniform = match ($day) {
             'Senin', 'Selasa' => 'Merah Putih',
@@ -47,9 +54,9 @@ class ScheduleFactory extends Factory
         $curriculum = ($subject === 'Upacara')
             ? 'Semua'
             : fake()->randomElement([
+                '2024/2025',
                 '2025/2026',
                 '2026/2027',
-                '2027/2028',
             ]);
 
         return [

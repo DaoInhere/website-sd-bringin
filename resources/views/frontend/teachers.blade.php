@@ -16,30 +16,16 @@
         @else
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 @foreach($teachers as $teacher)
-                    @php
-                        $photoPath = $teacher->photo ?? $teacher->image ?? null;
-                        $hasPhoto  = !empty($photoPath);
-                        $avatarUrl = "https://ui-avatars.com/api/?name=" . urlencode($teacher->name) . "&background=0D9488&color=ffffff";
-                    @endphp
 
                     <div class="rounded-2xl bg-white shadow-sm ring-1 ring-black/5 overflow-hidden hover:shadow-md transition">
                         <div class="p-6 sm:p-7 flex items-center gap-6">
                             {{-- Photo (lebih besar) --}}
                             <div class="shrink-0">
                                 <div class="h-28 w-28 rounded-full overflow-hidden bg-gray-50 ring-4 ring-white shadow-sm">
-                                    @if($hasPhoto)
-                                        <img
-                                            src="{{ asset('asset/' . $photoPath) }}"
-                                            alt="{{ $teacher->name }}"
-                                            class="h-full w-full object-cover"
-                                        />
-                                    @else
-                                        <img
-                                            src="{{ $avatarUrl }}"
-                                            alt="{{ $teacher->name }}"
-                                            class="h-full w-full object-cover"
-                                        />
-                                    @endif
+                                    <img
+                                        src="{{ $teacher->photo_url }}"
+                                        class="h-full w-full object-cover"
+                                    />
                                 </div>
                             </div>
 

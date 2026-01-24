@@ -23,6 +23,7 @@
                                 <img src="{{ $teacher->photo_url }}" class="w-32 h-32 object-cover rounded border">
                             @else
                                 <span class="text-red-500 text-sm">Belum ada foto</span>
+                                <img src="{{ $teacher->photo_url }}" class="w-32 h-32 object-cover rounded border">
                             @endif
                         </div>
                     </div>

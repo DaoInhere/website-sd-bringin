@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
 
             // 1. RELASI KATEGORI
             // Kita sederhanakan penulisan foreign key-nya
@@ -23,10 +24,10 @@ return new class extends Migration
             $table->string('title');                // Judul
             $table->text('content');                // Isi Berita (INI YANG TADI ERROR, sekarang sudah bernama 'content')
 
-            // Catatan:
-            // Kolom 'slug', 'excerpt', 'user_id' kita hapus dulu biar tidak error
-            // karena controller kita belum support fitur canggih itu.
-            
+            // $table->string('slug');
+            // $table->string("excerpt");
+            // $table->string('status');
+
             $table->timestamps();
         });
     }
