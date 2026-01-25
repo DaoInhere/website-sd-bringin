@@ -36,5 +36,29 @@ class ScheduleSeeder extends Seeder
             'created_at' => now(),
             'updated_at' => now()
         ]);
+
+        Schedule::create([
+            'hour' => '07:00 - 08:00',
+            'day' => 'Senin',
+            'subject' => 'Matematika',
+            'type' => 'UTS',
+            'class' => '1',
+            'uniform' => 'Merah Putih',
+            'curriculum' => '2025/2026',
+            'created_at' => now(),
+            'updated_at' => now()
+        ]);
+
+        Schedule::create([
+            'hour' => '07:00 - 08:00',
+            'day' => 'Selasa',
+            'subject' => 'IPA',
+            'type' => 'UAS',
+            'class' => '2',
+            'uniform' => 'Merah Putih',
+            'curriculum' => '2025/2026',
+            'created_at' => now(),
+            'updated_at' => now()
+        ]);
     }
 }

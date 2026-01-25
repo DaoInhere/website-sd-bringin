@@ -23,7 +23,13 @@
                         <a href="{{ url('/informasi/jadwalkbm') }}" class="underline underline-offset-4 hover:text-white/80 transition">
                             Jadwal KBM
                         </a>
-                        &rarr; Kelas {{ $class }}
+                        @if ($type == 'UTS')
+                            &rarr; UTS
+                        @elseif ($type == 'UAS')
+                            &rarr; UAS
+                        @else
+                            &rarr; Kelas {{ $class }}
+                        @endif                       
                     </p>
                 </div>
             </div>
@@ -41,9 +47,19 @@
                 Kembali ke semua jadwal
             </a>
 
-            <h2 class="text-xl sm:text-2xl font-extrabold text-sekolah-hijau">
-                Jadwal Kelas {{ $class }}
-            </h2>
+            @if ($type == 'UTS')
+                <h2 class="text-xl sm:text-2xl font-extrabold text-sekolah-hijau">
+                    Jadwal Ujian Tengah Semester
+                </h2>
+            @elseif ($type == 'UAS')
+                <h2 class="text-xl sm:text-2xl font-extrabold text-sekolah-hijau">
+                    Jadwal Ujian Akhir Semester
+                </h2>
+            @else
+                <h2 class="text-xl sm:text-2xl font-extrabold text-sekolah-hijau">
+                    Jadwal Kelas {{ $class }}
+                </h2>
+            @endif   
             <h3 class="text-gray-400 font-semibold">
                 Kurikulum {{ $curriculum }}
             </h3>
@@ -64,15 +80,26 @@
                         <table class="min-w-full text-left text-sm">
                             <thead class="bg-white">
                                 <tr class="border-b border-gray-100">
-                                    <th class="px-5 py-3 font-semibold text-gray-700 whitespace-nowrap w-28">Jam</th>
-                                    <th class="px-5 py-3 font-semibold text-gray-700 whitespace-nowrap">Mata Pelajaran / Kegiatan</th>
-                                    <th class="px-5 py-3 font-semibold text-gray-700 whitespace-nowrap w-32">Seragam</th>
+                                    @if ($type == 'UTS' || $type == 'UAS')
+                                        <th class="px-5 py-3 font-semibold text-gray-700 whitespace-nowrap w-28">Kelas</th>
+                                        <th class="px-5 py-3 font-semibold text-gray-700 whitespace-nowrap w-28">Jam</th>
+                                        <th class="px-5 py-3 font-semibold text-gray-700 whitespace-nowrap">Mata Pelajaran / Kegiatan</th>
+                                        <th class="px-5 py-3 font-semibold text-gray-700 whitespace-nowrap w-32">Seragam</th>
+                                    @else
+                                        <th class="px-5 py-3 font-semibold text-gray-700 whitespace-nowrap w-28">Jam</th>
+                                        <th class="px-5 py-3 font-semibold text-gray-700 whitespace-nowrap">Mata Pelajaran / Kegiatan</th>
+                                        <th class="px-5 py-3 font-semibold text-gray-700 whitespace-nowrap w-32">Seragam</th>
+                                    @endif   
                                 </tr>
                             </thead>
 
                             <tbody class="divide-y divide-gray-100">
                                 @forelse ($schedules[$day] ?? [] as $schedule)
                                     <tr class="hover:bg-gray-50 transition">
+                                    @if ($type == 'UTS' || $type == 'UAS')
+                                        <td class="px-5 py-3 font-medium text-gray-900 whitespace-nowrap">
+                                            {{ $schedule->class }}
+                                        </td>
                                         <td class="px-5 py-3 font-medium text-gray-900 whitespace-nowrap">
                                             {{ $schedule->hour }}
                                         </td>
@@ -82,6 +109,17 @@
                                         <td class="px-5 py-3 text-gray-700 whitespace-nowrap">
                                             {{ $schedule->uniform ?? '-' }}
                                         </td>
+                                    @else
+                                        <td class="px-5 py-3 font-medium text-gray-900 whitespace-nowrap">
+                                            {{ $schedule->hour }}
+                                        </td>
+                                        <td class="px-5 py-3 text-gray-700">
+                                            {{ $schedule->subject }}
+                                        </td>
+                                        <td class="px-5 py-3 text-gray-700 whitespace-nowrap">
+                                            {{ $schedule->uniform ?? '-' }}
+                                        </td>
+                                    @endif
                                     </tr>
                                 @empty
                                     <tr>
