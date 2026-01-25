@@ -104,7 +104,6 @@ class PageController extends Controller
             ]);
         }
 
-        // Jika tidak ada query di URL
         $curriculums = Schedule::select('curriculum')
             ->where('curriculum', '!=', 'Semua')
             ->distinct()
@@ -112,8 +111,20 @@ class PageController extends Controller
             ->pluck('curriculum')
             ->values();
 
-        $classes = ['1', '2', '3', '4', '5', '6'];
-        $types = ['UTS', 'UAS', '-'];
+        $classes = Schedule::select('class')
+            ->where('class', '!=', '0') // 0 = Semua
+            ->distinct()
+            ->orderByRaw('CAST(class AS UNSIGNED)')
+            ->pluck('class')
+            ->values();
+
+        $types = Schedule::select('type')
+            ->where('type', '!=', '-') // default
+            ->distinct()
+            ->orderBy('type')
+            ->pluck('type')
+            ->prepend('-')
+            ->values();
 
         // Set default tipe
         $type = '-';

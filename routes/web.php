@@ -50,6 +50,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('posts', PostController::class);       // Berita
     Route::resource('galleries', GalleryController::class); // Galeri
     Route::resource('teachers', TeacherController::class);  // Guru
+    Route::resource('schedules', ScheduleController::class); // Jadwal
 });
 
 require __DIR__.'/auth.php';

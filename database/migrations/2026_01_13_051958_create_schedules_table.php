@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('type');
             $table->string('uniform');
             $table->string('curriculum');
-            $table->unique(['day', 'class', 'hour']);
+            // $table->unique(['day', 'class', 'hour']);
             $table->timestamps();
         });
     }

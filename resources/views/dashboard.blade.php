@@ -45,6 +45,15 @@
                 </div>
 
                 <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
+                    <h3 class="text-lg font-bold mb-2" style="color: #d97706;">👨‍🏫 Data Jadwal KBM</h3>
+                    <p class="text-gray-600 mb-4">Kelola jadwal kegiatan belajar mengajar.</p>
+                    <a href="{{ route('schedules.index') }}" 
+                       style="background-color: #d97706; color: white; padding: 8px 16px; border-radius: 6px; display: inline-block; text-decoration: none;">
+                        Kelola Jadwal KBM &rarr;
+                    </a>
+                </div>
+
+                <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
                     <h3 class="text-lg font-bold mb-2" style="color: #9333ea;">⚙️ Pengaturan</h3>
                     <p class="text-gray-600 mb-4">Ubah profil dan password admin.</p>
                     <a href="{{ route('profile (admin).edit') }}" 

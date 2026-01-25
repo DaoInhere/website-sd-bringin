@@ -1,7 +1,18 @@
+// Hidupkan
+npm run dev
+php artisan serve
+
+// Link Storage (Cukup Sekali)
+php artisan storage:link
+
+// File .env (Cukup Sekali)
+// Ubah bagian ini
+APP_LOCALE=en
+APP_FAKER_LOCALE=en_US
+
+// Menjadi ini
+APP_LOCALE=id
+APP_FAKER_LOCALE=id_ID
+
 // Migrasi & Seeder
 php artisan migrate:fresh --seed
-
-// Generate Data Jadwal (Schedule)
-php artisan tinker
-App\Models\Schedule::factory(10)->create();
-
