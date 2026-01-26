@@ -87,7 +87,7 @@
                     </button>
                 </div>
 
-                <a href="#" class="nav-link text-gray-800 font-bold hover:text-sekolah-hijau transition">Kontak</a>
+                <a href="{{ route('public.kontak') }}" class="nav-link text-gray-800 font-bold hover:text-sekolah-hijau transition">Kontak</a>
                 
                 @auth
                     <a href="{{ url('/dashboard') }}" class="bg-sekolah-kuning hover:bg-yellow-500 text-gray-900 font-bold py-2 px-5 rounded shadow-lg transform hover:-translate-y-1 transition text-sm uppercase tracking-wide">
@@ -95,7 +95,7 @@
                     </a>
                 @else
                     <a href="{{ route('login') }}" class="bg-sekolah-kuning hover:bg-yellow-500 text-gray-900 font-bold py-2 px-5 rounded shadow-lg transform hover:-translate-y-1 transition text-sm uppercase tracking-wide">
-                        Login Admin
+                        Masuk
                     </a>
                 @endauth
 

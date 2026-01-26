@@ -11,33 +11,69 @@
 }
 
 @layer components {
- 
-  .nav-link {
-    @apply text-gray-800 font-bold hover:text-sekolah-hijau transition relative uppercase text-sm tracking-wide;
-  }
-  
-  
-  .btn-primary {
-    @apply bg-sekolah-hijau hover:bg-sekolah-hijau-dark text-white font-bold py-3 px-6 rounded-lg shadow-md transition-all duration-300 hover:-translate-y-1 hover:shadow-lg inline-block;
+  /* --- Galeri Card (Dinamis & Proporsional) --- */
+  .gallery-container {
+    @apply relative rounded-2xl overflow-hidden shadow-md transition-all duration-500 cursor-pointer bg-white;
+    aspect-ratio: 16 / 9; /* Menjaga kotak tetap konsisten di semua layar */
   }
 
-  
-  .btn-accent {
-    @apply bg-sekolah-kuning hover:bg-sekolah-kuning-dark text-gray-900 font-bold py-3 px-6 rounded-lg shadow-md transition-all duration-300 hover:-translate-y-1 hover:shadow-lg inline-block;
+  .gallery-img {
+    @apply w-full h-full object-cover transition-transform duration-700 ease-in-out;
   }
 
-  
-  .hero-bg {
-    @apply bg-gray-900 relative;
+  .gallery-container:hover .gallery-img {
+    @apply scale-110;
   }
 
-  
-  .animate-fade-in-up {
-    animation: fadeInUp 0.8s ease-out forwards;
+  /* Overlay Biru Gradasi */
+  .gallery-overlay {
+    @apply absolute inset-0 flex flex-col justify-end p-5 transition-opacity duration-300;
+    background: linear-gradient(to top, rgba(30, 64, 175, 0.95) 0%, rgba(30, 64, 175, 0.7) 40%, transparent 100%);
   }
-  
-  @keyframes fadeInUp {
-    from { opacity: 0; transform: translateY(30px); }
-    to { opacity: 1; transform: translateY(0); }
+
+  .gallery-title {
+    @apply font-poppins font-bold text-white text-base md:text-lg leading-tight uppercase tracking-tight;
+    text-shadow: 1px 1px 4px rgba(0,0,0,0.4);
   }
+
+  .gallery-deskripsi {
+    @apply text-white/90 text-[11px] font-nunito mt-1 block leading-tight opacity-90;
+    display: -webkit-box;
+    -webkit-line-clamp: 1; /* Batasi teks di card agar tidak berantakan */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  /* --- MODAL LIGHTBOX (RESPONSIF) --- */
+  .lightbox-overlay {
+    @apply fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-10;
+  }
+
+  [x-cloak] { display: none !important; }
+
+  .lightbox-content {
+    /* overflow-visible penting agar tombol X tidak terpotong di HP */
+    @apply relative max-w-full md:max-w-5xl w-full flex flex-col items-center overflow-visible z-[105] transform transition-all duration-300;
+  }
+
+  .lightbox-img {
+    /* max-h lebih pendek di mobile (70vh) agar teks di bawah tidak terpotong layar */
+    @apply max-w-full h-auto max-h-[70vh] md:max-h-[80vh] rounded-lg shadow-2xl border-2 md:border-4 border-white/20 object-contain bg-black;
+  }
+
+  /* Tombol Close Dinamis */
+  .close-btn {
+    /* Posisi absolute relatif terhadap container gambar agar tidak lari ke pinggir layar */
+    @apply absolute -top-12 right-2 md:-right-12 text-white hover:text-red-500 transition-colors duration-200 focus:outline-none z-[110] p-2;
+  }
+}
+
+/* Animasi Masuk */
+.animate-fade-in-up {
+  animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
 }

@@ -12,7 +12,7 @@ class ScheduleController extends Controller
     // 1. DAFTAR JADWAL
     public function index()
     {
-        $schedules = Schedule::orderBy('hour')->paginate(20);
+        $schedules = Schedule::orderBy('hour')->paginate(15);
         return view('schedules.index', compact('schedules'));
     }
 

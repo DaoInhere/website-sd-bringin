@@ -27,6 +27,10 @@ class PageController extends Controller
         return view('frontend.profile.sarana');
     }
 
+    public function kontak() {
+        return view('frontend.contact');
+    }
+
     // === 2. MENU LAINNYA ===
     public function teachers() {
         $teachers = Teacher::all();

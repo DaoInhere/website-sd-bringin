@@ -91,7 +91,7 @@
                         </h1>
 
                         <div class="flex flex-col sm:flex-row justify-center gap-4">
-                            <a href="{{ url('/ppdb') }}"
+                            <a href="https://arsip.siap-ppdb.com/"
                                class="bg-sekolah-hijau hover:bg-sekolah-hijau-dark text-white font-bold py-3 px-8 rounded-xl transition duration-300 uppercase tracking-wide shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-white/70">
                                 Daftar Sekarang
                             </a>

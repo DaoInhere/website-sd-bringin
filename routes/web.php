@@ -22,6 +22,7 @@ Route::get('/profil/sejarah', [PageController::class, 'sejarah'])->name('public.
 Route::get('/profil/visi-misi', [PageController::class, 'visi'])->name('public.visi');
 Route::get('/profil/struktur', [PageController::class, 'struktur'])->name('public.struktur');
 Route::get('/profil/sarana', [PageController::class, 'sarana'])->name('public.sarana');
+Route::get('/kontak', [PageController::class, 'kontak'])->name('public.kontak');
 
 // Menu Informasi
 Route::get('/informasi/jadwalkbm', [PageController::class, 'schedules'])->name('public.schedules');
