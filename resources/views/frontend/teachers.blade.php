@@ -5,7 +5,7 @@
     <section class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-10">
         {{-- Header --}}
         <div class="text-center mb-10">
-            <h2 class="text-2xl sm:text-3xl font-extrabold text-gray-900">Daftar Guru & Staf Pengajar</h2>
+            <h2 class="text-2xl sm:text-3xl font-extrabold text-sekolah-hijau">Daftar Guru & Staf Pengajar</h2>
             <p class="mt-2 text-gray-500">SD Negeri Bringin 01</p>
         </div>
 
@@ -35,7 +35,7 @@
                                     {{ $teacher->position ?? '-' }}
                                 </p>
 
-                                <h3 class="mt-1 text-xl font-extrabold text-gray-900 truncate">
+                                <h3 class="mt-1 text-xl font-extrabold text-sekolah-hijau truncate">
                                     {{ $teacher->name }}
                                 </h3>
 

@@ -10,7 +10,7 @@
 
         {{-- Background Image Baru --}}
         {{-- Catatan: Jika ingin pakai gambar sendiri, ganti URL di bawah dengan {{ asset('asset/nama-file-anda.jpg') }} --}}
-        <div class="absolute inset-0 bg-cover bg-center"
+        <div class="absolute inset-0 bg-cover z-0"
              style="background-image: url('{{ asset('asset/bannerEkstrakurikuler.png') }}'); filter: blur(3px);">
         </div>
 
