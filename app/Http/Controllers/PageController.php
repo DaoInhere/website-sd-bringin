@@ -6,7 +6,9 @@ use App\Models\Post;
 use App\Models\Gallery;
 use App\Models\Teacher;
 use App\Models\Schedule;
+use App\Models\Achievement;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class PageController extends Controller
 {
@@ -45,6 +47,23 @@ class PageController extends Controller
     public function posts() {
         $posts = Post::latest()->paginate(6);
         return view('frontend.posts', compact('posts'));
+    }
+
+    public function extracurriculars() {
+        $extracurriculars = Schedule::where('type', 'Ekstrakurikuler')
+            ->latest()
+            ->paginate(6);
+        return view('ekstrakurikuler', compact('extracurriculars'));
+    }
+
+    public function achievements() {
+        $achievements = Achievement::orderByDesc('date')->paginate(5);
+        $latestAchievementDate = Achievement::max('date');
+        $levelSummary = Achievement::select('level', DB::raw('COUNT(*) as total'))
+            ->groupBy('level')
+            ->orderByDesc('total')
+            ->value('level');
+        return view('prestasi', compact('achievements', 'latestAchievementDate', 'levelSummary'));
     }
 
     // Menu Informasi

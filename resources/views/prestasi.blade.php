@@ -28,15 +28,15 @@
         <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
             <div class="rounded-2xl bg-sekolah-hijau shadow-sm ring-1 ring-black/5 p-5 text-white">
                 <p class="text-white text-sm">Total Prestasi</p>
-                <p class="mt-1 text-3xl font-extrabold">15</p>
+                <p class="mt-1 text-3xl font-extrabold">{{ $achievements->count(); }}</p>
             </div>
             <div class="rounded-2xl bg-sekolah-hijau shadow-sm ring-1 ring-black/5 p-5">
-                <p class="text-white text-sm">Tahun Terbaru</p>
-                <p class="mt-1 text-3xl font-extrabold text-white">2020</p>
+                <p class="text-white text-sm">Tanggal Terbaru</p>
+                <p class="mt-1 text-3xl font-extrabold text-white">{{ $latestAchievementDate }}</p>
             </div>
             <div class="rounded-2xl bg-sekolah-hijau shadow-sm ring-1 ring-black/5 p-5">
                 <p class="text-white text-sm">Tingkat Dominan</p>
-                <p class="mt-1 text-2xl font-extrabold text-white">Kecamatan</p>
+                <p class="mt-1 text-2xl font-extrabold text-white">{{ $levelSummary }}</p>
             </div>
         </div>
 
@@ -73,59 +73,53 @@
                 <div class="hidden md:block absolute left-5 top-0 bottom-0 w-px bg-gray-200"></div>
 
                 <div id="achievementList" class="space-y-4">
-                    @foreach ([
-                        ['year' => '2018', 'rank' => 'Juara 2 (dua)', 'level' => 'Kecamatan', 'competition' => 'Juara 2 Poster Putri', 'category' => 'Pramuka'],
-                        ['year' => '2019', 'rank' => 'Juara 1 (satu)', 'level' => 'Kecamatan', 'competition' => 'Karate', 'category' => 'Popda Sd/Mi'],
-                        ['year' => '2020', 'rank' => 'Juara 3 (tiga)', 'level' => 'Kecamatan', 'competition' => 'Atletik', 'category' => 'Lari 80 Meter Puteri'],
-                    ] as $a)
-                        @php
-                            $year = $a['year'];
-                            $rank = $a['rank'];
-                            $level = $a['level'];
-                            $competition = $a['competition'];
-                            $category = $a['category'];
-                        @endphp
-
+                @if($achievements->isEmpty())
+                    <div class="rounded-2xl bg-white p-6 text-center text-gray-600 shadow-sm ring-1 ring-black/5">
+                        Belum ada data prestasi yang diinput.
+                    </div>
+                @else
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        @foreach($achievements as $achievement)
                         <article
                             class="achievement-item rounded-2xl bg-white shadow-sm ring-1 ring-black/5 overflow-hidden"
-                            data-year="{{ $year }}"
-                            data-search="{{ strtolower($year.' '.$rank.' '.$level.' '.$competition.' '.$category) }}"
+                            data-year="{{ $achievement->date }}"
+                            data-search="{{ strtolower($achievement->date.' '.$achievement->position.' '.$achievement->level.' '.$achievement->name.' '.$achievement->category) }}"
                         >
                             <div class="p-5 sm:p-6">
                                 <div class="flex items-start gap-4">
                                     {{-- Timeline dot --}}
                                     <div class="hidden md:flex shrink-0 pt-1">
                                         <div class="h-10 w-10 rounded-2xl bg-sekolah-hijau/10 ring-1 ring-sekolah-hijau/20 flex items-center justify-center">
-                                            <span class="text-sekolah-hijau font-extrabold">{{ $year ?: '—' }}</span>
+                                            <span class="text-sekolah-hijau font-extrabold">-</span>
                                         </div>
                                     </div>
 
                                     <div class="flex-1 min-w-0">
                                         <div class="flex flex-wrap items-center gap-2">
                                             <span class="inline-flex items-center rounded-full px-3 py-1 text-xs font-bold text-white bg-sekolah-hijau shadow-sm">
-                                                {{ $rank }}
+                                                {{ $achievement->position }}
                                             </span>
 
                                             <span class="inline-flex items-center rounded-full bg-sekolah-hijau/10 text-sekolah-hijau px-3 py-1 text-xs font-semibold ring-1 ring-sekolah-hijau/20">
-                                                {{ $level }}
+                                                {{ $achievement->level }}
                                             </span>
 
                                             <span class="inline-flex items-center rounded-full bg-gray-100 text-gray-700 px-3 py-1 text-xs font-semibold ring-1 ring-gray-200">
-                                                {{ $category }}
+                                                {{ $achievement->category }}
                                             </span>
 
                                             <span class="ml-auto hidden sm:inline text-sm font-semibold text-gray-500">
-                                                {{ $year }}
+                                                {{ $achievement->date }}
                                             </span>
                                         </div>
 
                                         <h3 class="mt-3 text-lg sm:text-xl font-extrabold text-gray-900 leading-snug">
-                                            {{ $competition }}
+                                            {{ $achievement->title }}
                                         </h3>
 
                                         <p class="mt-2 text-sm text-gray-600 leading-relaxed">
                                             <span class="font-semibold text-gray-800">Ringkas:</span>
-                                            {{ $year }} • {{ $rank }} • {{ $level }} • {{ $competition }} ({{ $category }})
+                                            {{ $achievement->date }} • {{ $achievement->position }} • {{ $achievement->level }} • {{ $achievement->name }} ({{ $achievement->category }})
                                         </p>
                                     </div>
                                 </div>
@@ -134,12 +128,13 @@
                             {{-- Accent footer --}}
                             <div class="h-2 bg-gradient-to-r from-sekolah-hijau via-sekolah-kuning to-sekolah-hijau"></div>
                         </article>
-                    @endforeach
-                </div>
-
+                        @endforeach
+                    </div>
+                @endif
                 {{-- empty state after filter --}}
                 <div id="noResult" class="hidden rounded-2xl bg-white p-6 text-center text-gray-600 shadow-sm ring-1 ring-black/5 mt-6">
                     Tidak ada prestasi yang cocok dengan pencarian/filter.
+                </div>
                 </div>
             </div>
         </div>
