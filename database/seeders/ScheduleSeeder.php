@@ -52,10 +52,10 @@ class ScheduleSeeder extends Seeder
         Schedule::create([
             'hour' => '07:00 - 08:00',
             'day' => 'Selasa',
-            'subject' => 'IPA',
+            'subject' => 'Olahraga',
             'type' => 'UAS',
             'class' => '2',
-            'uniform' => 'Merah Putih',
+            'uniform' => 'Olahraga',
             'curriculum' => '2025/2026',
             'created_at' => now(),
             'updated_at' => now()
@@ -86,6 +86,7 @@ class ScheduleSeeder extends Seeder
             'teacher' => 'Pak Andre',
             'description' => 'Mengembangkan kemampuan futsal',
             'image' => 'gambarFutsal.png',
+            'required' => 'Tidak Wajib',
             'curriculum' => 'Semua',
             'created_at' => now(),
             'updated_at' => now()

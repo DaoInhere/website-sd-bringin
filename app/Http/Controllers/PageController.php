@@ -87,7 +87,8 @@ class PageController extends Controller
             $type = $request->query('tipe', '-'); // Default tipe '-' jika tidak ada
 
             // Ambil jadwal (kelas + kurikulum + tipe)
-            $schedules = Schedule::when(
+            $schedules = Schedule::where('type', '!=', 'Ekstrakurikuler')
+                ->when(
                     $class !== '0',
                     fn ($q) => $q->whereIn('class', [$class, '0'])
                 )
@@ -96,7 +97,7 @@ class PageController extends Controller
                     fn ($q) => $q->whereIn('curriculum', [$curriculum, 'Semua'])
                 )
                 ->when(
-                    $type !== '-', // Hanya filter jika tipe bukan default
+                    $type !== '-',
                     fn ($q) => $q->whereIn('type', [$type, '-'])
                 )
                 ->orderBy('hour')
