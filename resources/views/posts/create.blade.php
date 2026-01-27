@@ -20,6 +20,15 @@
                     </div>
                 @endif
 
+
+                <div class="mb-4">
+                    <label class="block text-gray-700 font-bold mb-2">Penulis</label>
+                    <input type="text" name="username" value="{{ auth()->user()->name }}" class="w-full border p-2 rounded bg-gray-100" disabled>
+                    
+                    @error('title')
+                        <div class="text-red-500 text-sm mt-1">{{ $message }}</div>
+                    @enderror
+                </div>
                 <form action="{{ route('posts.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
 
@@ -43,8 +52,8 @@
                     </div>
 
                     <div class="mb-4">
-                        <label class="block text-gray-700 font-bold mb-2">Kategori</label>
-                        <select name="category_id" class="w-full border p-2 rounded @error('category_id') border-red-500 @enderror">
+                        <label class="block text-gray-700 font-bold mb-2 ">Kategori</label>
+                        <select name="category_id" class="w-full border p-2 rounded bg-white @error('category_id') border-red-500 @enderror">
                             <option value="">-- Pilih Kategori --</option>
                             @foreach ($categories as $category)
                                 <option value="{{ $category->id }}">{{ $category->title }}</option>

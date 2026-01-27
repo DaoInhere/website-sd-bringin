@@ -16,7 +16,6 @@
         @else
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 @foreach($teachers as $teacher)
-
                     <div class="rounded-2xl bg-white shadow-sm ring-1 ring-black/5 overflow-hidden hover:shadow-md transition">
                         <div class="p-6 sm:p-7 flex items-center gap-6">
                             {{-- Photo (lebih besar) --}}

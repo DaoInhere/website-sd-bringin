@@ -11,7 +11,7 @@ class GalleryFactory extends Factory
         return [
             // 'id' => 1, // Diupload oleh Admin
             'title' => $this->faker->sentence(3),
-            'image' => 'logo sd bringin01.png', // Gambar placeholder
+            'image' => 'sekolah sd bringin 01 semarang.jpg', // Gambar placeholder
             // 'description' => $this->faker->paragraph(),
         ];
     }

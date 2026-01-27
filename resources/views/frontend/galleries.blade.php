@@ -12,44 +12,20 @@
 
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
         
-        <div class="gallery-container animate-fade-in-up" 
-             @click="open = true; 
-                     imgSrc = '{{ asset('asset/gambarPramuka.png') }}'; 
-                     imgTitle = 'Latihan Rutin Pramuka Penggalang';
-                     imgDesc = 'Kegiatan latihan rutin mingguan untuk mengasah keterampilan kepramukaan dan kemandirian siswa SDN Bringin 01.'">
-            <img src="{{ asset('asset/gambarPramuka.png') }}" class="gallery-img" alt="Kegiatan Pramuka">
-            <div class="gallery-overlay">
-                <span class="gallery-title">Latihan Rutin Pramuka Penggalang</span>
-                <span class="gallery-deskripsi">Mengasah keterampilan dan kemandirian siswa.</span>
-                <span class="gallery-subtitle">SDN Bringin 01 — 15 Jan 2026</span>
+        @foreach($galleries as $gallery)
+            <div class="gallery-container animate-fade-in-up" 
+                @click="open = true; 
+                        imgSrc = '{{ $gallery->image_url }}'; 
+                        imgTitle = '{{ $gallery->title }}';
+                        imgDesc = '-'">
+                <img src="{{ $gallery->image_url }}" class="gallery-img">
+                <div class="gallery-overlay">
+                    <span class="gallery-title">{{ $gallery->title }}</span>
+                    <span class="gallery-deskripsi">-</span>
+                    <span class="gallery-subtitle">{{ $gallery->created_at->translatedFormat('d F Y') }}</span>
+                </div>
             </div>
-        </div>
-
-        <div class="gallery-container animate-fade-in-up" style="animation-delay: 0.1s;"
-             @click="open = true; 
-                     imgSrc = '{{ asset('asset/gambarPramuka.png') }}'; 
-                     imgTitle = 'Upacara Bendera Hari Senin';
-                     imgDesc = 'Upacara rutin setiap hari Senin sebagai bentuk penanaman nilai nasionalisme dan patriotisme kepada seluruh siswa.'">
-            <img src="{{ asset('asset/gambarPramuka.png') }}" class="gallery-img" alt="Upacara Bendera">
-            <div class="gallery-overlay">
-                <span class="gallery-title">Upacara Bendera Hari Senin</span>
-                <span class="gallery-deskripsi">Penanaman nilai nasionalisme dan patriotisme.</span>
-                <span class="gallery-subtitle">SDN Bringin 01 — 20 Jan 2026</span>
-            </div>
-        </div>
-
-        <div class="gallery-container animate-fade-in-up" style="animation-delay: 0.2s;"
-             @click="open = true; 
-                     imgSrc = '{{ asset('asset/gambarPramuka.png') }}'; 
-                     imgTitle = 'Kegiatan Belajar Mengajar Interaktif';
-                     imgDesc = 'Suasana belajar mengajar di kelas yang interaktif menggunakan media digital untuk meningkatkan minat belajar anak.'">
-            <img src="{{ asset('asset/gambarPramuka.png') }}" class="gallery-img" alt="Kegiatan Belajar">
-            <div class="gallery-overlay">
-                <span class="gallery-title">Kegiatan Belajar Mengajar Interaktif</span>
-                <span class="gallery-deskripsi">Meningkatkan minat belajar dengan media interaktif.</span>
-                <span class="gallery-subtitle">SDN Bringin 01 — 15 Jan 2026</span>
-            </div>
-        </div>
+        @endforeach
 
     </div>
 

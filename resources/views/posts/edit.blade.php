@@ -18,7 +18,7 @@
                         
                         <div class="mt-2">
                             <p class="text-sm text-gray-600 mb-1">Gambar saat ini:</p>
-                            <img src="{{ asset('storage/' . $post->image) }}" alt="Img" class="w-32 h-20 object-cover rounded border">
+                            <img src="{{ $post->image_url }}" alt="Img" class="w-32 h-20 object-cover rounded border">
                         </div>
                     </div>
 
@@ -29,7 +29,7 @@
 
                     <div class="mb-4">
                         <label class="block text-gray-700 font-bold mb-2">Kategori</label>
-                        <select name="category_id" class="w-full border p-2 rounded" required>
+                        <select name="category_id" class="w-full border p-2 rounded bg-white" required>
                             <option value="">-- Pilih Kategori --</option>
                             @foreach ($categories as $category)
                                 <option value="{{ $category->id }}" {{ $post->category_id == $category->id ? 'selected' : '' }}>

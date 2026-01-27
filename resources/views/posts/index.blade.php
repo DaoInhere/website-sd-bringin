@@ -31,7 +31,7 @@
                         <tr>
                             <td class="border border-gray-300 p-3">{{ $index + 1 }}</td>
                             <td class="border border-gray-300 p-3">
-                                <img src="{{ Str::startsWith($post->image, 'http') ? $post->image : asset('storage/' . $post->image) }}" 
+                                <img src="{{ $post->image_url }}" 
                                      alt="img" style="width: 80px; height: 50px; object-fit: cover; border-radius: 4px;">
                             </td>
                             <td class="border border-gray-300 p-3 font-bold">{{ $post->title }}</td>

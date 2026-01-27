@@ -68,8 +68,7 @@
             @forelse($posts as $post)
             <div class="card relative group rounded-2xl bg-white shadow-lg overflow-hidden">
                 <img
-                    src="{{ Str::startsWith($post->image, 'http') ? $post->image : asset('storage/' . $post->image) }}"
-                    alt="{{ $post->title }}"
+                    src="{{ $post->image_url }}"
                     class="w-full h-64 object-cover" />
                 <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition duration-300"></div>
                 <div class="absolute bottom-5 left-5 right-5 p-5 text-white opacity-0 group-hover:opacity-100 transition duration-300">

@@ -19,7 +19,7 @@
                         
                         <div class="mt-2">
                             <p class="text-sm text-gray-500">Foto Saat Ini:</p>
-                            <img src="{{ asset('storage/' . $gallery->image) }}" class="w-32 h-32 object-cover rounded border">
+                            <img src="{{ $gallery->image_url }}" class="w-32 h-32 object-cover rounded border">
                         </div>
                     </div>
 

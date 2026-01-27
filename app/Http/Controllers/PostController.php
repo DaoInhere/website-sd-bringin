@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Post;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
 class PostController extends Controller
@@ -40,6 +41,7 @@ class PostController extends Controller
 
         // Simpan ke database
         Post::create([
+            'user_id' => Auth::id(),
             'image'     => $imagePath,
             'title'     => $request->title,
             'category_id' => $request->category_id,
