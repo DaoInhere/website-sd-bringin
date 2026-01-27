@@ -65,7 +65,7 @@
                                 Ekstrakurikuler</i>
                             </a>
                         </li>
-                        <li><a href="#" class="block px-6 py-3 text-gray-700 hover:text-sekolah-hijau hover:bg-gray-50 transition font-medium rounded-b-lg">Prestasi</a></li>
+                        <li><a href="/kesiswaan/prestasi" class="block px-6 py-3 text-gray-700 hover:text-sekolah-hijau hover:bg-gray-50 transition font-medium rounded-b-lg">Prestasi</a></li>
                     </ul>
                 </div>
 

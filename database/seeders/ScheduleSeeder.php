@@ -60,5 +60,35 @@ class ScheduleSeeder extends Seeder
             'created_at' => now(),
             'updated_at' => now()
         ]);
+        
+        Schedule::create([
+            'hour' => '15:00 - 16:00',
+            'day' => 'Jumat',
+            'subject' => 'Pramuka',
+            'type' => 'Ekstrakurikuler',
+            'class' => '0',
+            'uniform' => 'Pramuka',
+            'teacher' => 'Pak Doni',
+            'description' => 'Membentuk karakter disiplin, mandiri, dan cinta tanah air melalui kegiatan kepramukaan yang menyenangkan.',
+            'image' => 'gambarPramuka.png',
+            'curriculum' => 'Semua',
+            'created_at' => now(),
+            'updated_at' => now()
+        ]);
+
+        Schedule::create([
+            'hour' => '10:00 - 11:00',
+            'day' => 'Sabtu',
+            'subject' => 'Futsal',
+            'type' => 'Ekstrakurikuler',
+            'class' => '0',
+            'uniform' => 'Bebas',
+            'teacher' => 'Pak Andre',
+            'description' => 'Mengembangkan kemampuan futsal',
+            'image' => 'gambarFutsal.png',
+            'curriculum' => 'Semua',
+            'created_at' => now(),
+            'updated_at' => now()
+        ]);
     }
 }

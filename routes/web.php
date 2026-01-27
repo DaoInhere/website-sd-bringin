@@ -12,9 +12,12 @@ use App\Http\Controllers\TeacherController;
 
 // 1. HALAMAN DEPAN (HOME)
 Route::get('/', [HomeController::class, 'index'])->name('home');
+<<<<<<< HEAD
 Route::get('/test', function () {
     return view('berita');
 });
+=======
+>>>>>>> 38450bda51145b79732587a4cc3c07570d7878dc
 
 // === JALUR PUBLIK (Halaman Frontend / Tanpa Login) ===
 // Menu Dropdown Profil
@@ -31,9 +34,8 @@ Route::get('/informasi/jadwalkbm', [PageController::class, 'schedules'])->name('
 Route::get('/guru', [PageController::class, 'teachers'])->name('public.teachers');
 Route::get('/galeri', [PageController::class, 'galleries'])->name('public.galleries');
 Route::get('/berita', [PageController::class, 'posts'])->name('public.posts');
-Route::get('/kesiswaan/ekstrakurikuler', function () {
-return view('ekstrakurikuler');
-});
+Route::get('/kesiswaan/prestasi', [PageController::class, 'achievements'])->name('public.achievements');
+Route::get('/kesiswaan/ekstrakurikuler', [PageController::class, 'extracurriculars'])->name('public.extracurriculars');
 
 // 2. DASHBOARD ADMIN
 Route::get('/dashboard', function () {

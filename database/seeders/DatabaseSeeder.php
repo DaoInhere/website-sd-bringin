@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-
+use App\Models\Achievement;
 use App\Models\Post;
 use App\Models\Gallery;
 use App\Models\Setting;
@@ -23,10 +23,13 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
             ScheduleSeeder::class,
             TeacherSeeder::class,
+            AchievementSeeder::class,
         ]);
         
         // Buat 10 Jadwal Pelajaran
         Schedule::factory()->count(15)->create();
+        
+        // Achievement::factory(3)->create();
 
         // Buat Kategori Berita
         Category::factory(3)->create();
