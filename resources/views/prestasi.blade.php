@@ -12,8 +12,8 @@
             <div class="absolute inset-0 bg-black/45"></div>
 
             <div class="relative z-10 flex h-full items-center justify-center px-4 sm:px-6 lg:px-8">
-                <div class="text-center text-white">
-                    <h1 class="text-4xl sm:text-5xl font-extrabold tracking-tight drop-shadow">
+                <div class="text-center">
+                    <h1 class="text-4xl sm:text-5xl font-extrabold tracking-tight drop-shadow text-white">
                         Prestasi Sekolah
                     </h1>
                     <p class="mt-3 text-white/90">
@@ -70,7 +70,6 @@
 
         <div class="mt-8">
             <div class="relative">
-                <div class="hidden md:block absolute left-5 top-0 bottom-0 w-px bg-gray-200"></div>
 
                 <div id="achievementList" class="space-y-4">
                     @foreach ([
@@ -132,7 +131,7 @@
                             </div>
 
                             {{-- Accent footer --}}
-                            <div class="h-2 bg-gradient-to-r from-sekolah-hijau via-sekolah-kuning to-sekolah-hijau"></div>
+                            <div class="h-2 bg-sekolah-hijau"></div>
                         </article>
                     @endforeach
                 </div>

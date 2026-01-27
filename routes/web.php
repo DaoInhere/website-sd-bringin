@@ -13,7 +13,7 @@ use App\Http\Controllers\TeacherController;
 // 1. HALAMAN DEPAN (HOME)
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/test', function () {
-    return view('prestasi');
+    return view('berita');
 });
 
 // === JALUR PUBLIK (Halaman Frontend / Tanpa Login) ===
