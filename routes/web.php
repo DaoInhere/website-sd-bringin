@@ -12,12 +12,9 @@ use App\Http\Controllers\TeacherController;
 
 // 1. HALAMAN DEPAN (HOME)
 Route::get('/', [HomeController::class, 'index'])->name('home');
-<<<<<<< HEAD
 Route::get('/test', function () {
     return view('berita');
 });
-=======
->>>>>>> 38450bda51145b79732587a4cc3c07570d7878dc
 
 // === JALUR PUBLIK (Halaman Frontend / Tanpa Login) ===
 // Menu Dropdown Profil
