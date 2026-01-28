@@ -11,7 +11,7 @@
                 
                 <div class="mb-4">
                     <a href="{{ route('teachers.create') }}" 
-                       style="background-color: #d97706; color: white; padding: 10px 20px; border-radius: 5px; text-decoration: none; display: inline-block;">
+                        style="background-color: #16a34a; color: white; padding: 10px 20px; border-radius: 5px; text-decoration: none; display: inline-block;">
                         + Tambah Guru Baru
                     </a>
                 </div>

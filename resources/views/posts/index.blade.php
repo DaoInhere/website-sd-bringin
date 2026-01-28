@@ -9,10 +9,10 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg p-6">
                 
-                <div class="mb-4 text-right">
+                <div class="mb-4">
                     <a href="{{ route('posts.create') }}" 
-                       style="background-color: #2563eb; color: white; padding: 10px 20px; border-radius: 5px; text-decoration: none;">
-                        + Tambah Berita Baru
+                    style="background-color: #16a34a; color: white; padding: 10px 20px; border-radius: 5px; text-decoration: none; display: inline-block;">
+                        + Tambah berita Baru
                     </a>
                 </div>
 
