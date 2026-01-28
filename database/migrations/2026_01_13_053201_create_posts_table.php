@@ -20,10 +20,11 @@ return new class extends Migration
             $table->foreignId('category_id')->constrained('categories')->onDelete('cascade');
             
             // 2. DATA BERITA (Sesuai Form Input Kita)
-            $table->string('image')->nullable();    // Foto
-            $table->string('title');                // Judul
-            $table->text('content');                // Isi Berita (INI YANG TADI ERROR, sekarang sudah bernama 'content')
+            $table->string('image')->nullable();
+            $table->string('title');
+            $table->text('content');
 
+            // $table->date('startAt');
             // $table->string('slug');
             // $table->string("excerpt");
             // $table->string('status');

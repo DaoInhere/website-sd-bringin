@@ -22,6 +22,12 @@
                     </div>
                 @endif
 
+                @error('position')
+                    <div class="mb-4 p-4 bg-red-100 text-red-700 rounded">
+                        {{ $message }}
+                    </div>
+                @enderror 
+
                 <table class="w-full border-collapse border border-gray-300">
                     <thead class="bg-gray-100">
                         <tr>

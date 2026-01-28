@@ -123,9 +123,35 @@ class PageController extends Controller
             ]);
         }
 
-        $curriculums = Schedule::select('curriculum')->where('curriculum', '!=', 'Semua')->distinct()->orderByRaw('CAST(curriculum AS UNSIGNED) DESC')->pluck('curriculum')->values();
-        $classes = Schedule::select('class')->where('class', '!=', '0')->distinct()->orderByRaw('CAST(class AS UNSIGNED)')->pluck('class')->values();
-        $types = Schedule::select('type')->where('type', '!=', '-')->distinct()->orderBy('type')->pluck('type')->prepend('-')->values();
+        $curriculums = Schedule::select('curriculum')
+            ->where('curriculum', '!=', 'Semua')
+            ->distinct()
+            ->orderByRaw('CAST(curriculum AS UNSIGNED) DESC')
+            ->pluck('curriculum')
+            ->values();
+
+        $curriculum = $request->query('kurikulum', 'Semua');
+
+        $classes = Schedule::select('class')
+            ->where('class', '!=', '0') // 0 = Semua
+            ->when(
+                $curriculum !== 'Semua',
+                fn ($q) => $q->whereIn('curriculum', [$curriculum, 'Semua'])
+            )
+            ->distinct()
+            ->orderByRaw('CAST(class AS UNSIGNED)')
+            ->pluck('class')
+            ->values();
+            
+        $types = Schedule::select('type')
+            ->where('type', '!=', '-') // default
+            ->distinct()
+            ->orderBy('type')
+            ->pluck('type')
+            ->prepend('-')
+            ->values();
+
+        // Set default tipe
         $type = '-';
 
         return view('schedules', compact('curriculums', 'classes', 'types', 'type'));

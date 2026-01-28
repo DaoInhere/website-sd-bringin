@@ -25,6 +25,9 @@
                     <div class="mb-4">
                         <label class="block text-gray-700 font-bold mb-2">Jabatan / Mata Pelajaran</label>
                         <input type="text" name="position" class="w-full border p-2 rounded" placeholder="Contoh: Guru Matematika / Kepala Sekolah" required>
+                        @error('position')
+                            <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+                        @enderror                   
                     </div>
 
                     <button type="submit" 

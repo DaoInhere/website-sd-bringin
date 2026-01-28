@@ -14,6 +14,15 @@ class TeacherSeeder extends Seeder
     public function run(): void
     {
         Teacher::create([
+            'nip' => '123',
+            "name" => "Dwi Priyani, S.Pd.SD",
+            'position' => 'Kepala Sekolah',
+            'photo' => 'kepalaSekolah.png',
+            'created_at' => now(),
+            'updated_at' => now()
+        ]);
+
+        Teacher::create([
             'nip' => '1',
             "name" => "Muh Hasan Rifa'i, S.Pd",
             'position' => 'Guru',
@@ -79,7 +88,7 @@ class TeacherSeeder extends Seeder
         Teacher::create([
             'nip' => '8',
             "name" => "Puryanto, A.Ma.Pd",
-            'position' => 'PJOK',
+            'position' => 'Guru',
             'photo' => 'puryanto.png',
             'created_at' => now(),
             'updated_at' => now()

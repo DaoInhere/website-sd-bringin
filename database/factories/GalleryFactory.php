@@ -12,7 +12,7 @@ class GalleryFactory extends Factory
             // 'id' => 1, // Diupload oleh Admin
             'title' => $this->faker->sentence(3),
             'image' => 'sekolah sd bringin 01 semarang.jpg', // Gambar placeholder
-            // 'description' => $this->faker->paragraph(),
+            'description' => $this->faker->paragraph(),
         ];
     }
 }

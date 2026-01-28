@@ -39,7 +39,7 @@ class DatabaseSeeder extends Seeder
         Post::factory(10)->create();
         
         // Buat 5 Data Guru
-        Teacher::factory(5)->create();
+        // Teacher::factory(5)->create();
 
         // Buat 6 Data Foto Galeri
         Gallery::factory(6)->create();
