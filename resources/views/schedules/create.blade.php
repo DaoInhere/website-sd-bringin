@@ -60,6 +60,12 @@
                         </select>
                     </div>
 
+                    {{-- Munculkan ketika admin memilih Ekstrakurikuler --}}
+                    <div class="mb-4">
+                        <label class="block text-gray-700 font-bold mb-2">Foto (Opsional)</label>
+                        <input type="file" name="photo" class="w-full border p-2 rounded" required>
+                    </div>
+
                     <div class="mb-4">
                         <label class="block text-gray-700 font-bold mb-2">Seragam</label>
                         <input type="text" name="uniform" class="w-full border p-2 rounded" placeholder="Contoh: Merah Putih / Batik / Pramuka" required>
