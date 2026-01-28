@@ -9,21 +9,17 @@ use Illuminate\Database\Eloquent\Factories\Factory;
  */
 class AchievementFactory extends Factory
 {
-    /**
-     * Define the model's default state.
-     *
-     * @return array<string, mixed>
-     */
     public function definition(): array
     {
         return [
-            'title' => fake()->sentence(5, false),
-            'name' => fake()->sentences(3, true),
-            'category' => 'Kategori',
-            'level' => 'Tingkat',
-            'position' => 'Juara 1',
-            'date' => '00/00/0000',
-            'award' => 'Sertifikat',
+            // Sesuaikan dengan nama kolom baru
+            'name'        => $this->faker->sentence(3), // Contoh: "Lomba Lari Maraton"
+            'position'    => $this->faker->randomElement(['Juara 1', 'Juara 2', 'Juara 3', 'Harapan 1']),
+            'level'       => $this->faker->randomElement(['Kecamatan', 'Kabupaten/Kota', 'Provinsi', 'Nasional']),
+            'category'    => $this->faker->randomElement(['Akademik', 'Olahraga', 'Seni', 'Keagamaan']),
+            'description' => $this->faker->paragraph(),
+            'date'        => $this->faker->date(),
+            'image'       => null, // Default null
         ];
     }
 }

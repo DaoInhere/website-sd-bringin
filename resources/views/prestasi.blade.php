@@ -77,7 +77,7 @@
                     <input
                         id="achievementSearch"
                         type="text"
-                        placeholder="Cari nama lomba, juara, atau tingkat..."
+                        placeholder="Cari lomba, juara, kategori..."
                         class="w-full rounded-xl border border-gray-200 pl-11 pr-4 py-3 text-sm focus:border-sekolah-hijau focus:ring-2 focus:ring-sekolah-hijau/20 transition outline-none"
                     />
                 </div>
@@ -102,49 +102,33 @@
                     <div class="bg-gray-50 p-6 rounded-full mb-4">
                         <i class="fas fa-trophy text-4xl text-gray-300"></i>
                     </div>
-                @else
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                        @foreach($achievements as $achievement)
-                        <article
-                            class="achievement-item rounded-2xl bg-white shadow-sm ring-1 ring-black/5 overflow-hidden"
-                            data-year="{{ $achievement->date }}"
-                            data-search="{{ strtolower($achievement->date.' '.$achievement->position.' '.$achievement->level.' '.$achievement->name.' '.$achievement->category) }}"
-                        >
-                            <div class="p-5 sm:p-6">
-                                <div class="flex items-start gap-4">
-                                    <div class="flex-1 min-w-0">
-                                        <div class="flex flex-wrap items-center gap-2">
-                                            <span class="inline-flex items-center rounded-full px-3 py-1 text-xs font-bold text-white bg-sekolah-hijau shadow-sm">
-                                                {{ $achievement->position }}
-                                            </span>
-
-                                            <span class="inline-flex items-center rounded-full bg-sekolah-hijau/10 text-sekolah-hijau px-3 py-1 text-xs font-semibold ring-1 ring-sekolah-hijau/20">
-                                                {{ $achievement->level }}
-                                            </span>
-
-                                            <span class="inline-flex items-center rounded-full bg-gray-100 text-gray-700 px-3 py-1 text-xs font-semibold ring-1 ring-gray-200">
-                                                {{ $achievement->category }}
-                                            </span>
-
-                                            <span class="ml-auto hidden sm:inline text-sm font-semibold text-gray-500">
-                                                {{ $achievement->date }}
-                                            </span>
-                                        </div>
-
-                                        <h3 class="mt-3 text-lg sm:text-xl font-extrabold text-gray-900 leading-snug">
-                                            {{ $achievement->title }}
-                                        </h3>
-
-                                        <p class="mt-2 text-sm text-gray-600 leading-relaxed">
-                                            <span class="font-semibold text-gray-800">Ringkas:</span>
-                                            {{ $achievement->date }} • {{ $achievement->position }} • {{ $achievement->level }} • {{ $achievement->name }} ({{ $achievement->category }})
-                                        </p>
-                                    </div>
+                    <h3 class="text-lg font-bold text-gray-600">Belum ada prestasi</h3>
+                    <p class="text-gray-400 text-sm">Data prestasi belum ditambahkan oleh admin.</p>
+                </div>
+            @else
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    @foreach($achievements as $achievement)
+                    <article
+                        class="achievement-item group bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col h-full border border-gray-100 overflow-hidden"
+                        data-year="{{ \Carbon\Carbon::parse($achievement->date)->format('Y') }}"
+                        data-search="{{ strtolower($achievement->name.' '.$achievement->position.' '.$achievement->level.' '.$achievement->category) }}"
+                    >
+                        {{-- GAMBAR --}}
+                        <div class="relative h-56 overflow-hidden bg-gray-200">
+                            @if($achievement->image)
+                                <img src="{{ asset('storage/' . $achievement->image) }}" 
+                                     alt="{{ $achievement->name }}" 
+                                     class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                            @else
+                                <div class="w-full h-full flex flex-col items-center justify-center text-gray-300">
+                                    <i class="fas fa-trophy text-5xl mb-2"></i>
+                                    <span class="text-xs">Tidak ada foto</span>
                                 </div>
                             @endif
                             
                             <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
 
+                            {{-- Badge Level (Kiri Atas) --}}
                             <div class="absolute top-3 left-3 z-10">
                                 <span class="inline-flex items-center rounded-lg bg-white/90 backdrop-blur-sm px-3 py-1 text-xs font-bold text-gray-800 shadow-sm uppercase tracking-wide">
                                     {{ $achievement->level }}
@@ -154,37 +138,47 @@
 
                         {{-- KONTEN --}}
                         <div class="p-6 flex flex-col flex-grow">
-                            <div class="flex items-center gap-2 mb-3">
+                            <div class="flex flex-wrap items-center gap-2 mb-3">
+                                {{-- Badge Juara --}}
                                 <span class="inline-flex items-center rounded-full bg-sekolah-hijau text-white px-2.5 py-0.5 text-xs font-bold">
-                                    <i class="fas fa-medal mr-1 text-yellow-300"></i> {{ $achievement->rank }}
+                                    <i class="fas fa-medal mr-1 text-yellow-300"></i> {{ $achievement->position }}
                                 </span>
-                                <span class="text-xs text-gray-500 font-medium flex items-center">
-                                    <i class="far fa-calendar-alt mr-1"></i> 
-                                    {{ \Carbon\Carbon::parse($achievement->date)->translatedFormat('d M Y') }}
+                                {{-- Badge Kategori --}}
+                                <span class="inline-flex items-center rounded-full bg-blue-100 text-blue-700 px-2.5 py-0.5 text-xs font-bold border border-blue-200">
+                                    {{ $achievement->category }}
                                 </span>
                             </div>
 
+                            <p class="text-xs text-gray-400 mb-1 uppercase tracking-wide font-semibold">{{ $achievement->title }}</p>
+
                             <h3 class="text-lg font-bold text-gray-900 leading-snug mb-3 line-clamp-2 group-hover:text-sekolah-hijau transition-colors">
-                                {{ $achievement->title }}
+                                {{ $achievement->name }}
                             </h3>
 
                             <p class="text-sm text-gray-600 line-clamp-3 mb-4 flex-grow">
                                 {{ $achievement->description ?? 'Tidak ada deskripsi tambahan.' }}
                             </p>
 
-                            <div class="pt-4 border-t border-gray-100 mt-auto">
+                            <div class="pt-4 border-t border-gray-100 mt-auto flex justify-between items-center">
+                                <span class="text-xs text-gray-500 font-medium flex items-center">
+                                    <i class="far fa-calendar-alt mr-1"></i> 
+                                    {{ \Carbon\Carbon::parse($achievement->date)->translatedFormat('d M Y') }}
+                                </span>
+
                                 <button 
                                     type="button"
                                     onclick="openModal(this)"
-                                    data-title="{{ $achievement->title }}"
+                                    data-title="{{ $achievement->name }}"
+                                    data-event="{{ $achievement->title }}"
                                     data-image="{{ $achievement->image ? asset('storage/' . $achievement->image) : '' }}"
-                                    data-rank="{{ $achievement->rank }}"
+                                    data-rank="{{ $achievement->position }}"
                                     data-level="{{ $achievement->level }}"
+                                    data-category="{{ $achievement->category }}"
                                     data-date="{{ \Carbon\Carbon::parse($achievement->date)->translatedFormat('l, d F Y') }}"
                                     data-desc="{{ $achievement->description }}"
-                                    class="w-full inline-flex justify-center items-center gap-2 px-4 py-2.5 rounded-xl bg-gray-50 text-gray-700 text-sm font-bold hover:bg-sekolah-hijau hover:text-white transition-all duration-300 group-hover:shadow-md cursor-pointer"
+                                    class="text-sekolah-hijau hover:text-green-700 text-sm font-bold flex items-center gap-1 cursor-pointer"
                                 >
-                                    Selengkapnya <i class="fas fa-arrow-right text-xs"></i>
+                                    Detail <i class="fas fa-arrow-right text-xs"></i>
                                 </button>
                             </div>
                         </div>
@@ -206,18 +200,15 @@
         </div>
     </section>
 
-    {{-- MODAL POPUP (DIPERBESAR) --}}
+    {{-- MODAL POPUP (SIZE 6XL) --}}
     <div id="detailModal" class="fixed inset-0 z-50 hidden" aria-labelledby="modal-title" role="dialog" aria-modal="true">
-        {{-- Backdrop --}}
         <div class="fixed inset-0 bg-gray-900/75 backdrop-blur-sm transition-opacity opacity-0" id="modalBackdrop"></div>
 
         <div class="fixed inset-0 z-10 overflow-y-auto">
             <div class="flex min-h-full items-center justify-center p-4 text-center sm:p-0">
                 
-                {{-- Modal Panel (Diubah jadi max-w-6xl biar LEGA) --}}
                 <div class="relative transform overflow-hidden rounded-2xl bg-white text-left shadow-2xl transition-all sm:my-8 sm:w-full sm:max-w-6xl scale-95 opacity-0" id="modalPanel">
                     
-                    {{-- Tombol Close --}}
                     <div class="absolute right-4 top-4 z-20">
                         <button type="button" onclick="closeModal()" class="rounded-full bg-black/20 p-2 text-white hover:bg-black/40 transition focus:outline-none cursor-pointer">
                             <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -226,11 +217,10 @@
                         </button>
                     </div>
 
-                    <div class="flex flex-col md:flex-row h-full min-h-[500px]"> {{-- Min height ditambah --}}
+                    <div class="flex flex-col md:flex-row h-full min-h-[500px]">
                         {{-- KIRI: GAMBAR FULL --}}
-                        <div class="md:w-3/5 bg-gray-900 flex items-center justify-center relative"> {{-- Lebar gambar ditambah --}}
+                        <div class="md:w-3/5 bg-gray-900 flex items-center justify-center relative">
                             <img id="modalImg" src="" alt="" class="max-h-[80vh] w-full object-contain p-2 md:absolute md:inset-0 md:h-full">
-                            
                             <div id="modalNoImg" class="hidden flex-col items-center text-gray-400">
                                 <i class="fas fa-trophy text-6xl mb-2"></i>
                                 <span>Tidak ada dokumentasi</span>
@@ -238,7 +228,7 @@
                         </div>
 
                         {{-- KANAN: DETAIL TEKS --}}
-                        <div class="md:w-2/5 p-8 md:p-10 flex flex-col bg-white"> {{-- Lebar teks disesuaikan --}}
+                        <div class="md:w-2/5 p-8 md:p-10 flex flex-col bg-white">
                             <div class="mb-6">
                                 <div class="flex flex-wrap gap-2 mb-4">
                                     <span id="modalLevel" class="inline-flex items-center rounded-lg bg-sekolah-kuning/20 text-yellow-700 px-3 py-1 text-xs font-bold uppercase tracking-wide">
@@ -247,8 +237,12 @@
                                     <span id="modalRank" class="inline-flex items-center rounded-lg bg-sekolah-hijau/10 text-sekolah-hijau px-3 py-1 text-xs font-bold uppercase tracking-wide">
                                         JUARA
                                     </span>
+                                    <span id="modalCategory" class="inline-flex items-center rounded-lg bg-blue-100 text-blue-700 px-3 py-1 text-xs font-bold uppercase tracking-wide">
+                                        KATEGORI
+                                    </span>
                                 </div>
 
+                                <p id="modalEvent" class="text-sm font-bold text-gray-400 uppercase tracking-wide mb-1">Nama Event</p>
                                 <h2 id="modalTitle" class="text-2xl md:text-3xl font-bold text-gray-900 leading-tight mb-3">
                                     Judul Prestasi
                                 </h2>
@@ -262,10 +256,6 @@
                             <div class="prose prose-lg text-gray-600 flex-grow overflow-y-auto max-h-[400px] pr-2 custom-scrollbar">
                                 <p id="modalDesc">Deskripsi lengkap...</p>
                             </div>
-
-                            <div class="mt-8 pt-6 border-t border-gray-100">
-                                <p class="text-xs text-center text-gray-400">Prestasi Siswa SD Negeri 1 Bringin</p>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -274,7 +264,6 @@
     </div>
 
     <script>
-        // === LOGIKA SEARCH & FILTER ===
         const searchInput = document.getElementById('achievementSearch');
         const yearFilter = document.getElementById('yearFilter');
         const items = document.querySelectorAll('.achievement-item');
@@ -317,29 +306,31 @@
         const modalBackdrop = document.getElementById('modalBackdrop');
         const modalPanel = document.getElementById('modalPanel');
 
-        // Elemen dalam modal
         const mTitle = document.getElementById('modalTitle');
+        const mEvent = document.getElementById('modalEvent');
         const mImg = document.getElementById('modalImg');
         const mNoImg = document.getElementById('modalNoImg');
         const mRank = document.getElementById('modalRank');
         const mLevel = document.getElementById('modalLevel');
+        const mCategory = document.getElementById('modalCategory');
         const mDate = document.getElementById('modalDate');
         const mDesc = document.getElementById('modalDesc');
 
         function openModal(button) {
-            // 1. Ambil data
             const title = button.getAttribute('data-title');
+            const eventName = button.getAttribute('data-event');
             const image = button.getAttribute('data-image');
             const rank = button.getAttribute('data-rank');
             const level = button.getAttribute('data-level');
+            const category = button.getAttribute('data-category');
             const date = button.getAttribute('data-date');
             const desc = button.getAttribute('data-desc');
 
-            // 2. Isi konten
             mTitle.innerText = title;
+            mEvent.innerText = eventName;
             mRank.innerText = rank;
             mLevel.innerText = level;
-            
+            mCategory.innerText = category;
             mDate.innerHTML = `<i class="far fa-calendar-alt mr-2 text-sekolah-hijau"></i> <span class="text-gray-700">${date}</span>`;
             
             if (desc && desc !== 'null') {
@@ -348,7 +339,6 @@
                 mDesc.innerText = 'Tidak ada deskripsi tambahan untuk prestasi ini.';
             }
 
-            // Cek Gambar
             if (image) {
                 mImg.src = image;
                 mImg.classList.remove('hidden');
@@ -359,7 +349,6 @@
                 mNoImg.classList.add('flex');
             }
 
-            // 3. Tampilkan
             modal.classList.remove('hidden');
             setTimeout(() => {
                 modalBackdrop.classList.remove('opacity-0');
@@ -383,7 +372,6 @@
             }
         }
     </script>
-
     <style>
         .custom-scrollbar::-webkit-scrollbar { width: 6px; }
         .custom-scrollbar::-webkit-scrollbar-track { background: #f1f1f1; }

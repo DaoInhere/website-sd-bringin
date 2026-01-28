@@ -6,16 +6,21 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-        public function up()
+    public function up()
     {
         Schema::create('achievements', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
-            $table->string('level');
-            $table->string('rank');
+            $table->string('title');    // Nama Acara (misal: HUT RI ke-79)
+            $table->string('name');     // Nama Lomba (misal: Lomba Makan Kerupuk)
+            $table->string('category'); // Kategori (Olahraga/Akademik)
+            $table->string('level');    // Tingkat (Daerah/Nasional)
+            $table->string('position'); // Juara 1/2/3
+            $table->string('award')->nullable(); // Sertifikat/Piala
+            $table->date('date');
+            
             $table->text('description')->nullable();
             $table->string('image')->nullable();
-            $table->date('date')->nullable();
+            
             $table->timestamps();
         });
     }
