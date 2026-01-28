@@ -29,7 +29,7 @@
     <section class="mx-auto mt-10 max-w-7xl px-4 sm:px-6 lg:px-8">
         <div class="space-y-3">
             @forelse ($curriculums as $index => $curriculum)
-                <details class="group rounded-2xl bg-white shadow-sm ring-1 ring-black/5 overflow-hidden">
+                <details class="group rounded-2xl bg-white shadow-sm ring-1 ring-black/5 overflow-hidden transition-all duration-500">
                     <summary class="cursor-pointer list-none px-5 py-4 flex items-center justify-between">
                         @if ($loop->first)
                             <span class="font-semibold text-gray-900">{{ $curriculum }} (Terbaru)</span>
@@ -48,7 +48,7 @@
                         </span>
                     </summary>
 
-                    <div class="border-t border-gray-100 px-5 py-5">
+                    <div class="border-t border-gray-100 px-5 py-5 max-h-0 overflow-hidden opacity-0 group-open:max-h-screen group-open:opacity-100 transition-all duration-500">
                         <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
                             @foreach ($classes as $class)
                                 <a
@@ -75,5 +75,6 @@
             @endforelse
         </div>
     </section>
+
 </main>
 @endsection

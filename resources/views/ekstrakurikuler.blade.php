@@ -32,34 +32,31 @@
             <p class="text-gray-600 mt-2">Berbagai kegiatan positif untuk membentuk Profil Pelajar Pancasila</p>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div>
             @if($extracurriculars->isEmpty())
                 <div class="rounded-2xl bg-white p-6 text-center text-gray-600 shadow-sm ring-1 ring-black/5">
                     Belum ada data jadwal ekstrakurikuler yang diinput.
                 </div>
             @else
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                <div class="grid grid-cols-3 gap-6">
                     @foreach($extracurriculars as $extracurricular)
 
-                    <div class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition duration-300 group hover:-translate-y-1">
+                    <div class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition duration-300 group hover:-translate-y-1 flex flex-col">
                         <div class="h-48 bg-gray-200 relative overflow-hidden">
                             <img src="{{ asset('asset/' . $extracurricular->image) }}"
-                                class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
-                            <div class="absolute top-4 right-4 bg-sekolah-kuning text-sekolah-hijau-dark text-xs font-bold px-3 py-1 rounded-full uppercase">
-                                {{ $extracurricular->required }}
-                            </div>
+                                 class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
                         </div>
-                        <div class="p-6">
-                            <div class="flex items-center gap-3 mb-3">
-                                <i class="fas fa-campground text-sekolah-hijau text-xl"></i>
-                                <h3 class="text-xl font-bold text-gray-800">{{ $extracurricular->subject}}</h3>
+                        <div class="p-6 flex flex-col justify-between flex-grow">
+                            <div>
+                                <div class="flex items-center gap-3 mb-3">                               
+                                    <h3 class="text-xl font-bold text-gray-800">{{ $extracurricular->subject}}</h3>
+                                </div>
+                                <p class="text-gray-600 text-sm mb-4 line-clamp-3">
+                                    {{ $extracurricular->description }}
+                                </p>
                             </div>
-                            <p class="text-gray-600 text-sm mb-4 line-clamp-3">
-                                {{ $extracurricular->description }}
-                            </p>
-                            <div class="border-t pt-4 flex justify-between items-center text-sm text-gray-500">
+                            <div class="relative bottom-0 border-t pt-4 flex justify-between items-center text-sm text-gray-500">
                                 <span><i class="far fa-clock mr-1"></i>{{ $extracurricular->day}}, {{ $extracurricular->hour}}</span>
-                                <span><i class="far fa-user mr-1"></i>{{ $extracurricular->teacher }}</span>
                             </div>
                         </div>
                     </div>

@@ -86,13 +86,6 @@
                         >
                             <div class="p-5 sm:p-6">
                                 <div class="flex items-start gap-4">
-                                    {{-- Timeline dot --}}
-                                    <div class="hidden md:flex shrink-0 pt-1">
-                                        <div class="h-10 w-10 rounded-2xl bg-sekolah-hijau/10 ring-1 ring-sekolah-hijau/20 flex items-center justify-center">
-                                            <span class="text-sekolah-hijau font-extrabold">-</span>
-                                        </div>
-                                    </div>
-
                                     <div class="flex-1 min-w-0">
                                         <div class="flex flex-wrap items-center gap-2">
                                             <span class="inline-flex items-center rounded-full px-3 py-1 text-xs font-bold text-white bg-sekolah-hijau shadow-sm">
