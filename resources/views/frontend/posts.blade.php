@@ -71,7 +71,7 @@
                     src="{{ $post->image_url }}"
                     class="w-full h-64 object-cover" />
                 <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition duration-300"></div>
-                <div class="absolute bottom-5 left-5 right-5 p-5 text-white opacity-0 group-hover:opacity-100 transition duration-300">
+                <div class="absolute bottom-5 left-5 right-5 p-5 text-white text-center opacity-0 group-hover:opacity-100 transition duration-300">
                     <h3 class="text-lg font-bold text-white">{{ Str::limit($post->title, 50) }}</h3>
                     <p class="text-sm mt-2">{{ $post->category->title ?? 'Umum' }}</p>
                     <a href="#" class="mt-4 inline-block bg-sekolah-hijau hover:bg-sekolah-hijau-dark text-white py-2 px-4 rounded-full"
@@ -97,7 +97,7 @@
             <i class="fas fa-times"></i>
         </button>
         <h2 id="modal-title" class="text-2xl font-extrabold text-gray-800 mb-4"></h2>
-        <p id="modal-content" class="text-gray-600 leading-relaxed"></p>
+        <p id="modal-content" class="text-gray-600 leading-relaxed text-justify"></p>
     </div>
 </div>
 
@@ -113,5 +113,4 @@
         document.getElementById('modal').classList.add('hidden');
     }
 </script>
-
 @endsection
