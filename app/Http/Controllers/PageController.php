@@ -9,6 +9,7 @@ use App\Models\Schedule;
 use App\Models\Achievement;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Carbon\Carbon; // Import Carbon untuk urusan tanggal
 
 class PageController extends Controller
 {
@@ -56,60 +57,54 @@ class PageController extends Controller
         return view('ekstrakurikuler', compact('extracurriculars'));
     }
 
+    // === MENU PRESTASI ===
     public function achievements() {
-        $achievements = Achievement::orderByDesc('date')->paginate(5);
-        $latestAchievementDate = Achievement::max('date');
-        $levelSummary = Achievement::select('level', DB::raw('COUNT(*) as total'))
-            ->groupBy('level')
-            ->orderByDesc('total')
-            ->value('level');
+
+        $achievements = Achievement::orderByDesc('date')->paginate(6);
+
+        $latestDateRaw = Achievement::max('date');
+        $latestAchievementDate = $latestDateRaw 
+            ? Carbon::parse($latestDateRaw)->translatedFormat('d F Y') 
+            : '-';
+
+        if (Achievement::where('level', 'Nasional')->exists()) {
+            $levelSummary = 'Nasional';
+        } elseif (Achievement::where('level', 'Provinsi')->exists()) {
+            $levelSummary = 'Provinsi';
+        } elseif (Achievement::where('level', 'Kabupaten/Kota')->exists()) {
+            $levelSummary = 'Kabupaten/Kota';
+        } elseif (Achievement::where('level', 'Kecamatan')->exists()) {
+            $levelSummary = 'Kecamatan';
+        } else {
+            $levelSummary = '-';
+        }
+
         return view('prestasi', compact('achievements', 'latestAchievementDate', 'levelSummary'));
     }
 
-    // Menu Informasi
+    // Menu Informasi (Jadwal)
     public function schedules(Request $request) {
-        // Jika ada query di URL
         if ($request->query()) {
-
-            // Ambil semua query key
             $queryKeys = collect($request->query())->keys();
-
-            // Hanya izinkan query tertentu
             $allowedKeys = ['kelas', 'kurikulum', 'tipe'];
 
             if ($queryKeys->diff($allowedKeys)->isNotEmpty()) {
                 return redirect('/informasi/jadwalkbm');
             }
 
-            // Default value
             $class = $request->query('kelas', '0');
             $curriculum = $request->query('kurikulum', 'Semua');
-            $type = $request->query('tipe', '-'); // Default tipe '-' jika tidak ada
+            $type = $request->query('tipe', '-'); 
 
-            // Ambil jadwal (kelas + kurikulum + tipe)
             $schedules = Schedule::where('type', '!=', 'Ekstrakurikuler')
-                ->when(
-                    $class !== '0',
-                    fn ($q) => $q->whereIn('class', [$class, '0'])
-                )
-                ->when(
-                    $curriculum !== 'Semua',
-                    fn ($q) => $q->whereIn('curriculum', [$curriculum, 'Semua'])
-                )
-                ->when(
-                    $type !== '-',
-                    fn ($q) => $q->whereIn('type', [$type, '-'])
-                )
+                ->when($class !== '0', fn ($q) => $q->whereIn('class', [$class, '0']))
+                ->when($curriculum !== 'Semua', fn ($q) => $q->whereIn('curriculum', [$curriculum, 'Semua']))
+                ->when($type !== '-', fn ($q) => $q->whereIn('type', [$type, '-']))
                 ->orderBy('hour')
                 ->get();
 
-            // Daftar hari
             $days = ['Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat'];
-
-            // Jadwal global
             $globalSchedules = $schedules->where('day', 'Semua');
-
-            // Gabungkan per hari
             $schedulesByDay = collect();
 
             foreach ($days as $day) {

@@ -9,5 +9,16 @@ class Achievement extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['title', 'name', 'category', 'level', 'position', 'date', 'award'];
+    protected $fillable = [
+        'title',
+        'level',
+        'rank',
+        'description',
+        'date',
+        'image',
+    ];
+
+    protected $casts = [
+        'date' => 'date',
+    ];
 }

@@ -9,6 +9,7 @@ use App\Http\Controllers\PageController;
 use App\Http\Controllers\PostController;     
 use App\Http\Controllers\ScheduleController; 
 use App\Http\Controllers\TeacherController;  
+use App\Http\Controllers\AchievementController;
 
 // 1. HALAMAN DEPAN (HOME)
 Route::get('/', [HomeController::class, 'index'])->name('home');
@@ -50,7 +51,8 @@ Route::middleware('auth')->group(function () {
     Route::resource('posts', PostController::class);       // Berita
     Route::resource('galleries', GalleryController::class); // Galeri
     Route::resource('teachers', TeacherController::class);  // Guru
-    Route::resource('schedules', ScheduleController::class); // Jadwal
+    Route::resource('schedules', ScheduleController::class); // JadwalSS
+    Route::resource('achievements', AchievementController::class); // Prestasi
 });
 
 require __DIR__.'/auth.php';

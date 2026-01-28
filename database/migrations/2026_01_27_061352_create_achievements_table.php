@@ -6,28 +6,21 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
-    public function up(): void
+        public function up()
     {
         Schema::create('achievements', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->string('name');
-            $table->string('category')->nullable();
-            $table->string('level')->nullable();
-            $table->string('position')->nullable();
-            $table->string('date');
-            $table->string('award')->nullable();
+            $table->string('level');
+            $table->string('rank');
+            $table->text('description')->nullable();
+            $table->string('image')->nullable();
+            $table->date('date')->nullable();
             $table->timestamps();
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
-    public function down(): void
+    public function down()
     {
         Schema::dropIfExists('achievements');
     }
