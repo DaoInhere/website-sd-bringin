@@ -102,27 +102,44 @@
                     <div class="bg-gray-50 p-6 rounded-full mb-4">
                         <i class="fas fa-trophy text-4xl text-gray-300"></i>
                     </div>
-                    <h3 class="text-lg font-bold text-gray-600">Belum ada prestasi</h3>
-                    <p class="text-gray-400 text-sm">Data prestasi belum ditambahkan oleh admin.</p>
-                </div>
-            @else
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    @foreach($achievements as $achievement)
-                    <article
-                        class="achievement-item group bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col h-full border border-gray-100 overflow-hidden"
-                        data-year="{{ \Carbon\Carbon::parse($achievement->date)->format('Y') }}"
-                        data-search="{{ strtolower($achievement->title.' '.$achievement->rank.' '.$achievement->level) }}"
-                    >
-                        {{-- GAMBAR --}}
-                        <div class="relative h-56 overflow-hidden bg-gray-200">
-                            @if($achievement->image)
-                                <img src="{{ asset('storage/' . $achievement->image) }}" 
-                                     alt="{{ $achievement->title }}" 
-                                     class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
-                            @else
-                                <div class="w-full h-full flex flex-col items-center justify-center text-gray-300">
-                                    <i class="fas fa-trophy text-5xl mb-2"></i>
-                                    <span class="text-xs">Tidak ada foto</span>
+                @else
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        @foreach($achievements as $achievement)
+                        <article
+                            class="achievement-item rounded-2xl bg-white shadow-sm ring-1 ring-black/5 overflow-hidden"
+                            data-year="{{ $achievement->date }}"
+                            data-search="{{ strtolower($achievement->date.' '.$achievement->position.' '.$achievement->level.' '.$achievement->name.' '.$achievement->category) }}"
+                        >
+                            <div class="p-5 sm:p-6">
+                                <div class="flex items-start gap-4">
+                                    <div class="flex-1 min-w-0">
+                                        <div class="flex flex-wrap items-center gap-2">
+                                            <span class="inline-flex items-center rounded-full px-3 py-1 text-xs font-bold text-white bg-sekolah-hijau shadow-sm">
+                                                {{ $achievement->position }}
+                                            </span>
+
+                                            <span class="inline-flex items-center rounded-full bg-sekolah-hijau/10 text-sekolah-hijau px-3 py-1 text-xs font-semibold ring-1 ring-sekolah-hijau/20">
+                                                {{ $achievement->level }}
+                                            </span>
+
+                                            <span class="inline-flex items-center rounded-full bg-gray-100 text-gray-700 px-3 py-1 text-xs font-semibold ring-1 ring-gray-200">
+                                                {{ $achievement->category }}
+                                            </span>
+
+                                            <span class="ml-auto hidden sm:inline text-sm font-semibold text-gray-500">
+                                                {{ $achievement->date }}
+                                            </span>
+                                        </div>
+
+                                        <h3 class="mt-3 text-lg sm:text-xl font-extrabold text-gray-900 leading-snug">
+                                            {{ $achievement->title }}
+                                        </h3>
+
+                                        <p class="mt-2 text-sm text-gray-600 leading-relaxed">
+                                            <span class="font-semibold text-gray-800">Ringkas:</span>
+                                            {{ $achievement->date }} • {{ $achievement->position }} • {{ $achievement->level }} • {{ $achievement->name }} ({{ $achievement->category }})
+                                        </p>
+                                    </div>
                                 </div>
                             @endif
                             

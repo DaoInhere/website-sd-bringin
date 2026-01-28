@@ -60,6 +60,12 @@
                         </select>
                     </div>
 
+                    {{-- Munculkan ketika admin memilih Ekstrakurikuler --}}
+                    <div class="mb-4">
+                        <label class="block text-gray-700 font-bold mb-2">Foto (Opsional)</label>
+                        <input type="file" name="photo" class="w-full border p-2 rounded" required>
+                    </div>
+
                     <div class="mb-4">
                         <label class="block text-gray-700 font-bold mb-2">Seragam</label>
                         <input type="text" name="uniform" class="w-full border p-2 rounded" placeholder="Contoh: Merah Putih / Batik / Pramuka" required>
@@ -73,7 +79,7 @@
                     </div>
 
                     <button type="submit" 
-                        style="background-color: #2563eb; color: white; padding: 10px 20px; border-radius: 5px; border: none; cursor: pointer;">
+                       style="background-color: #16a34a; color: white; padding: 10px 20px; border-radius: 5px; text-decoration: none; display: inline-block;">
                         Simpan Data
                     </button>
                     <a href="{{ route('schedules.index') }}" class="text-gray-600 ml-4 hover:underline">Batal</a>
