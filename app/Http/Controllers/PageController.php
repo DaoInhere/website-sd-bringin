@@ -135,13 +135,19 @@ class PageController extends Controller
             ->pluck('curriculum')
             ->values();
 
+        $curriculum = $request->query('kurikulum', 'Semua');
+
         $classes = Schedule::select('class')
             ->where('class', '!=', '0') // 0 = Semua
+            ->when(
+                $curriculum !== 'Semua',
+                fn ($q) => $q->whereIn('curriculum', [$curriculum, 'Semua'])
+            )
             ->distinct()
             ->orderByRaw('CAST(class AS UNSIGNED)')
             ->pluck('class')
             ->values();
-
+            
         $types = Schedule::select('type')
             ->where('type', '!=', '-') // default
             ->distinct()

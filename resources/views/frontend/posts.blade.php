@@ -75,7 +75,7 @@
                     <h3 class="text-lg font-bold text-white">{{ Str::limit($post->title, 50) }}</h3>
                     <p class="text-sm mt-2">{{ $post->category->title ?? 'Umum' }}</p>
                     <a href="#" class="mt-4 inline-block bg-sekolah-hijau hover:bg-sekolah-hijau-dark text-white py-2 px-4 rounded-full"
-                        onclick="openModal('{{ $post->title }}', {{ json_encode($post->content) }});">
+                        onclick="openModal('{{ $post->title }}', {{ json_encode($post->content) }}, '{{ $post->image_url }}');">
                         Baca Selengkapnya
                     </a>
                 </div>
@@ -96,6 +96,7 @@
         <button onclick="closeModal()" class="absolute top-10 right-10 text-white bg-red-500 hover:bg-red-600 rounded-full p-2">
             <i class="fas fa-times"></i>
         </button>
+        <img id="modal-img" class="w-full rounded-lg mb-4" alt="Modal Image">
         <h2 id="modal-title" class="text-2xl font-extrabold text-gray-800 mb-4"></h2>
         <p id="modal-content" class="text-gray-600 leading-relaxed text-justify"></p>
     </div>
@@ -103,9 +104,10 @@
 
 {{-- JavaScript --}}
 <script>
-    function openModal(title, content) {
+    function openModal(title, content, imgSrc) {
         document.getElementById('modal-title').textContent = title;
         document.getElementById('modal-content').textContent = content;
+        document.getElementById('modal-img').src = imgSrc;
         document.getElementById('modal').classList.remove('hidden');
     }
 

@@ -18,8 +18,9 @@ class HomeController extends Controller
 
         // 3. Ambil Semua Data Guru
         $teachers = Teacher::all();
+        $headmaster = Teacher::where('position', 'Kepala Sekolah')->first();
 
         // Kirim semua data ke halaman depan
-        return view('home', compact('posts', 'galleries', 'teachers'));
+        return view('home', compact('posts', 'galleries', 'teachers', 'headmaster'));
     }
 }

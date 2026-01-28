@@ -169,12 +169,13 @@
 
                 <div class="md:w-5/12 flex justify-center">
                     <div class="relative rounded-2xl overflow-hidden shadow-xl inline-block group bg-gray-50">
-                        <img src="{{ asset('asset/kepala sekolah new.png') }}"
-                             alt="Kepala Sekolah"
-                             class="max-h-96 w-auto object-contain transition-transform duration-500 group-hover:scale-105">
+                        <img
+                            src="{{ $headmaster ? $headmaster->photo_url : asset('asset/nophoto.png') }}"
+                            alt="Kepala Sekolah"
+                            class="max-h-96 w-auto object-contain transition-transform duration-500 group-hover:scale-105">
 
                         <div class="absolute bottom-4 right-4 bg-white/95 backdrop-blur-sm p-3 rounded-xl shadow-md border-l-4 border-sekolah-kuning">
-                            <p class="font-bold text-gray-800 text-base">Dwi Priyani, S.Pd.SD</p>
+                            <p class="font-bold text-gray-800 text-base">{{ $headmaster ? $headmaster->name : 'Foto' }}</p>
                             <p class="text-sekolah-hijau text-xs">Kepala Sekolah</p>
                         </div>
                     </div>

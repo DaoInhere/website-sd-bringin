@@ -21,6 +21,31 @@ class TeacherController extends Controller
         return view('teachers.create');
     }
 
+    private function checkTeacherPosition(Request $request)
+    {
+        if (
+            $request->position === 'Kepala Sekolah' &&
+            Teacher::where('position', 'Kepala Sekolah')->exists()
+        ) {
+            return back()
+                ->withErrors(['position' => 'Kepala Sekolah sudah ada.'])
+                ->withInput();
+        }
+
+        return null;
+    }
+
+    private function checkHeadmaster(Teacher $teacher)
+    {
+        if ($teacher->position === 'Kepala Sekolah') {
+            return back()->withErrors([
+                'position' => 'Gagal menghapus data, lakukan perubahan jabatan pada Kepala Sekolah terlebih dahulu.'
+            ]);
+        }
+
+        return null;
+    }
+
     // 3. PROSES SIMPAN
     public function store(Request $request)
     {
@@ -33,6 +58,10 @@ class TeacherController extends Controller
         // Upload gambar
         $imagePath = $request->file('photo')->store('teachers', 'public');
         $filename = basename($imagePath);
+
+        if ($response = $this->checkTeacherPosition($request)) {
+            return $response;
+        }
 
         Teacher::create([
             'name'    => $request->name,
@@ -60,6 +89,10 @@ class TeacherController extends Controller
         ]);
 
         $teacher = Teacher::where('nip', $nip)->firstOrFail();
+
+        if ($response = $this->checkTeacherPosition($request)) {
+            return $response;
+        }
 
         if ($request->hasFile('photo')) {
             // Upload baru
@@ -92,6 +125,10 @@ class TeacherController extends Controller
     {
         $teacher = Teacher::where('nip', $nip)->firstOrFail();
         
+        if ($response = $this->checkHeadmaster($teacher)) {
+            return $response;
+        }
+
         // Hapus file gambar
         if ($teacher->photo) {
             Storage::disk('public')->delete($teacher->photo);
