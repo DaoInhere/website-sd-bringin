@@ -194,30 +194,24 @@
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            @if($extracurriculars->isEmpty())
+                <div class="rounded-2xl bg-white p-6 text-center text-gray-600 shadow-sm ring-1 ring-black/5">
+                    Belum ada data.
+                </div>
+            @else
+                <div class="grid grid-cols-3 gap-6">
+                    @foreach($extracurriculars as $extracurricular)
                 <div class="bg-white p-8 rounded-2xl shadow-md hover:shadow-xl transition hover:-translate-y-2 border-b-4 border-white hover:border-sekolah-kuning group">
                     <div class="w-20 h-20 bg-sekolah-hijau/10 text-sekolah-hijau rounded-full flex items-center justify-center text-3xl mb-6 mx-auto group-hover:bg-sekolah-hijau group-hover:text-white transition">
-                        <i class="fas fa-book-quran"></i>
+                        <img src="{{ asset('asset/' . $extracurricular->image) }}">
                     </div>
-                    <h3 class="text-xl font-bold text-center mb-3">Tahfidz Qur'an</h3>
-                    <p class="text-gray-600 text-center text-sm">Program hafalan Juz 30 rutin setiap pagi sebelum pembelajaran dimulai.</p>
+                    <h3 class="text-xl font-bold text-center mb-3">{{ $extracurricular->subject }}</h3>
+                    <p class="text-gray-600 text-center text-sm">{{ $extracurricular->description }}</p>
                 </div>
-
-                <div class="bg-white p-8 rounded-2xl shadow-md hover:shadow-xl transition hover:-translate-y-2 border-b-4 border-white hover:border-sekolah-kuning group">
-                    <div class="w-20 h-20 bg-sekolah-hijau/10 text-sekolah-hijau rounded-full flex items-center justify-center text-3xl mb-6 mx-auto group-hover:bg-sekolah-hijau group-hover:text-white transition">
-                        <i class="fas fa-campground"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-center mb-3">Pramuka</h3>
-                    <p class="text-gray-600 text-center text-sm">Membentuk karakter mandiri, disiplin, tangguh dan cinta tanah air.</p>
-                </div>
-
-                <div class="bg-white p-8 rounded-2xl shadow-md hover:shadow-xl transition hover:-translate-y-2 border-b-4 border-white hover:border-sekolah-kuning group">
-                    <div class="w-20 h-20 bg-sekolah-hijau/10 text-sekolah-hijau rounded-full flex items-center justify-center text-3xl mb-6 mx-auto group-hover:bg-sekolah-hijau group-hover:text-white transition">
-                        <i class="fas fa-computer"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-center mb-3">Komputer</h3>
-                    <p class="text-gray-600 text-center text-sm">Ekstrakurikuler komputer dasar untuk mengenalkan teknologi sejak dini.</p>
-                </div>
+                    @endforeach     
+                </div>    
             </div>
+            @endif
         </div>
     </section>
 

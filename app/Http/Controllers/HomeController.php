@@ -3,9 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Post;    // Model Berita
-use App\Models\Gallery; // Model Galeri
 use App\Models\Teacher; // Model Guru
+use App\Models\Gallery; // Model Galeri
+use App\Models\Post;    // Model Berita
+use App\Models\Schedule; // Model Jadwal
 
 class HomeController extends Controller
 {
@@ -20,7 +21,9 @@ class HomeController extends Controller
         $teachers = Teacher::all();
         $headmaster = Teacher::where('position', 'Kepala Sekolah')->first();
 
+        $extracurriculars = Schedule::where('type', 'Ekstrakurikuler')->get();
+        
         // Kirim semua data ke halaman depan
-        return view('home', compact('posts', 'galleries', 'teachers', 'headmaster'));
+        return view('home', compact('posts', 'galleries', 'teachers', 'headmaster', 'extracurriculars'));
     }
 }
