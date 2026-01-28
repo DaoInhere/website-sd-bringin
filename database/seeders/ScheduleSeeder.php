@@ -68,7 +68,6 @@ class ScheduleSeeder extends Seeder
             'type' => 'Ekstrakurikuler',
             'class' => '0',
             'uniform' => 'Pramuka',
-            'teacher' => 'Pak Doni',
             'description' => 'Membentuk karakter disiplin, mandiri, dan cinta tanah air melalui kegiatan kepramukaan yang menyenangkan.',
             'image' => 'gambarPramuka.png',
             'curriculum' => 'Semua',
@@ -83,10 +82,8 @@ class ScheduleSeeder extends Seeder
             'type' => 'Ekstrakurikuler',
             'class' => '0',
             'uniform' => 'Bebas',
-            'teacher' => 'Pak Andre',
             'description' => 'Mengembangkan kemampuan futsal',
             'image' => 'gambarFutsal.png',
-            'required' => 'Tidak Wajib',
             'curriculum' => 'Semua',
             'created_at' => now(),
             'updated_at' => now()

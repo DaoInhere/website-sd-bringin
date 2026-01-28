@@ -20,8 +20,6 @@ return new class extends Migration
             $table->string('type');
             $table->string('uniform');
             $table->string('curriculum');
-            $table->string('teacher')->nullable();
-            $table->string('required')->default('Wajib');
             $table->string('description')->nullable();
             $table->string('image')->nullable();
             // $table->unique(['day', 'class', 'hour']);
