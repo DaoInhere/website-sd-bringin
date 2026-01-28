@@ -10,12 +10,8 @@ class Achievement extends Model
     use HasFactory;
 
     protected $fillable = [
-        'title',
-        'level',
-        'rank',
-        'description',
-        'date',
-        'image',
+        'title', 'name', 'category', 'level', 'position', 
+        'award', 'date', 'description', 'image'
     ];
 
     protected $casts = [

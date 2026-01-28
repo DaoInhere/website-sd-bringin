@@ -4,13 +4,9 @@ namespace Database\Seeders;
 
 use App\Models\Achievement;
 use Illuminate\Database\Seeder;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class AchievementSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     */
     public function run(): void
     {
         Achievement::create([
@@ -19,22 +15,22 @@ class AchievementSeeder extends Seeder
             'category' => 'Olahraga',
             'level' => 'Tingkat Daerah',
             'position' => 'Juara 1',
-            'date' => '10/10/2025',
+            'date' => '2025-10-10',
             'award' => 'Sertifikat',
-            'created_at' => now(),
-            'updated_at' => now()
+            'description' => 'Siswa berhasil memenangkan lomba renang gaya bebas.',
+            'image' => null,
         ]);
 
         Achievement::create([
             'title' => 'Kompetisi SDN 1 Beringin',
-            'name' => 'Lomba Mengambar',
+            'name' => 'Lomba Mengambar',        
             'category' => 'Kreativitas',
             'level' => 'Tingkat Daerah',
             'position' => 'Juara 1',
-            'date' => '11/10/2025',
+            'date' => '2025-10-11',
             'award' => 'Sertifikat',
-            'created_at' => now(),
-            'updated_at' => now()
+            'description' => 'Juara menggambar tema lingkungan hidup.',
+            'image' => null,
         ]);
 
         Achievement::create([
@@ -43,10 +39,10 @@ class AchievementSeeder extends Seeder
             'category' => 'Olahraga',
             'level' => 'Tingkat Daerah',
             'position' => 'Juara 1',
-            'date' => '12/10/2025',
+            'date' => '2025-10-12',
             'award' => 'Sertifikat',
-            'created_at' => now(),
-            'updated_at' => now()
+            'description' => 'Tim sekolah menang telak di final.',
+            'image' => null,
         ]);
     }
 }

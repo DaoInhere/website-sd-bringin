@@ -9,7 +9,7 @@ use App\Models\Schedule;
 use App\Models\Achievement;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Carbon\Carbon; // Import Carbon untuk urusan tanggal
+use Carbon\Carbon; 
 
 class PageController extends Controller
 {
@@ -59,7 +59,6 @@ class PageController extends Controller
 
     // === MENU PRESTASI ===
     public function achievements() {
-
         $achievements = Achievement::orderByDesc('date')->paginate(6);
 
         $latestDateRaw = Achievement::max('date');
@@ -71,12 +70,13 @@ class PageController extends Controller
             $levelSummary = 'Nasional';
         } elseif (Achievement::where('level', 'Provinsi')->exists()) {
             $levelSummary = 'Provinsi';
-        } elseif (Achievement::where('level', 'Kabupaten/Kota')->exists()) {
-            $levelSummary = 'Kabupaten/Kota';
+        } elseif (Achievement::where('level', 'Tingkat Daerah')->exists() || Achievement::where('level', 'Kabupaten/Kota')->exists()) {
+            $levelSummary = 'Tingkat Daerah';
         } elseif (Achievement::where('level', 'Kecamatan')->exists()) {
             $levelSummary = 'Kecamatan';
         } else {
-            $levelSummary = '-';
+            // Ambil saja level dari data pertama kalo bingung
+            $levelSummary = Achievement::first() ? Achievement::first()->level : '-';
         }
 
         return view('prestasi', compact('achievements', 'latestAchievementDate', 'levelSummary'));
