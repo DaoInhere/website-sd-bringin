@@ -93,7 +93,7 @@
 {{-- Modal Container --}}
 <div id="modal" class="fixed inset-0 z-50 hidden bg-black/70 flex justify-center items-center">
     <div class="bg-white rounded-xl max-w-2xl w-full p-8 overflow-y-auto max-h-[80vh]">
-        <button onclick="closeModal()" class="absolute top-20 right-60 text-white bg-red-500 hover:bg-red-600 rounded-full p-2">
+        <button onclick="closeModal()" class="absolute top-10 right-10 text-white bg-red-500 hover:bg-red-600 rounded-full p-2">
             <i class="fas fa-times"></i>
         </button>
         <h2 id="modal-title" class="text-2xl font-extrabold text-gray-800 mb-4"></h2>
