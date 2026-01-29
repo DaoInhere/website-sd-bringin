@@ -168,6 +168,7 @@
 
                     <input type="hidden" name="type" value="Ekstrakurikuler">
                     <input type="hidden" name="curriculum" value="Semua">
+                    <input type="hidden" name="class" value="0">
 
                     <div class="mb-4">
                         <label class="block text-gray-700 font-bold mb-2">Jam</label>
@@ -194,12 +195,6 @@
                     <div class="mb-4">
                         <label class="block text-gray-700 font-bold mb-2">Kegiatan / Mata Pelajaran</label>
                         <input type="text" name="subject" class="w-full border p-2 rounded" placeholder="Contoh: Matematika / IPA / IPS" required>
-                    </div>
-
-                    <div class="mb-4">
-                        <label class="block text-gray-700 font-bold mb-2">Kelas</label>
-                        <input type="text" name="class" class="w-full border p-2 rounded" placeholder="Contoh: 1 / 2 / 3" required>
-                        <p class="text-sm text-gray-500 mt-1">Catatan: 0 = Semua Kelas</p> 
                     </div>
 
                     <div class="mb-4">
