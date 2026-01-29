@@ -75,19 +75,46 @@ class ScheduleController extends Controller
             'type' => 'required|string|max:255',
             'uniform' => 'required|string|max:255',
             'curriculum' => 'required|string|max:255',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
+            'description' => 'nullable|string|max:255',
         ]);
 
         $schedule = Schedule::where('id', $id)->firstOrFail();
 
-        $schedule->update([
-            'hour'    => $request->hour,
-            'day' => $request->day,
-            'subject' => $request->subject,
-            'class' => $request->class,
-            'type' => $request->type,
-            'uniform' => $request->uniform,
-            'curriculum' => $request->curriculum,
-        ]);
+        // LOGIKA GANTI GAMBAR
+        if ($request->hasFile('image')) {
+            
+            // Upload gambar baru
+            $imagePath = $request->file('image')->store('schedules', 'public');
+
+            // Hapus gambar lama dari penyimpanan
+            Storage::delete('public/' . $schedule->image);
+
+            // Update database dengan gambar baru
+            $schedule->update([
+                'hour'    => $request->hour,
+                'day' => $request->day,
+                'subject' => $request->subject,
+                'class' => $request->class,
+                'type' => $request->type,
+                'uniform' => $request->uniform,
+                'curriculum' => $request->curriculum,
+                'image' => $imagePath,
+                'description' => $request->description,
+            ]);
+
+        } else {
+            $schedule->update([
+                'hour'    => $request->hour,
+                'day' => $request->day,
+                'subject' => $request->subject,
+                'class' => $request->class,
+                'type' => $request->type,
+                'uniform' => $request->uniform,
+                'curriculum' => $request->curriculum,
+                'description' => $request->description,
+            ]);
+        }
 
         return redirect()->route('schedules.index')->with(['success' => 'Data Jadwal Berhasil Diubah!']);
     }

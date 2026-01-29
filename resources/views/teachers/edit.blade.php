@@ -14,7 +14,7 @@
                     @method('PUT')
 
                     <div class="mb-4">
-                        <label class="block text-gray-700 font-bold mb-2">Ganti Foto (Opsional)</label>
+                        <label class="block text-gray-700 font-bold mb-2">Foto</label>
                         <input type="file" name="photo" class="w-full border p-2 rounded">
                         
                         <div class="mt-2">
@@ -26,6 +26,11 @@
                                 <img src="{{ $teacher->photo_url }}" class="w-32 h-32 object-cover rounded border">
                             @endif
                         </div>
+                    </div>
+
+                    <div class="mb-4">
+                        <label class="block text-gray-700 font-bold mb-2">NIP</label>
+                        <input type="text" name="nip" value="{{ old('name', $teacher->nip) }}" class="w-full border p-2 rounded" inputmode="numeric" pattern="[0-9]*" placeholder="Contoh: 1234567890" required>
                     </div>
 
                     <div class="mb-4">

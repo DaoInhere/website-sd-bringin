@@ -12,7 +12,7 @@
                 <div class="mb-4">
                     <a href="{{ route('teachers.create') }}" 
                         style="background-color: #16a34a; color: white; padding: 10px 20px; border-radius: 5px; text-decoration: none; display: inline-block;">
-                        + Tambah Guru Baru
+                        + Tambah Data Baru
                     </a>
                 </div>
 
@@ -31,9 +31,9 @@
                 <table class="w-full border-collapse border border-gray-300">
                     <thead class="bg-gray-100">
                         <tr>
-                            <th class="border p-2">No</th>
+                            <th class="border p-2">NIP</th>
                             <th class="border p-2">Foto</th>
-                            <th class="border p-2">Nama Guru</th>
+                            <th class="border p-2">Nama Lengkap</th>
                             <th class="border p-2">Jabatan / Mapel</th>
                             <th class="border p-2">Aksi</th>
                         </tr>
@@ -41,7 +41,7 @@
                     <tbody>
                         @forelse ($teachers as $index => $teacher)
                             <tr class="text-center">
-                                <td class="border p-2">{{ $index + 1 }}</td>
+                                <td class="border p-2">{{ $teacher->nip }}</td>
                                 <td class="border p-2">
                                     <img src="{{ $teacher->photo_url }}" class="w-16 h-16 object-cover mx-auto rounded-full">
                                 </td>

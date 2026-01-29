@@ -13,6 +13,7 @@ class Teacher extends Model
     protected $primaryKey = 'nip';
 
     protected $fillable = [
+        'nip',
         'name',
         'position',
         'photo',

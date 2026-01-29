@@ -5,21 +5,23 @@
         </h2>
     </x-slot>
 
-    <div class="flex justify-center items-center gap-4">
-        <a href="" 
+    <div class="flex justify-center items-center gap-4 ml-8 mr-8 bg-white overflow-hidden shadow-sm sm:rounded-lg p-2">
+        <p class="m-1">Pilih Jadwal yang diinginkan:</p>
+        <a href="javascript:void(0)" data-section="mapel" onclick="showSection('mapel')" class="flex-1 text-center"
         style="background-color: #16a34a; color: white; padding: 10px 20px; border-radius: 5px; text-decoration: none; display: inline-block;">
         Jadwal Pelajaran
         </a>
-        <a href="" 
+        <a href="javascript:void(0)" data-section="kegiatan" onclick="showSection('kegiatan')" class="flex-1 text-center"
         style="background-color: #16a34a; color: white; padding: 10px 20px; border-radius: 5px; text-decoration: none; display: inline-block;">
         Jadwal Kegiatan
         </a>
-        <a href="" 
+        <a href="javascript:void(0)" data-section="ekstrakurikuler" onclick="showSection('ekstrakurikuler')" class="flex-1 text-center"
         style="background-color: #16a34a; color: white; padding: 10px 20px; border-radius: 5px; text-decoration: none; display: inline-block;">
         Jadwal Ekstrakurikuler
         </a>
     </div>
-    <div class="py-12">
+
+    <div class="py-8 opacity-0 -translate-y-10 transition-all duration-500 ease-out hidden" id="mapel">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg p-6">
                 <h1>Jadwal Pelajaran</h1>
@@ -95,12 +97,12 @@
         </div>
     </div>
 
-    <div class="py-8">
+    <div class="py-8 opacity-0 -translate-y-10 transition-all duration-500 ease-out hidden" id="kegiatan">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg p-6">
-                
                 <h1 class="justify-center">Jadwal Kegiatan</h1>
                 <div class="h-0.5 w-full bg-gray-200 mb-3 mt-3"></div>
+
                 <form action="{{ route('schedules.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <input type="hidden" name="type" value="Kegiatan">
@@ -157,12 +159,12 @@
         </div>
     </div>
 
-    <div class="py-8">
+    <div class="py-8 opacity-0 -translate-y-10 transition-all duration-500 ease-out hidden" id="ekstrakurikuler">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg p-6">
-                
                 <h1 class="justify-center">Jadwal Ekstrakurikuler</h1>
                 <div class="h-0.5 w-full bg-gray-200 mb-3 mt-3"></div>
+
                 <form action="{{ route('schedules.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
 
@@ -193,7 +195,7 @@
                     </div>
 
                     <div class="mb-4">
-                        <label class="block text-gray-700 font-bold mb-2">Kegiatan / Mata Pelajaran</label>
+                        <label class="block text-gray-700 font-bold mb-2">Kegiatan Ekstrakurikuler</label>
                         <input type="text" name="subject" class="w-full border p-2 rounded" placeholder="Contoh: Matematika / IPA / IPS" required>
                     </div>
 
@@ -224,4 +226,86 @@
             </div>
         </div>
     </div>
+
+<script>
+    let activeSection = null;
+    const DURATION = 500;
+
+    // simpan warna default & warna aktif
+    const DEFAULT_COLOR = '#16a34a';
+    const ACTIVE_COLOR = '#207941';
+
+    function showSection(id) {
+        const target = document.getElementById(id);
+
+        // ambil semua tombol
+        const buttons = document.querySelectorAll('a[onclick^="showSection"]');
+        const activeBtn = Array.from(buttons).find(b => b.getAttribute('onclick').includes(id));
+
+        // klik section yang sama → tutup
+        if (activeSection === id) {
+            closeSection(target);
+            activeSection = null;
+
+            // reset warna tombol
+            buttons.forEach(btn => btn.style.backgroundColor = DEFAULT_COLOR);
+            return;
+        }
+
+        // jika ada section aktif → tutup dulu
+        if (activeSection) {
+            const current = document.getElementById(activeSection);
+
+            closeSection(current, () => {
+                openSection(target);
+                activeSection = id;
+
+                // reset semua tombol ke warna default
+                buttons.forEach(btn => btn.style.backgroundColor = DEFAULT_COLOR);
+
+                // set tombol aktif
+                if (activeBtn) activeBtn.style.backgroundColor = ACTIVE_COLOR;
+            });
+        } else {
+            openSection(target);
+            activeSection = id;
+
+            // reset semua tombol ke warna default
+            buttons.forEach(btn => btn.style.backgroundColor = DEFAULT_COLOR);
+
+            // set tombol aktif
+            if (activeBtn) activeBtn.style.backgroundColor = ACTIVE_COLOR;
+        }
+    }
+
+    function closeSection(el, callback = null) {
+        el.classList.add('opacity-0', '-translate-y-10');
+        el.classList.remove('opacity-100', 'translate-y-0');
+
+        setTimeout(() => {
+            el.classList.add('hidden');
+            if (callback) callback();
+        }, DURATION);
+    }
+
+    function openSection(el) {
+        // 1️⃣ Pastikan state awal (SEBELUM tampil)
+        el.classList.remove('hidden');
+        el.classList.add('opacity-0', '-translate-y-10');
+        el.classList.remove('opacity-100', 'translate-y-0');
+
+        // 2️⃣ FORCE REFLOW (INI KUNCI)
+        el.offsetHeight;
+
+        // 3️⃣ Mulai animasi
+        el.classList.remove('opacity-0', '-translate-y-10');
+        el.classList.add('opacity-100', 'translate-y-0');
+
+        el.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+        });
+    }
+</script>
+
 </x-app-layout>

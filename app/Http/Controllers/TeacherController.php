@@ -50,6 +50,7 @@ class TeacherController extends Controller
     public function store(Request $request)
     {
         $request->validate([
+            'nip' => 'required|max:20',
             'photo'   => 'required|image|mimes:jpeg,png,jpg|max:2048',
             'name'    => 'required|string|max:255',
             'position'   => 'required|string|max:255'
@@ -64,6 +65,7 @@ class TeacherController extends Controller
         }
 
         Teacher::create([
+            'nip' => $request->nip,
             'name'    => $request->name,
             'position' => $request->position,
             'photo'   => $filename
@@ -83,6 +85,7 @@ class TeacherController extends Controller
     public function update(Request $request, string $nip)
     {
         $request->validate([
+            'nip' => 'required|max:20',
             'photo'   => 'image|mimes:jpeg,png,jpg|max:2048',
             'name'    => 'required|string|max:255',
             'position' => 'required|string|max:255',
@@ -105,6 +108,7 @@ class TeacherController extends Controller
 
             // Update DB dengan gambar baru
             $teacher->update([
+                'nip' => $request->nip,
                 'photo'   => $imagePath,
                 'name'    => $request->name,
                 'position' => $request->position,
@@ -112,6 +116,7 @@ class TeacherController extends Controller
         } else {
             // Update tulisan saja
             $teacher->update([
+                'nip' => $request->nip,
                 'name'    => $request->name,
                 'position' => $request->position,
             ]);

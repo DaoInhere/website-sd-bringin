@@ -19,6 +19,11 @@
                     </div>
 
                     <div class="mb-4">
+                        <label class="block text-gray-700 font-bold mb-2">NIP</label>
+                        <input type="text" name="nip" class="w-full border p-2 rounded" inputmode="numeric" pattern="[0-9]*" placeholder="Contoh: 1234567890" required>
+                    </div>
+
+                    <div class="mb-4">
                         <label class="block text-gray-700 font-bold mb-2">Nama Lengkap</label>
                         <input type="text" name="name" class="w-full border p-2 rounded" placeholder="Contoh: Budi Santoso, S.Pd" required>
                     </div>
