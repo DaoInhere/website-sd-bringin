@@ -16,3 +16,7 @@ APP_FAKER_LOCALE=id_ID
 
 // Migrasi & Seeder
 php artisan migrate:fresh --seed
+
+// Tambahan
+php artisan config:clear
+php artisan cache:clear

@@ -12,7 +12,7 @@
                     <a href="/" class="mx-auto">
                         <img src="{{ asset('asset/logo sd bringin01.png') }}" alt="Logo Sekolah" class="w-20 h-20 mx-auto">
                     </a>
-                    <h2 class="text-3xl font-semibold text-gray-800 mt-4">Login</h2>
+                    <h2 class="text-2xl font-semibold text-gray-800 mt-4">SDN Beringin 01 Kota Semarang</h2>
                     <p class="text-gray-600 mt-2">Masuk untuk melanjutkan</p>
                 </div>
 

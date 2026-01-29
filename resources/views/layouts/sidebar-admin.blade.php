@@ -32,7 +32,7 @@
 
             <a href="{{ route('teachers.index') }}" class="flex items-center p-2 text-gray-700 hover:bg-teal-50 hover:text-teal-600 rounded-lg mb-1 transition-all group">
                 <span class="text-xl min-w-[24px] flex items-center justify-center">👨‍🏫</span>
-                <span x-show="open" x-transition class="ml-3 font-medium truncate">Data Guru</span>
+                <span x-show="open" x-transition class="ml-3 font-medium truncate">Data Guru & Staff</span>
             </a>
 
             <a href="{{ route('schedules.index') }}" class="flex items-center p-2 text-gray-700 hover:bg-teal-50 hover:text-teal-600 rounded-lg mb-1 transition-all group">
