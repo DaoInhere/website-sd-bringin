@@ -23,6 +23,16 @@
                         <input type="text" name="title" class="w-full border p-2 rounded" placeholder="Contoh: Kegiatan Upacara Bendera">
                     </div>
 
+                    <div class="mb-4">
+                        <label class="block text-gray-700 font-bold mb-2">Deskripsi (Opsional)</label>
+                        <textarea name="description" rows="10" class="w-full border p-2 rounded @error('description') border-red-500 @enderror" placeholder="Deskripsi kegiatan">{{ old('description') }}</textarea>
+                    </div>
+
+                    <div class="mb-4">
+                        <label class="block text-gray-700 font-bold mb-2">Tanggal Kegiatan</label>
+                        <input type="date" name="activityDate" class="w-full border p-2 rounded" required>
+                    </div>
+
                     <button type="submit" 
                         style="background-color: #16a34a; color: white; padding: 10px 20px; border-radius: 5px; text-decoration: none; display: inline-block;">
                         Upload Foto

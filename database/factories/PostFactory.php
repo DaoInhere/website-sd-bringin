@@ -23,7 +23,7 @@ class PostFactory extends Factory
             'user_id' => User::factory(),
             
             // Pilih kategori secara acak antara ID 1 sampai 3
-            'category_id' => Category::factory(),
+            'category' => fake()->randomElement(['Berita', 'Pengumuman']),
             
             // Judul acak (antara 3 sampai 8 kata)
             'title' => $this->faker->sentence(mt_rand(3, 8)),

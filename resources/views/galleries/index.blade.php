@@ -22,23 +22,29 @@
                     </div>
                 @endif
 
+                <div class="mb-2">
+                    {{ $galleries->links() }}
+                </div>
+
                 <table class="w-full border-collapse border border-gray-300">
                     <thead class="bg-gray-100">
                         <tr>
-                            <th class="border p-2">No</th>
                             <th class="border p-2">Foto</th>
                             <th class="border p-2">Judul / Caption</th>
+                            <th class="border p-2">Deskripsi</th>
+                            <th class="border p-2">Tanggal Kegiatan</th>
                             <th class="border p-2">Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
                         @forelse ($galleries as $index => $gallery)
                             <tr class="text-center">
-                                <td class="border p-2">{{ $index + 1 }}</td>
                                 <td class="border p-2">
                                     <img src="{{ $gallery->image_url }}" class="w-24 h-24 object-cover mx-auto rounded">
                                 </td>
-                                <td class="border p-2">{{ $gallery->title ?? '-' }}</td>
+                                <td class="border p-2">{{ Str::limit($gallery->title, 50) ?? '-' }}</td>
+                                <td class="border p-2">{{ Str::limit($gallery->description, 50) ?? '-' }}</td>
+                                <td class="border p-2">{{ $gallery->activityDate->translatedFormat('d F Y') }}</td>
                                 <td class="border p-2">
                                     <a href="{{ route('galleries.edit', $gallery->id) }}" class="text-yellow-600 hover:underline mr-2">Edit</a>
                                     

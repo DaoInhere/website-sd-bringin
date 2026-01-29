@@ -14,7 +14,7 @@ class PostController extends Controller
     public function index()
     {
         // Ambil berita terbaru
-        $posts = Post::latest()->get();
+        $posts = Post::latest()->paginate(10);
         return view('posts.index', compact('posts'));
     }
 
@@ -32,7 +32,7 @@ class PostController extends Controller
         $request->validate([
             'image'     => 'required|image|mimes:jpeg,png,jpg|max:2048',
             'title'     => 'required|min:5',
-            'category_id' => 'required',
+            'category' => 'required',
             'content'   => 'required|min:10'
         ]);
 
@@ -44,7 +44,7 @@ class PostController extends Controller
             'user_id' => Auth::id(),
             'image'     => $imagePath,
             'title'     => $request->title,
-            'category_id' => $request->category_id,
+            'category' => $request->category,
             'content'   => $request->content
         ]);
 
@@ -68,7 +68,7 @@ class PostController extends Controller
         $request->validate([
             'image'     => 'image|mimes:jpeg,png,jpg|max:2048', 
             'title'     => 'required|min:5',
-            'category_id' => 'required',
+            'category' => 'required',
             'content'   => 'required|min:10'
         ]);
 
@@ -87,14 +87,14 @@ class PostController extends Controller
             $post->update([
                 'image'     => $imagePath,
                 'title'     => $request->title,
-                'category_id' => $request->category_id,
+                'category' => $request->category,
                 'content'   => $request->content
             ]);
 
         } else {
             $post->update([
                 'title'     => $request->title,
-                'category_id' => $request->category_id,
+                'category' => $request->category,
                 'content'   => $request->content
             ]);
         }

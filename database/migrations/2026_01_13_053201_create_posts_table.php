@@ -17,11 +17,12 @@ return new class extends Migration
 
             // 1. RELASI KATEGORI
             // Kita sederhanakan penulisan foreign key-nya
-            $table->foreignId('category_id')->constrained('categories')->onDelete('cascade');
+            // $table->foreignId('category_id')->constrained('categories')->onDelete('cascade');
             
             // 2. DATA BERITA (Sesuai Form Input Kita)
             $table->string('image')->nullable();
             $table->string('title');
+            $table->string('category');
             $table->text('content');
 
             // $table->date('startAt');

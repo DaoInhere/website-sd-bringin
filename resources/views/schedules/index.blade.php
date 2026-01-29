@@ -16,17 +16,17 @@
                     </a>
                 </div>
 
-                <div>
-                    {{ $schedules->links() }}
-                </div>
-
                 @if (session('success'))
-                    <div class="mb-4 p-4 bg-green-100 text-green-700 rounded">
-                        {{ session('success') }}
-                    </div>
+                <div class="mb-4 p-4 bg-green-100 text-green-700 rounded">
+                    {{ session('success') }}
+                </div>
                 @endif
 
-                <table class="mt-4 w-full border-collapse border border-gray-300">
+                <div class="mb-2">
+                    {{ $schedules->links() }}
+                </div>
+                
+                <table class="w-full border-collapse border border-gray-300">
                     <thead class="bg-gray-100">
                         <tr>
                             <th class="border p-2">ID</th>                            
@@ -46,7 +46,7 @@
                                 <td class="border p-2">{{ $schedule->id }}</td>
                                 <td class="border p-2 font-bold">{{ $schedule->hour }}</td>
                                 <td class="border p-2">{{ $schedule->day }}</td>
-                                <td class="border p-2">{{ $schedule->subject }}</td>
+                                <td class="border p-2">{{ Str::limit($schedule->subject, 50) }}</td>
                                 <td class="border p-2">{{ $schedule->class == '0' ? 'Semua' : $schedule->class }}</td>
                                 <td class="border p-2">{{ $schedule->type }}</td>
                                 <td class="border p-2">{{ $schedule->uniform }}</td>

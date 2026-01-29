@@ -98,18 +98,15 @@
                     </div>
                     <div class="mb-4">
                         <label class="block text-gray-700 font-bold mb-2">Hari</label>
-                        @php
-                            $selected = old('day', $schedule->day);
-                        @endphp
 
                         <select name="day" class="w-full border p-2 rounded bg-white" required>
-                            <option value="Senin" {{ $selected === 'Senin' ? 'selected' : '' }}>Senin</option>
-                            <option value="Selasa" {{ $selected === 'Selasa' ? 'selected' : '' }}>Selasa</option>
-                            <option value="Rabu" {{ $selected === 'Rabu' ? 'selected' : '' }}>Rabu</option>
-                            <option value="Kamis" {{ $selected === 'Kamis' ? 'selected' : '' }}>Kamis</option>
-                            <option value="Jumat" {{ $selected === 'Jumat' ? 'selected' : '' }}>Jumat</option>
-                            <option value="Sabtu" {{ $selected === 'Sabtu' ? 'selected' : '' }}>Sabtu</option>
-                            <option value="Minggu" {{ $selected === 'Minggu' ? 'selected' : '' }}>Minggu</option>
+                            <option value="Senin" {{ $schedule->day === 'Senin' ? 'selected' : '' }}>Senin</option>
+                            <option value="Selasa" {{ $schedule->day === 'Selasa' ? 'selected' : '' }}>Selasa</option>
+                            <option value="Rabu" {{ $schedule->day === 'Rabu' ? 'selected' : '' }}>Rabu</option>
+                            <option value="Kamis" {{ $schedule->day === 'Kamis' ? 'selected' : '' }}>Kamis</option>
+                            <option value="Jumat" {{ $schedule->day === 'Jumat' ? 'selected' : '' }}>Jumat</option>
+                            <option value="Sabtu" {{ $schedule->day === 'Sabtu' ? 'selected' : '' }}>Sabtu</option>
+                            <option value="Minggu" {{ $schedule->day === 'Minggu' ? 'selected' : '' }}>Minggu</option>
                         </select>
                     </div>
 

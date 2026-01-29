@@ -16,30 +16,48 @@
                     </a>
                 </div>
 
+                @if (session('success'))
+                    <div class="mb-4 p-4 bg-green-100 text-green-700 rounded">
+                        {{ session('success') }}
+                    </div>
+                @endif
+
+                <div class="mb-2">
+                    {{ $posts->links() }}
+                </div>
+
                 <table class="w-full border-collapse border border-gray-300">
                     <thead>
                         <tr style="background-color: #f3f4f6;">
-                            <th class="border border-gray-300 p-3 text-left">No</th>
+                            <th class="border border-gray-300 p-3 text-left">Penulis</th>
                             <th class="border border-gray-300 p-3 text-left">Gambar</th>
-                            <th class="border border-gray-300 p-3 text-left">Judul Berita</th>
+                            <th class="border border-gray-300 p-3 text-left">Judul</th>
                             <th class="border border-gray-300 p-3 text-left">Kategori</th>
+                            <th class="border border-gray-300 p-3 text-left">Isi</th>
                             <th class="border border-gray-300 p-3 text-center">Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
                         @forelse($posts as $index => $post)
                         <tr>
-                            <td class="border border-gray-300 p-3">{{ $index + 1 }}</td>
+                            <td class="border border-gray-300 p-3 font-bold">{{ Str::limit($post->user->name, 20) }}</td>
                             <td class="border border-gray-300 p-3">
                                 <img src="{{ $post->image_url }}" 
                                      alt="img" style="width: 80px; height: 50px; object-fit: cover; border-radius: 4px;">
                             </td>
-                            <td class="border border-gray-300 p-3 font-bold">{{ $post->title }}</td>
+                            <td class="border border-gray-300 p-3 font-bold">{{ Str::limit($post->title, 50) }}</td>
                             <td class="border border-gray-300 p-3">
+                                @if ($post->category == 'Pengumuman')
                                 <span style="background-color: #dbeafe; color: #1e40af; padding: 2px 8px; border-radius: 10px; font-size: 12px;">
-                                    {{ $post->category->title }}
+                                    {{ $post->category }}
                                 </span>
+                                @else
+                                <span style="background-color: #faf9c8; color: #99972f; padding: 2px 8px; border-radius: 10px; font-size: 12px;">
+                                    {{ $post->category }}
+                                </span>
+                                @endif
                             </td>
+                            <td class="border border-gray-300 p-3 font-bold">{{ Str::limit($post->content, 50) }}</td>
                             <td class="border border-gray-300 p-3 text-center">
                                 <a href="{{ route('posts.edit', $post->id) }}" style="color: #d97706; margin-right: 10px;">Edit</a>
                                 

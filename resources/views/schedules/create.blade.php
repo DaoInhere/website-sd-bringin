@@ -39,7 +39,7 @@
                         <label class="block text-gray-700 font-bold mb-2">Hari</label>
                         <select name="day" class="w-full border p-2 rounded bg-white" required>
                             <option value="" selected hidden>
-                                -- pilih hari --
+                                -- Pilih hari --
                             </option>
 
                             <option value="Senin">Senin</option>
@@ -65,7 +65,7 @@
                         <label class="block text-gray-700 font-bold mb-2">Tipe</label>
                         <select name="type" class="w-full border p-2 rounded bg-white" required>
                             <option value="" selected hidden>
-                                -- pilih tipe --
+                                -- Pilih tipe --
                             </option>
 
                             <option value="Mapel">Mapel</option>
@@ -117,7 +117,7 @@
                         <label class="block text-gray-700 font-bold mb-2">Hari</label>
                         <select name="day" class="w-full border p-2 rounded bg-white" required>
                             <option value="" selected hidden>
-                                -- pilih hari --
+                                -- Pilih hari --
                             </option>
 
                             <option value="Senin">Senin</option>
@@ -175,13 +175,14 @@
                     <div class="mb-4">
                         <label class="block text-gray-700 font-bold mb-2">Jam</label>
                         <input type="text" name="hour" class="w-full border p-2 rounded" value="00:00 - 00:00" placeholder="00:00 - 00:00" required>
-                    <p class="text-sm text-gray-500 mt-1">Format: 00:00 - 00:00</p>
+                        <p class="text-sm text-gray-500 mt-1">Format: 00:00 - 00:00</p>
                     </div>
+
                     <div class="mb-4">
                         <label class="block text-gray-700 font-bold mb-2">Hari</label>
                         <select name="day" class="w-full border p-2 rounded bg-white" required>
                             <option value="" selected hidden>
-                                -- pilih hari --
+                                -- Pilih hari --
                             </option>
 
                             <option value="Senin">Senin</option>

@@ -11,7 +11,14 @@
                 
                 <form action="{{ route('posts.update', $post->id) }}" method="POST" enctype="multipart/form-data">
                     @csrf
-                    @method('PUT') <div class="mb-4">
+                    @method('PUT')
+                    
+                    <div class="mb-4">
+                        <label class="block text-gray-700 font-bold mb-2">Penulis</label>
+                        <input type="text" name="username" value="{{ old('username', $post->user->name) }}" class="w-full border p-2 rounded bg-gray-100" disabled>
+                    </div>
+                    
+                    <div class="mb-4">
                         <label class="block text-gray-700 font-bold mb-2">Ganti Gambar (Opsional)</label>
                         <input type="file" name="image" class="w-full border p-2 rounded">
                         <small class="text-gray-500">Biarkan kosong jika tidak ingin mengganti gambar.</small>
@@ -29,14 +36,14 @@
 
                     <div class="mb-4">
                         <label class="block text-gray-700 font-bold mb-2">Kategori</label>
-                        <select name="category_id" class="w-full border p-2 rounded bg-white" required>
-                            <option value="">-- Pilih Kategori --</option>
-                            @foreach ($categories as $category)
-                                <option value="{{ $category->id }}" {{ $post->category_id == $category->id ? 'selected' : '' }}>
-                                    {{ $category->title }}
-                                </option>
-                            @endforeach
+                        <select name="category" class="w-full border p-2 rounded bg-white" required>
+                            <option value="Pengumuman" {{ $post->category === 'Pengumuman' ? 'selected' : '' }}>Pengumuman</option>
+                            <option value="Berita" {{ $post->category === 'Berita' ? 'selected' : '' }}>Berita</option>
                         </select>
+
+                        @error('category')
+                            <div class="text-red-500 text-sm mt-1">{{ $message }}</div>
+                        @enderror
                     </div>
 
                     <div class="mb-4">

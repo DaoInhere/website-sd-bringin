@@ -15,15 +15,21 @@ class Post extends Model
         'user_id',
         'image',
         'title',
-        'category_id',
+        'category',
         'content',
     ];
 
-    // Relasi ke Kategori
-    public function category()
+    // Relasi ke User
+    public function user()
     {
-        return $this->belongsTo(Category::class);
+        return $this->belongsTo(User::class);
     }
+
+    // Relasi ke Kategori
+    // public function category()
+    // {
+    //     return $this->belongsTo(Category::class);
+    // }
 
     public function getImageUrlAttribute()
     {

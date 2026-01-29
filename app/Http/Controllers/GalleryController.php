@@ -11,7 +11,7 @@ class GalleryController extends Controller
     // 1. DAFTAR FOTO
     public function index()
     {
-        $galleries = Gallery::latest()->get();
+        $galleries = Gallery::latest()->paginate(10);
         return view('galleries.index', compact('galleries'));
     }
 
@@ -27,6 +27,8 @@ class GalleryController extends Controller
         $request->validate([
             'image' => 'required|image|mimes:jpeg,png,jpg|max:2048',
             'title' => 'nullable|string|max:255',
+            'description' => 'nullable|string|max:255',
+            'activityDate' => 'required|date',
         ]);
 
         // Simpan ke folder 'galleries' di storage public
@@ -35,6 +37,8 @@ class GalleryController extends Controller
         Gallery::create([
             'image' => $imagePath,
             'title' => $request->title,
+            'description' => $request->description,
+            'activityDate' => $request->activityDate,
         ]);
 
         return redirect()->route('galleries.index')->with(['success' => 'Foto Berhasil Diupload!']);

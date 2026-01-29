@@ -28,6 +28,10 @@
                     </div>
                 @enderror 
 
+                <div class="mb-2">
+                    {{ $teachers->links() }}
+                </div>
+
                 <table class="w-full border-collapse border border-gray-300">
                     <thead class="bg-gray-100">
                         <tr>
@@ -45,8 +49,8 @@
                                 <td class="border p-2">
                                     <img src="{{ $teacher->photo_url }}" class="w-16 h-16 object-cover mx-auto rounded-full">
                                 </td>
-                                <td class="border p-2 font-bold">{{ $teacher->name }}</td>
-                                <td class="border p-2">{{ $teacher->position }}</td>
+                                <td class="border p-2 font-bold">{{ Str::limit($teacher->name, 100) }}</td>
+                                <td class="border p-2">{{ Str::limit($teacher->position, 50) }}</td>
                                 <td class="border p-2">
                                     <a href="{{ route('teachers.edit', $teacher->nip) }}" class="text-yellow-600 hover:underline mr-2">Edit</a>
                                     

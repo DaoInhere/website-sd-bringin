@@ -25,7 +25,7 @@
                     <label class="block text-gray-700 font-bold mb-2">Penulis</label>
                     <input type="text" name="username" value="{{ auth()->user()->name }}" class="w-full border p-2 rounded bg-gray-100" disabled>
                     
-                    @error('title')
+                    @error('username')
                         <div class="text-red-500 text-sm mt-1">{{ $message }}</div>
                     @enderror
                 </div>
@@ -33,9 +33,9 @@
                     @csrf
 
                     <div class="mb-4">
-                        <label class="block text-gray-700 font-bold mb-2">Upload Gambar Utama</label>
+                        <label class="block text-gray-700 font-bold mb-2">Upload Gambar</label>
                         <input type="file" name="image" class="w-full border p-2 rounded @error('image') border-red-500 @enderror">
-                        <small class="text-gray-500">Wajib JPG/JPEG/PNG. Maksimal 2MB.</small>
+                        <small class="text-gray-500">Catatan: Wajib JPG/JPEG/PNG. Maksimal 2MB.</small>
                         
                         @error('image')
                             <div class="text-red-500 text-sm mt-1">{{ $message }}</div>
@@ -43,31 +43,35 @@
                     </div>
 
                     <div class="mb-4">
-                        <label class="block text-gray-700 font-bold mb-2">Judul Berita</label>
+                        <label class="block text-gray-700 font-bold mb-2">Judul</label>
                         <input type="text" name="title" value="{{ old('title') }}" class="w-full border p-2 rounded @error('title') border-red-500 @enderror" placeholder="Masukkan judul berita...">
-                        
+                        <small class="text-gray-500">Catatan: Minimal 5 karakter</small>
+
                         @error('title')
                             <div class="text-red-500 text-sm mt-1">{{ $message }}</div>
                         @enderror
                     </div>
 
                     <div class="mb-4">
-                        <label class="block text-gray-700 font-bold mb-2 ">Kategori</label>
-                        <select name="category_id" class="w-full border p-2 rounded bg-white @error('category_id') border-red-500 @enderror">
-                            <option value="">-- Pilih Kategori --</option>
-                            @foreach ($categories as $category)
-                                <option value="{{ $category->id }}">{{ $category->title }}</option>
-                            @endforeach
+                        <label class="block text-gray-700 font-bold mb-2">Kategori</label>
+                        <select name="category" class="w-full border p-2 rounded bg-white" required>
+                            <option value="" selected hidden>
+                                -- Pilih kategori --
+                            </option>
+
+                            <option value="Pengumuman">Pengumuman</option>
+                            <option value="Berita">Berita</option>
                         </select>
-                        
-                        @error('category_id')
+
+                        @error('category')
                             <div class="text-red-500 text-sm mt-1">{{ $message }}</div>
                         @enderror
                     </div>
-
+                        
                     <div class="mb-4">
-                        <label class="block text-gray-700 font-bold mb-2">Isi Berita</label>
+                        <label class="block text-gray-700 font-bold mb-2">Isi</label>
                         <textarea name="content" rows="10" class="w-full border p-2 rounded @error('content') border-red-500 @enderror" placeholder="Tulis isi berita...">{{ old('content') }}</textarea>
+                        <small class="text-gray-500">Catatan: Minimal 10 karakter</small>
                         
                         @error('content')
                             <div class="text-red-500 text-sm mt-1">{{ $message }}</div>

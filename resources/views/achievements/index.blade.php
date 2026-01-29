@@ -16,6 +16,10 @@
                         </div>
                     @endif
 
+                    <div class="mb-2">
+                        {{ $achievements->links() }}
+                    </div>
+
                     <div class="overflow-x-auto">
                         <table class="min-w-full bg-white border border-gray-200">
                             <thead>
