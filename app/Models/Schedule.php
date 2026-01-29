@@ -11,7 +11,7 @@ class Schedule extends Model
     /** @use HasFactory<\Database\Factories\ScheduleFactory> */
     use HasFactory;
     
-    protected $fillable = ['hour', 'day', 'subject', 'class', 'type', 'curriculum', 'uniform'];
+    protected $fillable = ['hour', 'day', 'subject', 'class', 'type', 'curriculum', 'uniform', 'description', 'image'];
 
     public function scopeFilter(Builder $query, array $filters): void
     {

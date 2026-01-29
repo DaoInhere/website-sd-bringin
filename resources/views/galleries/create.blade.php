@@ -15,6 +15,7 @@
                     <div class="mb-4">
                         <label class="block text-gray-700 font-bold mb-2">Pilih Foto</label>
                         <input type="file" name="image" class="w-full border p-2 rounded" required>
+                        <small class="text-gray-500">Wajib JPG/JPEG/PNG. Maksimal 2MB.</small>
                     </div>
 
                     <div class="mb-4">

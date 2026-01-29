@@ -9,10 +9,10 @@ class GalleryFactory extends Factory
     public function definition(): array
     {
         return [
-            // 'id' => 1, // Diupload oleh Admin
             'title' => $this->faker->sentence(3),
-            'image' => 'sekolah sd bringin 01 semarang.jpg', // Gambar placeholder
+            'image' => 'sekolah sd bringin 01 semarang.jpg',
             'description' => $this->faker->paragraph(),
+            'activityDate' => now(),
         ];
     }
 }

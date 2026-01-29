@@ -33,7 +33,14 @@ class ScheduleController extends Controller
             'type' => 'required|string|max:255',
             'uniform' => 'required|string|max:255',
             'curriculum' => 'required|string|max:255',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
+            'description' => 'nullable|string|max:255',
         ]);
+
+        $imagePath = null;
+        if ($request->hasFile('image')) {
+            $imagePath = $request->file('image')->store('schedules', 'public');
+        }
 
         Schedule::create([
             'hour'    => $request->hour,
@@ -43,6 +50,8 @@ class ScheduleController extends Controller
             'type' => $request->type,
             'uniform' => $request->uniform,
             'curriculum' => $request->curriculum,
+            'image' => $imagePath,
+            'description' => $request->description,
         ]);
 
         return redirect()->route('schedules.index')->with(['success' => 'Data Jadwal Berhasil Disimpan!']);

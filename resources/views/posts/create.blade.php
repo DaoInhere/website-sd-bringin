@@ -35,7 +35,7 @@
                     <div class="mb-4">
                         <label class="block text-gray-700 font-bold mb-2">Upload Gambar Utama</label>
                         <input type="file" name="image" class="w-full border p-2 rounded @error('image') border-red-500 @enderror">
-                        <small class="text-gray-500">Wajib JPG/PNG. Maksimal 2MB.</small>
+                        <small class="text-gray-500">Wajib JPG/JPEG/PNG. Maksimal 2MB.</small>
                         
                         @error('image')
                             <div class="text-red-500 text-sm mt-1">{{ $message }}</div>

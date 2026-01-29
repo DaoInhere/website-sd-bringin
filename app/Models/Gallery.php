@@ -12,6 +12,12 @@ class Gallery extends Model
     protected $fillable = [
         'title',
         'image',
+        'description',
+        'activityDate'
+    ];
+
+    protected $casts = [
+        'activityDate' => 'date',
     ];
 
     public function getImageUrlAttribute()

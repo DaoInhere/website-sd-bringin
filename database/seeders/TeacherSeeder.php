@@ -14,7 +14,7 @@ class TeacherSeeder extends Seeder
     public function run(): void
     {
         Teacher::create([
-            'nip' => '123',
+            'nip' => '1',
             "name" => "Dwi Priyani, S.Pd.SD",
             'position' => 'Kepala Sekolah',
             'photo' => 'kepalaSekolah.png',
@@ -23,7 +23,7 @@ class TeacherSeeder extends Seeder
         ]);
 
         Teacher::create([
-            'nip' => '1',
+            'nip' => '2',
             "name" => "Muh Hasan Rifa'i, S.Pd",
             'position' => 'Guru',
             'photo' => 'hasan.jpeg',
@@ -32,7 +32,7 @@ class TeacherSeeder extends Seeder
         ]);
 
         Teacher::create([
-            'nip' => '2',
+            'nip' => '3',
             "name" => "Ester Eny Puspitawati, S.Pd",
             'position' => 'Guru',
             'photo' => 'ester.png',
@@ -41,7 +41,7 @@ class TeacherSeeder extends Seeder
         ]);
 
         Teacher::create([
-            'nip' => '3',
+            'nip' => '4',
             "name" => "Desy Indar Kusumastuti, S.Pd",
             'position' => 'Guru',
             'photo' => 'desy.png',
@@ -50,7 +50,7 @@ class TeacherSeeder extends Seeder
         ]);
         
         Teacher::create([
-            'nip' => '4',
+            'nip' => '5',
             "name" => "Paryono, S.Pd",
             'position' => 'Guru',
             'photo' => 'paryono.png',
@@ -59,7 +59,7 @@ class TeacherSeeder extends Seeder
         ]);
 
         Teacher::create([
-            'nip' => '5',
+            'nip' => '6',
             "name" => "Sri Utami, S.Pd",
             'position' => 'Guru',
             'photo' => 'sri.png',
@@ -68,7 +68,7 @@ class TeacherSeeder extends Seeder
         ]);
 
         Teacher::create([
-            'nip' => '6',
+            'nip' => '7',
             "name" => "Rahmad Suryo Atmojo, S.Pd",
             'position' => 'Guru',
             'photo' => 'rahmad.png',
@@ -77,7 +77,7 @@ class TeacherSeeder extends Seeder
         ]);
 
         Teacher::create([
-            'nip' => '7',
+            'nip' => '8',
             "name" => "Sri Hastutik, S.Pd",
             'position' => 'Guru',
             'photo' => 'hastutik.png',
@@ -86,7 +86,7 @@ class TeacherSeeder extends Seeder
         ]);
 
         Teacher::create([
-            'nip' => '8',
+            'nip' => '9',
             "name" => "Puryanto, A.Ma.Pd",
             'position' => 'Guru',
             'photo' => 'puryanto.png',
@@ -95,7 +95,7 @@ class TeacherSeeder extends Seeder
         ]);
 
         Teacher::create([
-            'nip' => '9',
+            'nip' => '10',
             "name" => "Mustofa, S.Pd",
             'position' => 'Guru',
             'photo' => 'mustofa.png',
@@ -104,7 +104,7 @@ class TeacherSeeder extends Seeder
         ]);
 
         Teacher::create([
-            'nip' => '10',
+            'nip' => '11',
             "name" => "Ika Yuliawati, Amd",
             'position' => 'Guru',
             'photo' => 'ika.png',
@@ -113,7 +113,7 @@ class TeacherSeeder extends Seeder
         ]);
 
         Teacher::create([
-            'nip' => '11',
+            'nip' => '12',
             "name" => "Djoni Chrissensia",
             'position' => 'Guru',
             'photo' => 'djoni.png',

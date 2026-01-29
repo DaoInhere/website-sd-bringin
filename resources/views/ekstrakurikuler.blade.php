@@ -35,7 +35,7 @@
         <div>
             @if($extracurriculars->isEmpty())
                 <div class="rounded-2xl bg-white p-6 text-center text-gray-600 shadow-sm ring-1 ring-black/5">
-                    Belum ada data jadwal ekstrakurikuler yang diinput.
+                    Belum ada jadwal ekstrakurikuler.
                 </div>
             @else
                 <div class="grid grid-cols-3 gap-6">
@@ -43,7 +43,7 @@
 
                     <div class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition duration-300 group hover:-translate-y-1 flex flex-col">
                         <div class="h-48 bg-gray-200 relative overflow-hidden">
-                            <img src="{{ asset('asset/' . $extracurricular->image) }}"
+                            <img src="{{ $extracurricular->image_url }}"
                                  class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
                         </div>
                         <div class="p-6 flex flex-col justify-between flex-grow">

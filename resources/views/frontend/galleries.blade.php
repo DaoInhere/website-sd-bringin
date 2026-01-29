@@ -39,7 +39,7 @@
                     <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex justify-center items-center">
                         <div class="text-center text-white">
                             <h3 class="text-xl font-semibold text-white">{{ $gallery->title }}</h3>
-                            <p class="text-sm mt-2">{{ $gallery->created_at->translatedFormat('d F Y') }}</p>
+                            <p class="text-sm mt-2">{{ $gallery->activityDate->translatedFormat('d F Y') }}</p>
                             <a href="#" 
                                class="mt-4 inline-block bg-sekolah-hijau hover:bg-sekolah-hijau-dark text-white py-2 px-4 rounded-full"
                                onclick="openModal('{{ $gallery->title }}', '{{ $gallery->description }}', '{{ $gallery->image_url }}');">

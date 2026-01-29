@@ -12,7 +12,8 @@ return new class extends Migration
             $table->id();
             $table->string('title')->nullable(); // Judul Foto
             $table->string('image');             // File Foto         
-            $table->string('description');             // File Foto         
+            $table->string('description');             // Deskripsi
+            $table->date('activityDate');             // Tanggal Kegiatan
             $table->timestamps();
         });
     }

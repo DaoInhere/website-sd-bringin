@@ -203,7 +203,7 @@
                     @foreach($extracurriculars as $extracurricular)
                 <div class="bg-white p-8 rounded-2xl shadow-md hover:shadow-xl transition hover:-translate-y-2 border-b-4 border-white hover:border-sekolah-kuning group">
                     <div class="w-20 h-20 bg-sekolah-hijau/10 text-sekolah-hijau rounded-full flex items-center justify-center text-3xl mb-6 mx-auto group-hover:bg-sekolah-hijau group-hover:text-white transition">
-                        <img src="{{ asset('asset/' . $extracurricular->image) }}">
+                        <img src="{{ $extracurricular->image_url }}">
                     </div>
                     <h3 class="text-xl font-bold text-center mb-3">{{ $extracurricular->subject }}</h3>
                     <p class="text-gray-600 text-center text-sm">{{ $extracurricular->description }}</p>

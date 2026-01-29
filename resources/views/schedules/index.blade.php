@@ -47,14 +47,14 @@
                                 <td class="border p-2 font-bold">{{ $schedule->hour }}</td>
                                 <td class="border p-2">{{ $schedule->day }}</td>
                                 <td class="border p-2">{{ $schedule->subject }}</td>
-                                <td class="border p-2">{{ $schedule->class }}</td>
+                                <td class="border p-2">{{ $schedule->class == '0' ? 'Semua' : $schedule->class }}</td>
                                 <td class="border p-2">{{ $schedule->type }}</td>
                                 <td class="border p-2">{{ $schedule->uniform }}</td>
                                 <td class="border p-2">{{ $schedule->curriculum }}</td>
                                 <td class="border p-2">
                                     <a href="{{ route('schedules.edit', $schedule->id) }}" class="text-yellow-600 hover:underline mr-2">Edit</a>
                                     
-                                    <form action="{{ route('schedules.destroy', $schedule->id) }}" method="POST" class="inline" onsubmit="return confirm('Yakin hapus data guru ini?')">
+                                    <form action="{{ route('schedules.destroy', $schedule->id) }}" method="POST" class="inline" onsubmit="return confirm('Yakin hapus data jadwal ini?')">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" class="text-red-600 hover:underline">Hapus</button>
