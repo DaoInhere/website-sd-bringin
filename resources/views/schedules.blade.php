@@ -18,7 +18,7 @@
                         Kurikulum Pelajaran
                     </h1>
                     <p class="mt-2 text-white/90">
-                        Informasi &rarr; Jadwal KBM
+                        Kurikulum yang digunakan di SD Negeri Bringin 01
                     </p>
                 </div>
             </div>

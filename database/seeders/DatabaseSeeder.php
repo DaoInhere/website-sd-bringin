@@ -32,7 +32,7 @@ class DatabaseSeeder extends Seeder
         // Achievement::factory(3)->create();
 
         // Buat Kategori Berita
-        Category::factory(3)->create();
+        // Category::factory(3)->create();
 
         // Buat 10 Berita Palsu
         // (Berita ini otomatis akan menumpang ke user_id 1 milik Admin)

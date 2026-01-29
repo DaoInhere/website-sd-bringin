@@ -19,17 +19,7 @@
                     </h1>
 
                     <p class="mt-2 text-white/90">
-                        Profil &rarr;
-                        <a href="{{ url('/informasi/jadwalkbm') }}" class="underline underline-offset-4 hover:text-white/80 transition">
-                            Jadwal KBM
-                        </a>
-                        @if ($type == 'UTS')
-                            &rarr; UTS
-                        @elseif ($type == 'UAS')
-                            &rarr; UAS
-                        @else
-                            &rarr; Kelas {{ $class }}
-                        @endif                       
+                        Jadwal KBM yang digunakan oleh warga sekolah SD Negeri Bringin 01       
                     </p>
                 </div>
             </div>
