@@ -11,57 +11,79 @@
                 
                 <div class="mb-4">
                     <a href="{{ route('galleries.create') }}" 
-                    style="background-color: #16a34a; color: white; padding: 10px 20px; border-radius: 5px; text-decoration: none; display: inline-block;">
+                    style="background-color: #16a34a; color: white; padding: 10px 20px; border-radius: 5px; text-decoration: none; display: inline-block; font-weight: bold;">
                         + Tambah Foto Baru
                     </a>
                 </div>
 
                 @if (session('success'))
-                    <div class="mb-4 p-4 bg-green-100 text-green-700 rounded">
+                    <div class="mb-4 p-4 bg-green-100 text-green-700 rounded border border-green-200">
                         {{ session('success') }}
                     </div>
                 @endif
 
-                <div class="mb-2">
+                <div class="mb-4">
                     {{ $galleries->links() }}
                 </div>
 
-                <table class="w-full border-collapse border border-gray-300">
-                    <thead class="bg-gray-100">
-                        <tr>
-                            <th class="border p-2">Foto</th>
-                            <th class="border p-2">Judul / Caption</th>
-                            <th class="border p-2">Deskripsi</th>
-                            <th class="border p-2">Tanggal Kegiatan</th>
-                            <th class="border p-2">Aksi</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @forelse ($galleries as $index => $gallery)
-                            <tr class="text-center">
-                                <td class="border p-2">
-                                    <img src="{{ $gallery->image_url }}" class="w-24 h-24 object-cover mx-auto rounded">
-                                </td>
-                                <td class="border p-2 font-bold">{{ Str::limit($gallery->title, 50) ?? '-' }}</td>
-                                <td class="border p-2">{{ Str::limit($gallery->description, 50) ?? '-' }}</td>
-                                <td class="border p-2">{{ $gallery->activityDate->translatedFormat('d F Y') }}</td>
-                                <td class="border p-2">
-                                    <a href="{{ route('galleries.edit', $gallery->id) }}" class="text-yellow-600 hover:underline mr-2">Edit</a>
-                                    
-                                    <form action="{{ route('galleries.destroy', $gallery->id) }}" method="POST" class="inline" onsubmit="return confirm('Yakin hapus foto ini?')">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" class="text-red-600 hover:underline">Hapus</button>
-                                    </form>
-                                </td>
-                            </tr>
-                        @empty
+                <div class="overflow-x-auto">
+                    <table class="w-full border-collapse border border-gray-300">
+                        <thead class="bg-gray-100 text-gray-700">
                             <tr>
-                                <td colspan="4" class="border p-4 text-center text-gray-500">Belum ada foto galeri.</td>
+                                <th class="border border-gray-300 p-3 text-center">Foto</th>
+                                <th class="border border-gray-300 p-3 text-left">Judul / Caption</th>
+                                <th class="border border-gray-300 p-3 text-left">Deskripsi</th>
+                                <th class="border border-gray-300 p-3 text-center">Tanggal Kegiatan</th>
+                                <th class="border border-gray-300 p-3 text-center">Aksi</th>
                             </tr>
-                        @endforelse
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody>
+                            @forelse ($galleries as $gallery)
+                                <tr class="hover:bg-gray-50 transition duration-150">
+                                    <td class="border border-gray-300 p-3 text-center">
+                                        <img src="{{ $gallery->image_url }}" class="w-24 h-24 object-cover mx-auto rounded shadow-sm">
+                                    </td>
+                                    <td class="border border-gray-300 p-3 font-bold text-sm">
+                                        {{ Str::limit($gallery->title, 50) ?? '-' }}
+                                    </td>
+                                    <td class="border border-gray-300 p-3 text-sm text-gray-600">
+                                        {{ Str::limit($gallery->description, 50) ?? '-' }}
+                                    </td>
+                                    <td class="border border-gray-300 p-3 text-center text-sm">
+                                        {{ $gallery->activityDate->translatedFormat('d F Y') }}
+                                    </td>
+                                    <td class="border border-gray-300 p-3">
+                                        <div class="flex items-center justify-center gap-2">
+                                            <a href="{{ route('galleries.edit', $gallery->id) }}" 
+                                               class="text-amber-600 hover:text-amber-800 font-bold text-xs border border-amber-600 px-3 py-1 rounded uppercase tracking-wider transition">
+                                                Edit
+                                            </a>
+                                            
+                                            <form action="{{ route('galleries.destroy', $gallery->id) }}" method="POST" class="inline" onsubmit="return confirm('Yakin hapus foto ini?')">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" 
+                                                        class="text-red-600 hover:text-red-800 font-bold text-xs border border-red-600 px-3 py-1 rounded uppercase tracking-wider transition">
+                                                    Hapus
+                                                </button>
+                                            </form>
+                                        </div>
+                                    </td>
+                                </tr>
+                            @empty
+                                <tr>
+                                    <td colspan="5" class="border border-gray-300 p-8 text-center text-gray-500 italic">
+                                        Belum ada foto galeri.
+                                    </td>
+                                </tr>
+                            @endforelse
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="mt-4">
+                    {{ $galleries->links() }}
+                </div>
 
             </div>
         </div>
