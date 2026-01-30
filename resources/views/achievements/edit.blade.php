@@ -56,7 +56,7 @@
                         </div>
 
                         <div class="flex justify-end mt-6">
-                            <button type="submit" class="bg-blue-600 text-white px-6 py-2 rounded font-bold hover:bg-blue-700">
+                            <button  style="background-color: #16a34a; color: white; padding: 10px 20px; border-radius: 5px; text-decoration: none; display: inline-block;">
                                 Update Data
                             </button>
                         </div>
