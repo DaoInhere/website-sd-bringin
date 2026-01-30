@@ -25,7 +25,7 @@
 
                     <div class="mb-4">
                         <label class="block text-gray-700 font-bold mb-2">Deskripsi</label>
-                        <textarea name="description" rows="10" class="w-full border p-2 rounded @error('description') border-red-500 @enderror" placeholder="Deskripsi kegiatan">{{ old('description') }}</textarea>
+                        <textarea name="description" rows="10" class="w-full border p-2 rounded @error('description') border-red-500 @enderror" placeholder="Deskripsi kegiatan" required>{{ old('description') }}</textarea>
                     </div>
 
                     <div class="mb-4">

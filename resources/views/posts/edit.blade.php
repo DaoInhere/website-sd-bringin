@@ -21,7 +21,7 @@
                     <div class="mb-4">
                         <label class="block text-gray-700 font-bold mb-2">Gambar</label>
                         <input type="file" name="image" class="w-full border p-2 rounded">
-                        <small class="text-gray-500">Biarkan kosong jika tidak ingin mengganti gambar.</small>
+                        <small class="text-gray-500">Catatan: Biarkan kosong jika tidak ingin mengganti gambar.</small>
                         
                         <div class="mt-2">
                             <p class="text-sm text-gray-600 mb-1">Gambar saat ini:</p>

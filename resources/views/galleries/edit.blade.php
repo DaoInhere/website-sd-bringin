@@ -25,8 +25,19 @@
                     </div>
 
                     <div class="mb-4">
-                        <x-required-label class="block text-gray-700 font-bold mb-2">Judul / Caption</x-required-label>
+                        <label class="block text-gray-700 font-bold mb-2">Judul / Caption</label>
                         <input type="text" name="title" value="{{ old('title', $gallery->title) }}" class="w-full border p-2 rounded">
+                    </div>
+
+                    <div class="mb-4">
+                        <label class="block text-gray-700 font-bold mb-2">Deskripsi</label>
+                        <textarea name="description" rows="10" class="w-full border p-2 rounded @error('description') border-red-500 @enderror" required>{{ old('description', $gallery->description) }}</textarea>
+                    </div>
+
+                    <div class="mb-4">
+                        <x-required-label class="block text-gray-700 font-bold mb-2">Tanggal Kegiatan</x-required-label>
+                        <input type="date" name="activityDate" class="w-full border p-2 rounded" value={{ $gallery->activityDate }} required>
+                        <small class="text-gray-500">Format: Hari / Bulan / Tahun</small>
                     </div>
 
                     <button type="submit" 
