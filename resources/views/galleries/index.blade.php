@@ -42,7 +42,7 @@
                                 <td class="border p-2">
                                     <img src="{{ $gallery->image_url }}" class="w-24 h-24 object-cover mx-auto rounded">
                                 </td>
-                                <td class="border p-2">{{ Str::limit($gallery->title, 50) ?? '-' }}</td>
+                                <td class="border p-2 font-bold">{{ Str::limit($gallery->title, 50) ?? '-' }}</td>
                                 <td class="border p-2">{{ Str::limit($gallery->description, 50) ?? '-' }}</td>
                                 <td class="border p-2">{{ $gallery->activityDate->translatedFormat('d F Y') }}</td>
                                 <td class="border p-2">

@@ -27,8 +27,10 @@ class AchievementController extends Controller
             'category' => 'required',
             'level'    => 'required',
             'position' => 'required',
+            'award'    => 'nullable',
+            'description' => 'nullable',
             'date'     => 'required|date',
-            'image'    => 'image|mimes:jpeg,png,jpg|max:2048',
+            'image'    => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
         ]);
 
         $imagePath = null;

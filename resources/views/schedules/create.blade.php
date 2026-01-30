@@ -203,7 +203,7 @@
                     <div class="mb-4">
                         <x-required-label class="block text-gray-700 font-bold mb-2">Foto</x-required-label>
                         <input type="file" name="image" class="w-full border p-2 rounded" required>
-                        <small class="text-gray-500">Wajib JPG/JPEG/PNG. Maksimal 2MB.</small>
+                        <small class="text-gray-500">Catatan: Wajib JPG/JPEG/PNG. Maksimal 2MB.</small>
                     </div>
 
                     <div class="mb-4">

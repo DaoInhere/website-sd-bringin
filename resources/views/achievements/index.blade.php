@@ -23,39 +23,36 @@
                     <div class="overflow-x-auto">
                         <table class="min-w-full bg-white border border-gray-200">
                             <thead>
-                                <tr class="bg-gray-100 text-gray-600 uppercase text-sm leading-normal">
-                                    <th class="py-3 px-6 text-left">No</th>
-                                    <th class="py-3 px-6 text-left">Foto</th>
-                                    <th class="py-3 px-6 text-left">Nama Lomba</th>
-                                    <th class="py-3 px-6 text-left">Juara</th>
-                                    <th class="py-3 px-6 text-left">Tingkat</th>
-                                    <th class="py-3 px-6 text-center">Aksi</th>
+                                <tr class="bg-gray-100 text-gray-600 text-sm leading-normal">
+                                    <th class="border border-gray-300 p-3 text-left">Foto</th>
+                                    <th class="border border-gray-300 p-3 text-left">Nama Lomba</th>
+                                    <th class="border border-gray-300 p-3 text-left">Kategori</th>
+                                    <th class="border border-gray-300 p-3 text-left">Tingkat</th>
+                                    <th class="border border-gray-300 p-3 text-left">Juara</th>
+                                    <th class="border border-gray-300 p-3 text-left">Tanggal</th>
+                                    <th class="border border-gray-300 p-3 text-left">Deskripsi</th>
+                                    <th class="border border-gray-300 p-3 text-center">Aksi</th>
                                 </tr>
                             </thead>
-                            <tbody class="text-gray-600 text-sm font-light">
+                            <tbody>
                                 @foreach($achievements as $key => $achievement)
                                 <tr class="border-b border-gray-200 hover:bg-gray-100">
-                                    <td class="py-3 px-6 text-left">{{ $achievements->firstItem() + $key }}</td>
-                                    <td class="py-3 px-6 text-left">
-                                        @if($achievement->image)
-                                            <img src="{{ asset('storage/' . $achievement->image) }}" class="w-16 h-16 object-cover rounded">
-                                        @else
-                                            <span class="text-gray-400">No Image</span>
-                                        @endif
+                                    <td class="border border-gray-300 p-3">
+                                        <img src="{{ $achievement->image_url }}" style="width: 100px; height: 100px; object-fit: cover; border-radius: 4px;">
                                     </td>
-                                    <td class="py-3 px-6 text-left font-bold">{{ $achievement->title }}</td>
-                                    <td class="py-3 px-6 text-left">{{ $achievement->rank }}</td>
-                                    <td class="py-3 px-6 text-left">{{ $achievement->level }}</td>
-                                    <td class="py-3 px-6 text-center">
-                                        <div class="flex item-center justify-center gap-2">
-                                            <a href="{{ route('achievements.edit', $achievement->id) }}" class="text-yellow-500 hover:text-yellow-600 font-bold">Edit</a>
-                                            |
-                                            <form onsubmit="return confirm('Apakah Anda yakin ingin menghapus data ini?');" action="{{ route('achievements.destroy', $achievement->id) }}" method="POST">
-                                                @csrf
-                                                @method('DELETE')
-                                                <button type="submit" class="text-red-500 hover:text-red-600 font-bold">Hapus</button>
-                                            </form>
-                                        </div>
+                                    <td class="border border-gray-300 p-3 font-bold">{{ $achievement->title }}</td>
+                                    <td class="border border-gray-300 p-3">{{ $achievement->category }}</td>
+                                    <td class="border border-gray-300 p-3">{{ $achievement->level }}</td>
+                                    <td class="border border-gray-300 p-3">{{ $achievement->position }}</td>
+                                    <td class="border border-gray-300 p-3">{{ $achievement->date->translatedFormat('d F Y') }}</td>
+                                    <td class="border border-gray-300 p-3">{{ $achievement->description }}</td>
+                                    <td class="border border-gray-300 p-3 text-center">
+                                        <a href="{{ route('achievements.edit', $achievement->id) }}" style="color: #d97706; margin-right: 10px;">Edit</a>
+                                        <form onsubmit="return confirm('Yakin hapus data ini?');" action="{{ route('achievements.destroy', $achievement->id) }}" method="POST">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" style="color: #dc2626; background: none; border: none; cursor: pointer;">Hapus</button>
+                                        </form>
                                     </td>
                                 </tr>
                                 @endforeach

@@ -180,7 +180,7 @@
                     <div class="mb-4">
                         <label class="block text-gray-700 font-bold mb-2">Foto</label>
                         <input type="file" name="image" class="w-full border p-2 rounded">
-                        <small class="text-gray-500">Catatan: Biarkan kosong jika tidak ingin mengganti gambar.</small>
+                        <small class="text-gray-500">Catatan: Biarkan kosong jika tidak ingin mengganti gambar. Jika ingin diganti, gambar baru wajib JPG/JPEG/PNG. Maksimal 2MB.</small>
 
                         <div class="mt-2">
                             <p class="text-sm text-gray-600 mb-1">Gambar saat ini:</p>

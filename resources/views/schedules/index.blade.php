@@ -12,7 +12,7 @@
                 <div class="mb-4">
                     <a href="{{ route('schedules.create') }}" 
                         style="background-color: #16a34a; color: white; padding: 10px 20px; border-radius: 5px; text-decoration: none; display: inline-block;">
-                        + Tambah Jadwal
+                        + Tambah Jadwal Baru
                     </a>
                 </div>
 

@@ -12,7 +12,7 @@
                 <div class="mb-4">
                     <a href="{{ route('posts.create') }}" 
                     style="background-color: #16a34a; color: white; padding: 10px 20px; border-radius: 5px; text-decoration: none; display: inline-block;">
-                        + Tambah berita Baru
+                        + Tambah Berita Baru
                     </a>
                 </div>
 
@@ -45,7 +45,7 @@
                                 <img src="{{ $post->image_url }}" 
                                      alt="img" style="width: 80px; height: 50px; object-fit: cover; border-radius: 4px;">
                             </td>
-                            <td class="border border-gray-300 p-3 font-bold">{{ Str::limit($post->title, 50) }}</td>
+                            <td class="border border-gray-300 p-3">{{ Str::limit($post->title, 50) }}</td>
                             <td class="border border-gray-300 p-3">
                                 @if ($post->category == 'Pengumuman')
                                 <span style="background-color: #dbeafe; color: #1e40af; padding: 2px 8px; border-radius: 10px; font-size: 12px;">
@@ -57,11 +57,11 @@
                                 </span>
                                 @endif
                             </td>
-                            <td class="border border-gray-300 p-3 font-bold">{{ Str::limit($post->content, 50) }}</td>
+                            <td class="border border-gray-300 p-3">{{ Str::limit($post->content, 50) }}</td>
                             <td class="border border-gray-300 p-3 text-center">
                                 <a href="{{ route('posts.edit', $post->id) }}" style="color: #d97706; margin-right: 10px;">Edit</a>
                                 
-                                <form action="{{ route('posts.destroy', $post->id) }}" method="POST" style="display:inline;" onsubmit="return confirm('Yakin hapus?')">
+                                <form action="{{ route('posts.destroy', $post->id) }}" method="POST" style="display:inline;" onsubmit="return confirm('Yakin hapus data ini?')">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" style="color: #dc2626; background: none; border: none; cursor: pointer;">Hapus</button>
