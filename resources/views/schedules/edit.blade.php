@@ -15,12 +15,12 @@
                     @method('PUT')
 
                     <div class="mb-4">
-                        <label class="block text-gray-700 font-bold mb-2">Jam</label>
+                        <x-required-label class="block text-gray-700 font-bold mb-2">Jam</x-required-label>
                         <input type="text" name="hour" value="{{ old('hour', $schedule->hour) }}" class="w-full border p-2 rounded" placeholder="00:00 - 00:00" required>
                     <p class="text-sm text-gray-500 mt-1">Format: 00:00 - 00:00</p>
                     </div>
                     <div class="mb-4">
-                        <label class="block text-gray-700 font-bold mb-2">Hari</label>
+                        <x-required-label class="block text-gray-700 font-bold mb-2">Hari</x-required-label>
                         @php
                             $selected = old('day', $schedule->day);
                         @endphp
@@ -35,18 +35,18 @@
                     </div>
 
                     <div class="mb-4">
-                        <label class="block text-gray-700 font-bold mb-2">Mata Pelajaran</label>
+                        <x-required-label class="block text-gray-700 font-bold mb-2">Mata Pelajaran</x-required-label>
                         <input type="text" name="subject" value="{{ old('subject', $schedule->subject) }}" class="w-full border p-2 rounded" placeholder="Contoh: Matematika / IPA / IPS" required>
                     </div>
 
                     <div class="mb-4">
-                        <label class="block text-gray-700 font-bold mb-2">Kelas</label>
+                        <x-required-label class="block text-gray-700 font-bold mb-2">Kelas</x-required-label>
                         <input type="text" name="class" value="{{ old('class', $schedule->class) }}" class="w-full border p-2 rounded" placeholder="Contoh: 1 / 2 / 3" required>
                         <p class="text-sm text-gray-500 mt-1">Catatan: 0 = Semua Kelas</p> 
                     </div>
 
                     <div class="mb-4">
-                        <label class="block text-gray-700 font-bold mb-2">Tipe</label>
+                        <x-required-label class="block text-gray-700 font-bold mb-2">Tipe</x-required-label>
                         @php
                             $selected = old('type', $schedule->type);
                         @endphp
@@ -59,12 +59,12 @@
                     </div>
 
                     <div class="mb-4">
-                        <label class="block text-gray-700 font-bold mb-2">Seragam</label>
+                        <x-required-label class="block text-gray-700 font-bold mb-2">Seragam</x-required-label>
                         <input type="text" name="uniform" value="{{ old('uniform', $schedule->uniform) }}" class="w-full border p-2 rounded" placeholder="Contoh: Merah Putih / Batik / Pramuka" required>
                     </div>
 
                     <div class="mb-4">
-                        <label class="block text-gray-700 font-bold mb-2">Kurikulum</label>
+                        <x-required-label class="block text-gray-700 font-bold mb-2">Kurikulum</x-required-label>
                         <input type="text" name="curriculum" value="{{ old('curriculum', $schedule->curriculum) }}" class="w-full border p-2 rounded" placeholder="Contoh: 2025/2026" required>
                         <p class="text-sm text-gray-500 mt-1">Format: 0000/0000</p> 
                     </div>
@@ -92,12 +92,12 @@
                     <input type="hidden" name="curriculum" value="Semua">
 
                     <div class="mb-4">
-                        <label class="block text-gray-700 font-bold mb-2">Jam</label>
+                        <x-required-label class="block text-gray-700 font-bold mb-2">Jam</x-required-label>
                         <input type="text" name="hour" value="{{ old('hour', $schedule->hour) }}" class="w-full border p-2 rounded" placeholder="00:00 - 00:00" required>
                     <p class="text-sm text-gray-500 mt-1">Format: 00:00 - 00:00</p>
                     </div>
                     <div class="mb-4">
-                        <label class="block text-gray-700 font-bold mb-2">Hari</label>
+                        <x-required-label class="block text-gray-700 font-bold mb-2">Hari</x-required-label>
 
                         <select name="day" class="w-full border p-2 rounded bg-white" required>
                             <option value="Senin" {{ $schedule->day === 'Senin' ? 'selected' : '' }}>Senin</option>
@@ -111,18 +111,18 @@
                     </div>
 
                     <div class="mb-4">
-                        <label class="block text-gray-700 font-bold mb-2">Kegiatan</label>
+                        <x-required-label class="block text-gray-700 font-bold mb-2">Kegiatan</x-required-label>
                         <input type="text" name="subject" value="{{ old('subject', $schedule->subject) }}" class="w-full border p-2 rounded" placeholder="Contoh: Matematika / IPA / IPS" required>
                     </div>
 
                     <div class="mb-4">
-                        <label class="block text-gray-700 font-bold mb-2">Kelas</label>
+                        <x-required-label class="block text-gray-700 font-bold mb-2">Kelas</x-required-label>
                         <input type="text" name="class" value="{{ old('class', $schedule->class) }}" class="w-full border p-2 rounded" placeholder="Contoh: 1 / 2 / 3" required>
                         <p class="text-sm text-gray-500 mt-1">Catatan: 0 = Semua Kelas</p> 
                     </div>
 
                     <div class="mb-4">
-                        <label class="block text-gray-700 font-bold mb-2">Seragam</label>
+                        <x-required-label class="block text-gray-700 font-bold mb-2">Seragam</x-required-label>
                         <input type="text" name="uniform" value="{{ old('uniform', $schedule->uniform) }}" class="w-full border p-2 rounded" placeholder="Contoh: Merah Putih / Batik / Pramuka" required>
                     </div>
 
@@ -151,12 +151,12 @@
                     <input type="hidden" name="class" value="0">
 
                     <div class="mb-4">
-                        <label class="block text-gray-700 font-bold mb-2">Jam</label>
+                        <x-required-label class="block text-gray-700 font-bold mb-2">Jam</x-required-label>
                         <input type="text" name="hour" value="{{ old('hour', $schedule->hour) }}" class="w-full border p-2 rounded" placeholder="00:00 - 00:00" required>
                     <p class="text-sm text-gray-500 mt-1">Format: 00:00 - 00:00</p>
                     </div>
                     <div class="mb-4">
-                        <label class="block text-gray-700 font-bold mb-2">Hari</label>
+                        <x-required-label class="block text-gray-700 font-bold mb-2">Hari</x-required-label>
                         @php
                             $selected = old('day', $schedule->day);
                         @endphp
@@ -173,14 +173,14 @@
                     </div>
 
                     <div class="mb-4">
-                        <label class="block text-gray-700 font-bold mb-2">Kegiatan Ekstrakurikuler</label>
+                        <x-required-label class="block text-gray-700 font-bold mb-2">Kegiatan Ekstrakurikuler</x-required-label>
                         <input type="text" name="subject" value="{{ old('subject', $schedule->subject) }}" class="w-full border p-2 rounded" placeholder="Contoh: Matematika / IPA / IPS" required>
                     </div>
 
                     <div class="mb-4">
                         <label class="block text-gray-700 font-bold mb-2">Foto</label>
                         <input type="file" name="image" class="w-full border p-2 rounded">
-                        <small class="text-gray-500">Biarkan kosong jika tidak ingin mengganti gambar.</small>
+                        <small class="text-gray-500">Catatan: Biarkan kosong jika tidak ingin mengganti gambar.</small>
 
                         <div class="mt-2">
                             <p class="text-sm text-gray-600 mb-1">Gambar saat ini:</p>
@@ -189,12 +189,12 @@
                     </div>
 
                     <div class="mb-4">
-                        <label class="block text-gray-700 font-bold mb-2">Deskripsi</label>
+                        <x-required-label class="block text-gray-700 font-bold mb-2">Deskripsi</x-required-label>
                         <textarea name="description" rows="10" class="w-full border p-2 rounded" placeholder="Deskripsi ekstrakurikuler">{{ old('description', $schedule->description) }}</textarea>
                     </div>
 
                     <div class="mb-4">
-                        <label class="block text-gray-700 font-bold mb-2">Seragam</label>
+                        <x-required-label class="block text-gray-700 font-bold mb-2">Seragam</x-required-label>
                         <input type="text" name="uniform" value="{{ old('uniform', $schedule->uniform) }}" class="w-full border p-2 rounded" placeholder="Contoh: Merah Putih / Batik / Pramuka" required>
                     </div>
 

@@ -14,12 +14,12 @@
                     @method('PUT')
                     
                     <div class="mb-4">
-                        <label class="block text-gray-700 font-bold mb-2">Penulis</label>
+                        <x-required-label class="block text-gray-700 font-bold mb-2">Penulis</x-required-label>
                         <input type="text" name="username" value="{{ old('username', $post->user->name) }}" class="w-full border p-2 rounded bg-gray-100" disabled>
                     </div>
                     
                     <div class="mb-4">
-                        <label class="block text-gray-700 font-bold mb-2">Ganti Gambar (Opsional)</label>
+                        <label class="block text-gray-700 font-bold mb-2">Gambar</label>
                         <input type="file" name="image" class="w-full border p-2 rounded">
                         <small class="text-gray-500">Biarkan kosong jika tidak ingin mengganti gambar.</small>
                         
@@ -30,12 +30,12 @@
                     </div>
 
                     <div class="mb-4">
-                        <label class="block text-gray-700 font-bold mb-2">Judul Berita</label>
+                        <x-required-label class="block text-gray-700 font-bold mb-2">Judul Berita</x-required-label>
                         <input type="text" name="title" value="{{ old('title', $post->title) }}" class="w-full border p-2 rounded" required>
                     </div>
 
                     <div class="mb-4">
-                        <label class="block text-gray-700 font-bold mb-2">Kategori</label>
+                        <x-required-label class="block text-gray-700 font-bold mb-2">Kategori</x-required-label>
                         <select name="category" class="w-full border p-2 rounded bg-white" required>
                             <option value="Pengumuman" {{ $post->category === 'Pengumuman' ? 'selected' : '' }}>Pengumuman</option>
                             <option value="Berita" {{ $post->category === 'Berita' ? 'selected' : '' }}>Berita</option>
@@ -47,7 +47,7 @@
                     </div>
 
                     <div class="mb-4">
-                        <label class="block text-gray-700 font-bold mb-2">Isi Berita</label>
+                        <x-required-label class="block text-gray-700 font-bold mb-2">Isi Berita</x-required-label>
                         <textarea name="content" rows="10" class="w-full border p-2 rounded" required>{{ old('content', $post->content) }}</textarea>
                     </div>
 

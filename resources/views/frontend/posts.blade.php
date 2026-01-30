@@ -74,6 +74,7 @@
                 <div class="absolute bottom-5 left-5 right-5 p-5 text-white text-center opacity-0 group-hover:opacity-100 transition duration-300">
                     <h3 class="text-lg font-bold text-white">{{ Str::limit($post->title, 50) }}</h3>
                     <p class="text-sm mt-2">{{ $post->category }}</p>
+                    <p class="text-sm mt-2">{{ $post->created_at->diffForHumans() }}</p>
                     <a href="#" class="mt-4 inline-block bg-sekolah-hijau hover:bg-sekolah-hijau-dark text-white py-2 px-4 rounded-full"
                         onclick="openModal('{{ $post->title }}', {{ json_encode($post->content) }}, '{{ $post->image_url }}');">
                         Baca Selengkapnya
