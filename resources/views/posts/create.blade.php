@@ -22,7 +22,7 @@
 
 
                 <div class="mb-4">
-                    <label class="block text-gray-700 font-bold mb-2">Penulis</label>
+                    <x-required-label class="block text-gray-700 font-bold mb-2">Penulis</x-required-label>
                     <input type="text" name="username" value="{{ auth()->user()->name }}" class="w-full border p-2 rounded bg-gray-100" disabled>
                     
                     @error('username')
@@ -33,7 +33,7 @@
                     @csrf
 
                     <div class="mb-4">
-                        <label class="block text-gray-700 font-bold mb-2">Upload Gambar</label>
+                        <x-required-label class="block text-gray-700 font-bold mb-2">Upload Gambar</x-required-label>
                         <input type="file" name="image" class="w-full border p-2 rounded @error('image') border-red-500 @enderror">
                         <small class="text-gray-500">Catatan: Wajib JPG/JPEG/PNG. Maksimal 2MB.</small>
                         
@@ -43,7 +43,7 @@
                     </div>
 
                     <div class="mb-4">
-                        <label class="block text-gray-700 font-bold mb-2">Judul</label>
+                        <x-required-label class="block text-gray-700 font-bold mb-2">Judul</x-required-label>
                         <input type="text" name="title" value="{{ old('title') }}" class="w-full border p-2 rounded @error('title') border-red-500 @enderror" placeholder="Masukkan judul berita...">
                         <small class="text-gray-500">Catatan: Minimal 5 karakter</small>
 
@@ -53,7 +53,7 @@
                     </div>
 
                     <div class="mb-4">
-                        <label class="block text-gray-700 font-bold mb-2">Kategori</label>
+                        <x-required-label class="block text-gray-700 font-bold mb-2">Kategori</x-required-label>
                         <select name="category" class="w-full border p-2 rounded bg-white" required>
                             <option value="" selected hidden>
                                 -- Pilih kategori --
@@ -69,7 +69,7 @@
                     </div>
                         
                     <div class="mb-4">
-                        <label class="block text-gray-700 font-bold mb-2">Isi</label>
+                        <x-required-label class="block text-gray-700 font-bold mb-2">Isi</x-required-label>
                         <textarea name="content" rows="10" class="w-full border p-2 rounded @error('content') border-red-500 @enderror" placeholder="Tulis isi berita...">{{ old('content') }}</textarea>
                         <small class="text-gray-500">Catatan: Minimal 10 karakter</small>
                         

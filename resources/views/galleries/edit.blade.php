@@ -14,8 +14,9 @@
                     @method('PUT')
 
                     <div class="mb-4">
-                        <label class="block text-gray-700 font-bold mb-2">Ganti Foto (Opsional)</label>
+                        <label class="block text-gray-700 font-bold">Foto</label>
                         <input type="file" name="image" class="w-full border p-2 rounded">
+                        <small class="text-gray-500 mb-2">Catatan: Biarkan kosong jika tidak ingin mengganti foto.</small>
                         
                         <div class="mt-2">
                             <p class="text-sm text-gray-500">Foto Saat Ini:</p>
@@ -24,7 +25,7 @@
                     </div>
 
                     <div class="mb-4">
-                        <label class="block text-gray-700 font-bold mb-2">Judul / Caption</label>
+                        <x-required-label class="block text-gray-700 font-bold mb-2">Judul / Caption</x-required-label>
                         <input type="text" name="title" value="{{ old('title', $gallery->title) }}" class="w-full border p-2 rounded">
                     </div>
 

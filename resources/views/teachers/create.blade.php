@@ -13,23 +13,23 @@
                     @csrf
 
                     <div class="mb-4">
-                        <label class="block text-gray-700 font-bold mb-2">Foto Guru</label>
+                        <x-required-label class="block text-gray-700 font-bold mb-2">Foto Guru</x-required-label>
                         <input type="file" name="photo" class="w-full border p-2 rounded" required>
-                        <small class="text-gray-500">Wajib JPG/JPEG/PNG. Maksimal 2MB.</small>
+                        <small class="text-gray-500">Catatan: Wajib JPG/JPEG/PNG. Maksimal 2MB.</small>
                     </div>
 
                     <div class="mb-4">
-                        <label class="block text-gray-700 font-bold mb-2">NIP</label>
+                        <x-required-label class="block text-gray-700 font-bold mb-2">NIP</x-required-label>
                         <input type="text" name="nip" class="w-full border p-2 rounded" inputmode="numeric" pattern="[0-9]*" placeholder="Contoh: 1234567890" required>
                     </div>
 
                     <div class="mb-4">
-                        <label class="block text-gray-700 font-bold mb-2">Nama Lengkap</label>
+                        <x-required-label class="block text-gray-700 font-bold mb-2">Nama Lengkap</x-required-label>
                         <input type="text" name="name" class="w-full border p-2 rounded" placeholder="Contoh: Budi Santoso, S.Pd" required>
                     </div>
 
                     <div class="mb-4">
-                        <label class="block text-gray-700 font-bold mb-2">Jabatan / Mata Pelajaran</label>
+                        <x-required-label class="block text-gray-700 font-bold mb-2">Jabatan / Mata Pelajaran</x-required-label>
                         <input type="text" name="position" class="w-full border p-2 rounded" placeholder="Contoh: Guru Matematika / Kepala Sekolah" required>
                         @error('position')
                             <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
