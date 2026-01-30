@@ -70,7 +70,7 @@
                         
                     <div class="mb-4">
                         <x-required-label class="block text-gray-700 font-bold mb-2">Isi</x-required-label>
-                        <textarea name="content" rows="10" class="w-full border p-2 rounded @error('content') border-red-500 @enderror" placeholder="Tulis isi berita...">{{ old('content') }}</textarea>
+                        <textarea name="content" rows="10" class="w-full border p-2 rounded @error('content') border-red-500 @enderror" placeholder="Tulis isi berita..." required>{{ old('content') }}</textarea>
                         <small class="text-gray-500">Catatan: Minimal 10 karakter</small>
                         
                         @error('content')

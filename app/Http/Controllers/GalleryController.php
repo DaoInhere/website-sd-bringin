@@ -57,6 +57,8 @@ class GalleryController extends Controller
         $request->validate([
             'image' => 'image|mimes:jpeg,png,jpg|max:2048',
             'title' => 'nullable|string|max:255',
+            'description' => 'nullable|string|max:255',
+            'activityDate' => 'required|date',
         ]);
 
         $gallery = Gallery::findOrFail($id);
@@ -70,15 +72,19 @@ class GalleryController extends Controller
             $gallery->update([
                 'image' => $imagePath,
                 'title' => $request->title,
+                'description' => $request->description,
+                'activityDate' => $request->activityDate,
             ]);
         } else {
             // Cuma ganti judul
             $gallery->update([
                 'title' => $request->title,
+                'description' => $request->description,
+                'activityDate' => $request->activityDate,
             ]);
         }
 
-        return redirect()->route('galleries.index')->with(['success' => 'Foto Berhasil Diupdate!']);
+        return redirect()->route('galleries.index')->with(['success' => 'Galeri Berhasil Diupdate!']);
     }
 
     // 6. HAPUS FOTO
