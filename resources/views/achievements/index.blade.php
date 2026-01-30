@@ -24,7 +24,7 @@
                     <div class="overflow-x-auto">
                         <table class="w-full border-collapse border border-gray-300">
                             <thead>
-                                <tr class="bg-gray-50 text-gray-700">
+                                <tr class="bg-gray-100 text-gray-700">
                                     <th class="py-3 px-4 border border-gray-300 text-center w-12">No</th>
                                     <th class="py-3 px-4 border border-gray-300 text-center">Foto</th>
                                     <th class="py-3 px-4 border border-gray-300 text-left">Nama Lomba</th>
@@ -39,10 +39,10 @@
                                     <td class="py-3 px-4 border border-gray-300 text-center">
                                         {{ $achievements->firstItem() + $key }}
                                     </td>
-                                    <td class="py-2 px-2 border border-gray-300">
+                                    <td class="py-2 px-2 border border-gray-300 w-24">
                                         <div class="flex justify-center">
                                             @if($achievement->image)
-                                                <img src="{{ asset('storage/' . $achievement->image) }}" class="w-16 h-10 object-cover rounded border border-gray-200">
+                                                <img src="{{ asset('storage/' . $achievement->image) }}" class="w-16 h-10 object-cover rounded border border-gray-100">
                                             @else
                                                 <span class="text-gray-400 text-xs italic">No Image</span>
                                             @endif
