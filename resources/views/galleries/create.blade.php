@@ -14,7 +14,7 @@
 
                     <div class="mb-4">
                         <x-required-label class="block text-gray-700 font-bold mb-2">Pilih Foto</x-required-label>
-                        <input type="file" name="image" class="w-full border p-2 rounded" required>
+                        <input type="file" name="photo" class="w-full border p-2 rounded" required>
                         <small class="text-gray-500">Catatan: Wajib JPG/JPEG/PNG. Maksimal 2MB.</small>
                     </div>
 
@@ -25,7 +25,7 @@
 
                     <div class="mb-4">
                         <label class="block text-gray-700 font-bold mb-2">Deskripsi</label>
-                        <textarea name="description" rows="10" class="w-full border p-2 rounded @error('description') border-red-500 @enderror" placeholder="Deskripsi kegiatan" required>{{ old('description') }}</textarea>
+                        <textarea name="description" rows="10" class="w-full border p-2 rounded @error('description') border-red-500 @enderror" placeholder="Deskripsi kegiatan">{{ old('description') }}</textarea>
                     </div>
 
                     <div class="mb-4">
@@ -36,7 +36,7 @@
 
                     <button type="submit" 
                         style="background-color: #16a34a; color: white; padding: 10px 20px; border-radius: 5px; text-decoration: none; display: inline-block;">
-                        Upload Foto
+                        Simpan Foto
                     </button>
                     <a href="{{ route('galleries.index') }}" class="text-gray-600 ml-4 hover:underline">Batal</a>
 

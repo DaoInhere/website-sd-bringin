@@ -76,7 +76,7 @@
                     <p class="text-sm mt-2">{{ $post->category }}</p>
                     <p class="text-sm mt-2">{{ $post->created_at->diffForHumans() }}</p>
                     <a href="#" class="mt-4 inline-block bg-sekolah-hijau hover:bg-sekolah-hijau-dark text-white py-2 px-4 rounded-full"
-                        onclick="openModal('{{ $post->title }}', {{ json_encode($post->content) }}, '{{ $post->image_url }}');">
+                        onclick="openModal('{{ $post->title }}', '{{ $post->created_at->translatedFormat('d F Y') }}', '{{ json_encode($post->content) }}', '{{ $post->image_url }}');">
                         Baca Selengkapnya
                     </a>
                 </div>
@@ -98,15 +98,17 @@
             <i class="fas fa-times"></i>
         </button>
         <img id="modal-img" class="w-full rounded-lg mb-4" alt="Modal Image">
-        <h2 id="modal-title" class="text-2xl font-extrabold text-gray-800 mb-4"></h2>
+        <h2 id="modal-title" class="text-2xl font-extrabold text-gray-800"></h2>
+        <h2 id="modal-created_at" class="text-2sm font-thin text-gray-800 mb-4"></h2>
         <p id="modal-content" class="text-gray-600 leading-relaxed text-justify"></p>
     </div>
 </div>
 
 {{-- JavaScript --}}
 <script>
-    function openModal(title, content, imgSrc) {
+    function openModal(title, created_at, content, imgSrc) {
         document.getElementById('modal-title').textContent = title;
+        document.getElementById('modal-created_at').textContent = created_at;
         document.getElementById('modal-content').textContent = content;
         document.getElementById('modal-img').src = imgSrc;
         document.getElementById('modal').classList.remove('hidden');

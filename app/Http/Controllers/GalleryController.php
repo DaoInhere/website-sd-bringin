@@ -25,17 +25,17 @@ class GalleryController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'image' => 'required|image|mimes:jpeg,png,jpg|max:2048',
+            'photo' => 'required|image|mimes:jpeg,png,jpg|max:2048',
             'title' => 'nullable|string|max:255',
             'description' => 'nullable|string|max:255',
             'activityDate' => 'required|date',
         ]);
 
         // Simpan ke folder 'galleries' di storage public
-        $imagePath = $request->file('image')->store('galleries', 'public');
+        $photoPath = $request->file('photo')->store('galleries', 'public');
 
         Gallery::create([
-            'image' => $imagePath,
+            'photo' => $photoPath,
             'title' => $request->title,
             'description' => $request->description,
             'activityDate' => $request->activityDate,
@@ -55,7 +55,7 @@ class GalleryController extends Controller
     public function update(Request $request, string $id)
     {
         $request->validate([
-            'image' => 'image|mimes:jpeg,png,jpg|max:2048',
+            'photo' => 'image|mimes:jpeg,png,jpg|max:2048',
             'title' => 'nullable|string|max:255',
             'description' => 'nullable|string|max:255',
             'activityDate' => 'required|date',
@@ -63,14 +63,14 @@ class GalleryController extends Controller
 
         $gallery = Gallery::findOrFail($id);
 
-        if ($request->hasFile('image')) {
+        if ($request->hasFile('photo')) {
             // Upload baru
-            $imagePath = $request->file('image')->store('galleries', 'public');
+            $photoPath = $request->file('photo')->store('galleries', 'public');
             // Hapus lama
-            Storage::delete('public/' . $gallery->image);
+            Storage::delete('public/' . $gallery->photo);
             // Update DB
             $gallery->update([
-                'image' => $imagePath,
+                'photo' => $photoPath,
                 'title' => $request->title,
                 'description' => $request->description,
                 'activityDate' => $request->activityDate,
@@ -84,14 +84,14 @@ class GalleryController extends Controller
             ]);
         }
 
-        return redirect()->route('galleries.index')->with(['success' => 'Galeri Berhasil Diupdate!']);
+        return redirect()->route('galleries.index')->with(['success' => 'Galeri Berhasil Diperbarui!']);
     }
 
     // 6. HAPUS FOTO
     public function destroy(string $id)
     {
         $gallery = Gallery::findOrFail($id);
-        Storage::delete('public/' . $gallery->image);
+        Storage::delete('public/' . $gallery->photo);
         $gallery->delete();
 
         return redirect()->route('galleries.index')->with(['success' => 'Foto Berhasil Dihapus!']);

@@ -23,9 +23,9 @@
                         <input type="file" name="image" class="w-full border p-2 rounded">
                         <small class="text-gray-500">Catatan: Biarkan kosong jika tidak ingin mengganti gambar. Jika ingin diganti, gambar baru wajib JPG/JPEG/PNG. Maksimal 2MB.</small>
                         
-                        <div class="mt-2">
-                            <p class="text-sm text-gray-600 mb-1">Gambar saat ini:</p>
-                            <img src="{{ $post->image_url }}" alt="Img" class="w-32 h-20 object-cover rounded border">
+                        <div class="mb-3 mt-3 p-2 border rounded w-fit bg-gray-50">
+                            <p class="text-xs text-gray-500 mb-1">Gambar Saat Ini:</p>
+                            <img src="{{ $post->image_url }}" class="h-40 w-auto rounded shadow-sm">
                         </div>
                     </div>
 
@@ -53,7 +53,7 @@
 
                     <div class="flex items-center gap-2">
                         <button type="submit"  style="background-color: #16a34a; color: white; padding: 10px 20px; border-radius: 5px; text-decoration: none; display: inline-block;">
-                            Update Berita
+                            Perbarui Berita
                         </button>
                         <a href="{{ route('posts.index') }}" class="text-gray-600 hover:underline">Batal</a>
                     </div>

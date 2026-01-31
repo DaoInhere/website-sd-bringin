@@ -25,15 +25,13 @@ Route::get('/profil/struktur', [PageController::class, 'struktur'])->name('publi
 Route::get('/profil/sarana', [PageController::class, 'sarana'])->name('public.sarana');
 Route::get('/kontak', [PageController::class, 'kontak'])->name('public.kontak');
 
-// Menu Informasi
-Route::get('/informasi/jadwalkbm', [PageController::class, 'schedules'])->name('public.schedules');
-
 // Menu Informasi & Galeri & Berita
-Route::get('/guru', [PageController::class, 'teachers'])->name('public.teachers');
-Route::get('/galeri', [PageController::class, 'galleries'])->name('public.galleries');
-Route::get('/berita', [PageController::class, 'posts'])->name('public.posts');
-Route::get('/kesiswaan/prestasi', [PageController::class, 'achievements'])->name('public.achievements');
 Route::get('/kesiswaan/ekstrakurikuler', [PageController::class, 'extracurriculars'])->name('public.extracurriculars');
+Route::get('/kesiswaan/prestasi', [PageController::class, 'achievements'])->name('public.achievements');
+Route::get('/informasi/berita', [PageController::class, 'posts'])->name('public.posts');
+Route::get('/informasi/jadwalkbm', [PageController::class, 'schedules'])->name('public.schedules');
+Route::get('/informasi/guru', [PageController::class, 'teachers'])->name('public.teachers');
+Route::get('/galeri', [PageController::class, 'galleries'])->name('public.galleries');
 
 // 2. DASHBOARD ADMIN
 Route::get('/dashboard', function () {

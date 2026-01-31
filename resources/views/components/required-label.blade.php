@@ -1,4 +1,4 @@
-<label {{ $attributes->merge(['class' => 'block font-semibold text-gray-700']) }}>
+<label {{ $attributes->merge(['class' => 'block text-gray-700']) }}>
     {{ $slot }}
     <span class="relative inline-block group cursor-help">
         <span class="text-red-500">*</span>

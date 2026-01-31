@@ -68,9 +68,9 @@
                                 -- Pilih tipe --
                             </option>
 
-                            <option value="Mapel">Mapel</option>
-                            <option value="UTS">UTS</option>
-                            <option value="UAS">UAS</option>
+                            <option value="Mapel">Mata Pelajaran (Mapel)</option>
+                            <option value="UTS">Ujian Tengah Semester (UTS)</option>
+                            <option value="UAS">Ujian Akhir Semester (UAS)</option>
                         </select>
                     </div>
 

@@ -41,7 +41,7 @@
                             @forelse ($galleries as $gallery)
                                 <tr class="hover:bg-gray-50 transition duration-150">
                                     <td class="border border-gray-300 p-3 text-center">
-                                        <img src="{{ $gallery->image_url }}" class="w-24 h-24 object-cover mx-auto rounded shadow-sm">
+                                        <img src="{{ $gallery->photo_url }}" class="w-24 h-24 object-cover mx-auto rounded shadow-sm">
                                     </td>
                                     <td class="border border-gray-300 p-3 font-bold text-sm">
                                         {{ Str::limit($gallery->title, 50) ?? '-' }}

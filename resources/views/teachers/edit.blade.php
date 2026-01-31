@@ -18,9 +18,9 @@
                         <input type="file" name="photo" class="w-full border p-2 rounded">
                         <small class="text-gray-500">Catatan: Biarkan kosong jika tidak ingin mengganti foto. Jika ingin diganti, foto baru wajib JPG/JPEG/PNG. Maksimal 2MB.</small>
                         
-                        <div class="mt-2">
-                            <p class="text-sm text-gray-500">Foto Saat Ini:</p>
-                            <img src="{{ $teacher->photo_url }}" class="w-32 h-32 object-cover rounded border">
+                        <div class="mb-3 mt-3 p-2 border rounded w-fit bg-gray-50">
+                            <p class="text-xs text-gray-500 mb-1">Foto Saat Ini:</p>
+                            <img src="{{ $teacher->photo_url }}" class="h-40 w-auto rounded shadow-sm">
                         </div>
                     </div>
 
@@ -44,7 +44,7 @@
 
                     <button type="submit" 
                         style="background-color: #d97706; color: white; padding: 10px 20px; border-radius: 5px; border: none; cursor: pointer;">
-                        Update Data
+                        Perbarui Data
                     </button>
                     <a href="{{ route('teachers.index') }}" class="text-gray-600 ml-4 hover:underline">Batal</a>
 

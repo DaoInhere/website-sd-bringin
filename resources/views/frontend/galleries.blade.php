@@ -32,7 +32,7 @@
             @forelse ($galleries as $gallery)
                 <div class="relative group overflow-hidden rounded-lg">
                     <img 
-                        src="{{ $gallery->image_url }}"
+                        src="{{ $gallery->photo_url }}"
                         alt="{{ $gallery->title }}"
                         class="w-full h-64 object-cover rounded-lg transition-transform duration-300 transform group-hover:scale-105"
                     />
@@ -42,7 +42,7 @@
                             <p class="text-sm mt-2">{{ $gallery->activityDate->translatedFormat('d F Y') }}</p>
                             <a href="#" 
                                class="mt-4 inline-block bg-sekolah-hijau hover:bg-sekolah-hijau-dark text-white py-2 px-4 rounded-full"
-                               onclick="openModal('{{ $gallery->title }}', '{{ $gallery->description }}', '{{ $gallery->image_url }}');">
+                               onclick="openModal('{{ $gallery->title }}', '{{ $gallery->description }}', '{{ $gallery->photo_url }}');">
                                 Baca Selengkapnya
                             </a>
                         </div>

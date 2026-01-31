@@ -11,7 +11,7 @@ class Gallery extends Model
 
     protected $fillable = [
         'title',
-        'image',
+        'photo',
         'description',
         'activityDate'
     ];
@@ -20,16 +20,16 @@ class Gallery extends Model
         'activityDate' => 'date',
     ];
 
-    public function getImageUrlAttribute()
+    public function getPhotoUrlAttribute()
     {
         // Cek 1: Apakah file ada di STORAGE? (storage/app/public/...)
-        if ($this->image && file_exists(public_path('storage/' . $this->image))) {
-            return asset('storage/' . $this->image);
+        if ($this->photo && file_exists(public_path('storage/' . $this->photo))) {
+            return asset('storage/' . $this->photo);
         }
 
         // Cek 2: Apakah file ada di PUBLIC ASSETS? (public/assets/...)
-        if ($this->image && file_exists(public_path('asset/' . $this->image))) {
-            return asset('asset/' . $this->image);
+        if ($this->photo && file_exists(public_path('asset/' . $this->photo))) {
+            return asset('asset/' . $this->photo);
         }
 
         // Cek 3: Fallback / Default
