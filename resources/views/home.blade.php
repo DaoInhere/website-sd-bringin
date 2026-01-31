@@ -7,7 +7,7 @@
         <div id="slider-track" class="flex h-full transition-transform duration-700 ease-in-out">
             {{-- Slide 1 --}}
             <div class="min-w-full relative h-full bg-cover bg-center"
-                 style="background-image: url('{{ asset('asset/galeri foto.jpg') }}');">
+                style="background-image: url('{{ asset('asset/galeri foto.jpg') }}');">
                 <div class="absolute inset-0 bg-black/60"></div>
 
                 <div class="absolute inset-0 flex items-center justify-center text-center px-4">
@@ -26,11 +26,11 @@
 
                         <div class="flex flex-col sm:flex-row justify-center gap-4">
                             <a href="{{ url('/galeri') }}"
-                               class="bg-sekolah-hijau hover:bg-sekolah-hijau-dark text-white font-bold py-3 px-8 rounded-xl transition duration-300 uppercase tracking-wide shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-white/70">
+                                class="bg-sekolah-hijau hover:bg-sekolah-hijau-dark text-white font-bold py-3 px-8 rounded-xl transition duration-300 uppercase tracking-wide shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-white/70">
                                 Galeri Foto
                             </a>
                             <a href="{{ url('/profil/sejarah') }}"
-                               class="bg-transparent border-2 border-white text-white hover:bg-white hover:text-gray-900 font-bold py-3 px-8 rounded-xl transition duration-300 uppercase tracking-wide shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-white/70">
+                                class="bg-transparent border-2 border-white text-white hover:bg-white hover:text-gray-900 font-bold py-3 px-8 rounded-xl transition duration-300 uppercase tracking-wide shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-white/70">
                                 Detail
                             </a>
                         </div>
@@ -40,7 +40,7 @@
 
             {{-- Slide 2 --}}
             <div class="min-w-full relative h-full bg-cover bg-center"
-                 style="background-image: url('{{ asset('asset/gerbang sdn bringin 01.jpg') }}');">
+                style="background-image: url('{{ asset('asset/gerbang sdn bringin 01.jpg') }}');">
                 <div class="absolute inset-0 bg-black/60"></div>
 
                 <div class="absolute inset-0 flex items-center justify-center text-center px-4">
@@ -58,12 +58,12 @@
                         </h1>
 
                         <div class="flex flex-col sm:flex-row justify-center gap-4">
-                            <a href="{{ url('/profil/visi') }}"
-                               class="bg-sekolah-hijau hover:bg-sekolah-hijau-dark text-white font-bold py-3 px-8 rounded-xl transition duration-300 uppercase tracking-wide shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-white/70">
+                            <a href="{{ url('/profil/visi-misi') }}"
+                                class="bg-sekolah-hijau hover:bg-sekolah-hijau-dark text-white font-bold py-3 px-8 rounded-xl transition duration-300 uppercase tracking-wide shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-white/70">
                                 Profil Sekolah
                             </a>
                             <a href="{{ url('/kontak') }}"
-                               class="bg-transparent border-2 border-white text-white hover:bg-white hover:text-gray-900 font-bold py-3 px-8 rounded-xl transition duration-300 uppercase tracking-wide shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-white/70">
+                                class="bg-transparent border-2 border-white text-white hover:bg-white hover:text-gray-900 font-bold py-3 px-8 rounded-xl transition duration-300 uppercase tracking-wide shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-white/70">
                                 Hubungi Kami
                             </a>
                         </div>
@@ -73,7 +73,7 @@
 
             {{-- Slide 3 --}}
             <div class="min-w-full relative h-full bg-cover bg-center"
-                 style="background-image: url('{{ asset('asset/seragam luri sdn bringin 01.jpg') }}');">
+                style="background-image: url('{{ asset('asset/seragam luri sdn bringin 01.jpg') }}');">
                 <div class="absolute inset-0 bg-black/60"></div>
 
                 <div class="absolute inset-0 flex items-center justify-center text-center px-4">
@@ -92,11 +92,11 @@
 
                         <div class="flex flex-col sm:flex-row justify-center gap-4">
                             <a href="https://arsip.siap-ppdb.com/"
-                               class="bg-sekolah-hijau hover:bg-sekolah-hijau-dark text-white font-bold py-3 px-8 rounded-xl transition duration-300 uppercase tracking-wide shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-white/70">
+                                class="bg-sekolah-hijau hover:bg-sekolah-hijau-dark text-white font-bold py-3 px-8 rounded-xl transition duration-300 uppercase tracking-wide shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-white/70">
                                 Daftar Sekarang
                             </a>
                             <a href="{{ url('/ppdb/syarat') }}"
-                               class="bg-transparent border-2 border-white text-white hover:bg-white hover:text-gray-900 font-bold py-3 px-8 rounded-xl transition duration-300 uppercase tracking-wide shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-white/70">
+                                class="bg-transparent border-2 border-white text-white hover:bg-white hover:text-gray-900 font-bold py-3 px-8 rounded-xl transition duration-300 uppercase tracking-wide shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-white/70">
                                 Syarat Pendaftaran
                             </a>
                         </div>
@@ -193,23 +193,25 @@
                 <p class="text-gray-600 mt-4 max-w-2xl mx-auto">Kami menyediakan berbagai program untuk mendukung minat dan bakat siswa.</p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            @if($extracurriculars->isEmpty())
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                @if($extracurriculars->isEmpty())
                 <div class="rounded-2xl bg-white p-6 text-center text-gray-600 shadow-sm ring-1 ring-black/5">
                     Belum ada data.
                 </div>
-            @else
-                <div class="grid grid-cols-3 gap-6">
+                @else
+                <div class="grid grid-cols-2 gap-6">
                     @foreach($extracurriculars as $extracurricular)
-                <div class="bg-white p-8 rounded-2xl shadow-md hover:shadow-xl transition hover:-translate-y-2 border-b-4 border-white hover:border-sekolah-kuning group">
-                    <div class="w-20 h-20 bg-sekolah-hijau/10 text-sekolah-hijau rounded-full flex items-center justify-center text-3xl mb-6 mx-auto group-hover:bg-sekolah-hijau group-hover:text-white transition">
-                        <img src="{{ $extracurricular->image_url }}">
+                    <div class="bg-white overflow-hidden p-8 rounded-2xl shadow-md hover:shadow-xl transition hover:-translate-y-2 border-b-4 border-white hover:border-sekolah-kuning group">
+                        <div class="w-50 h-50 overflow-hidden bg-sekolah-hijau/10 text-sekolah-hijau rounded-full flex items-center justify-center text-3xl mx-auto group-hover:bg-sekolah-hijau group-hover:text-white transition">
+                            <img src="{{ $extracurricular->image_url }}" class="w-full h-full object-contain">
+                        </div>
+                        <div class="mt-4">
+                            <h3 class="text-xl font-bold text-center mb-3">{{ $extracurricular->subject }}</h3>
+                            <p class="text-gray-600 text-center text-sm">{{ $extracurricular->description }}</p>
+                        </div>
                     </div>
-                    <h3 class="text-xl font-bold text-center mb-3">{{ $extracurricular->subject }}</h3>
-                    <p class="text-gray-600 text-center text-sm">{{ $extracurricular->description }}</p>
+                    @endforeach
                 </div>
-                    @endforeach     
-                </div>    
             </div>
             @endif
         </div>
@@ -228,8 +230,8 @@
                 <div>
                     <div class="relative rounded-2xl overflow-hidden shadow-xl mb-6 group">
                         <img src="{{ asset('asset/sekolah sd bringin 01 semarang.jpg') }}"
-                             alt="Gedung Sekolah"
-                             class="w-full h-auto transform transition duration-500 group-hover:scale-105">
+                            alt="Gedung Sekolah"
+                            class="w-full h-auto transform transition duration-500 group-hover:scale-105">
                     </div>
 
                     <h3 class="text-2xl font-bold text-sekolah-hijau mb-2">SD Negeri 1 Bringin - Sekolah Ramah Anak</h3>
@@ -289,60 +291,66 @@
 
 @push('scripts')
 <script>
-(function () {
-    const track = document.getElementById('slider-track');
-    const slides = track ? Array.from(track.children) : [];
-    const dots = Array.from(document.querySelectorAll('.slider-dot'));
-    const prevBtn = document.getElementById('prevBtn');
-    const nextBtn = document.getElementById('nextBtn');
+    (function() {
+        const track = document.getElementById('slider-track');
+        const slides = track ? Array.from(track.children) : [];
+        const dots = Array.from(document.querySelectorAll('.slider-dot'));
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
 
-    if (!track || slides.length === 0) return;
+        if (!track || slides.length === 0) return;
 
-    let index = 0;
-    let timer = null;
+        let index = 0;
+        let timer = null;
 
-    function setActiveDot(i) {
-        dots.forEach((d, idx) => {
-            d.classList.toggle('bg-white', idx === i);
-            d.classList.toggle('bg-white/50', idx !== i);
-        });
-    }
+        function setActiveDot(i) {
+            dots.forEach((d, idx) => {
+                d.classList.toggle('bg-white', idx === i);
+                d.classList.toggle('bg-white/50', idx !== i);
+            });
+        }
 
-    function goTo(i) {
-        index = (i + slides.length) % slides.length;
-        track.style.transform = `translateX(-${index * 100}%)`;
-        setActiveDot(index);
-    }
+        function goTo(i) {
+            index = (i + slides.length) % slides.length;
+            track.style.transform = `translateX(-${index * 100}%)`;
+            setActiveDot(index);
+        }
 
-    function startAuto() {
-        stopAuto();
-        timer = setInterval(() => goTo(index + 1), 6000);
-    }
+        function startAuto() {
+            stopAuto();
+            timer = setInterval(() => goTo(index + 1), 6000);
+        }
 
-    function stopAuto() {
-        if (timer) clearInterval(timer);
-        timer = null;
-    }
+        function stopAuto() {
+            if (timer) clearInterval(timer);
+            timer = null;
+        }
 
-    prevBtn?.addEventListener('click', () => { goTo(index - 1); startAuto(); });
-    nextBtn?.addEventListener('click', () => { goTo(index + 1); startAuto(); });
-
-    dots.forEach(dot => {
-        dot.addEventListener('click', () => {
-            const i = Number(dot.dataset.index || 0);
-            goTo(i);
+        prevBtn?.addEventListener('click', () => {
+            goTo(index - 1);
             startAuto();
         });
-    });
+        nextBtn?.addEventListener('click', () => {
+            goTo(index + 1);
+            startAuto();
+        });
 
-    // init
-    goTo(0);
-    startAuto();
+        dots.forEach(dot => {
+            dot.addEventListener('click', () => {
+                const i = Number(dot.dataset.index || 0);
+                goTo(i);
+                startAuto();
+            });
+        });
 
-    // pause on hover (optional)
-    const hero = document.getElementById('hero-slider');
-    hero?.addEventListener('mouseenter', stopAuto);
-    hero?.addEventListener('mouseleave', startAuto);
-})();
+        // init
+        goTo(0);
+        startAuto();
+
+        // pause on hover (optional)
+        const hero = document.getElementById('hero-slider');
+        hero?.addEventListener('mouseenter', stopAuto);
+        hero?.addEventListener('mouseleave', startAuto);
+    })();
 </script>
 @endpush
