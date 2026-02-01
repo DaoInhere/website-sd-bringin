@@ -63,30 +63,32 @@
 
     {{-- Content --}}
     <section class="mx-auto mt-10 max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            {{-- Cards --}}
-            @forelse($posts as $post)
-            <div class="card relative group rounded-2xl bg-white shadow-lg overflow-hidden">
-                <img
-                    src="{{ $post->image_url }}"
-                    class="w-full h-64 object-cover" />
-                <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition duration-300"></div>
-                <div class="absolute bottom-5 left-5 right-5 p-5 text-white text-center opacity-0 group-hover:opacity-100 transition duration-300">
-                    <h3 class="text-lg font-bold text-white">{{ Str::limit($post->title, 50) }}</h3>
-                    <p class="text-sm mt-2">{{ $post->category }}</p>
-                    <p class="text-sm mt-2">{{ $post->created_at->diffForHumans() }}</p>
-                    <a href="#" class="mt-4 inline-block bg-sekolah-hijau hover:bg-sekolah-hijau-dark text-white py-2 px-4 rounded-full"
-                        onclick="openModal('{{ $post->title }}', '{{ $post->created_at->translatedFormat('d F Y') }}', '{{ json_encode($post->content) }}', '{{ $post->image_url }}');">
-                        Baca Selengkapnya
-                    </a>
-                </div>
-            </div>
-            @empty
-            <div class="col-12 text-center py-5">
+        @if($posts->isEmpty())
+            <div class="rounded-2xl bg-white p-6 text-center text-gray-600 shadow-sm ring-1 ring-black/5">
                 <div class="alert alert-info d-inline-block">Belum ada berita yang diterbitkan.</div>
             </div>
-            @endforelse
-        </div>
+        @else
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                {{-- Cards --}}
+                @foreach($posts as $post)
+                <div class="card relative group rounded-2xl bg-white shadow-lg overflow-hidden">
+                    <img
+                        src="{{ $post->image_url }}"
+                        class="w-full h-64 object-cover" />
+                    <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition duration-300"></div>
+                    <div class="absolute bottom-5 left-5 right-5 p-5 text-white text-center opacity-0 group-hover:opacity-100 transition duration-300">
+                        <h3 class="text-lg font-bold text-white">{{ Str::limit($post->title, 50) }}</h3>
+                        <p class="text-sm mt-2">{{ $post->category }}</p>
+                        <p class="text-sm mt-2">{{ $post->created_at->diffForHumans() }}</p>
+                        <a href="#" class="mt-4 inline-block bg-sekolah-hijau hover:bg-sekolah-hijau-dark text-white py-2 px-4 rounded-full"
+                            onclick="openModal('{{ $post->title }}', '{{ $post->created_at->translatedFormat('d F Y') }}', '{{ json_encode($post->content) }}', '{{ $post->image_url }}');">
+                            Baca Selengkapnya
+                        </a>
+                    </div>
+                </div>
+                @endforeach
+            </div>
+        @endif
     </section>
 
 </main>

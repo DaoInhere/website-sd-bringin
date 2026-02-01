@@ -171,7 +171,7 @@
                     <div class="relative rounded-2xl overflow-hidden shadow-xl inline-block group bg-gray-50">
                         <img
                             src="{{ $headmaster ? $headmaster->photo_url : asset('asset/nophoto.png') }}"
-                            alt="Kepala Sekolah"
+                            alt="foto Kepala Sekolah"
                             class="max-h-96 w-auto object-contain transition-transform duration-500 group-hover:scale-105">
 
                         <div class="absolute bottom-4 right-4 bg-white/95 backdrop-blur-sm p-3 rounded-xl shadow-md border-l-4 border-sekolah-kuning">
@@ -193,26 +193,26 @@
                 <p class="text-gray-600 mt-4 max-w-2xl mx-auto">Kami menyediakan berbagai program untuk mendukung minat dan bakat siswa.</p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                @if($extracurriculars->isEmpty())
+            @if($extracurriculars->isEmpty())
                 <div class="rounded-2xl bg-white p-6 text-center text-gray-600 shadow-sm ring-1 ring-black/5">
                     Belum ada data.
                 </div>
-                @else
-                <div class="grid grid-cols-2 gap-6">
-                    @foreach($extracurriculars as $extracurricular)
-                    <div class="bg-white overflow-hidden p-8 rounded-2xl shadow-md hover:shadow-xl transition hover:-translate-y-2 border-b-4 border-white hover:border-sekolah-kuning group">
-                        <div class="w-50 h-50 overflow-hidden bg-sekolah-hijau/10 text-sekolah-hijau rounded-full flex items-center justify-center text-3xl mx-auto group-hover:bg-sekolah-hijau group-hover:text-white transition">
-                            <img src="{{ $extracurricular->image_url }}" class="w-full h-full object-contain">
+            @else
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="grid grid-cols-2 gap-6">
+                        @foreach($extracurriculars as $extracurricular)
+                        <div class="bg-white overflow-hidden p-8 rounded-2xl shadow-md hover:shadow-xl transition hover:-translate-y-2 border-b-4 border-white hover:border-sekolah-kuning group">
+                            <div class="w-50 h-50 overflow-hidden bg-sekolah-hijau/10 text-sekolah-hijau rounded-full flex items-center justify-center text-3xl mx-auto group-hover:bg-sekolah-hijau group-hover:text-white transition">
+                                <img src="{{ $extracurricular->image_url }}" class="w-full h-full object-contain">
+                            </div>
+                            <div class="mt-4">
+                                <h3 class="text-xl font-bold text-center mb-3">{{ $extracurricular->subject }}</h3>
+                                <p class="text-gray-600 text-center text-sm">{{ $extracurricular->description }}</p>
+                            </div>
                         </div>
-                        <div class="mt-4">
-                            <h3 class="text-xl font-bold text-center mb-3">{{ $extracurricular->subject }}</h3>
-                            <p class="text-gray-600 text-center text-sm">{{ $extracurricular->description }}</p>
-                        </div>
+                        @endforeach
                     </div>
-                    @endforeach
                 </div>
-            </div>
             @endif
         </div>
     </section>

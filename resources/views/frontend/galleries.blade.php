@@ -28,32 +28,34 @@
 
     {{-- CONTENT --}}
     <section class="mx-auto mt-10 max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            @forelse ($galleries as $gallery)
-                <div class="relative group overflow-hidden rounded-lg">
-                    <img 
-                        src="{{ $gallery->photo_url }}"
-                        alt="{{ $gallery->title }}"
-                        class="w-full h-64 object-cover rounded-lg transition-transform duration-300 transform group-hover:scale-105"
-                    />
-                    <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex justify-center items-center">
-                        <div class="text-center text-white">
-                            <h3 class="text-xl font-semibold text-white">{{ $gallery->title }}</h3>
-                            <p class="text-sm mt-2">{{ $gallery->activityDate->translatedFormat('d F Y') }}</p>
-                            <a href="#" 
-                               class="mt-4 inline-block bg-sekolah-hijau hover:bg-sekolah-hijau-dark text-white py-2 px-4 rounded-full"
-                               onclick="openModal('{{ $gallery->title }}', '{{ $gallery->description }}', '{{ $gallery->photo_url }}');">
-                                Baca Selengkapnya
-                            </a>
+        @if($galleries->isEmpty())
+            <div class="rounded-2xl bg-white p-6 text-center text-gray-600 shadow-sm ring-1 ring-black/5">
+                Belum ada data galeri yang diinput.
+            </div>
+        @else
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                @foreach ($galleries as $gallery)
+                    <div class="relative group overflow-hidden rounded-lg">
+                        <img 
+                            src="{{ $gallery->photo_url }}"
+                            alt="{{ $gallery->title }}"
+                            class="w-full h-64 object-cover rounded-lg transition-transform duration-300 transform group-hover:scale-105"
+                        />
+                        <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex justify-center items-center">
+                            <div class="text-center text-white">
+                                <h3 class="text-xl font-semibold text-white">{{ $gallery->title }}</h3>
+                                <p class="text-sm mt-2">{{ $gallery->activityDate->translatedFormat('d F Y') }}</p>
+                                <a href="#" 
+                                class="mt-4 inline-block bg-sekolah-hijau hover:bg-sekolah-hijau-dark text-white py-2 px-4 rounded-full"
+                                onclick="openModal('{{ $gallery->title }}', '{{ $gallery->description }}', '{{ $gallery->photo_url }}');">
+                                    Baca Selengkapnya
+                                </a>
+                            </div>
                         </div>
                     </div>
-                </div>
-            @empty
-                <div class="rounded-2xl bg-white p-6 text-center text-gray-600 shadow-sm ring-1 ring-black/5">
-                    Belum ada data galeri yang diinput.
-                </div>
-            @endforelse
-        </div>
+                @endforeach
+            </div>
+        @endif
     </section>
 
 </main>
