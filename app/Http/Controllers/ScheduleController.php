@@ -12,9 +12,22 @@ class ScheduleController extends Controller
     // 1. DAFTAR JADWAL
     public function index()
     {
-        $schedules = Schedule::orderBy('hour')->paginate(15);
+        $sort = request('sort', 'id');
+        $dir  = request('dir', 'desc');
+
+        $allowed = ['id', 'hour', 'day', 'subject', 'class', 'type', 'uniform', 'curriculum'];
+
+        if (!in_array($sort, $allowed)) $sort = 'id';
+        if (!in_array($dir, ['asc', 'desc'])) $dir = 'desc';
+
+        $schedules = Schedule::query()
+            ->orderBy($sort, $dir)
+            ->paginate(10)
+            ->withQueryString();
+
         return view('schedules.index', compact('schedules'));
     }
+
 
     // 2. FORM TAMBAH
     public function create()
@@ -83,7 +96,7 @@ class ScheduleController extends Controller
 
         // LOGIKA GANTI GAMBAR
         if ($request->hasFile('image')) {
-            
+
             // Upload gambar baru
             $imagePath = $request->file('image')->store('schedules', 'public');
 
@@ -102,7 +115,6 @@ class ScheduleController extends Controller
                 'image' => $imagePath,
                 'description' => $request->description,
             ]);
-
         } else {
             $schedule->update([
                 'hour'    => $request->hour,
@@ -129,5 +141,3 @@ class ScheduleController extends Controller
         return redirect()->route('schedules.index')->with(['success' => 'Data Jadwal Berhasil Dihapus!']);
     }
 }
-
-

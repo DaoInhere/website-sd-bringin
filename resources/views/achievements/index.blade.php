@@ -32,40 +32,46 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach($achievements as $achievement)
-                                <tr class="border-b border-gray-200 hover:bg-gray-50">
-                                    <td class="border border-gray-300 p-3">
-                                        <img src="{{ $achievement->image_url }}" style="width: 80px; height: 80px; object-fit: cover; border-radius: 4px;">
-                                    </td>
-                                    <td class="border border-gray-300 p-3 font-bold">{{ $achievement->title }}</td>
-                                    <td class="border border-gray-300 p-3">{{ $achievement->category }}</td>
-                                    <td class="border border-gray-300 p-3">{{ $achievement->level }}</td>
-                                    <td class="border border-gray-300 p-3">{{ $achievement->position }}</td>
-                                    <td class="border border-gray-300 p-3 text-sm">
-                                        {{ $achievement->date->translatedFormat('d F Y') }}
-                                    </td>
-                                    <td class="border border-gray-300 p-3 text-sm">
-                                        {{ Str::limit($achievement->description, 50) }}
-                                    </td>
-                                    <td class="border border-gray-300 p-3">
-                                        <div class="flex items-center justify-center gap-2">
-                                            <a href="{{ route('achievements.edit', $achievement->id) }}" 
-                                               class="text-amber-600 hover:text-amber-800 font-medium text-sm border border-amber-600 px-3 py-1 rounded">
-                                                Edit
-                                            </a>
-                                            
-                                            <form onsubmit="return confirm('Yakin hapus data ini?');" action="{{ route('achievements.destroy', $achievement->id) }}" method="POST" class="inline">
-                                                @csrf
-                                                @method('DELETE')
-                                                <button type="submit" 
-                                                        class="text-red-600 hover:text-red-800 font-medium text-sm border border-red-600 px-3 py-1 rounded">
-                                                    Hapus
-                                                </button>
-                                            </form>
-                                        </div>
-                                    </td>
-                                </tr>
-                                @endforeach
+                                @forelse($achievements as $achievement)
+                                    <tr class="border-b border-gray-200 hover:bg-gray-50">
+                                        <td class="border border-gray-300 p-3">
+                                            <img src="{{ $achievement->image_url }}" style="width: 80px; height: 80px; object-fit: cover; border-radius: 4px;">
+                                        </td>
+                                        <td class="border border-gray-300 p-3 font-bold">{{ $achievement->title }}</td>
+                                        <td class="border border-gray-300 p-3">{{ $achievement->category }}</td>
+                                        <td class="border border-gray-300 p-3">{{ $achievement->level }}</td>
+                                        <td class="border border-gray-300 p-3">{{ $achievement->position }}</td>
+                                        <td class="border border-gray-300 p-3 text-sm">
+                                            {{ $achievement->date->translatedFormat('d F Y') }}
+                                        </td>
+                                        <td class="border border-gray-300 p-3 text-sm">
+                                            {{ Str::limit($achievement->description, 50) }}
+                                        </td>
+                                        <td class="border border-gray-300 p-3">
+                                            <div class="flex items-center justify-center gap-2">
+                                                <a href="{{ route('achievements.edit', $achievement->id) }}" 
+                                                class="text-amber-600 hover:text-amber-800 font-medium text-sm border border-amber-600 px-3 py-1 rounded">
+                                                    Edit
+                                                </a>
+                                                
+                                                <form onsubmit="return confirm('Yakin hapus data ini?');" action="{{ route('achievements.destroy', $achievement->id) }}" method="POST" class="inline">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" 
+                                                            class="text-red-600 hover:text-red-800 font-medium text-sm border border-red-600 px-3 py-1 rounded">
+                                                        Hapus
+                                                    </button>
+                                                </form>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                @empty
+                                    <tr>
+                                        <td colspan="9" class="border border-gray-300 p-8 text-center text-gray-500 italic">
+                                            Belum ada data Prestasi.
+                                        </td>
+                                    </tr>
+                                @endforelse
                             </tbody>
                         </table>
                     </div>
