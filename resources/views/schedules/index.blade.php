@@ -61,7 +61,7 @@
                     <div class="flex flex-wrap items-center gap-3">
                         {{-- tombol tambah (TETAP ADA) --}}
                         <a href="{{ route('schedules.create') }}"
-                            class="inline-flex items-center justify-center rounded-xl bg-emerald-600 px-4 py-2.5 text-sm font-bold text-white shadow-sm hover:bg-emerald-700 transition">
+                            style="background-color: #16a34a; color: white; padding: 10px 20px; border-radius: 5px; text-decoration: none; display: inline-block; font-weight: bold;">
                             + Tambah Jadwal Baru
                         </a>
 
@@ -112,7 +112,7 @@
                 </div>
 
                 {{-- TABLE --}}
-                <div class="overflow-x-auto rounded-xl ring-1 ring-gray-200">
+                <div class="overflow-x-auto  ring-1 ring-gray-200">
                     <table class="w-full border-collapse">
                         <thead class="bg-gray-50 text-gray-700 text-sm">
                             <tr>
