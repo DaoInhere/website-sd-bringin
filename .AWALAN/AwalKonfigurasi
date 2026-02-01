@@ -24,8 +24,10 @@ APP_NAME="Sistem Informasi SDN Beringin 01 Kota Semarang"
 php artisan migrate:fresh --seed
 
 // Tambahan
-php artisan config:clear
 php artisan cache:clear
+php artisan config:clear
+php artisan view:clear
+php artisan optimize:clear
 
 // Testing
 1. Menjalankan seeder tertentu
@@ -33,3 +35,6 @@ php artisan db:seed --class=NamaSeeder
 
 > Contoh:
 php artisan db:seed --class=UserSeeder
+
+php artisan make:notification ResetPasswordNotification
+php artisan vendor:publish --tag=laravel-notifications
