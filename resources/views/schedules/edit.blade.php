@@ -59,8 +59,9 @@
                     </div>
 
                     <div class="mb-4">
-                        <x-required-label class="block text-gray-700 font-bold mb-2">Seragam</x-required-label>
-                        <input type="text" name="uniform" value="{{ old('uniform', $schedule->uniform) }}" class="w-full border p-2 rounded" placeholder="Contoh: Merah Putih / Batik / Pramuka" required>
+                        <label class="block text-gray-700 font-bold mb-2">Seragam</label>
+                        <input type="text" name="uniform" value="{{ old('uniform', $schedule->uniform) }}" class="w-full border p-2 rounded" placeholder="Contoh: Merah Putih / Batik / Pramuka">
+                        <p class="text-sm text-gray-500 mt-1">Catatan: Jika tidak ada seragam, biarkan kolom ini kosong.</p> 
                     </div>
 
                     <div class="mb-4">
@@ -122,8 +123,9 @@
                     </div>
 
                     <div class="mb-4">
-                        <x-required-label class="block text-gray-700 font-bold mb-2">Seragam</x-required-label>
-                        <input type="text" name="uniform" value="{{ old('uniform', $schedule->uniform) }}" class="w-full border p-2 rounded" placeholder="Contoh: Merah Putih / Batik / Pramuka" required>
+                        <label class="block text-gray-700 font-bold mb-2">Seragam</label>
+                        <input type="text" name="uniform" value="{{ old('uniform', $schedule->uniform) }}" class="w-full border p-2 rounded" placeholder="Contoh: Merah Putih / Batik / Pramuka">
+                        <p class="text-sm text-gray-500 mt-1">Catatan: Jika tidak ada seragam, biarkan kolom ini kosong.</p> 
                     </div>
 
                     <button type="submit" 
@@ -194,8 +196,9 @@
                     </div>
 
                     <div class="mb-4">
-                        <x-required-label class="block text-gray-700 font-bold mb-2">Seragam</x-required-label>
-                        <input type="text" name="uniform" value="{{ old('uniform', $schedule->uniform) }}" class="w-full border p-2 rounded" placeholder="Contoh: Merah Putih / Batik / Pramuka" required>
+                        <label class="block text-gray-700 font-bold mb-2">Seragam</label>
+                        <input type="text" name="uniform" value="{{ old('uniform', $schedule->uniform) }}" class="w-full border p-2 rounded" placeholder="Contoh: Merah Putih / Batik / Pramuka">
+                        <p class="text-sm text-gray-500 mt-1">Catatan: Jika tidak ada seragam, biarkan kolom ini kosong.</p>    
                     </div>
 
                     <button type="submit" 

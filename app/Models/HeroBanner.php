@@ -14,6 +14,7 @@ class HeroBanner extends Model
         'image',
         'title',
         'subtitle',
+        'dim',
         'firstButton',
         'firstButtonLabel',
         'secondButton',

@@ -79,7 +79,7 @@
 
                     <div class="flex items-center">
                         <button type="submit" 
-                            style="background-color: #16a34a; color: white; padding: 10px 25px; border-radius: 5px; text-decoration: none; display: inline-block; font-weight: bold;">
+                            style="background-color: #d97706; color: white; padding: 10px 20px; border-radius: 5px; border: none; cursor: pointer;">
                             Perbarui Data
                         </button>
                         <a href="{{ route('achievements.index') }}" class="text-gray-600 ml-4 hover:underline">

@@ -52,7 +52,7 @@
                     </div>
 
                     <div class="flex items-center gap-2">
-                        <button type="submit"  style="background-color: #16a34a; color: white; padding: 10px 20px; border-radius: 5px; text-decoration: none; display: inline-block;">
+                        <button type="submit" style="background-color: #d97706; color: white; padding: 10px 20px; border-radius: 5px; border: none; cursor: pointer;">
                             Perbarui Berita
                         </button>
                         <a href="{{ route('posts.index') }}" class="text-gray-600 hover:underline">Batal</a>

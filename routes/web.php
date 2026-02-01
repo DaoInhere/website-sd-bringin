@@ -10,7 +10,9 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\ScheduleController; 
 use App\Http\Controllers\TeacherController;  
 use App\Http\Controllers\AchievementController;
+use App\Http\Controllers\HeroBannerController;
 use App\Http\Controllers\MailTestingController;
+use App\Models\HeroBanner;
 
 // 1. HALAMAN DEPAN (HOME)
 Route::get('/', [HomeController::class, 'index'])->name('home');
@@ -53,6 +55,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('teachers', TeacherController::class);  // Guru
     Route::resource('schedules', ScheduleController::class); // JadwalSS
     Route::resource('achievements', AchievementController::class); // Prestasi
+    Route::resource('herobanners', HeroBannerController::class); // Banner Beranda
 });
 
 require __DIR__.'/auth.php';

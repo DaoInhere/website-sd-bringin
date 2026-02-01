@@ -14,12 +14,13 @@ return new class extends Migration
         Schema::create('hero_banners', function (Blueprint $table) {
             $table->id();
             $table->string('image');
-            $table->string('title');
-            $table->string('subtitle');
-            $table->string('firstButton');
-            $table->string('firstButtonLabel');
-            $table->string('secondButton');
-            $table->string('secondButtonLabel');
+            $table->string('title')->nullable();
+            $table->string('subtitle')->nullable();
+            $table->boolean('dim')->default(false);
+            $table->string('firstButton')->nullable();
+            $table->string('firstButtonLabel')->nullable();
+            $table->string('secondButton')->nullable();
+            $table->string('secondButtonLabel')->nullable();
             $table->timestamps();
         });
     }
