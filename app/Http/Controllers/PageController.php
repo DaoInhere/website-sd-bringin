@@ -34,6 +34,10 @@ class PageController extends Controller
         return view('frontend.contact');
     }
 
+    public function syarat() {
+        return view('frontend.syarat');
+    }
+
     // === 2. MENU LAINNYA ===
     public function teachers() {
         $teachers = Teacher::all();

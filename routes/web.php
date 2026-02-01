@@ -24,6 +24,7 @@ Route::get('/profil/visi-misi', [PageController::class, 'visi'])->name('public.v
 Route::get('/profil/struktur', [PageController::class, 'struktur'])->name('public.struktur');
 Route::get('/profil/sarana', [PageController::class, 'sarana'])->name('public.sarana');
 Route::get('/kontak', [PageController::class, 'kontak'])->name('public.kontak');
+Route::get('/syarat-pendaftaran', [PageController::class, 'syarat'])->name('public.syarat');
 
 // Menu Informasi & Galeri & Berita
 Route::get('/kesiswaan/ekstrakurikuler', [PageController::class, 'extracurriculars'])->name('public.extracurriculars');

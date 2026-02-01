@@ -6,13 +6,19 @@ php artisan serve
 php artisan storage:link
 
 // File .env (Cukup Sekali)
-// Ubah bagian ini
+> Ubah bagian ini
 APP_LOCALE=en
 APP_FAKER_LOCALE=en_US
 
-// Menjadi ini
+> Menjadi ini
 APP_LOCALE=id
 APP_FAKER_LOCALE=id_ID
+
+> Ubah Bagian ini
+APP_NAME=Laravel
+
+> Menjadi ini
+APP_NAME="Sistem Informasi SDN Beringin 01 Kota Semarang"
 
 // Migrasi & Seeder
 php artisan migrate:fresh --seed
@@ -20,3 +26,10 @@ php artisan migrate:fresh --seed
 // Tambahan
 php artisan config:clear
 php artisan cache:clear
+
+// Testing
+1. Menjalankan seeder tertentu
+php artisan db:seed --class=NamaSeeder
+
+> Contoh:
+php artisan db:seed --class=UserSeeder

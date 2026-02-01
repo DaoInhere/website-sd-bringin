@@ -95,7 +95,7 @@
                                 class="bg-sekolah-hijau hover:bg-sekolah-hijau-dark text-white font-bold py-3 px-8 rounded-xl transition duration-300 uppercase tracking-wide shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-white/70">
                                 Daftar Sekarang
                             </a>
-                            <a href="{{ url('/ppdb/syarat') }}"
+                            <a href="{{ url('/syarat-pendaftaran') }}"
                                 class="bg-transparent border-2 border-white text-white hover:bg-white hover:text-gray-900 font-bold py-3 px-8 rounded-xl transition duration-300 uppercase tracking-wide shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-white/70">
                                 Syarat Pendaftaran
                             </a>
