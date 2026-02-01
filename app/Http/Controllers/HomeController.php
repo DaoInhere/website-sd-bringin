@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\HeroBanner; // Model Hero Banner
 use Illuminate\Http\Request;
 use App\Models\Teacher; // Model Guru
 use App\Models\Gallery; // Model Galeri
@@ -13,6 +14,7 @@ class HomeController extends Controller
     public function index()
     {
         $posts = Post::latest()->take(3)->get();
+        $herobanners = HeroBanner::oldest()->get();
 
         // 2. Ambil 6 Foto Galeri Terbaru
         $galleries = Gallery::latest()->take(6)->get();
@@ -24,6 +26,6 @@ class HomeController extends Controller
         $extracurriculars = Schedule::where('type', 'Ekstrakurikuler')->get();
         
         // Kirim semua data ke halaman depan
-        return view('home', compact('posts', 'galleries', 'teachers', 'headmaster', 'extracurriculars'));
+        return view('home', compact('posts', 'herobanners', 'galleries', 'teachers', 'headmaster', 'extracurriculars'));
     }
 }

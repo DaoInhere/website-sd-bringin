@@ -3,126 +3,60 @@
 @section('content')
 <main class="bg-white">
     {{-- HERO SLIDER --}}
-    <section id="hero-slider" class="relative h-[520px] sm:h-[600px] overflow-hidden group bg-gray-100">
+<section id="hero-slider" class="relative h-[520px] sm:h-[600px] overflow-hidden group bg-gray-100">
+    <div class="h-full overflow-hidden">
         <div id="slider-track" class="flex h-full transition-transform duration-700 ease-in-out">
-            {{-- Slide 1 --}}
-            <div class="min-w-full relative h-full bg-cover bg-center"
-                style="background-image: url('{{ asset('asset/galeri foto.jpg') }}');">
-                <div class="absolute inset-0 bg-black/60"></div>
+            @if($herobanners->isEmpty())
+                <div class="slide min-w-full relative h-full bg-cover bg-center flex items-center justify-center bg-gray-200">
+                    <div class="text-gray-600">Belum ada data.</div>
+                </div>
+            @else
+                @foreach($herobanners as $herobanner)
+                <div class="slide min-w-full relative h-full bg-cover bg-center"
+                    style="background-image: url('{{ $herobanner->image_url }}');">
+                    <div class="absolute inset-0 bg-black/60"></div>
 
-                <div class="absolute inset-0 flex items-center justify-center text-center px-4">
-                    <div class="max-w-4xl">
-                        <div class="mb-4">
-                            <i class="fas fa-school text-5xl text-sekolah-kuning drop-shadow-lg"></i>
-                        </div>
+                    <div class="absolute inset-0 flex items-center justify-center text-center px-4">
+                        <div class="max-w-4xl">
 
-                        <h3 class="text-sekolah-hijau-light font-bold tracking-widest uppercase mb-2 text-lg md:text-xl">
-                            SELAMAT DATANG DI
-                        </h3>
+                            <h3 class="text-sekolah-hijau-light font-bold tracking-widest uppercase mb-2 text-lg md:text-xl">
+                                {{ $herobanner->title }}
+                            </h3>
 
-                        <h1 class="text-white text-4xl md:text-6xl font-bold mb-8 leading-tight drop-shadow-md">
-                            WEBSITE RESMI <br> SD NEGERI 1 BRINGIN
-                        </h1>
-
-                        <div class="flex flex-col sm:flex-row justify-center gap-4">
-                            <a href="{{ url('/galeri') }}"
-                                class="bg-sekolah-hijau hover:bg-sekolah-hijau-dark text-white font-bold py-3 px-8 rounded-xl transition duration-300 uppercase tracking-wide shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-white/70">
-                                Galeri Foto
-                            </a>
-                            <a href="{{ url('/profil/sejarah') }}"
-                                class="bg-transparent border-2 border-white text-white hover:bg-white hover:text-gray-900 font-bold py-3 px-8 rounded-xl transition duration-300 uppercase tracking-wide shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-white/70">
-                                Detail
-                            </a>
+                            <h1 class="text-white text-4xl md:text-6xl font-bold mb-8 leading-tight drop-shadow-md">
+                                {{ $herobanner->subtitle }}
+                            </h1>
                         </div>
                     </div>
                 </div>
-            </div>
-
-            {{-- Slide 2 --}}
-            <div class="min-w-full relative h-full bg-cover bg-center"
-                style="background-image: url('{{ asset('asset/gerbang sdn bringin 01.jpg') }}');">
-                <div class="absolute inset-0 bg-black/60"></div>
-
-                <div class="absolute inset-0 flex items-center justify-center text-center px-4">
-                    <div class="max-w-4xl">
-                        <div class="mb-4">
-                            <i class="fas fa-graduation-cap text-5xl text-sekolah-kuning drop-shadow-lg"></i>
-                        </div>
-
-                        <h3 class="text-sekolah-hijau-light font-bold tracking-widest uppercase mb-2 text-lg md:text-xl">
-                            VISI & MISI SEKOLAH
-                        </h3>
-
-                        <h1 class="text-white text-4xl md:text-6xl font-bold mb-8 leading-tight drop-shadow-md">
-                            MENCETAK GENERASI CERDAS <br> DAN BERAKHLAK MULIA
-                        </h1>
-
-                        <div class="flex flex-col sm:flex-row justify-center gap-4">
-                            <a href="{{ url('/profil/visi-misi') }}"
-                                class="bg-sekolah-hijau hover:bg-sekolah-hijau-dark text-white font-bold py-3 px-8 rounded-xl transition duration-300 uppercase tracking-wide shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-white/70">
-                                Profil Sekolah
-                            </a>
-                            <a href="{{ url('/kontak') }}"
-                                class="bg-transparent border-2 border-white text-white hover:bg-white hover:text-gray-900 font-bold py-3 px-8 rounded-xl transition duration-300 uppercase tracking-wide shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-white/70">
-                                Hubungi Kami
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            {{-- Slide 3 --}}
-            <div class="min-w-full relative h-full bg-cover bg-center"
-                style="background-image: url('{{ asset('asset/seragam luri sdn bringin 01.jpg') }}');">
-                <div class="absolute inset-0 bg-black/60"></div>
-
-                <div class="absolute inset-0 flex items-center justify-center text-center px-4">
-                    <div class="max-w-4xl">
-                        <div class="mb-4">
-                            <i class="fas fa-users text-5xl text-sekolah-kuning drop-shadow-lg"></i>
-                        </div>
-
-                        <h3 class="text-sekolah-hijau-light font-bold tracking-widest uppercase mb-2 text-lg md:text-xl">
-                            PPDB ONLINE 2026
-                        </h3>
-
-                        <h1 class="text-white text-4xl md:text-6xl font-bold mb-8 leading-tight drop-shadow-md">
-                            BERGABUNGLAH BERSAMA <br> KELUARGA BESAR KAMI
-                        </h1>
-
-                        <div class="flex flex-col sm:flex-row justify-center gap-4">
-                            <a href="https://arsip.siap-ppdb.com/"
-                                class="bg-sekolah-hijau hover:bg-sekolah-hijau-dark text-white font-bold py-3 px-8 rounded-xl transition duration-300 uppercase tracking-wide shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-white/70">
-                                Daftar Sekarang
-                            </a>
-                            <a href="{{ url('/syarat-pendaftaran') }}"
-                                class="bg-transparent border-2 border-white text-white hover:bg-white hover:text-gray-900 font-bold py-3 px-8 rounded-xl transition duration-300 uppercase tracking-wide shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-white/70">
-                                Syarat Pendaftaran
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+                @endforeach
+            @endif
         </div>
+    </div>
 
-        {{-- NAV BUTTONS --}}
-        <button id="prevBtn" type="button" aria-label="Sebelumnya"
-            class="absolute top-1/2 left-2 md:left-6 -translate-y-1/2 bg-white/90 w-12 h-12 rounded-xl flex items-center justify-center text-gray-800 hover:bg-sekolah-hijau hover:text-white transition duration-300 shadow-lg opacity-0 group-hover:opacity-100 z-20">
-            <i class="fas fa-chevron-left text-xl"></i>
-        </button>
+    {{-- NAV BUTTONS --}}
+    <button id="prevBtn" type="button" aria-label="Sebelumnya"
+        class="absolute top-1/2 left-2 md:left-6 -translate-y-1/2 bg-white/90 w-12 h-12 rounded-xl flex items-center justify-center text-gray-800 hover:bg-sekolah-hijau hover:text-white transition duration-300 shadow-lg opacity-0 group-hover:opacity-100 z-20">
+        <i class="fas fa-chevron-left text-xl" aria-hidden="true"></i>
+    </button>
 
-        <button id="nextBtn" type="button" aria-label="Berikutnya"
-            class="absolute top-1/2 right-2 md:right-6 -translate-y-1/2 bg-white/90 w-12 h-12 rounded-xl flex items-center justify-center text-gray-800 hover:bg-sekolah-hijau hover:text-white transition duration-300 shadow-lg opacity-0 group-hover:opacity-100 z-20">
-            <i class="fas fa-chevron-right text-xl"></i>
-        </button>
+    <button id="nextBtn" type="button" aria-label="Berikutnya"
+        class="absolute top-1/2 right-2 md:right-6 -translate-y-1/2 bg-white/90 w-12 h-12 rounded-xl flex items-center justify-center text-gray-800 hover:bg-sekolah-hijau hover:text-white transition duration-300 shadow-lg opacity-0 group-hover:opacity-100 z-20">
+        <i class="fas fa-chevron-right text-xl" aria-hidden="true"></i>
+    </button>
 
-        {{-- DOTS --}}
-        <div class="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-3 z-20">
-            <button class="slider-dot w-3 h-3 rounded-full bg-white/50 hover:bg-white transition-all duration-300" data-index="0" aria-label="Slide 1"></button>
-            <button class="slider-dot w-3 h-3 rounded-full bg-white/50 hover:bg-white transition-all duration-300" data-index="1" aria-label="Slide 2"></button>
-            <button class="slider-dot w-3 h-3 rounded-full bg-white/50 hover:bg-white transition-all duration-300" data-index="2" aria-label="Slide 3"></button>
-        </div>
-    </section>
+    {{-- DOTS (dinamis) --}}
+    @php
+        $dotCount = $herobanners->isEmpty() ? 1 : $herobanners->count();
+    @endphp
+
+    <div class="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-3 z-20" id="slider-dots">
+        @for($i = 0; $i < $dotCount; $i++)
+            <button class="slider-dot w-3 h-3 rounded-full bg-white/50 hover:bg-white transition-all duration-300"
+                data-index="{{ $i }}" aria-label="Slide {{ $i + 1 }}" aria-current="{{ $i === 0 ? 'true' : 'false' }}"></button>
+        @endfor
+    </div>
+</section>
 
     {{-- 3 VALUE CARDS --}}
     <section class="relative -mt-16 z-20 px-4">
@@ -289,68 +223,82 @@
 </main>
 @endsection
 
+
 @push('scripts')
 <script>
-    (function() {
-        const track = document.getElementById('slider-track');
-        const slides = track ? Array.from(track.children) : [];
-        const dots = Array.from(document.querySelectorAll('.slider-dot'));
-        const prevBtn = document.getElementById('prevBtn');
-        const nextBtn = document.getElementById('nextBtn');
+(function() {
+    const track = document.getElementById('slider-track');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    const dots = () => Array.from(document.querySelectorAll('.slider-dot'));
+    const slides = () => track ? Array.from(track.querySelectorAll('.slide')) : [];
 
-        if (!track || slides.length === 0) return;
+    if (!track) return;
 
-        let index = 0;
-        let timer = null;
+    let index = 0;
+    let timer = null;
 
-        function setActiveDot(i) {
-            dots.forEach((d, idx) => {
-                d.classList.toggle('bg-white', idx === i);
-                d.classList.toggle('bg-white/50', idx !== i);
-            });
-        }
-
-        function goTo(i) {
-            index = (i + slides.length) % slides.length;
-            track.style.transform = `translateX(-${index * 100}%)`;
-            setActiveDot(index);
-        }
-
-        function startAuto() {
-            stopAuto();
-            timer = setInterval(() => goTo(index + 1), 6000);
-        }
-
-        function stopAuto() {
-            if (timer) clearInterval(timer);
-            timer = null;
-        }
-
-        prevBtn?.addEventListener('click', () => {
-            goTo(index - 1);
-            startAuto();
+    function setActiveDot(i) {
+        dots().forEach((d, idx) => {
+            if (idx === i) {
+                d.classList.add('bg-white');
+                d.classList.remove('bg-white/50');
+                d.setAttribute('aria-current', 'true');
+            } else {
+                d.classList.remove('bg-white');
+                d.classList.add('bg-white/50');
+                d.setAttribute('aria-current', 'false');
+            }
         });
-        nextBtn?.addEventListener('click', () => {
-            goTo(index + 1);
-            startAuto();
-        });
+    }
 
-        dots.forEach(dot => {
-            dot.addEventListener('click', () => {
-                const i = Number(dot.dataset.index || 0);
-                goTo(i);
-                startAuto();
-            });
-        });
+    function goTo(i) {
+        const s = slides();
+        if (s.length === 0) return;
+        index = (i + s.length) % s.length;
+        track.style.transform = `translateX(-${index * 100}%)`;
+        setActiveDot(index);
+    }
 
-        // init
-        goTo(0);
+    function startAuto() {
+        stopAuto();
+        const s = slides();
+        if (s.length <= 1) return; // tidak auto-rotate kalau 0 atau 1 slide
+        timer = setInterval(() => goTo(index + 1), 6000);
+    }
+
+    function stopAuto() {
+        if (timer) clearInterval(timer);
+        timer = null;
+    }
+
+    prevBtn?.addEventListener('click', () => {
+        goTo(index - 1);
         startAuto();
+    });
 
-        // pause on hover (optional)
-        const hero = document.getElementById('hero-slider');
-        hero?.addEventListener('mouseenter', stopAuto);
-        hero?.addEventListener('mouseleave', startAuto);
-    })();
+    nextBtn?.addEventListener('click', () => {
+        goTo(index + 1);
+        startAuto();
+    });
+
+    // dots: attach events (dots are server-rendered)
+    dots().forEach(dot => {
+        dot.addEventListener('click', () => {
+            const i = Number(dot.dataset.index || 0);
+            goTo(i);
+            startAuto();
+        });
+    });
+
+    // init
+    goTo(0);
+    startAuto();
+
+    // pause on hover
+    const hero = document.getElementById('hero-slider');
+    hero?.addEventListener('mouseenter', stopAuto);
+    hero?.addEventListener('mouseleave', startAuto);
+})();
 </script>
 @endpush

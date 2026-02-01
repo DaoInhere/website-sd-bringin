@@ -8,6 +8,7 @@ use App\Models\Gallery;
 use App\Models\Setting;
 use App\Models\Teacher;
 use App\Models\Category;
+use App\Models\HeroBanner;
 use App\Models\Schedule;
 use Illuminate\Database\Seeder;
 
@@ -24,11 +25,14 @@ class DatabaseSeeder extends Seeder
             ScheduleSeeder::class,
             TeacherSeeder::class,
             AchievementSeeder::class,
+            HeroBannerSeeder::class,
         ]);
         
         // Buat 10 Jadwal Pelajaran
         Schedule::factory()->count(15)->create();
-        
+       
+        // HeroBanner::factory(5)->create();
+
         // Achievement::factory(3)->create();
 
         // Buat Kategori Berita
