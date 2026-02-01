@@ -10,6 +10,7 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\ScheduleController; 
 use App\Http\Controllers\TeacherController;  
 use App\Http\Controllers\AchievementController;
+use App\Http\Controllers\MailTestingController;
 
 // 1. HALAMAN DEPAN (HOME)
 Route::get('/', [HomeController::class, 'index'])->name('home');
@@ -52,11 +53,6 @@ Route::middleware('auth')->group(function () {
     Route::resource('teachers', TeacherController::class);  // Guru
     Route::resource('schedules', ScheduleController::class); // JadwalSS
     Route::resource('achievements', AchievementController::class); // Prestasi
-
-    Route::get('/schedules/create-activity', [ScheduleController::class, 'createActivity'])
-    ->name('schedules.createActivity');
-    Route::get('/schedules/create-extracurricular', [ScheduleController::class, 'createExtracurricular'])
-    ->name('schedules.createExtracurricular');
 });
 
 require __DIR__.'/auth.php';
