@@ -10,7 +10,7 @@ class GalleryFactory extends Factory
     {
         return [
             'title' => $this->faker->sentence(3),
-            'photo' => 'sekolah sd bringin 01 semarang.jpg',
+            'photos' => 'sekolah sd bringin 01 semarang.jpg',
             'description' => $this->faker->paragraph(),
             'activityDate' => now(),
         ];

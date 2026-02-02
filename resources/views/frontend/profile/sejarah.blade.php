@@ -22,7 +22,7 @@
                         Sejarah Sekolah
                     </h2>
                     <p class="mt-3 text-white/90">
-                        SD Negeri Bringin 01 • Kecamatan Ngaliyan • Kota Semarang
+                        Mengenal lebih dekat sejarah SD Negeri Bringin 01 Kota Semarang
                     </p>
                 </div>
             </div>

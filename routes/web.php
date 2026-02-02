@@ -27,7 +27,6 @@ Route::get('/profil/visi-misi', [PageController::class, 'visi'])->name('public.v
 Route::get('/profil/struktur', [PageController::class, 'struktur'])->name('public.struktur');
 Route::get('/profil/sarana', [PageController::class, 'sarana'])->name('public.sarana');
 Route::get('/kontak', [PageController::class, 'kontak'])->name('public.kontak');
-Route::get('/syarat-pendaftaran', [PageController::class, 'syarat'])->name('public.syarat');
 
 // Menu Informasi & Galeri & Berita
 Route::get('/kesiswaan/ekstrakurikuler', [PageController::class, 'extracurriculars'])->name('public.extracurriculars');
@@ -35,6 +34,7 @@ Route::get('/kesiswaan/prestasi', [PageController::class, 'achievements'])->name
 Route::get('/informasi/berita', [PageController::class, 'posts'])->name('public.posts');
 Route::get('/informasi/jadwalkbm', [PageController::class, 'schedules'])->name('public.schedules');
 Route::get('/informasi/guru', [PageController::class, 'teachers'])->name('public.teachers');
+Route::get('/informasi/syarat-pendaftaran', [PageController::class, 'registerRequirements'])->name('public.registerRequirements');
 Route::get('/galeri', [PageController::class, 'galleries'])->name('public.galleries');
 
 // 2. DASHBOARD ADMIN

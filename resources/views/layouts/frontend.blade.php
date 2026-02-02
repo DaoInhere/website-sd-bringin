@@ -15,8 +15,8 @@
     <div class="bg-sekolah-hijau text-white py-2 text-sm hidden md:block">
         <div class="container-sekolah flex justify-between items-center px-4">
             <div class="flex gap-6">
-                <span><i class="fa fa-phone mr-2"></i> (024) 7654-3210</span>
-                <span><i class="fa fa-envelope mr-2"></i> sdn1bringin@email.com</span>
+                <span><i class="fa fa-phone mr-2"></i> (024) 76631105</span>
+                <span><i class="fa fa-envelope mr-2"></i> sdn1bringin@gmail.com</span>
             </div>
             <div class="flex gap-4">
                 <a href="#" class="hover:text-sekolah-kuning transition"><i class="fab fa-facebook"></i></a>
@@ -36,7 +36,8 @@
                     class="w-16 h-16 md:w-20 md:h-20 object-contain"
                 >
                 <div>
-                    <h1 class="text-xl md:text-2xl font-bold text-sekolah-hijau leading-none">SDN 1 BRINGIN</h1>
+                    <h1 class="text-xl md:text-2xl font-bold leading-none">SD Negeri Bringin 01</h1>
+                    <h1 class="text-xs md:text-sm text-gray-400 leading-none">Kota Semarang</h1>
                 </div>
             </div>
 
@@ -78,6 +79,7 @@
                         <li><a href="{{ route('public.posts') }}" class="block px-6 py-3 text-gray-700 hover:text-sekolah-hijau hover:bg-gray-50 transition font-medium border-b border-gray-100">Berita & Pengumuman</a></li>
                         <li><a href="{{ url('/informasi/jadwalkbm') }}" class="block px-6 py-3 text-gray-700 hover:text-sekolah-hijau hover:bg-gray-50 transition font-medium border-b border-gray-100">Jadwal KBM</a></li>
                         <li><a href="{{ route('public.teachers') }}" class="block px-6 py-3 text-gray-700 hover:text-sekolah-hijau hover:bg-gray-50 transition font-medium border-b border-gray-100">Daftar Guru & Staff</a></li>
+                        <li><a href="{{ route('public.registerRequirements') }}" class="block px-6 py-3 text-gray-700 hover:text-sekolah-hijau hover:bg-gray-50 transition font-medium border-b border-gray-100">Syarat Pendaftaran</a></li>
                     </ul>
                 </div>
 
@@ -128,9 +130,9 @@
                     </div>
                     <h5 class="font-bold text-white mb-2">Alamat Sekolah</h5>
                     <p class="leading-relaxed">
-                        Jl. Bringin Raya No. 123,<br>
-                        Kelurahan Ngaliyan, Kecamatan Ngaliyan,<br>
-                        Kota Semarang, Jawa Tengah
+                    Jl. Raya Gondoriyo, Beringin,<br>
+                    Kec. Ngaliyan, Kota Semarang<br>
+                    Prov. Jawa Tengah
                     </p>
                 </div>
                 
@@ -140,8 +142,9 @@
                     </div>
                     <h5 class="font-bold text-white mb-2">Telepon / Fax</h5>
                     <p class="leading-relaxed">
-                        (024) 7654-3210<br>
-                        (024) 7654-3211
+                        (024) 76631105<br>
+                        (024) 76631105
+                        
                     </p>
                 </div>
                 
@@ -149,10 +152,9 @@
                     <div class="text-sekolah-kuning text-2xl mb-4">
                         <i class="fas fa-envelope"></i>
                     </div>
-                    <h5 class="font-bold text-white mb-2">Email & Website</h5>
+                    <h5 class="font-bold text-white mb-2">Email</h5>
                     <p class="leading-relaxed">
-                        sdn1bringin@disdik.semarangkota.go.id<br>
-                        www.sdn1bringin.sch.id
+                        sdn1bringin@gmail.com<br>
                     </p>
                 </div>
             </div>
@@ -166,7 +168,7 @@
                 <a href="#" class="w-10 h-10 bg-sekolah-kuning text-gray-900 flex items-center justify-center rounded hover:bg-sekolah-kuning-dark transition duration-300">
                     <i class="fab fa-instagram"></i>
                 </a>
-                <a href="#" class="w-10 h-10 bg-sekolah-kuning text-gray-900 flex items-center justify-center rounded hover:bg-sekolah-kuning-dark transition duration-300">
+                <a href="https://youtube.com/@anaksd8244?si=gGkODOBj4IP4zbbx" class="w-10 h-10 bg-sekolah-kuning text-gray-900 flex items-center justify-center rounded hover:bg-sekolah-kuning-dark transition duration-300">
                     <i class="fab fa-youtube"></i>
                 </a>
                 <a href="#" class="w-10 h-10 bg-sekolah-kuning text-gray-900 flex items-center justify-center rounded hover:bg-sekolah-kuning-dark transition duration-300">

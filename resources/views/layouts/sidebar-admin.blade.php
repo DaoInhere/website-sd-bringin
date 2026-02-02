@@ -1,12 +1,13 @@
 <aside :class="open ? 'w-64' : 'w-20'" class="bg-white shadow-md transition-all duration-300 ease-in-out flex flex-col border-r border-gray-200 min-h-screen">
     <nav class="flex-1 overflow-y-auto py-4 px-3 space-y-2">
         
-        <div class="flex items-center px-2 mb-6 h-10 overflow-hidden">
+        <div class="flex items-center mb-6 h-10 overflow-hidden">
             <div class="shrink-0 flex items-center justify-center">
                 <x-application-logo class="w-10 h-10 min-w-[40px] text-teal-600" />
             </div>
-            <div x-show="open" x-transition class="ml-3 font-bold text-teal-600 truncate uppercase">
-                SDN 1 BRINGIN
+            <div x-show="open" x-transition class="px-3">
+                <h1 class="text-xs md:text-sm font-bold leading-none">SD Negeri Bringin 01</h1>
+                <h1 class="text-xs md:text-sm text-gray-400 leading-none">Kota Semarang</h1>
             </div>
         </div>
 

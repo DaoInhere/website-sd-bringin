@@ -34,7 +34,7 @@ class PageController extends Controller
         return view('frontend.contact');
     }
 
-    public function syarat() {
+    public function registerRequirements() {
         return view('frontend.syarat');
     }
 
