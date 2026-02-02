@@ -5,15 +5,72 @@
         </h2>
     </x-slot>
 
+    @php
+        $sort = request('sort');
+        $dir  = request('dir', 'asc');
+
+        $toggleSortUrl = function (string $col) use ($sort, $dir) {
+            $nextDir = ($sort === $col && $dir === 'asc') ? 'desc' : 'asc';
+
+            return request()->fullUrlWithQuery([
+                'sort' => $col,
+                'dir'  => $nextDir,
+                'page' => null,
+            ]);
+        };
+
+        $icon = function (string $col) use ($sort, $dir) {
+            if ($sort !== $col) return '↕';
+            return $dir === 'asc' ? '↑' : '↓';
+        };
+
+        $iconClass = function (string $col) use ($sort, $dir) {
+            if ($sort !== $col) return 'text-gray-400';
+            return $dir === 'asc' ? 'text-emerald-600' : 'text-amber-600';
+        };
+    @endphp
+
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg p-6">
-                
-                <div class="mb-4">
-                    <a href="{{ route('galleries.create') }}" 
-                    style="background-color: #16a34a; color: white; padding: 10px 20px; border-radius: 5px; text-decoration: none; display: inline-block; font-weight: bold;">
+
+                {{-- TOP BAR: tombol tambah + search --}}
+                <div class="mb-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+                    <a href="{{ route('galleries.create') }}"
+                       style="background-color: #16a34a; color: white; padding: 10px 20px; border-radius: 5px; text-decoration: none; display: inline-block; font-weight: bold;">
                         + Buat Album Baru
                     </a>
+
+                    <form method="GET" action="{{ url()->current() }}" class="w-full sm:w-auto">
+                        <div class="relative">
+                            <span class="absolute inset-y-0 left-3 flex items-center text-gray-400">
+                                <i class="fas fa-search"></i>
+                            </span>
+
+                            <input
+                                type="text"
+                                name="q"
+                                value="{{ request('q') }}"
+                                placeholder="Cari album..."
+                                class="w-full sm:w-72 pl-10 pr-10 py-2.5 rounded-xl border border-gray-200 bg-white text-sm text-gray-700
+                                       placeholder:text-gray-400 shadow-sm
+                                       focus:outline-none focus:ring-2 focus:ring-sekolah-hijau/30 focus:border-sekolah-hijau transition" />
+
+                            <button type="submit"
+                                    class="absolute inset-y-0 right-2 flex items-center justify-center px-2 text-gray-500 hover:text-sekolah-hijau transition"
+                                    aria-label="Cari">
+                                <i class="fas fa-arrow-right"></i>
+                            </button>
+                        </div>
+
+                        {{-- jaga sort/dir saat search --}}
+                        @if(request('sort'))
+                            <input type="hidden" name="sort" value="{{ request('sort') }}">
+                        @endif
+                        @if(request('dir'))
+                            <input type="hidden" name="dir" value="{{ request('dir') }}">
+                        @endif
+                    </form>
                 </div>
 
                 @if (session('success'))
@@ -26,18 +83,41 @@
                     <table class="w-full border-collapse border border-gray-300">
                         <thead class="bg-gray-100 text-gray-700">
                             <tr>
-                                <th class="border border-gray-300 p-3 text-center">Sampul Album</th>
-                                <th class="border border-gray-300 p-3 text-left">Info Kegiatan</th>
-                                <th class="border border-gray-300 p-3 text-center">Jumlah Foto</th>
+                                {{-- Sampul tidak punya kolom DB -> pakai title untuk toggle ikon --}}
+                                <th class="border border-gray-300 p-3 text-center">
+                                    <a href="{{ $toggleSortUrl('title') }}"
+                                       class="inline-flex items-center gap-1 hover:text-sekolah-hijau transition font-semibold">
+                                        Sampul Album <span class="text-xs {{ $iconClass('title') }}">{{ $icon('title') }}</span>
+                                    </a>
+                                </th>
+
+                                {{-- Info kegiatan: paling masuk akal pakai activityDate --}}
+                                <th class="border border-gray-300 p-3 text-left">
+                                    <a href="{{ $toggleSortUrl('activityDate') }}"
+                                       class="inline-flex items-center gap-1 hover:text-sekolah-hijau transition font-semibold">
+                                        Info Kegiatan <span class="text-xs {{ $iconClass('activityDate') }}">{{ $icon('activityDate') }}</span>
+                                    </a>
+                                </th>
+
+                                {{-- Jumlah foto: belum ada kolom count -> pakai photos (UI saja, backend nanti mapping) --}}
+                                <th class="border border-gray-300 p-3 text-center">
+                                    <a href="{{ $toggleSortUrl('photos') }}"
+                                       class="inline-flex items-center gap-1 hover:text-sekolah-hijau transition font-semibold">
+                                        Jumlah Foto <span class="text-xs {{ $iconClass('photos') }}">{{ $icon('photos') }}</span>
+                                    </a>
+                                </th>
+
                                 <th class="border border-gray-300 p-3 text-center">Aksi</th>
                             </tr>
                         </thead>
+
                         <tbody>
                             @forelse ($galleries as $gallery)
                                 <tr class="hover:bg-gray-50 transition duration-150">
                                     {{-- SAMPUL --}}
                                     <td class="border border-gray-300 p-3 text-center">
-                                        <img src="{{ $gallery->cover_url }}" class="w-24 h-24 object-cover mx-auto rounded shadow-sm">
+                                        <img src="{{ $gallery->cover_url }}"
+                                             class="w-24 h-24 object-cover mx-auto rounded shadow-sm">
                                     </td>
 
                                     {{-- INFO --}}
@@ -61,24 +141,24 @@
                                     {{-- AKSI --}}
                                     <td class="border border-gray-300 p-3 text-center">
                                         <div class="flex flex-col gap-2 items-center">
-                                            {{-- TOMBOL LIHAT ALBUM --}}
-                                            <a href="{{ route('galleries.show', $gallery->id) }}" 
-                                            class="bg-blue-600 text-white text-xs px-3 py-1 rounded hover:bg-blue-700 w-full">
+                                            <a href="{{ route('galleries.show', $gallery->id) }}"
+                                               class="bg-blue-600 text-white text-xs px-3 py-1 rounded hover:bg-blue-700">
                                                 Lihat Album
                                             </a>
-                                            
+
                                             <div class="flex gap-2 w-full justify-center">
-                                                {{-- TOMBOL EDIT --}}
-                                                <a href="{{ route('galleries.edit', $gallery->id) }}" 
-                                                class="text-amber-600 hover:text-amber-800 font-bold text-xs border border-amber-600 px-3 py-1 rounded uppercase tracking-wider transition">
+                                                <a href="{{ route('galleries.edit', $gallery->id) }}"
+                                                   class="text-amber-600 hover:text-amber-800 font-bold text-xs border border-amber-600 px-3 py-1 rounded uppercase tracking-wider transition">
                                                     Edit
                                                 </a>
 
-                                                {{-- TOMBOL HAPUS --}}
-                                                <form action="{{ route('galleries.destroy', $gallery->id) }}" method="POST" onsubmit="return confirm('Yakin hapus album ini?')">
+                                                <form action="{{ route('galleries.destroy', $gallery->id) }}"
+                                                      method="POST"
+                                                      onsubmit="return confirm('Yakin hapus album ini?')">
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit" class="text-red-600 hover:text-red-800 font-bold text-xs border border-red-600 px-3 py-1 rounded uppercase tracking-wider transition">
+                                                    <button type="submit"
+                                                            class="text-red-600 hover:text-red-800 font-bold text-xs border border-red-600 px-3 py-1 rounded uppercase tracking-wider transition">
                                                         Hapus
                                                     </button>
                                                 </form>
@@ -98,7 +178,7 @@
                 </div>
 
                 <div class="mt-4">
-                    {{ $galleries->links() }}
+                    {{ $galleries->appends(request()->only(['q','sort','dir']))->links() }}
                 </div>
             </div>
         </div>
