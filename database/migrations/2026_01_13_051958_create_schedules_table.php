@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('subject');
             $table->string('class')->default('0');
             $table->string('type');
-            $table->string('uniform');
+            $table->string('uniform')->nullable();
             $table->string('curriculum');
             $table->string('description')->nullable();
             $table->string('image')->nullable();

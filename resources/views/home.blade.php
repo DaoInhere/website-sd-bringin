@@ -14,8 +14,12 @@
                 @foreach($herobanners as $herobanner)
                 <div class="slide min-w-full relative h-full bg-cover bg-center"
                     style="background-image: url('{{ $herobanner->image_url }}');">
-                    <div class="absolute inset-0 bg-black/60"></div>
-
+                    @if($herobanner->dim == true)
+                        <div class="absolute inset-0 bg-black/60"></div>
+                    @else
+                        <div class="absolute inset-0"></div>
+                    @endif
+                    
                     <div class="absolute inset-0 flex items-center justify-center text-center px-4">
                         <div class="max-w-4xl">
 

@@ -13,11 +13,11 @@ class Schedule extends Model
     
     protected $fillable = ['hour', 'day', 'subject', 'class', 'type', 'curriculum', 'uniform', 'description', 'image'];
 
-    public function scopeFilter(Builder $query, array $filters): void
-    {
-        $query->when($filters['search'] ?? false, fn ($query, $search) =>
-            $query->where('title', 'like', '%' . $search . '%')
-        );
+    // public function scopeFilter(Builder $query, array $filters): void
+    // {
+        // $query->when($filters['search'] ?? false, fn ($query, $search) =>
+        //     $query->where('title', 'like', '%' . $search . '%')
+        // );
 
         // $query->when(
         //     $filters['category'] ?? false, fn ($query, $category) =>
@@ -28,7 +28,7 @@ class Schedule extends Model
         //     $filters['author'] ?? false, fn ($query, $author) =>
         //     $query->whereHas('author', fn($query) => $query->where('username', $author))
         // );
-    }
+    // }
 
     public function getImageUrlAttribute()
     {
