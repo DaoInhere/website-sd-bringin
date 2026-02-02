@@ -11,28 +11,29 @@ class Gallery extends Model
 
     protected $fillable = [
         'title',
-        'photo',
+        'photos',
         'description',
         'activityDate'
     ];
 
     protected $casts = [
         'activityDate' => 'date',
+        'photos' => 'array', 
     ];
 
-    public function getPhotoUrlAttribute()
+    // Helper: Ambil foto pertama sebagai sampul album
+    public function getCoverUrlAttribute()
     {
-        // Cek 1: Apakah file ada di STORAGE? (storage/app/public/...)
-        if ($this->photo && file_exists(public_path('storage/' . $this->photo))) {
-            return asset('storage/' . $this->photo);
+        // Jika photos ada isinya dan berupa array
+        if (is_array($this->photos) && count($this->photos) > 0) {
+            $firstPhoto = $this->photos[0];
+
+            if (file_exists(public_path('storage/' . $firstPhoto))) {
+                return asset('storage/' . $firstPhoto);
+            }
         }
 
-        // Cek 2: Apakah file ada di PUBLIC ASSETS? (public/assets/...)
-        if ($this->photo && file_exists(public_path('asset/' . $this->photo))) {
-            return asset('asset/' . $this->photo);
-        }
-
-        // Cek 3: Fallback / Default
+        // Fallback / Gambar Default
         return asset('asset/sekolah sd bringin 01 semarang.jpg');
     }
 }

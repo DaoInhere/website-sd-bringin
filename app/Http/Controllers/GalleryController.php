@@ -30,24 +30,34 @@ class GalleryController extends Controller
             'activityDate'=> 'required|date',            
         ]);
 
-        // 2. PROSES SIMPAN (LOOPING)
+        $imagePaths = []; // Wadah untuk menampung nama-nama file
+
+        // 2. PROSES UPLOAD (Kumpulkan path ke array)
         if ($request->hasFile('photos')) {
             foreach ($request->file('photos') as $file) {
-                
                 // Upload file fisik
                 $path = $file->store('galleries', 'public');
-
-                // Simpan ke Database
-                Gallery::create([
-                    'photo'       => $path, 
-                    'title'       => $request->title,
-                    'description' => $request->description,
-                    'activityDate'=> $request->activityDate,
-                ]);
+                // Masukkan path ke wadah
+                $imagePaths[] = $path; 
             }
         }
 
-        return redirect()->route('galleries.index')->with(['success' => 'Foto-foto berhasil diupload!']);
+        // 3. SIMPAN KE DATABASE (Cukup 1 kali create)
+        Gallery::create([
+            'photos'      => $imagePaths, 
+            'title'       => $request->title,
+            'description' => $request->description,
+            'activityDate'=> $request->activityDate,
+        ]);
+
+        return redirect()->route('galleries.index')->with(['success' => 'Album berhasil dibuat!']);
+    }
+
+    // Menampilkan Detail Album (Semua Foto)
+    public function show(string $id)
+    {
+        $gallery = Gallery::findOrFail($id);
+        return view('galleries.show', compact('gallery'));
     }
 
     public function edit(string $id)
@@ -59,40 +69,54 @@ class GalleryController extends Controller
     public function update(Request $request, string $id)
     {
         $request->validate([
-            'photo' => 'image|mimes:jpeg,png,jpg|max:2048',
+            'photos.*' => 'image|mimes:jpeg,png,jpg|max:2048',
             'title' => 'nullable|string|max:255',
             'description' => 'nullable|string|max:255',
             'activityDate' => 'required|date',
         ]);
 
         $gallery = Gallery::findOrFail($id);
+        $dataToUpdate = [
+            'title'       => $request->title,
+            'description' => $request->description,
+            'activityDate'=> $request->activityDate,
+        ];
 
-        if ($request->hasFile('photo')) {
-            $path = $request->file('photo')->store('galleries', 'public');
-            if ($gallery->photo) Storage::delete('public/' . $gallery->photo);
+        // Jika user upload foto baru, hapus yg lama, ganti yg baru
+        if ($request->hasFile('photos')) {
+            // 1. Hapus foto lama fisik
+            if ($gallery->photos) {
+                foreach($gallery->photos as $oldPhoto) {
+                    Storage::delete('public/' . $oldPhoto);
+                }
+            }
+
+            // 2. Upload foto baru
+            $newPaths = [];
+            foreach ($request->file('photos') as $file) {
+                $newPaths[] = $file->store('galleries', 'public');
+            }
             
-            $gallery->update([
-                'photo'       => $path,
-                'title'       => $request->title,
-                'description' => $request->description,
-                'activityDate'=> $request->activityDate,
-            ]);
-        } else {
-            $gallery->update([
-                'title'       => $request->title,
-                'description' => $request->description,
-                'activityDate'=> $request->activityDate,
-            ]);
+            $dataToUpdate['photos'] = $newPaths;
         }
 
-        return redirect()->route('galleries.index')->with(['success' => 'Galeri diperbarui!']);
+        $gallery->update($dataToUpdate);
+
+        return redirect()->route('galleries.index')->with(['success' => 'Album diperbarui!']);
     }
 
     public function destroy(string $id)
     {
         $gallery = Gallery::findOrFail($id);
-        if ($gallery->photo) Storage::delete('public/' . $gallery->photo);
+        
+        // Hapus semua file fisik dalam array
+        if ($gallery->photos) {
+            foreach($gallery->photos as $photo) {
+                Storage::delete('public/' . $photo);
+            }
+        }
+        
         $gallery->delete();
-        return redirect()->route('galleries.index')->with(['success' => 'Foto dihapus!']);
+        return redirect()->route('galleries.index')->with(['success' => 'Album dihapus!']);
     }
 }

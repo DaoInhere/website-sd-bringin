@@ -10,10 +10,12 @@ return new class extends Migration
     {
         Schema::create('galleries', function (Blueprint $table) {
             $table->id();
-            $table->string('title')->nullable(); // Judul Foto
-            $table->string('photo');             // File Foto         
-            $table->string('description')->nullable();         // Deskripsi
-            $table->date('activityDate');             // Tanggal Kegiatan
+            $table->string('title')->nullable();
+            
+            $table->json('photos'); 
+            
+            $table->string('description')->nullable();
+            $table->date('activityDate');
             $table->timestamps();
         });
     }

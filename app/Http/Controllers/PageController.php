@@ -45,7 +45,7 @@ class PageController extends Controller
     }
 
     public function galleries() {
-        $galleries = Gallery::latest()->get();
+        $galleries = Gallery::latest()->paginate(9);
         return view('frontend.galleries', compact('galleries'));
     }
 
