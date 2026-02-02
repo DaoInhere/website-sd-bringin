@@ -8,50 +8,54 @@ use Illuminate\Support\Facades\Storage;
 
 class GalleryController extends Controller
 {
-    // 1. DAFTAR FOTO
     public function index()
     {
         $galleries = Gallery::latest()->paginate(10);
         return view('galleries.index', compact('galleries'));
     }
 
-    // 2. FORM UPLOAD
     public function create()
     {
         return view('galleries.create');
     }
 
-    // 3. SIMPAN FOTO
     public function store(Request $request)
     {
+        // 1. VALIDASI
         $request->validate([
-            'photo' => 'required|image|mimes:jpeg,png,jpg|max:2048',
-            'title' => 'nullable|string|max:255',
-            'description' => 'nullable|string|max:255',
-            'activityDate' => 'required|date',
+            'photos'   => 'required', 
+            'photos.*' => 'image|mimes:jpeg,png,jpg|max:2048', 
+            'title'    => 'nullable|string|max:255',
+            'description' => 'nullable|string|max:255', 
+            'activityDate'=> 'required|date',            
         ]);
 
-        // Simpan ke folder 'galleries' di storage public
-        $photoPath = $request->file('photo')->store('galleries', 'public');
+        // 2. PROSES SIMPAN (LOOPING)
+        if ($request->hasFile('photos')) {
+            foreach ($request->file('photos') as $file) {
+                
+                // Upload file fisik
+                $path = $file->store('galleries', 'public');
 
-        Gallery::create([
-            'photo' => $photoPath,
-            'title' => $request->title,
-            'description' => $request->description,
-            'activityDate' => $request->activityDate,
-        ]);
+                // Simpan ke Database
+                Gallery::create([
+                    'photo'       => $path, 
+                    'title'       => $request->title,
+                    'description' => $request->description,
+                    'activityDate'=> $request->activityDate,
+                ]);
+            }
+        }
 
-        return redirect()->route('galleries.index')->with(['success' => 'Foto Berhasil Diupload!']);
+        return redirect()->route('galleries.index')->with(['success' => 'Foto-foto berhasil diupload!']);
     }
 
-    // 4. FORM EDIT
     public function edit(string $id)
     {
         $gallery = Gallery::findOrFail($id);
         return view('galleries.edit', compact('gallery'));
     }
 
-    // 5. UPDATE FOTO
     public function update(Request $request, string $id)
     {
         $request->validate([
@@ -64,36 +68,31 @@ class GalleryController extends Controller
         $gallery = Gallery::findOrFail($id);
 
         if ($request->hasFile('photo')) {
-            // Upload baru
-            $photoPath = $request->file('photo')->store('galleries', 'public');
-            // Hapus lama
-            Storage::delete('public/' . $gallery->photo);
-            // Update DB
+            $path = $request->file('photo')->store('galleries', 'public');
+            if ($gallery->photo) Storage::delete('public/' . $gallery->photo);
+            
             $gallery->update([
-                'photo' => $photoPath,
-                'title' => $request->title,
+                'photo'       => $path,
+                'title'       => $request->title,
                 'description' => $request->description,
-                'activityDate' => $request->activityDate,
+                'activityDate'=> $request->activityDate,
             ]);
         } else {
-            // Cuma ganti judul
             $gallery->update([
-                'title' => $request->title,
+                'title'       => $request->title,
                 'description' => $request->description,
-                'activityDate' => $request->activityDate,
+                'activityDate'=> $request->activityDate,
             ]);
         }
 
-        return redirect()->route('galleries.index')->with(['success' => 'Galeri Berhasil Diperbarui!']);
+        return redirect()->route('galleries.index')->with(['success' => 'Galeri diperbarui!']);
     }
 
-    // 6. HAPUS FOTO
     public function destroy(string $id)
     {
         $gallery = Gallery::findOrFail($id);
-        Storage::delete('public/' . $gallery->photo);
+        if ($gallery->photo) Storage::delete('public/' . $gallery->photo);
         $gallery->delete();
-
-        return redirect()->route('galleries.index')->with(['success' => 'Foto Berhasil Dihapus!']);
+        return redirect()->route('galleries.index')->with(['success' => 'Foto dihapus!']);
     }
 }
