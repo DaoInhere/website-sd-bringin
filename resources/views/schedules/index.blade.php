@@ -85,7 +85,7 @@
                                     @foreach($sortable as $key => $label)
                                     <a href="{{ $setSortUrl($key) }}"
                                         class="block px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-50 hover:text-sekolah-hijau transition
-                                                  {{ $sort === $key ? 'font-bold bg-gray-50 text-sekolah-hijau' : '' }}">
+                                                {{ $sort === $key ? 'font-bold bg-gray-50 text-sekolah-hijau' : '' }}">
                                         {{ $label }}
                                     </a>
                                     @endforeach

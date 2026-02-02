@@ -3,36 +3,26 @@
 namespace App\Notifications;
 
 use Illuminate\Bus\Queueable;
-use Illuminate\Support\HtmlString;
 use Illuminate\Notifications\Notification;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 
 class ResetPasswordNotification extends Notification
 {
     use Queueable;
 
-    /**
-     * Create a new notification instance.
-     */
+    // Menghubungkan token dari sistem ke email
     public function __construct(public string $token)
     {
         //
     }
 
-    /**
-     * Get the notification's delivery channels.
-     *
-     * @return array<int, string>
-     */
+    // Menentukan pengiriman via Email
     public function via(object $notifiable): array
     {
         return ['mail'];
     }
 
-    /**
-     * Get the mail representation of the notification.
-     */
+    // Logic pengiriman email
     public function toMail(object $notifiable): MailMessage
     {
         $url = url(route('password.reset', [
@@ -40,25 +30,17 @@ class ResetPasswordNotification extends Notification
             'email' => $notifiable->email,
         ], false));
 
+        // Mengarahkan tampilan ke file blade khusus agar tidak bocor kodenya
         return (new MailMessage)
-            ->subject('Reset Kata Sandi Akun Anda')
-            ->greeting('Reset Kata Sandi')
-            ->line('Kami menerima permintaan untuk mengatur ulang kata sandi akun Anda.')
-            ->action('Reset Kata Sandi', $url)
-            ->line('Link ini akan kedaluwarsa dalam 60 menit.')
-            ->line('Jika Anda tidak meminta reset kata sandi, abaikan email ini.')
-            ->salutation(new HtmlString('Hormat kami,<br>SD Negeri Bringin 01 Kota Semarang'));
+            ->subject('Reset Kata Sandi Akun Anda - SDN Bringin 01')
+            ->view('auth.mail_custom', [
+                'url' => $url,
+                'name' => $notifiable->name ?? 'Pengguna'
+            ]);
     }
 
-    /**
-     * Get the array representation of the notification.
-     *
-     * @return array<string, mixed>
-     */
     public function toArray(object $notifiable): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 }
