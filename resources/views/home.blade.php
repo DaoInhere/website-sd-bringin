@@ -110,9 +110,9 @@
                         <img
                             src="{{ $headmaster ? $headmaster->photo_url : asset('asset/nophoto.png') }}"
                             alt="foto Kepala Sekolah"
-                            class="max-h-96 w-auto object-contain transition-transform duration-500 group-hover:scale-105">
+                            class="max-h-96 w-full object-contain transition-transform duration-500 group-hover:scale-105">
 
-                        <div class="absolute bottom-4 right-4 bg-white/95 backdrop-blur-sm p-3 rounded-xl shadow-md border-l-4 border-sekolah-kuning">
+                        <div class=" absolute bottom-4 right-4 bg-white/95 backdrop-blur-sm p-3 rounded-xl shadow-md border-l-4 border-sekolah-kuning">
                             <p class="font-bold text-gray-800 text-base">{{ $headmaster ? $headmaster->name : 'Foto' }}</p>
                             <p class="text-sekolah-hijau text-xs">Kepala Sekolah</p>
                         </div>

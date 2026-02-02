@@ -18,7 +18,7 @@
                         Visi & Misi
                     </h2>
                     <p class="mt-3 text-white/90">
-                        SD Negeri Bringin 01 • Kecamatan Ngaliyan • Kota Semarang
+                        Membentuk Karakter, Mengukir Prestasi
                     </p>
                 </div>
             </div>

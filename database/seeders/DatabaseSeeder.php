@@ -46,7 +46,7 @@ class DatabaseSeeder extends Seeder
         // Teacher::factory(5)->create();
 
         // Buat 6 Data Foto Galeri
-        Gallery::factory(6)->create();
+        // Gallery::factory(6)->create();
         
         // Buat Pengaturan Website
         // pakai pengecekan 'if' agar aman jika dijalankan berulang
