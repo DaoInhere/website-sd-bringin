@@ -17,10 +17,6 @@ return new class extends Migration
             $table->string('title')->nullable();
             $table->string('subtitle')->nullable();
             $table->boolean('dim')->default(false);
-            $table->string('firstButton')->nullable();
-            $table->string('firstButtonLabel')->nullable();
-            $table->string('secondButton')->nullable();
-            $table->string('secondButtonLabel')->nullable();
             $table->timestamps();
         });
     }

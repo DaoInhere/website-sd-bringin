@@ -10,8 +10,19 @@ class AchievementController extends Controller
 {
     public function index()
     {
-        $achievements = Achievement::latest()->paginate(10);
-        return view('achievements.index', compact('achievements'));
+        $sort = request('sort', 'title');
+        $dir  = request('dir', 'desc');
+
+        $allowed = ['title', 'name', 'category', 'level', 'position', 'award', 'date', 'description', 'image'];
+
+        if (!in_array($sort, $allowed)) $sort = 'title';
+        if (!in_array($dir, ['asc', 'desc'])) $dir = 'desc';
+
+        $achievements = Achievement::orderBy($sort, $dir)
+            ->paginate(10)
+            ->withQueryString();
+
+        return view('achievements.index', compact('achievements', 'sort', 'dir'));
     }
 
     public function create()

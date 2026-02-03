@@ -10,8 +10,19 @@ class GalleryController extends Controller
 {
     public function index()
     {
-        $galleries = Gallery::latest()->paginate(10);
-        return view('galleries.index', compact('galleries'));
+        $sort = request('sort', 'title');
+        $dir  = request('dir', 'desc');
+
+        $allowed = ['title', 'photos', 'description', 'activityDate'];
+
+        if (!in_array($sort, $allowed)) $sort = 'title';
+        if (!in_array($dir, ['asc', 'desc'])) $dir = 'desc';
+
+        $galleries = Gallery::orderBy($sort, $dir)
+            ->paginate(10)
+            ->withQueryString();
+
+        return view('galleries.index', compact('galleries', 'sort', 'dir'));
     }
 
     public function create()

@@ -5,31 +5,6 @@
         </h2>
     </x-slot>
 
-    @php
-        $sort = request('sort');
-        $dir  = request('dir', 'asc');
-
-        $toggleSortUrl = function (string $col) use ($sort, $dir) {
-            $nextDir = ($sort === $col && $dir === 'asc') ? 'desc' : 'asc';
-
-            return request()->fullUrlWithQuery([
-                'sort' => $col,
-                'dir'  => $nextDir,
-                'page' => null,
-            ]);
-        };
-
-        $icon = function (string $col) use ($sort, $dir) {
-            if ($sort !== $col) return '↕';
-            return $dir === 'asc' ? '↑' : '↓';
-        };
-
-        $iconClass = function (string $col) use ($sort, $dir) {
-            if ($sort !== $col) return 'text-gray-400';
-            return $dir === 'asc' ? 'text-emerald-600' : 'text-amber-600';
-        };
-    @endphp
-
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg p-6">
@@ -87,35 +62,13 @@
                     <table class="w-full border-collapse border border-gray-300">
                         <thead class="bg-gray-100 text-gray-700">
                             <tr>
-                                <th class="border border-gray-300 p-3 text-center">
-                                    <a href="{{ $toggleSortUrl('image') }}"
-                                       class="inline-flex items-center gap-1 hover:text-sekolah-hijau transition font-semibold">
-                                        Gambar <span class="text-xs {{ $iconClass('image') }}">{{ $icon('image') }}</span>
-                                    </a>
+                                <x-sort-table col="image" label="Gambar" class="border border-gray-300 p-3 text-center font-semibold" :sort="$sort" :dir="$dir" />
+                                <x-sort-table col="title" label="Judul" class="border border-gray-300 p-3 text-left font-semibold" :sort="$sort" :dir="$dir" />
+                                <x-sort-table col="subtitle" label="Sub Judul" class="border border-gray-300 p-3 text-left font-semibold" :sort="$sort" :dir="$dir" />
+                                <x-sort-table col="dim" label="Banner Redup" class="border border-gray-300 p-3 text-left font-semibold" :sort="$sort" :dir="$dir" />
+                                <th class="border border-gray-300 p-3 text-center font-semibold">
+                                    Aksi
                                 </th>
-
-                                <th class="border border-gray-300 p-3 text-left">
-                                    <a href="{{ $toggleSortUrl('title') }}"
-                                       class="inline-flex items-center gap-1 hover:text-sekolah-hijau transition font-semibold">
-                                        Judul <span class="text-xs {{ $iconClass('title') }}">{{ $icon('title') }}</span>
-                                    </a>
-                                </th>
-
-                                <th class="border border-gray-300 p-3 text-left">
-                                    <a href="{{ $toggleSortUrl('subtitle') }}"
-                                       class="inline-flex items-center gap-1 hover:text-sekolah-hijau transition font-semibold">
-                                        Sub Judul <span class="text-xs {{ $iconClass('subtitle') }}">{{ $icon('subtitle') }}</span>
-                                    </a>
-                                </th>
-
-                                <th class="border border-gray-300 p-3 text-left">
-                                    <a href="{{ $toggleSortUrl('dim') }}"
-                                       class="inline-flex items-center gap-1 hover:text-sekolah-hijau transition font-semibold">
-                                        Banner Redup <span class="text-xs {{ $iconClass('dim') }}">{{ $icon('dim') }}</span>
-                                    </a>
-                                </th>
-
-                                <th class="border border-gray-300 p-3 text-center">Aksi</th>
                             </tr>
                         </thead>
 

@@ -18,10 +18,6 @@ class HeroBannerSeeder extends Seeder
             'title' => 'SELAMAT DATANG DI',
             'subtitle' => 'WEBSITE RESMI SD NEGERI BRINGIN 01 KOTA SEMARANG',
             'dim' => true,
-            'firstButton' => '/galeri',
-            'firstButtonLabel' => 'Galeri',
-            'secondButton' => '/profil/sejarah',
-            'secondButtonLabel' => 'Detail',
             'created_at' => now(),
             'updated_at' => now()
         ]);
@@ -31,10 +27,6 @@ class HeroBannerSeeder extends Seeder
             'title' => 'VISI & MISI SEKOLAH',
             'subtitle' => 'MENCETAK GENERASI CERDAS DAN BERAKHLAK MULIA',
             'dim' => true,
-            'firstButton' => '/profil/visi-misi',
-            'firstButtonLabel' => 'Profil Sekolah',
-            'secondButton' => '/kontak',
-            'secondButtonLabel' => 'Hubungi Kami',
             'created_at' => now(),
             'updated_at' => now()
         ]);
@@ -44,10 +36,6 @@ class HeroBannerSeeder extends Seeder
             'title' => 'PPDB ONLINE 2026',
             'subtitle' => 'BERGABUNGLAH BERSAMA KELUARGA BESAR KAMI',
             'dim' => true,
-            'firstButton' => 'https://arsip.siap-ppdb.com/',
-            'firstButtonLabel' => 'Daftar Sekarang',
-            'secondButton' => '/syarat-pendaftaran',
-            'secondButtonLabel' => 'Syarat Pendaftaran',
             'created_at' => now(),
             'updated_at' => now()
         ]);

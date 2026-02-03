@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use App\Models\User;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -13,9 +14,28 @@ class PostController extends Controller
     // --- 1. FITUR BACA (READ) ---
     public function index()
     {
-        // Ambil berita terbaru
-        $posts = Post::latest()->paginate(10);
-        return view('posts.index', compact('posts'));
+        $sort = request('sort', 'author');
+        $dir  = request('dir', 'desc');
+
+        $allowed = ['author', 'image', 'title', 'category', 'content'];
+
+        if (!in_array($sort, $allowed)) $sort = 'author';
+        if (!in_array($dir, ['asc', 'desc'])) $dir = 'desc';
+
+        $query = Post::with('user');
+
+        if ($sort === 'author') {
+            $query = $query->orderBy(
+                User::select('name')->whereColumn('users.id', 'posts.user_id'),
+                $dir
+            );
+        } else {
+            $query = $query->orderBy($sort, $dir);
+        }
+
+        $posts = $query->paginate(10)->withQueryString();
+
+        return view('posts.index', compact('posts', 'sort', 'dir'));
     }
 
     // --- 2. FITUR TAMBAH (CREATE) ---

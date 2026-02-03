@@ -11,8 +11,19 @@ class TeacherController extends Controller
     // 1. DAFTAR GURU
     public function index()
     {
-        $teachers = Teacher::latest()->paginate(10);
-        return view('teachers.index', compact('teachers'));
+        $sort = request('sort', 'nip');
+        $dir  = request('dir', 'desc');
+
+        $allowed = ['nip', 'name', 'position', 'photo'];
+
+        if (!in_array($sort, $allowed)) $sort = 'nip';
+        if (!in_array($dir, ['asc', 'desc'])) $dir = 'desc';
+
+        $teachers = Teacher::orderBy($sort, $dir)
+            ->paginate(10)
+            ->withQueryString();
+
+        return view('teachers.index', compact('teachers', 'sort', 'dir'));
     }
 
     // 2. FORM TAMBAH

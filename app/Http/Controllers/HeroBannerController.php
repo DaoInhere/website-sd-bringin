@@ -11,8 +11,19 @@ class HeroBannerController extends Controller
     // 1. DAFTAR TABEL
     public function index()
     {
-        $herobanners = HeroBanner::latest()->paginate(10);
-        return view('herobanners.index', compact('herobanners'));
+        $sort = request('sort', 'title');
+        $dir  = request('dir', 'desc');
+
+        $allowed = ['image', 'title', 'subtitle', 'dim'];
+
+        if (!in_array($sort, $allowed)) $sort = 'title';
+        if (!in_array($dir, ['asc', 'desc'])) $dir = 'desc';
+
+        $herobanners = HeroBanner::orderBy($sort, $dir)
+            ->paginate(10)
+            ->withQueryString();
+
+        return view('herobanners.index', compact('herobanners', 'sort', 'dir'));
     }
 
     // 2. FORM UPLOAD

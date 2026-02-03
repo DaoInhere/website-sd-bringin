@@ -5,31 +5,6 @@
         </h2>
     </x-slot>
 
-    @php
-        $sort = request('sort');
-        $dir  = request('dir', 'asc');
-
-        $toggleSortUrl = function (string $col) use ($sort, $dir) {
-            $nextDir = ($sort === $col && $dir === 'asc') ? 'desc' : 'asc';
-
-            return request()->fullUrlWithQuery([
-                'sort' => $col,
-                'dir'  => $nextDir,
-                'page' => null,
-            ]);
-        };
-
-        $icon = function (string $col) use ($sort, $dir) {
-            if ($sort !== $col) return '↕';
-            return $dir === 'asc' ? '↑' : '↓';
-        };
-
-        $iconClass = function (string $col) use ($sort, $dir) {
-            if ($sort !== $col) return 'text-gray-400';
-            return $dir === 'asc' ? 'text-emerald-600' : 'text-amber-600';
-        };
-    @endphp
-
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg p-6">
@@ -93,35 +68,12 @@
                     <table class="w-full border-collapse border border-gray-300">
                         <thead class="bg-gray-100 text-gray-700 text-sm">
                             <tr>
-                                <th class="border border-gray-300 p-3 text-center">
-                                    <a href="{{ $toggleSortUrl('nip') }}"
-                                       class="inline-flex items-center gap-1 hover:text-sekolah-hijau transition font-semibold">
-                                        NIP <span class="text-xs {{ $iconClass('nip') }}">{{ $icon('nip') }}</span>
-                                    </a>
-                                </th>
-
-                                <th class="border border-gray-300 p-3 text-center">
-                                    <a href="{{ $toggleSortUrl('photo') }}"
-                                       class="inline-flex items-center gap-1 hover:text-sekolah-hijau transition font-semibold">
-                                        Foto <span class="text-xs {{ $iconClass('photo') }}">{{ $icon('photo') }}</span>
-                                    </a>
-                                </th>
-
-                                <th class="border border-gray-300 p-3 text-left">
-                                    <a href="{{ $toggleSortUrl('name') }}"
-                                       class="inline-flex items-center gap-1 hover:text-sekolah-hijau transition font-semibold">
-                                        Nama Lengkap <span class="text-xs {{ $iconClass('name') }}">{{ $icon('name') }}</span>
-                                    </a>
-                                </th>
-
-                                <th class="border border-gray-300 p-3 text-left">
-                                    <a href="{{ $toggleSortUrl('position') }}"
-                                       class="inline-flex items-center gap-1 hover:text-sekolah-hijau transition font-semibold">
-                                        Jabatan / Mapel <span class="text-xs {{ $iconClass('position') }}">{{ $icon('position') }}</span>
-                                    </a>
-                                </th>
-
+                                <x-sort-table col="nip" label="NIP" class="border border-gray-300 p-3 text-center" :sort="$sort" :dir="$dir" />
+                                <x-sort-table col="photo" label="Foto" class="border border-gray-300 p-3 text-center" :sort="$sort" :dir="$dir" />
+                                <x-sort-table col="name" label="Nama Lengkap" class="border border-gray-300 p-3 text-left" :sort="$sort" :dir="$dir" />
+                                <x-sort-table col="position" label="Jabatan / Mapel" class="border border-gray-300 p-3 text-left" :sort="$sort" :dir="$dir" />
                                 <th class="border border-gray-300 p-3 text-center">Aksi</th>
+
                             </tr>
                         </thead>
 

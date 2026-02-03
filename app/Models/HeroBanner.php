@@ -14,11 +14,7 @@ class HeroBanner extends Model
         'image',
         'title',
         'subtitle',
-        'dim',
-        'firstButton',
-        'firstButtonLabel',
-        'secondButton',
-        'secondButtonLabel',
+        'dim'
     ];
 
     public function getImageUrlAttribute()

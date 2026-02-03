@@ -5,31 +5,6 @@
         </h2>
     </x-slot>
 
-    @php
-        $sort = request('sort');
-        $dir  = request('dir', 'asc');
-
-        $toggleSortUrl = function (string $col) use ($sort, $dir) {
-            $nextDir = ($sort === $col && $dir === 'asc') ? 'desc' : 'asc';
-
-            return request()->fullUrlWithQuery([
-                'sort' => $col,
-                'dir'  => $nextDir,
-                'page' => null,
-            ]);
-        };
-
-        $icon = function (string $col) use ($sort, $dir) {
-            if ($sort !== $col) return '↕';
-            return $dir === 'asc' ? '↑' : '↓';
-        };
-
-        $iconClass = function (string $col) use ($sort, $dir) {
-            if ($sort !== $col) return 'text-gray-400';
-            return $dir === 'asc' ? 'text-emerald-600' : 'text-amber-600';
-        };
-    @endphp
-
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg p-6">
@@ -83,31 +58,11 @@
                     <table class="w-full border-collapse border border-gray-300">
                         <thead class="bg-gray-100 text-gray-700">
                             <tr>
-                                {{-- Sampul tidak punya kolom DB -> pakai title untuk toggle ikon --}}
-                                <th class="border border-gray-300 p-3 text-center">
-                                    <a href="{{ $toggleSortUrl('title') }}"
-                                       class="inline-flex items-center gap-1 hover:text-sekolah-hijau transition font-semibold">
-                                        Sampul Album <span class="text-xs {{ $iconClass('title') }}">{{ $icon('title') }}</span>
-                                    </a>
-                                </th>
-
-                                {{-- Info kegiatan: paling masuk akal pakai activityDate --}}
-                                <th class="border border-gray-300 p-3 text-left">
-                                    <a href="{{ $toggleSortUrl('activityDate') }}"
-                                       class="inline-flex items-center gap-1 hover:text-sekolah-hijau transition font-semibold">
-                                        Info Kegiatan <span class="text-xs {{ $iconClass('activityDate') }}">{{ $icon('activityDate') }}</span>
-                                    </a>
-                                </th>
-
-                                {{-- Jumlah foto: belum ada kolom count -> pakai photos (UI saja, backend nanti mapping) --}}
-                                <th class="border border-gray-300 p-3 text-center">
-                                    <a href="{{ $toggleSortUrl('photos') }}"
-                                       class="inline-flex items-center gap-1 hover:text-sekolah-hijau transition font-semibold">
-                                        Jumlah Foto <span class="text-xs {{ $iconClass('photos') }}">{{ $icon('photos') }}</span>
-                                    </a>
-                                </th>
-
+                                <x-sort-table col="photos" label="Sampul Album" class="border border-gray-300 p-3 text-left" :sort="$sort" :dir="$dir" />
+                                <x-sort-table col="title" label="Info Kegiatan" class="border border-gray-300 p-3 text-left font-semibold" :sort="$sort" :dir="$dir" />
+                                <x-sort-table col="description" label="Jumlah Foto" class="border border-gray-300 p-3 text-center font-semibold" :sort="$sort" :dir="$dir" />
                                 <th class="border border-gray-300 p-3 text-center">Aksi</th>
+
                             </tr>
                         </thead>
 

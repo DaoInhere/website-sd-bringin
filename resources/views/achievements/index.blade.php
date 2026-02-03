@@ -1,29 +1,4 @@
 <x-app-layout>
-    @php
-        $sort = request('sort');
-        $dir  = request('dir', 'asc');
-
-        $toggleSortUrl = function (string $col) use ($sort, $dir) {
-            $nextDir = ($sort === $col && $dir === 'asc') ? 'desc' : 'asc';
-
-            return request()->fullUrlWithQuery([
-                'sort' => $col,
-                'dir'  => $nextDir,
-                'page' => null,
-            ]);
-        };
-
-        $icon = function (string $col) use ($sort, $dir) {
-            if ($sort !== $col) return '↕';
-            return $dir === 'asc' ? '↑' : '↓';
-        };
-
-        $iconClass = function (string $col) use ($sort, $dir) {
-            if ($sort !== $col) return 'text-gray-400';
-            return $dir === 'asc' ? 'text-emerald-600' : 'text-amber-600';
-        };
-    @endphp
-
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
@@ -78,55 +53,13 @@
                         <table class="w-full border-collapse border border-gray-300">
                             <thead>
                                 <tr class="bg-gray-100 text-gray-600 text-sm leading-normal">
-                                    <th class="border border-gray-300 p-3 text-left">
-                                        <a href="{{ $toggleSortUrl('image') }}"
-                                           class="inline-flex items-center gap-1 hover:text-sekolah-hijau transition font-semibold">
-                                            Foto <span class="text-xs {{ $iconClass('image') }}">{{ $icon('image') }}</span>
-                                        </a>
-                                    </th>
-
-                                    <th class="border border-gray-300 p-3 text-left">
-                                        <a href="{{ $toggleSortUrl('name') }}"
-                                           class="inline-flex items-center gap-1 hover:text-sekolah-hijau transition font-semibold">
-                                            Nama Lomba <span class="text-xs {{ $iconClass('name') }}">{{ $icon('name') }}</span>
-                                        </a>
-                                    </th>
-
-                                    <th class="border border-gray-300 p-3 text-left">
-                                        <a href="{{ $toggleSortUrl('category') }}"
-                                           class="inline-flex items-center gap-1 hover:text-sekolah-hijau transition font-semibold">
-                                            Kategori <span class="text-xs {{ $iconClass('category') }}">{{ $icon('category') }}</span>
-                                        </a>
-                                    </th>
-
-                                    <th class="border border-gray-300 p-3 text-left">
-                                        <a href="{{ $toggleSortUrl('level') }}"
-                                           class="inline-flex items-center gap-1 hover:text-sekolah-hijau transition font-semibold">
-                                            Tingkat <span class="text-xs {{ $iconClass('level') }}">{{ $icon('level') }}</span>
-                                        </a>
-                                    </th>
-
-                                    <th class="border border-gray-300 p-3 text-left">
-                                        <a href="{{ $toggleSortUrl('position') }}"
-                                           class="inline-flex items-center gap-1 hover:text-sekolah-hijau transition font-semibold">
-                                            Juara <span class="text-xs {{ $iconClass('position') }}">{{ $icon('position') }}</span>
-                                        </a>
-                                    </th>
-
-                                    <th class="border border-gray-300 p-3 text-left">
-                                        <a href="{{ $toggleSortUrl('date') }}"
-                                           class="inline-flex items-center gap-1 hover:text-sekolah-hijau transition font-semibold">
-                                            Tanggal <span class="text-xs {{ $iconClass('date') }}">{{ $icon('date') }}</span>
-                                        </a>
-                                    </th>
-
-                                    <th class="border border-gray-300 p-3 text-left">
-                                        <a href="{{ $toggleSortUrl('description') }}"
-                                           class="inline-flex items-center gap-1 hover:text-sekolah-hijau transition font-semibold">
-                                            Deskripsi <span class="text-xs {{ $iconClass('description') }}">{{ $icon('description') }}</span>
-                                        </a>
-                                    </th>
-
+                                    <x-sort-table col="image" label="Foto" class="border border-gray-300 p-3 text-center font-semibold" :sort="$sort" :dir="$dir" />
+                                    <x-sort-table col="title" label="Nama Lomba" class="border border-gray-300 p-3 text-center font-semibold" :sort="$sort" :dir="$dir" />
+                                    <x-sort-table col="category" label="Kategori" class="border border-gray-300 p-3 text-center font-semibold" :sort="$sort" :dir="$dir" />
+                                    <x-sort-table col="level" label="Tingkat" class="border border-gray-300 p-3 text-center font-semibold" :sort="$sort" :dir="$dir" />
+                                    <x-sort-table col="position" label="Juara" class="border border-gray-300 p-3 text-center font-semibold" :sort="$sort" :dir="$dir" />
+                                    <x-sort-table col="date" label="Tanggal" class="border border-gray-300 p-3 text-center font-semibold" :sort="$sort" :dir="$dir" />
+                                    <x-sort-table col="description" label="Deskripsi" class="border border-gray-300 p-3 text-center font-semibold" :sort="$sort" :dir="$dir" />
                                     <th class="border border-gray-300 p-3 text-center">Aksi</th>
                                 </tr>
                             </thead>
