@@ -48,11 +48,11 @@ Route::middleware('auth')->group(function () {
 
     // CRUD FITUR SEKOLAH
     Route::resource('/dashboard/berita', PostController::class)->names('posts');       // Berita
-    Route::resource('/dashboard/galleries', GalleryController::class)->names('galleries'); // Galeri
-    Route::resource('/dashboard/teachers', TeacherController::class)->names('teachers');  // Guru
-    Route::resource('/dashboard/schedules', ScheduleController::class)->names('schedules'); // JadwalSS
-    Route::resource('/dashboard/achievements', AchievementController::class)->names('achievements'); // Prestasi
-    Route::resource('/dashboard/herobanners', HeroBannerController::class)->names('herobanners'); // Banner Beranda
+    Route::resource('/dashboard/galeri', GalleryController::class)->names('galleries'); // Galeri
+    Route::resource('/dashboard/guru', TeacherController::class)->names('teachers');  // Guru
+    Route::resource('/dashboard/jadwalkbm', ScheduleController::class)->names('schedules'); // JadwalSS
+    Route::resource('/dashboard/prestasi', AchievementController::class)->names('achievements'); // Prestasi
+    Route::resource('/dashboard/banner', HeroBannerController::class)->names('herobanners'); // Banner Beranda
 });
 
 require __DIR__.'/auth.php';
