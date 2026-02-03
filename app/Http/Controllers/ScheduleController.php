@@ -20,7 +20,8 @@ class ScheduleController extends Controller
         if (!in_array($sort, $allowed)) $sort = 'id';
         if (!in_array($dir, ['asc', 'desc'])) $dir = 'desc';
 
-        $schedules = Schedule::orderBy($sort, $dir)
+        $schedules = Schedule::filter(request()->only(['find']))
+            ->orderBy($sort, $dir)
             ->paginate(10)
             ->withQueryString();
 

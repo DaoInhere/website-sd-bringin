@@ -33,7 +33,7 @@ class PostController extends Controller
             $query = $query->orderBy($sort, $dir);
         }
 
-        $posts = $query->paginate(10)->withQueryString();
+        $posts = $query->filter(request()->only(['find']))->paginate(10)->withQueryString();
 
         return view('posts.index', compact('posts', 'sort', 'dir'));
     }

@@ -27,38 +27,74 @@
 
     {{-- Filter --}}
     <section class="mx-auto mt-10 max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-            {{-- Filter Tahun --}}
-            <div class="relative group">
-                <label class="block text-sm font-semibold text-gray-700 mb-2">Filter Tahun</label>
-                <div class="relative">
-                    <button class="w-full rounded-xl border border-gray-300 bg-white px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-sekolah-hijau/40 shadow-sm hover:border-sekolah-hijau transition duration-300 flex items-center justify-between">
-                        <span>Semua Tahun</span>
-                        <i class="fas fa-chevron-down text-sm"></i>
-                    </button>
-                    <ul class="absolute top-full left-0 mt-0 w-full bg-white shadow-xl rounded-b-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 border-t-4 transform origin-top scale-95 group-hover:scale-100">
-                        <li><button class="block px-6 py-3 text-gray-700 hover:text-sekolah-hijau hover:bg-gray-50 transition font-medium border-b border-gray-100 w-full text-left">2022</button></li>
-                        <li><button class="block px-6 py-3 text-gray-700 hover:text-sekolah-hijau hover:bg-gray-50 transition font-medium border-b border-gray-100 w-full text-left">2021</button></li>
-                        <li><button class="block px-6 py-3 text-gray-700 hover:text-sekolah-hijau hover:bg-gray-50 transition font-medium border-b border-gray-100 w-full text-left">2020</button></li>
-                    </ul>
+        <form method="GET" action="{{ url()->current() }}">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                <div class="relative group">
+                    <label class="block text-sm font-semibold text-gray-700 mb-2">Filter Tahun</label>
+                    <div class="relative">
+                        <button type="button"
+                                class="w-full rounded-xl border border-gray-300 bg-white px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-sekolah-hijau/40 shadow-sm hover:border-sekolah-hijau transition flex items-center justify-between">
+                            <span>{{ request('tahun', 'Semua Tahun') }}</span>
+                            <i class="fas fa-chevron-down text-sm"></i>
+                        </button>
+
+                        <ul class="absolute top-full left-0 w-full bg-white shadow-xl rounded-b-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 border-t">
+                            <li>
+                                <button type="submit" name="tahun" value="" class="block w-full px-6 py-3 text-left text-gray-700 hover:text-sekolah-hijau hover:bg-gray-50 transition font-medium">
+                                    Semua Tahun
+                                </button>
+                            </li>
+
+                            @foreach ($years as $year)
+                                <li>
+                                    <button type="submit" name="tahun" value="{{ $year }}" class="block w-full px-6 py-3 text-left text-gray-700 hover:text-sekolah-hijau hover:bg-gray-50 transition font-medium">
+                                        {{ $year }}
+                                    </button>
+                                </li>
+                            @endforeach
+                        </ul>
+                    </div>
+                </div>
+
+            @if(request('kategori'))
+                <input type="hidden" name="kategori" value="{{ request('kategori') }}">
+            @endif
+
+            </form>
+
+            <form method="GET" action="{{ url()->current() }}">
+            <div>
+                <div class="relative group">
+                    <label class="block text-sm font-semibold text-gray-700 mb-2">Filter Kategori</label>
+                    <div class="relative">
+                        <button type="button"
+                                class="w-full rounded-xl border border-gray-300 bg-white px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-sekolah-hijau/40 shadow-sm hover:border-sekolah-hijau transition flex items-center justify-between">
+                            <span>{{ ucfirst(request('kategori', 'Berita')) }}</span>
+                            <i class="fas fa-chevron-down text-sm"></i>
+                        </button>
+
+                        <ul class="absolute top-full left-0 w-full bg-white shadow-xl rounded-b-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 border-t">
+                            <li>
+                                <button type="submit" name="kategori" value="Berita" class="block w-full px-6 py-3 text-left text-gray-700 hover:text-sekolah-hijau hover:bg-gray-50 transition font-medium">
+                                    Berita
+                                </button>
+                            </li>
+
+                            <li>
+                                <button type="submit" name="kategori" value="Pengumuman" class="block w-full px-6 py-3 text-left text-gray-700 hover:text-sekolah-hijau hover:bg-gray-50 transition font-medium">
+                                    Pengumuman
+                                </button>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
 
-            {{-- Filter Label --}}
-            <div class="relative group">
-                <label class="block text-sm font-semibold text-gray-700 mb-2">Filter Label</label>
-                <div class="relative">
-                    <button class="w-full rounded-xl border border-gray-300 bg-white px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-sekolah-hijau/40 shadow-sm hover:border-sekolah-hijau transition duration-300 flex items-center justify-between">
-                        <span>Berita</span>
-                        <i class="fas fa-chevron-down text-sm"></i>
-                    </button>
-                    <ul class="absolute top-full left-0 mt-0 w-full bg-white shadow-xl rounded-b-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 border-t-4 transform origin-top scale-95 group-hover:scale-100">
-                        <li><button class="block px-6 py-3 text-gray-700 hover:text-sekolah-hijau hover:bg-gray-50 transition font-medium border-b border-gray-100 w-full text-left">Berita</button></li>
-                        <li><button class="block px-6 py-3 text-gray-700 hover:text-sekolah-hijau hover:bg-gray-50 transition font-medium border-b border-gray-100 w-full text-left">Pengumuman</button></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
+            @if(request('tahun'))
+                <input type="hidden" name="tahun" value="{{ request('tahun') }}">
+            @endif
+
+            </form>
     </section>
 
     {{-- Content --}}

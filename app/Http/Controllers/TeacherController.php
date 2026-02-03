@@ -19,7 +19,8 @@ class TeacherController extends Controller
         if (!in_array($sort, $allowed)) $sort = 'nip';
         if (!in_array($dir, ['asc', 'desc'])) $dir = 'desc';
 
-        $teachers = Teacher::orderBy($sort, $dir)
+        $teachers = Teacher::filter(request()->only(['find']))
+            ->orderBy($sort, $dir)
             ->paginate(10)
             ->withQueryString();
 

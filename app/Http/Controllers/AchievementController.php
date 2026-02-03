@@ -18,7 +18,8 @@ class AchievementController extends Controller
         if (!in_array($sort, $allowed)) $sort = 'title';
         if (!in_array($dir, ['asc', 'desc'])) $dir = 'desc';
 
-        $achievements = Achievement::orderBy($sort, $dir)
+        $achievements = Achievement::filter(request()->only(['find']))
+            ->orderBy($sort, $dir)
             ->paginate(10)
             ->withQueryString();
 

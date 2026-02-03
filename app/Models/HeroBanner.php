@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class HeroBanner extends Model
 {
@@ -17,6 +18,21 @@ class HeroBanner extends Model
         'dim'
     ];
 
+    public function scopeFilter(Builder $query, array $filters): void
+    {
+        // Filter untuk dashboard
+        $query->when(
+            $filters['find'] ?? false,
+            function ($query, $search) {
+                $query->where(function ($find) use ($search) {
+                    $find->where('title', 'like', "%{$search}%")
+                    ->orWhere('subtitle', 'like', "%{$search}%")
+                    ->orWhere('dim', 'like', "%{$search}%");
+                });
+            }
+        );
+    }
+    
     public function getImageUrlAttribute()
     {
         // Cek 1: Apakah file ada di STORAGE? (storage/app/public/...)

@@ -50,8 +50,27 @@ class PageController extends Controller
     }
 
     public function posts() {
-        $posts = Post::latest()->paginate(6);
-        return view('frontend.posts', compact('posts'));
+        $years = Post::selectRaw('YEAR(created_at) as year')
+            ->distinct()
+            ->orderByDesc('year')
+            ->pluck('year');
+
+        $query = Post::query();
+
+        $query->when(request('tahun'), function ($tahun, $year) {
+            $tahun->whereYear('created_at', $year);
+        });
+
+        $query->when(request('kategori'), function ($kategori, $category) {
+            $kategori->where('category', $category);
+        });
+
+        $posts = $query
+            ->latest()
+            ->paginate(10)
+            ->withQueryString();
+
+        return view('frontend.posts', compact('posts', 'years'));
     }
 
     public function extracurriculars() {

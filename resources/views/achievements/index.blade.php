@@ -11,37 +11,23 @@
                             + Tambah Prestasi Baru
                         </a>
 
-                        <form method="GET" action="{{ url()->current() }}" class="w-full sm:w-auto">
-                            <div class="relative">
-                                <span class="absolute inset-y-0 left-3 flex items-center text-gray-400">
-                                    <i class="fas fa-search"></i>
-                                </span>
+                    <form method="GET" action="{{ url()->current() }}" class="w-full sm:w-auto">
+                        <div class="relative">
+                            <input type="text" name="find" value="{{ request('find') }}"
+                                   placeholder="Cari prestasi..."
+                                   class="w-full sm:w-72 pl-10 pr-10 py-2.5 rounded-xl border" />
+                        </div>
 
-                                <input
-                                    type="text"
-                                    name="q"
-                                    value="{{ request('q') }}"
-                                    placeholder="Cari prestasi..."
-                                    class="w-full sm:w-72 pl-10 pr-10 py-2.5 rounded-xl border border-gray-200 bg-white text-sm text-gray-700
-                                           placeholder:text-gray-400 shadow-sm
-                                           focus:outline-none focus:ring-2 focus:ring-sekolah-hijau/30 focus:border-sekolah-hijau transition" />
+                    @if(request('sort'))
+                        <input type="hidden" name="sort" value="{{ request('sort') }}">
+                    @endif
 
-                                <button type="submit"
-                                        class="absolute inset-y-0 right-2 flex items-center justify-center px-2 text-gray-500 hover:text-sekolah-hijau transition"
-                                        aria-label="Cari">
-                                    <i class="fas fa-arrow-right"></i>
-                                </button>
-                            </div>
-
-                            {{-- jaga sort/dir saat search --}}
-                            @if(request('sort'))
-                                <input type="hidden" name="sort" value="{{ request('sort') }}">
-                            @endif
-                            @if(request('dir'))
-                                <input type="hidden" name="dir" value="{{ request('dir') }}">
-                            @endif
-                        </form>
-                    </div>
+                    @if(request('dir'))
+                        <input type="hidden" name="dir" value="{{ request('dir') }}">
+                    @endif
+                    
+                    </form>
+                </div>
 
                     @if(session('success'))
                         <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative mb-4">

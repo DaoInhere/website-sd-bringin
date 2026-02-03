@@ -18,10 +18,18 @@
 
                     <form method="GET" action="{{ url()->current() }}" class="w-full sm:w-auto">
                         <div class="relative">
-                            <input type="text" name="q" value="{{ request('q') }}"
+                            <input type="text" name="find" value="{{ request('find') }}"
                                    placeholder="Cari berita..."
                                    class="w-full sm:w-72 pl-10 pr-10 py-2.5 rounded-xl border" />
                         </div>
+                    @if(request('sort'))
+                        <input type="hidden" name="sort" value="{{ request('sort') }}">
+                    @endif
+
+                    @if(request('dir'))
+                        <input type="hidden" name="dir" value="{{ request('dir') }}">
+                    @endif
+                    
                     </form>
                 </div>
 

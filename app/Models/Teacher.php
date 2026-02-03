@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Teacher extends Model
@@ -18,6 +19,21 @@ class Teacher extends Model
         'position',
         'photo',
     ];
+
+    public function scopeFilter(Builder $query, array $filters): void
+    {
+        // Filter untuk dashboard
+        $query->when(
+            $filters['find'] ?? false,
+            function ($query, $search) {
+                $query->where(function ($find) use ($search) {
+                    $find->where('nip', 'like', "%{$search}%")
+                    ->orWhere('name', 'like', "%{$search}%")
+                    ->orWhere('position', 'like', "%{$search}%");
+                });
+            }
+        );
+    }
 
     public function getPhotoUrlAttribute()
     {

@@ -13,22 +13,25 @@ class Schedule extends Model
     
     protected $fillable = ['hour', 'day', 'subject', 'class', 'type', 'curriculum', 'uniform', 'description', 'image'];
 
-    // public function scopeFilter(Builder $query, array $filters): void
-    // {
-        // $query->when($filters['search'] ?? false, fn ($query, $search) =>
-        //     $query->where('title', 'like', '%' . $search . '%')
-        // );
-
-        // $query->when(
-        //     $filters['category'] ?? false, fn ($query, $category) =>
-        //     $query->whereHas('category', fn($query) => $query->where('slug', $category))
-        // );
-
-        // $query->when(
-        //     $filters['author'] ?? false, fn ($query, $author) =>
-        //     $query->whereHas('author', fn($query) => $query->where('username', $author))
-        // );
-    // }
+    public function scopeFilter(Builder $query, array $filters): void
+    {
+        // Filter untuk dashboard
+        $query->when(
+            $filters['find'] ?? false,
+            function ($query, $search) {
+                $query->where(function ($find) use ($search) {
+                    $find->where('hour', 'like', "%{$search}%")
+                    ->orWhere('day', 'like', "%{$search}%")
+                    ->orWhere('subject', 'like', "%{$search}%")
+                    ->orWhere('class', 'like', "%{$search}%")
+                    ->orWhere('type', 'like', "%{$search}%")
+                    ->orWhere('uniform', 'like', "%{$search}%")
+                    ->orWhere('curriculum', 'like', "%{$search}%")
+                    ->orWhere('description', 'like', "%{$search}%");
+                });
+            }
+        );
+    }
 
     public function getImageUrlAttribute()
     {

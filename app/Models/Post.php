@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Post extends Model
 {
@@ -25,6 +26,27 @@ class Post extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function scopeFilter(Builder $query, array $filters): void
+    {
+        // Filter untuk dashboard
+        $query->when(
+            $filters['find'] ?? false,
+            function ($query, $search) {
+                $query->where(function ($find) use ($search) {
+                    $find->where('title', 'like', "%{$search}%")
+                    ->orwhere('category', 'like', "%{$search}%")
+                    ->orWhere('content', 'like', "%{$search}%");
+                });
+            }
+        );
+
+        // filter untuk halaman utama
+        $query->when(
+            $filters['kategori'] ?? false,
+            fn (Builder $kategori, string $category) =>
+                $kategori->where('category', $category)
+        );
+    }
     // Relasi ke Kategori
     // public function category()
     // {
