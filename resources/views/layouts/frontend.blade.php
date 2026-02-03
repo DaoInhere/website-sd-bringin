@@ -77,7 +77,7 @@
                     </button>
                     <ul class="absolute top-full right-0 mt-0 w-56 bg-white shadow-xl rounded-b-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 border-t-4 border-sekolah-hijau transform origin-top scale-95 group-hover:scale-100">
                         <li><a href="{{ route('public.posts') }}" class="block px-6 py-3 text-gray-700 hover:text-sekolah-hijau hover:bg-gray-50 transition font-medium border-b border-gray-100">Berita & Pengumuman</a></li>
-                        <li><a href="{{ url('/informasi/jadwalkbm') }}" class="block px-6 py-3 text-gray-700 hover:text-sekolah-hijau hover:bg-gray-50 transition font-medium border-b border-gray-100">Jadwal KBM</a></li>
+                        <li><a href="{{ route('public.schedules') }}" class="block px-6 py-3 text-gray-700 hover:text-sekolah-hijau hover:bg-gray-50 transition font-medium border-b border-gray-100">Jadwal KBM</a></li>
                         <li><a href="{{ route('public.teachers') }}" class="block px-6 py-3 text-gray-700 hover:text-sekolah-hijau hover:bg-gray-50 transition font-medium border-b border-gray-100">Daftar Guru & Staff</a></li>
                         <li><a href="{{ route('public.registerRequirements') }}" class="block px-6 py-3 text-gray-700 hover:text-sekolah-hijau hover:bg-gray-50 transition font-medium border-b border-gray-100">Syarat Pendaftaran</a></li>
                     </ul>

@@ -56,7 +56,7 @@
         </div>
 
         <div class="pt-4 border-t border-gray-100">
-            <p x-show="open" class="text-[10px] font-bold text-gray-400 uppercase px-2 mb-2 tracking-widest">Sistem</p>
+            <p x-show="open" class="text-[10px] font-bold text-gray-400 uppercase px-2 mb-2 tracking-widest">Akun</p>
             
             <a href="{{ route('profile (admin).edit') }}" class="flex items-center p-2 text-gray-700 hover:bg-teal-50 hover:text-teal-600 rounded-lg transition-all group">
                 <span class="text-xl min-w-[24px] flex items-center justify-center">⚙️</span>

@@ -16,9 +16,6 @@ use App\Models\HeroBanner;
 
 // 1. HALAMAN DEPAN (HOME)
 Route::get('/', [HomeController::class, 'index'])->name('home');
-Route::get('/test', function () {
-    return view('syarat');
-});
 
 // === JALUR PUBLIK (Halaman Frontend / Tanpa Login) ===
 // Menu Dropdown Profil
@@ -26,9 +23,8 @@ Route::get('/profil/sejarah', [PageController::class, 'sejarah'])->name('public.
 Route::get('/profil/visi-misi', [PageController::class, 'visi'])->name('public.visi');
 Route::get('/profil/struktur', [PageController::class, 'struktur'])->name('public.struktur');
 Route::get('/profil/sarana', [PageController::class, 'sarana'])->name('public.sarana');
-Route::get('/kontak', [PageController::class, 'kontak'])->name('public.kontak');
 
-// Menu Informasi & Galeri & Berita
+// Menu Informasi, Galeri, Berita & Kontak
 Route::get('/kesiswaan/ekstrakurikuler', [PageController::class, 'extracurriculars'])->name('public.extracurriculars');
 Route::get('/kesiswaan/prestasi', [PageController::class, 'achievements'])->name('public.achievements');
 Route::get('/informasi/berita', [PageController::class, 'posts'])->name('public.posts');
@@ -36,6 +32,7 @@ Route::get('/informasi/jadwalkbm', [PageController::class, 'schedules'])->name('
 Route::get('/informasi/guru', [PageController::class, 'teachers'])->name('public.teachers');
 Route::get('/informasi/syarat-pendaftaran', [PageController::class, 'registerRequirements'])->name('public.registerRequirements');
 Route::get('/galeri', [PageController::class, 'galleries'])->name('public.galleries');
+Route::get('/kontak', [PageController::class, 'kontak'])->name('public.kontak');
 
 // 2. DASHBOARD ADMIN
 Route::get('/dashboard', function () {
@@ -45,17 +42,17 @@ Route::get('/dashboard', function () {
 // 4. FITUR ADMIN (Harus Login)
 Route::middleware('auth')->group(function () {
     // Profil Bawaan
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile (admin).edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile (admin).update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile (admin).destroy');
+    Route::get('/dashboard/pengaturan', [ProfileController::class, 'edit'])->name('profile (admin).edit');
+    Route::patch('/dashboard/pengaturan', [ProfileController::class, 'update'])->name('profile (admin).update');
+    Route::delete('/dashboard/pengaturan', [ProfileController::class, 'destroy'])->name('profile (admin).destroy');
 
     // CRUD FITUR SEKOLAH
-    Route::resource('posts', PostController::class);       // Berita
-    Route::resource('galleries', GalleryController::class); // Galeri
-    Route::resource('teachers', TeacherController::class);  // Guru
-    Route::resource('schedules', ScheduleController::class); // JadwalSS
-    Route::resource('achievements', AchievementController::class); // Prestasi
-    Route::resource('herobanners', HeroBannerController::class); // Banner Beranda
+    Route::resource('/dashboard/berita', PostController::class)->names('posts');       // Berita
+    Route::resource('/dashboard/galleries', GalleryController::class)->names('galleries'); // Galeri
+    Route::resource('/dashboard/teachers', TeacherController::class)->names('teachers');  // Guru
+    Route::resource('/dashboard/schedules', ScheduleController::class)->names('schedules'); // JadwalSS
+    Route::resource('/dashboard/achievements', AchievementController::class)->names('achievements'); // Prestasi
+    Route::resource('/dashboard/herobanners', HeroBannerController::class)->names('herobanners'); // Banner Beranda
 });
 
 require __DIR__.'/auth.php';
