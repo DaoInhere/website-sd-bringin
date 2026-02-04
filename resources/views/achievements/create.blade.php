@@ -78,7 +78,7 @@
 
                     {{-- PENGHARGAAN --}}
                     <div class="mb-4">
-                        <label class="block text-gray-700 font-bold mb-2">Penghargaan</label>
+                        <x-required-label class="block text-gray-700 font-bold mb-2">Penghargaan</x-required-label>
                         <input type="text" name="award" value="{{ old('award') }}"
                                class="w-full border p-2 rounded @error('award') border-red-500 bg-red-50 @enderror" 
                                placeholder="Contoh: Sertifikat, Piala">

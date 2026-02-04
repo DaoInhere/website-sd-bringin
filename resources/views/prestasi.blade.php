@@ -35,43 +35,73 @@
                 <p class="text-white text-sm">Tanggal Terbaru</p>
                 <p class="mt-1 text-3xl font-extrabold text-white">{{ $latestAchievementDate }}</p>
             </div>
-            <div class="rounded-2xl bg-sekolah-hijau shadow-sm ring-1 ring-black/5 p-5">
+            <div class="rounded-2xl bg-sekolah-hijau shadow-sm ring-1 ring-black/5 p-5" id="prestasi">
                 <p class="text-white text-sm">Tingkat Dominan</p>
                 <p class="mt-1 text-2xl font-extrabold text-white">{{ $levelSummary }}</p>
             </div>
         </div>
 
-        {{-- FILTER UI (frontend only) --}}
-        <div class="mt-6 rounded-2xl bg-white shadow-sm ring-1 ring-black/5 p-4 sm:p-5">
-            <div class="flex flex-col sm:flex-row gap-3 sm:items-center sm:justify-between">
-                <div class="flex-1">
-                    <label class="block text-sm font-semibold text-gray-700">Cari Prestasi</label>
-                    <input
-                        id="achievementSearch"
-                        type="text"
-                        placeholder="Cari berdasarkan acara, lomba, kategori, tingkat, juara, award..."
-                        class="mt-2 w-full rounded-xl border border-gray-200 px-4 py-2.5 text-sm outline-none focus:ring-2 focus:ring-sekolah-hijau/40" />
-                </div>
+    <section class="mx-auto mt-10 max-w-7xl">
+        <form method="GET" action="{{ url()->current() }}#prestasi">
+                <div class="flex flex-col sm:flex-row gap-4 sm:items-end">
+                    {{-- SEARCH --}}
+                    <div class="flex-1">
+                        <label class="block text-sm font-semibold text-gray-700">
+                            Cari Prestasi
+                        </label>
+                        <input type="text" name="cari" value="{{ request('cari') }}" placeholder="Cari berdasarkan acara, lomba, kategori, tingkat, juara, penghargaan..." class="mt-2 w-full rounded-xl border border-gray-200 px-4 py-2.5 text-sm outline-none focus:ring-2 focus:ring-sekolah-hijau/40" />
+                    </div>
+        
+            @if(request('tahun'))
+                <input type="hidden" name="tahun" value="{{ request('tahun') }}">
+            @endif
 
-                <div class="sm:w-56">
-                    <label class="block text-sm font-semibold text-gray-700">Filter Tahun</label>
-                    <select
-                        id="yearFilter"
-                        class="mt-2 w-full rounded-xl border border-gray-200 bg-white px-4 py-2.5 text-sm outline-none focus:ring-2 focus:ring-sekolah-hijau/40">
-                        <option value="">Semua Tahun</option>
-                        <option value="2018">2018</option>
-                        <option value="2019">2019</option>
-                        <option value="2020">2020</option>
-                        <option value="2021">2021</option>
-                        <option value="2022">2022</option>
-                        <option value="2023">2023</option>
-                        <option value="2024">2024</option>
-                        <option value="2025">2025</option>
-                        <option value="2026">2026</option>
-                    </select>
+        </form>
+
+        <form method="GET" action="{{ url()->current() }}#prestasi">
+            <div>
+                <div class="relative group w-full sm:w-56">
+                    <label class="block text-sm font-semibold text-gray-700">
+                        Filter Tahun
+                    </label>
+
+                    <div class="relative mt-2">
+                        <button type="button" class="w-full rounded-xl border border-gray-300 bg-white px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-sekolah-hijau/40 shadow-s hover:border-sekolah-hijau transition flex items-center justify-between">
+                            <span>{{ request('tahun', 'Semua Tahun') }}</span>
+                            <i class="fas fa-chevron-down text-sm"></i>
+                        </button>
+
+                        <ul
+                            class="absolute top-full left-0 w-full bg-white shadow-xl rounded-b-lg
+                                opacity-0 invisible group-hover:opacity-100 group-hover:visible
+                                transition-all duration-200 z-50 border-t">
+
+                            <li>
+                                <button
+                                    type="submit" name="tahun" value="" class="block w-full px-6 py-3 text-left text-gray-700 hover:text-sekolah-hijau hover:bg-gray-50 transition font-medium">
+                                    Semua Tahun
+                                </button>
+                            </li>
+
+                            @foreach ($years as $year)
+                                <li>
+                                    <button
+                                        type="submit" name="tahun" value="{{ $year }}" class="block w-full px-6 py-3 text-left text-gray-700 hover:text-sekolah-hijau hover:bg-gray-50 transition font-medium">
+                                        {{ $year }}
+                                    </button>
+                                </li>
+                            @endforeach
+                        </ul>
+                    </div>
                 </div>
-            </div>
         </div>
+
+            @if(request('cari'))
+                <input type="hidden" name="cari" value="{{ request('cari') }}">
+            @endif
+
+            </form>
+    </section>
 
         {{-- LIST --}}
         <div class="mt-8">
@@ -186,11 +216,6 @@
                                     {{ Str::limit(strip_tags($achievement->description), 120) }}
                                 </p>
                                 @endif
-
-                                <p class="mt-4 text-sm text-gray-600 leading-relaxed">
-                                    <span class="font-semibold text-gray-800">Ringkas:</span>
-                                    {{ $prettyDate }} • {{ $achievement->position }} • {{ $achievement->level }} • {{ $achievement->name }} ({{ $achievement->category }})
-                                </p>
                             </div>
                         </article>
                         @endforeach

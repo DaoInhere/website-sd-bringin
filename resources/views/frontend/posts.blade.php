@@ -17,7 +17,7 @@
                     <h1 class="text-4xl sm:text-5xl font-extrabold tracking-tight drop-shadow text-white">
                         Berita & Pengumuman
                     </h1>
-                    <p class="mt-3 text-white/90">
+                    <p class="mt-3 text-white/90" id="beritapengumuman">
                         Informasi terbaru untuk warga sekolah SD Negeri Bringin 01
                     </p>
                 </div>
@@ -27,7 +27,7 @@
 
     {{-- Filter --}}
     <section class="mx-auto mt-10 max-w-7xl px-4 sm:px-6 lg:px-8">
-        <form method="GET" action="{{ url()->current() }}">
+        <form method="GET" action="{{ url()->current() }}#beritapengumuman">
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <div class="relative group">
                     <label class="block text-sm font-semibold text-gray-700 mb-2">Filter Tahun</label>
@@ -62,7 +62,7 @@
 
             </form>
 
-            <form method="GET" action="{{ url()->current() }}">
+            <form method="GET" action="{{ url()->current() }}#beritapengumuman">
             <div>
                 <div class="relative group">
                     <label class="block text-sm font-semibold text-gray-700 mb-2">Filter Kategori</label>

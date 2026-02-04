@@ -10,12 +10,12 @@ return new class extends Migration
     {
         Schema::create('achievements', function (Blueprint $table) {
             $table->id();
-            $table->string('title');    // Nama Acara (misal: HUT RI ke-79)
-            $table->string('name');     // Nama Lomba (misal: Lomba Makan Kerupuk)
-            $table->string('category'); // Kategori (Olahraga/Akademik)
-            $table->string('level');    // Tingkat (Daerah/Nasional)
-            $table->string('position'); // Juara 1/2/3
-            $table->string('award')->nullable(); // Sertifikat/Piala
+            $table->string('title');
+            $table->string('name');
+            $table->string('category');
+            $table->string('level');
+            $table->string('position');
+            $table->string('award');
             $table->date('date');
             
             $table->text('description')->nullable();

@@ -44,6 +44,21 @@ class Achievement extends Model
                 });
             }
         );
+
+        $query->when(
+            $filters['cari'] ?? false,
+            function ($query, $search) {
+                $query->where(function ($cari) use ($search) {
+                    $cari->where('title', 'like', "%{$search}%")
+                    ->orWhere('name', 'like', "%{$search}%")
+                    ->orWhere('category', 'like', "%{$search}%")
+                    ->orWhere('level', 'like', "%{$search}%")
+                    ->orWhere('position', 'like', "%{$search}%")
+                    ->orWhere('award', 'like', "%{$search}%")
+                    ->orWhere('description', 'like', "%{$search}%");
+                });
+            }
+        );
     }
     
     public function getImageUrlAttribute()

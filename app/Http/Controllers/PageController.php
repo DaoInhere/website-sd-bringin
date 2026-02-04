@@ -82,27 +82,53 @@ class PageController extends Controller
 
     // === MENU PRESTASI ===
     public function achievements() {
-        $achievements = Achievement::orderByDesc('date')->paginate(6);
+        $years = Achievement::selectRaw('YEAR(date) as year')
+            ->distinct()
+            ->orderByDesc('year')
+            ->pluck('year');
 
+        $query = Achievement::query();
+
+        $query->when(request('tahun'), function ($tahun, $year) {
+            $tahun->whereYear('date', $year);
+        });
+
+        $query->when(request('cari'), function ($cari, $search) {
+            $cari->where(function ($cari) use ($search) {
+                $cari->where('title', 'like', "%{$search}%")
+                ->orWhere('name', 'like', "%{$search}%")
+                ->orWhere('category', 'like', "%{$search}%")
+                ->orWhere('level', 'like', "%{$search}%")
+                ->orWhere('position', 'like', "%{$search}%")
+                ->orWhere('award', 'like', "%{$search}%")
+                ->orWhere('description', 'like', "%{$search}%");
+            });
+        });
+
+        $achievements = $query
+            ->latest()
+            ->paginate(10)
+            ->withQueryString();
+
+        // Tampilan Tanggal Terbaru dan Tingkat Dominan
         $latestDateRaw = Achievement::max('date');
         $latestAchievementDate = $latestDateRaw 
             ? Carbon::parse($latestDateRaw)->translatedFormat('d F Y') 
             : '-';
 
-        if (Achievement::where('level', 'Nasional')->exists()) {
+        if (Achievement::where('level', 'Internasional')->exists()) {
+            $levelSummary = 'Internasional';
+        } elseif (Achievement::where('level', 'Nasional')->exists()) {
             $levelSummary = 'Nasional';
         } elseif (Achievement::where('level', 'Provinsi')->exists()) {
             $levelSummary = 'Provinsi';
-        } elseif (Achievement::where('level', 'Tingkat Daerah')->exists() || Achievement::where('level', 'Kabupaten/Kota')->exists()) {
-            $levelSummary = 'Tingkat Daerah';
-        } elseif (Achievement::where('level', 'Kecamatan')->exists()) {
-            $levelSummary = 'Kecamatan';
+        } elseif (Achievement::where('level', 'Kabupaten/Kota')->exists()) {
+            $levelSummary = 'Kabupaten/Kota';
         } else {
-            // Ambil saja level dari data pertama kalo bingung
-            $levelSummary = Achievement::first() ? Achievement::first()->level : '-';
+            $levelSummary = 'Kecamatan';
         }
 
-        return view('prestasi', compact('achievements', 'latestAchievementDate', 'levelSummary'));
+        return view('prestasi', compact('achievements', 'latestAchievementDate', 'levelSummary', 'years'));
     }
 
     // Menu Informasi (Jadwal)

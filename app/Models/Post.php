@@ -46,6 +46,12 @@ class Post extends Model
             fn (Builder $kategori, string $category) =>
                 $kategori->where('category', $category)
         );
+
+        $query->when(
+            $filters['tahun'] ?? false,
+            fn (Builder $kategori, string $year) =>
+                $kategori->whereYear('tahun', $year)
+        );
     }
     // Relasi ke Kategori
     // public function category()
