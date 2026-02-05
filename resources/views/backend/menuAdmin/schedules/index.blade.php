@@ -33,7 +33,7 @@
                         <div class="relative">
                             <input type="text" name="find" value="{{ request('find') }}"
                                    placeholder="Cari jadwal..."
-                                   class="w-full sm:w-72 pl-10 pr-10 py-2.5 rounded-xl border" />
+                                   class="w-full sm:w-72 pl-5 pr-5 py-2.5 rounded-xl border" />
                         </div>
 
                     @if(request('sort'))

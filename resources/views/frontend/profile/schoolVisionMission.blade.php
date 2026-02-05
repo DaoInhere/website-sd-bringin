@@ -4,7 +4,7 @@
 <main class="pb-16">
     {{-- HERO / HEADER --}}
     <section class="relative">
-        <div class="relative h-[260px] sm:h-[320px] lg:h-[360px] overflow-hidden">
+        <div class="relative h-[320px] sm:h-[380px] lg:h-[420px] overflow-hidden">
             <img
                 src="{{ asset('asset/galeri foto.jpg') }}"
                 alt="Visi dan Misi SDN 1 Bringin"

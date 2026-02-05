@@ -5,7 +5,7 @@
 <main class="pb-16">
     {{-- HERO --}}
     <section class="relative">
-        <div class="relative h-[240px] sm:h-[300px] lg:h-[340px] overflow-hidden">
+        <div class="relative h-[320px] sm:h-[380px] lg:h-[420px] overflow-hidden">
             <img
                 src="{{ asset('asset/banner_Berita.png') }}"
                 alt="Berita & Pengumuman"
@@ -101,7 +101,7 @@
     <section class="mx-auto mt-10 max-w-7xl px-4 sm:px-6 lg:px-8">
         @if($posts->isEmpty())
             <div class="rounded-2xl bg-white p-6 text-center text-gray-600 shadow-sm ring-1 ring-black/5">
-                <div class="alert alert-info d-inline-block">Belum ada berita yang diterbitkan.</div>
+                <div class="alert alert-info d-inline-block">Tidak ada data.</div>
             </div>
         @else
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">

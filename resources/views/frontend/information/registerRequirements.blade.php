@@ -5,7 +5,7 @@
 
     {{-- Hero --}}
     <section class="relative">
-        <div class="relative h-64 md:h-80 overflow-hidden">
+        <div class="relative h-[320px] sm:h-[380px] lg:h-[420px] overflow-hidden">
             <img
                 src="{{ asset('asset/banner_Syarat.png') }}"
                 alt="Syarat Pendaftaran Siswa Baru"

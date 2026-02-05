@@ -4,7 +4,7 @@
 <main class="bg-gray-50">
 
     {{-- 1. HERO SECTION (JUDUL HALAMAN DENGAN BANNER BARU) --}}
-    <section class="relative h-64 md:h-80 bg-sekolah-hijau overflow-hidden">
+    <section class="relative h-[320px] sm:h-[380px] lg:h-[420px] overflow-hidden">
         {{-- Overlay Gelap agar teks terbaca --}}
         <div class="absolute inset-0 bg-black/40 z-10"></div>
 
@@ -18,7 +18,7 @@
             <h1 class="text-4xl md:text-5xl font-bold text-white mb-2 drop-shadow-lg">
                 Ekstrakurikuler
             </h1>
-            <div class="w-24 h-1 bg-sekolah-kuning rounded-full mb-4"></div>
+            <div class="w-64 h-1 bg-sekolah-kuning rounded-full mb-4"></div>
             <p class="text-white text-lg md:text-xl font-medium max-w-2xl drop-shadow-md">
                 Wadah pengembangan minat, bakat, dan karakter siswa SD Negeri 1 Bringin
             </p>
