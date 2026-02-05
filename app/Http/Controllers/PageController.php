@@ -84,7 +84,7 @@ class PageController extends Controller
 
         $achievements = $query
             ->latest()
-            ->paginate(10)
+            ->paginate(6)
             ->withQueryString();
 
         // Tampilan Tanggal Terbaru dan Tingkat Dominan
@@ -125,9 +125,8 @@ class PageController extends Controller
             $kategori->where('category', $category);
         });
 
-        $posts = $query
-            ->latest()
-            ->paginate(10)
+        $posts = $query->latest()
+            ->paginate(9)
             ->withQueryString();
 
         return view('frontend.information.posts', compact('posts', 'years'));
@@ -218,7 +217,7 @@ class PageController extends Controller
 
     // Galeri
     public function galleries() {
-        $galleries = Gallery::latest()->paginate(9);
+        $galleries = Gallery::latest()->paginate(6);
         return view('frontend.galleries', compact('galleries'));
     }
 

@@ -125,8 +125,10 @@
                 @endforeach
             </div>
         @endif
+        <div class="mt-6">
+            {{ $posts->appends(request()->only(['tahun','kategori']))->links() }}
+        </div>
     </section>
-
 </main>
 
 {{-- Modal Container --}}

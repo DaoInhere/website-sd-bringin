@@ -229,6 +229,11 @@
                 </div>
             </div>
         </div>
+
+    <div class="mt-6">
+        {{ $achievements->appends(request()->only(['cari','tahun']))->links() }}
+    </div>
+
     </section>
 
     {{-- LIGHTBOX MODAL --}}
