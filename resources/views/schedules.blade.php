@@ -4,7 +4,7 @@
 <main class="pb-16">
     {{-- HERO --}}
     <section class="relative">
-        <div class="relative h-[220px] sm:h-[260px] overflow-hidden">
+        <div class="relative h-[320px] sm:h-[380px] lg:h-[420px] overflow-hidden">
             <img
                 src="{{ asset('asset/galeri foto.jpg') }}"
                 alt="Jadwal KBM"

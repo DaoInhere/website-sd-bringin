@@ -4,7 +4,7 @@
 <main class="pb-16" x-data="achievementLightbox()">
     {{-- HERO --}}
     <section class="relative">
-        <div class="relative h-64 md:h-80 overflow-hidden">
+        <div class="relative h-[320px] sm:h-[380px] lg:h-[420px] overflow-hidden">
             <img
                 src="{{ asset('asset/prestasi_banner.png') }}"
                 alt="Prestasi SDN 1 Bringin"
@@ -13,7 +13,7 @@
 
             <div class="relative z-10 flex h-full items-center justify-center px-4 sm:px-6 lg:px-8">
                 <div class="text-center text-white">
-                    <h1 class="text-4xl sm:text-5xl font-extrabold tracking-tight drop-shadow">
+                    <h1 class="text-4xl sm:text-5xl font-extrabold tracking-tight drop-shadow text-white">
                         Prestasi Sekolah
                     </h1>
                     <p class="mt-3 text-white/90">
@@ -109,7 +109,7 @@
                 <div id="achievementList" class="space-y-4">
                     @if($achievements->isEmpty())
                     <div class="rounded-2xl bg-white p-6 text-center text-gray-600 shadow-sm ring-1 ring-black/5">
-                        Belum ada data prestasi yang diinput.
+                        Tidak ada data.
                     </div>
                     @else
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">

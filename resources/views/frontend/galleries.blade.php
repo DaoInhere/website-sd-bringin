@@ -5,7 +5,7 @@
 <main class="pb-16">
     {{-- HERO SECTION --}}
     <section class="relative">
-        <div class="relative h-[220px] sm:h-[260px] overflow-hidden">
+        <div class="relative h-[320px] sm:h-[380px] lg:h-[420px] overflow-hidden">
             <img
                 src="{{ asset('asset/galeri foto.jpg') }}"
                 alt="Galeri Kegiatan"
@@ -31,7 +31,7 @@
     <section class="mx-auto mt-10 max-w-7xl px-4 sm:px-6 lg:px-8">
         @if($galleries->isEmpty())
             <div class="rounded-2xl bg-white p-6 text-center text-gray-600 shadow-sm ring-1 ring-black/5">
-                Belum ada data galeri yang diinput.
+                Tidak ada data.
             </div>
         @else
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
