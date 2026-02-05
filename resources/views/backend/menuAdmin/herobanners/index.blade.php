@@ -13,7 +13,7 @@
                 <div class="mb-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
                     <a href="{{ route('herobanners.create') }}"
                        style="background-color: #16a34a; color: white; padding: 10px 20px; border-radius: 5px; text-decoration: none; display: inline-block; font-weight: bold;">
-                        + Tambah Banner
+                        + Tambah Banner Baru
                     </a>
 
                     <form method="GET" action="{{ url()->current() }}" class="w-full sm:w-auto">
@@ -41,7 +41,7 @@
                 @endif
 
                 <div class="mb-4">
-                    {{ $herobanners->appends(request()->only(['q','sort','dir']))->links() }}
+                    {{ $herobanners->appends(request()->only(['find','sort','dir']))->links() }}
                 </div>
 
                 <div class="overflow-x-auto">
@@ -109,7 +109,7 @@
                 </div>
 
                 <div class="mt-4">
-                    {{ $herobanners->appends(request()->only(['q','sort','dir']))->links() }}
+                    {{ $herobanners->appends(request()->only(['find','sort','dir']))->links() }}
                 </div>
 
             </div>

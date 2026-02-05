@@ -47,9 +47,8 @@
                     </form>
                 </div>
 
-                {{-- KANAN: pagination --}}
-                <div class="sm:text-right mb-4">
-                    {{ $schedules->appends(request()->query())->links() }}
+                <div class="mb-4">
+                    {{ $schedules->appends(request()->only(['find','sort','dir']))->links() }}
                 </div>
 
                 {{-- TABLE --}}
@@ -123,9 +122,8 @@
                     </table>
                 </div>
 
-                {{-- BOTTOM PAGINATION --}}
-                <div class="mt-5">
-                    {{ $schedules->appends(request()->query())->links() }}
+                <div class="mb-4">
+                    {{ $schedules->appends(request()->only(['find','sort','dir']))->links() }}
                 </div>
 
             </div>

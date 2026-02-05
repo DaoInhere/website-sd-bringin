@@ -39,6 +39,10 @@
                     </div>
                 @endif
 
+                <div class="mb-4">
+                    {{ $galleries->appends(request()->only(['find','sort','dir']))->links() }}
+                </div>
+
                 <div class="overflow-x-auto">
                     <table class="w-full border-collapse border border-gray-300">
                         <thead class="bg-gray-100 text-gray-700">
@@ -118,7 +122,7 @@
                 </div>
 
                 <div class="mt-4">
-                    {{ $galleries->appends(request()->only(['q','sort','dir']))->links() }}
+                    {{ $galleries->appends(request()->only(['find','sort','dir']))->links() }}
                 </div>
             </div>
         </div>

@@ -46,7 +46,7 @@
                 @enderror
 
                 <div class="mb-4">
-                    {{ $teachers->appends(request()->only(['q','sort','dir']))->links() }}
+                    {{ $teachers->appends(request()->only(['find','sort','dir']))->links() }}
                 </div>
 
                 <div class="overflow-x-auto">
@@ -112,8 +112,8 @@
                     </table>
                 </div>
 
-                <div class="mt-4">
-                    {{ $teachers->appends(request()->only(['q','sort','dir']))->links() }}
+                <div class="mb-4">
+                    {{ $teachers->appends(request()->only(['find','sort','dir']))->links() }}
                 </div>
 
             </div>

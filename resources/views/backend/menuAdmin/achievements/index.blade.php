@@ -35,6 +35,10 @@
                         </div>
                     @endif
 
+                    <div class="mb-4">
+                        {{ $achievements->appends(request()->only(['find','sort','dir']))->links() }}
+                    </div>
+
                     <div class="overflow-x-auto">
                         <table class="w-full border-collapse border border-gray-300">
                             <thead>
@@ -115,7 +119,7 @@
                     </div>
 
                     <div class="mt-4">
-                        {{ $achievements->appends(request()->only(['q','sort','dir']))->links() }}
+                        {{ $achievements->appends(request()->only(['find','sort','dir']))->links() }}
                     </div>
                 </div>
             </div>

@@ -34,7 +34,7 @@
                 </div>
 
                 <div class="mb-4">
-                    {{ $posts->withQueryString()->links() }}
+                    {{ $posts->appends(request()->only(['find','sort','dir']))->links() }}
                 </div>
 
                 <div class="overflow-x-auto">
@@ -95,8 +95,8 @@
 
                 </div>
 
-                <div class="mt-4">
-                    {{ $posts->withQueryString()->links() }}
+                <div class="mb-4">
+                    {{ $posts->appends(request()->only(['find','sort','dir']))->links() }}
                 </div>
 
             </div>
