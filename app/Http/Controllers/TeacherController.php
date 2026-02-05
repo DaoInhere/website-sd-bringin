@@ -24,13 +24,13 @@ class TeacherController extends Controller
             ->paginate(10)
             ->withQueryString();
 
-        return view('teachers.index', compact('teachers', 'sort', 'dir'));
+        return view('backend.menuAdmin.teachers.index', compact('teachers', 'sort', 'dir'));
     }
 
     // 2. FORM TAMBAH
     public function create()
     {
-        return view('teachers.create');
+        return view('backend.menuAdmin.teachers.create');
     }
 
     private function checkTeacherPosition(Request $request)
@@ -90,7 +90,7 @@ class TeacherController extends Controller
     public function edit(string $nip)
     {
         $teacher = Teacher::where('nip', $nip)->firstOrFail();
-        return view('teachers.edit', compact('teacher'));
+        return view('backend.menuAdmin.teachers.edit', compact('teacher'));
     }
 
     // 5. PROSES UPDATE

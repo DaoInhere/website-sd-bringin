@@ -21,7 +21,7 @@
                                class="w-full border p-2 rounded @error('photos') border-red-500 @enderror @error('photos.*') border-red-500 @enderror" 
                                required>
                         
-                        <small class="text-gray-500 block mt-1">Tekan <b>CTRL</b> saat memilih file untuk upload banyak sekaligus.</small>
+                        <small class="text-gray-500">Catatan: Wajib JPG/JPEG/PNG. Maksimal 2MB.</small>
                         
                         @error('photos') <p class="text-red-500 text-sm mt-1">{{ $message }}</p> @enderror
                         @error('photos.*') <p class="text-red-500 text-sm mt-1">File harus gambar max 2MB.</p> @enderror

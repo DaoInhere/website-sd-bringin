@@ -42,7 +42,7 @@
             </div>
 
             <div class="hidden md:flex items-center gap-6 lg:gap-8">
-                <a href="{{ route('home') }}" class="nav-link text-gray-800 font-bold hover:text-sekolah-hijau transition">Beranda</a>
+                <a href="{{ route('public.home') }}" class="nav-link text-gray-800 font-bold hover:text-sekolah-hijau transition">Beranda</a>
                 
                 <div class="relative group h-full flex items-center py-2">
                     <button class="nav-link text-gray-800 font-bold hover:text-sekolah-hijau transition flex items-center gap-1">
@@ -50,8 +50,8 @@
                         <i class="fas fa-chevron-down text-xs transition-transform group-hover:rotate-180"></i>
                     </button>
                     <ul class="absolute top-full right-0 mt-0 w-56 bg-white shadow-xl rounded-b-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 border-t-4 border-sekolah-hijau transform origin-top scale-95 group-hover:scale-100">
-                        <li><a href="{{ route('public.sejarah') }}" class="block px-6 py-3 text-gray-700 hover:text-sekolah-hijau hover:bg-gray-50 transition font-medium border-b border-gray-100">Sejarah Sekolah</a></li>
-                        <li><a href="{{ route('public.visi') }}" class="block px-6 py-3 text-gray-700 hover:text-sekolah-hijau hover:bg-gray-50 transition font-medium border-b border-gray-100">Visi & Misi</a></li>
+                        <li><a href="{{ route('public.schoolHistory') }}" class="block px-6 py-3 text-gray-700 hover:text-sekolah-hijau hover:bg-gray-50 transition font-medium border-b border-gray-100">Sejarah Sekolah</a></li>
+                        <li><a href="{{ route('public.schoolVisionMission') }}" class="block px-6 py-3 text-gray-700 hover:text-sekolah-hijau hover:bg-gray-50 transition font-medium border-b border-gray-100">Visi & Misi</a></li>
                     </ul>
                 </div>
 
@@ -89,7 +89,7 @@
                     </button>
                 </div>
 
-                <a href="{{ route('public.kontak') }}" class="nav-link text-gray-800 font-bold hover:text-sekolah-hijau transition">Kontak</a>
+                <a href="{{ route('public.contact') }}" class="nav-link text-gray-800 font-bold hover:text-sekolah-hijau transition">Kontak</a>
                 
                 @auth
                     <a href="{{ url('/dashboard') }}" class="bg-sekolah-kuning hover:bg-yellow-500 text-gray-900 font-bold py-2 px-5 rounded shadow-lg transform hover:-translate-y-1 transition text-sm uppercase tracking-wide">

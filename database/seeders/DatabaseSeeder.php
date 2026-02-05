@@ -48,13 +48,5 @@ class DatabaseSeeder extends Seeder
         // Buat 6 Data Foto Galeri
         // Gallery::factory(6)->create();
         
-        // Buat Pengaturan Website
-        // pakai pengecekan 'if' agar aman jika dijalankan berulang
-        if (Setting::count() == 0) {
-            Setting::create(['key' => 'judul_web', 'value' => 'SD Negeri Bringin 01']);
-            Setting::create(['key' => 'alamat', 'value' => 'Jl. Bringin No. 1, Semarang']);
-            Setting::create(['key' => 'telepon', 'value' => '024-1234567']);
-            Setting::create(['key' => 'email', 'value' => 'info@sdnbringin01.sch.id']);
-        }
     }
 }

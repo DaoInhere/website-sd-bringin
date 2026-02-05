@@ -28,7 +28,7 @@
 
                 <div class="p-6 sm:p-8">
                     <div class="max-w-2xl">
-                        @include('profile (admin).partials.update-profile-information-form')
+                        @include('backend.profileAdmin.partials.update-profile-information-form')
                     </div>
                 </div>
             </div>
@@ -47,12 +47,12 @@
 
                 <div class="p-6 sm:p-8">
                     <div class="max-w-2xl">
-                        @include('profile (admin).partials.update-password-form')
+                        @include('backend.profileAdmin.partials.update-password-form')
                     </div>
                 </div>
             </div>
 
-            {{-- Delete user (opsional) --}}
+            {{-- Delete user --}}
             {{-- <div class="bg-white shadow-sm ring-1 ring-black/5 rounded-2xl overflow-hidden">
                 <div class="p-6 sm:p-8">
                     <div class="max-w-2xl">

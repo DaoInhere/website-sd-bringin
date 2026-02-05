@@ -23,7 +23,7 @@
                                 @endforeach
                             @endif
                         </div>
-                        <p class="text-xs text-red-600 mt-2">*Catatan: Jika Anda mengupload foto baru di bawah, semua foto lama di atas akan TERHAPUS dan diganti yang baru.</p>
+                        <p class="text-xs text-red-600 mt-2">*Catatan: Jika Anda mengupload foto baru, maka semua foto lama di atas akan terhapus dan digantikan oleh yang baru diupload.</p>
                     </div>
 
                     {{-- 2. UPLOAD FOTO BARU (Opsional) --}}

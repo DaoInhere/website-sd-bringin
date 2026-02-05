@@ -23,12 +23,12 @@ class AchievementController extends Controller
             ->paginate(10)
             ->withQueryString();
 
-        return view('achievements.index', compact('achievements', 'sort', 'dir'));
+        return view('backend.menuAdmin.achievements.index', compact('achievements', 'sort', 'dir'));
     }
 
     public function create()
     {
-        return view('achievements.create');
+        return view('backend.menuAdmin.achievements.create');
     }
 
     public function store(Request $request)
@@ -67,7 +67,7 @@ class AchievementController extends Controller
 
     public function edit(Achievement $achievement)
     {
-        return view('achievements.edit', compact('achievement'));
+        return view('backend.menuAdmin.achievements.edit', compact('achievement'));
     }
 
     public function update(Request $request, Achievement $achievement)

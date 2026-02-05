@@ -58,9 +58,9 @@
         <div class="pt-4 border-t border-gray-100">
             <p x-show="open" class="text-[10px] font-bold text-gray-400 uppercase px-2 mb-2 tracking-widest">Akun</p>
             
-            <a href="{{ route('profile (admin).edit') }}" class="flex items-center p-2 text-gray-700 hover:bg-teal-50 hover:text-teal-600 rounded-lg transition-all group">
+            <a href="{{ route('profileAdmin.edit') }}" class="flex items-center p-2 text-gray-700 hover:bg-teal-50 hover:text-teal-600 rounded-lg transition-all group">
                 <span class="text-xl min-w-[24px] flex items-center justify-center">⚙️</span>
-                <span x-show="open" x-transition class="ml-3 font-medium truncate">Pengaturan</span>
+                <span x-show="open" x-transition class="ml-3 font-medium truncate">Profile</span>
             </a>
         </div>
     </nav>

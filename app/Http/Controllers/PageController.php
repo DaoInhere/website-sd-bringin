@@ -2,24 +2,44 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon; 
 use App\Models\Post;
 use App\Models\Gallery;
 use App\Models\Teacher;
 use App\Models\Schedule;
+use App\Models\HeroBanner;
 use App\Models\Achievement;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Carbon\Carbon; 
 
 class PageController extends Controller
 {
-    // === 1. BAGIAN PROFIL (DROPDOWN) ===
-    public function sejarah() {
-        return view('frontend.profile.sejarah');
+    // Beranda
+    public function home()
+    {
+        $posts = Post::latest()->take(3)->get();
+        $herobanners = HeroBanner::oldest()->get();
+
+        // 2. Ambil 6 Foto Galeri Terbaru
+        $galleries = Gallery::latest()->take(6)->get();
+
+        // 3. Ambil Semua Data Guru
+        $teachers = Teacher::all();
+        $headmaster = Teacher::where('position', 'Kepala Sekolah')->first();
+
+        $extracurriculars = Schedule::where('type', 'Ekstrakurikuler')->get();
+        
+        // Kirim semua data ke halaman depan
+        return view('frontend.home', compact('posts', 'herobanners', 'galleries', 'teachers', 'headmaster', 'extracurriculars'));
     }
 
-    public function visi() {
-        return view('frontend.profile.visi');
+    // Profil
+    public function schoolHistory() {
+        return view('frontend.profile.schoolHistory');
+    }
+
+    public function schoolVisionMission() {
+        return view('frontend.profile.schoolVisionMission');
     }
 
     public function struktur() {
@@ -30,57 +50,14 @@ class PageController extends Controller
         return view('frontend.profile.sarana');
     }
 
-    public function kontak() {
-        return view('frontend.contact');
-    }
-
-    public function registerRequirements() {
-        return view('frontend.syarat');
-    }
-
-    // === 2. MENU LAINNYA ===
-    public function teachers() {
-        $teachers = Teacher::all();
-        return view('frontend.teachers', compact('teachers'));
-    }
-
-    public function galleries() {
-        $galleries = Gallery::latest()->paginate(9);
-        return view('frontend.galleries', compact('galleries'));
-    }
-
-    public function posts() {
-        $years = Post::selectRaw('YEAR(created_at) as year')
-            ->distinct()
-            ->orderByDesc('year')
-            ->pluck('year');
-
-        $query = Post::query();
-
-        $query->when(request('tahun'), function ($tahun, $year) {
-            $tahun->whereYear('created_at', $year);
-        });
-
-        $query->when(request('kategori'), function ($kategori, $category) {
-            $kategori->where('category', $category);
-        });
-
-        $posts = $query
-            ->latest()
-            ->paginate(10)
-            ->withQueryString();
-
-        return view('frontend.posts', compact('posts', 'years'));
-    }
-
     public function extracurriculars() {
         $extracurriculars = Schedule::where('type', 'Ekstrakurikuler')
             ->latest()
             ->paginate(6);
-        return view('ekstrakurikuler', compact('extracurriculars'));
+        return view('frontend.studentaffairs.extracurriculars', compact('extracurriculars'));
     }
 
-    // === MENU PRESTASI ===
+    // Kesiswaan
     public function achievements() {
         $years = Achievement::selectRaw('YEAR(date) as year')
             ->distinct()
@@ -128,10 +105,34 @@ class PageController extends Controller
             $levelSummary = 'Kecamatan';
         }
 
-        return view('prestasi', compact('achievements', 'latestAchievementDate', 'levelSummary', 'years'));
+        return view('frontend.studentaffairs.achievements', compact('achievements', 'latestAchievementDate', 'levelSummary', 'years'));
     }
 
-    // Menu Informasi (Jadwal)
+    // Information
+    public function posts() {
+        $years = Post::selectRaw('YEAR(created_at) as year')
+            ->distinct()
+            ->orderByDesc('year')
+            ->pluck('year');
+
+        $query = Post::query();
+
+        $query->when(request('tahun'), function ($tahun, $year) {
+            $tahun->whereYear('created_at', $year);
+        });
+
+        $query->when(request('kategori'), function ($kategori, $category) {
+            $kategori->where('category', $category);
+        });
+
+        $posts = $query
+            ->latest()
+            ->paginate(10)
+            ->withQueryString();
+
+        return view('frontend.information.posts', compact('posts', 'years'));
+    }
+
     public function schedules(Request $request) {
         if ($request->query()) {
             $queryKeys = collect($request->query())->keys();
@@ -193,7 +194,7 @@ class PageController extends Controller
             ->values();
             
         $types = Schedule::select('type')
-            ->where('type', '!=', '-') // default
+            ->where('type', '!=', '-')
             ->distinct()
             ->orderBy('type')
             ->pluck('type')
@@ -203,6 +204,26 @@ class PageController extends Controller
         // Set default tipe
         $type = '-';
 
-        return view('schedules', compact('curriculums', 'classes', 'types', 'type'));
+        return view('frontend.information.schedules', compact('curriculums', 'classes', 'types', 'type'));
+    }
+
+    public function teachers() {
+        $teachers = Teacher::all();
+        return view('frontend.information.teachers', compact('teachers'));
+    }
+
+    public function registerRequirements() {
+        return view('frontend.information.registerRequirements');
+    }
+
+    // Galeri
+    public function galleries() {
+        $galleries = Gallery::latest()->paginate(9);
+        return view('frontend.galleries', compact('galleries'));
+    }
+
+    // Kontak
+    public function contact() {
+        return view('frontend.contact');
     }
 }

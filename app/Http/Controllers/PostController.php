@@ -35,7 +35,7 @@ class PostController extends Controller
 
         $posts = $query->filter(request()->only(['find']))->paginate(10)->withQueryString();
 
-        return view('posts.index', compact('posts', 'sort', 'dir'));
+        return view('backend.menuAdmin.posts.index', compact('posts', 'sort', 'dir'));
     }
 
     // --- 2. FITUR TAMBAH (CREATE) ---
@@ -43,7 +43,7 @@ class PostController extends Controller
     {
         // Ambil data kategori untuk dropdown
         $categories = Category::all();
-        return view('posts.create', compact('categories'));
+        return view('backend.menuAdmin.posts.create', compact('categories'));
     }
 
     public function store(Request $request)
@@ -79,7 +79,7 @@ class PostController extends Controller
         $post = Post::findOrFail($id);
         $categories = Category::all();
         
-        return view('posts.edit', compact('post', 'categories'));
+        return view('backend.menuAdmin.posts.edit', compact('post', 'categories'));
     }
 
     // Proses Simpan Perubahan

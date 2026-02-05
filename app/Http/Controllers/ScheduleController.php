@@ -25,14 +25,14 @@ class ScheduleController extends Controller
             ->paginate(10)
             ->withQueryString();
 
-        return view('schedules.index', compact('schedules', 'sort', 'dir'));
+        return view('backend.menuAdmin.schedules.index', compact('schedules', 'sort', 'dir'));
     }
 
 
     // 2. FORM TAMBAH
     public function create()
     {
-        return view('schedules.create');
+        return view('backend.menuAdmin.schedules.create');
     }
 
     // 3. PROSES SIMPAN
@@ -74,7 +74,7 @@ class ScheduleController extends Controller
     public function edit(string $id)
     {
         $schedule = Schedule::where('id', $id)->firstOrFail();
-        return view('schedules.edit', compact('schedule'));
+        return view('backend.menuAdmin.schedules.edit', compact('schedule'));
     }
 
     // 5. PROSES UPDATE

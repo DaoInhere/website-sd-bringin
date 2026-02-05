@@ -24,13 +24,13 @@ class HeroBannerController extends Controller
             ->paginate(10)
             ->withQueryString();
 
-        return view('herobanners.index', compact('herobanners', 'sort', 'dir'));
+        return view('backend.menuAdmin.herobanners.index', compact('herobanners', 'sort', 'dir'));
     }
 
     // 2. FORM UPLOAD
     public function create()
     {
-        return view('herobanners.create');
+        return view('backend.menuAdmin.herobanners.create');
     }
 
     // 3. SIMPAN FOTO
@@ -60,7 +60,7 @@ class HeroBannerController extends Controller
     public function edit(string $id)
     {
         $herobanner = HeroBanner::findOrFail($id);
-        return view('herobanners.edit', compact('herobanner'));
+        return view('backend.menuAdmin.herobanners.edit', compact('herobanner'));
     }
 
     // 5. UPDATE FOTO

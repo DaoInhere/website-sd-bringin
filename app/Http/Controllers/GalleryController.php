@@ -23,17 +23,16 @@ class GalleryController extends Controller
             ->paginate(10)
             ->withQueryString();
 
-        return view('galleries.index', compact('galleries', 'sort', 'dir'));
+        return view('backend.menuAdmin.galleries.index', compact('galleries', 'sort', 'dir'));
     }
 
     public function create()
     {
-        return view('galleries.create');
+        return view('backend.menuAdmin.galleries.create');
     }
 
     public function store(Request $request)
     {
-        // 1. VALIDASI
         $request->validate([
             'photos'   => 'required', 
             'photos.*' => 'image|mimes:jpeg,png,jpg|max:2048', 
@@ -42,9 +41,8 @@ class GalleryController extends Controller
             'activityDate'=> 'required|date',            
         ]);
 
-        $imagePaths = []; // Wadah untuk menampung nama-nama file
+        $imagePaths = [];
 
-        // 2. PROSES UPLOAD (Kumpulkan path ke array)
         if ($request->hasFile('photos')) {
             foreach ($request->file('photos') as $file) {
                 // Upload file fisik
@@ -54,7 +52,6 @@ class GalleryController extends Controller
             }
         }
 
-        // 3. SIMPAN KE DATABASE (Cukup 1 kali create)
         Gallery::create([
             'photos'      => $imagePaths, 
             'title'       => $request->title,
@@ -65,17 +62,17 @@ class GalleryController extends Controller
         return redirect()->route('galleries.index')->with(['success' => 'Album berhasil dibuat!']);
     }
 
-    // Menampilkan Detail Album (Semua Foto)
+    // Menampilkan Detail Album
     public function show(string $id)
     {
         $gallery = Gallery::findOrFail($id);
-        return view('galleries.show', compact('gallery'));
+        return view('backend.menuAdmin.galleries.show', compact('gallery'));
     }
 
     public function edit(string $id)
     {
         $gallery = Gallery::findOrFail($id);
-        return view('galleries.edit', compact('gallery'));
+        return view('backend.menuAdmin.galleries.edit', compact('gallery'));
     }
 
     public function update(Request $request, string $id)
@@ -94,16 +91,14 @@ class GalleryController extends Controller
             'activityDate'=> $request->activityDate,
         ];
 
-        // Jika user upload foto baru, hapus yg lama, ganti yg baru
+        // Jika user upload foto baru, hapus yg lama dan ganti yg baru
         if ($request->hasFile('photos')) {
-            // 1. Hapus foto lama fisik
             if ($gallery->photos) {
                 foreach($gallery->photos as $oldPhoto) {
                     Storage::delete('public/' . $oldPhoto);
                 }
             }
 
-            // 2. Upload foto baru
             $newPaths = [];
             foreach ($request->file('photos') as $file) {
                 $newPaths[] = $file->store('galleries', 'public');
@@ -121,7 +116,6 @@ class GalleryController extends Controller
     {
         $gallery = Gallery::findOrFail($id);
         
-        // Hapus semua file fisik dalam array
         if ($gallery->photos) {
             foreach($gallery->photos as $photo) {
                 Storage::delete('public/' . $photo);
