@@ -1,13 +1,13 @@
 <x-guest-layout>
-    <!-- Session Status -->
+
     <x-auth-session-status class="mb-4" :status="session('status')" />
 
     <div class="min-h-screen flex flex-col bg-gray-100">
         <div class="flex-1 flex items-center justify-center py-16">
-            <!-- Pembungkus Form Login yang Lebih Besar -->
+    
             <div class="w-full sm:w-96 lg:w-1/3 p-8 bg-white shadow-xl rounded-lg space-y-8">
                 
-                <!-- Logo di Tengah -->
+            
                 <div class="text-center mb-6">
                     <a href="/" class="mx-auto">
                         <img src="{{ asset('asset/logo sd bringin01.png') }}" alt="Logo Sekolah" class="w-20 h-20 mx-auto">
@@ -16,7 +16,7 @@
                     <p class="text-gray-600 mt-2">Masuk untuk melanjutkan</p>
                 </div>
 
-                <!-- Form Login -->
+
                 <form method="POST" action="{{ route('login') }}">
                     @csrf
 
@@ -49,7 +49,7 @@
                         <x-input-error :messages="$errors->get('password')" class="mt-2" />
                     </div>
 
-                    <!-- Remember Me -->
+                
                     <div class="block mt-4">
                         <label for="remember_me" class="inline-flex items-center">
                             <input id="remember_me" type="checkbox" class="rounded border-gray-300 text-sekolah-hijau shadow-sm focus:ring-sekolah-hijau" name="remember">

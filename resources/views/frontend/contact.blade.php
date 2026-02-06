@@ -23,8 +23,8 @@
                         </div>
                     </div>
                     <a href="https://maps.app.goo.gl/4BGw5U2pidNASJLT7" rel="noopener noreferrertarget="_blank" 
-                       class="mt-8 inline-block bg-green-600 text-white px-8 py-3 rounded-full font-bold shadow-lg hover:bg-green-700 transition">
-                       Buka di Google Maps →
+                    class="mt-8 inline-block bg-green-600 text-white px-8 py-3 rounded-full font-bold shadow-lg hover:bg-green-700 transition">
+                    Buka di Google Maps →
                     </a>
                 </div>
                 

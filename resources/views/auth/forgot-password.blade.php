@@ -1,10 +1,10 @@
 <x-guest-layout>
     <div class="min-h-screen flex flex-col bg-gray-100">
         <div class="flex-1 flex items-center justify-center py-16">
-            <!-- Pembungkus Form Forgot Password -->
+            
             <div class="w-full sm:w-96 lg:w-1/3 p-8 bg-white shadow-xl rounded-lg space-y-8">
                 
-                <!-- Logo dan Judul Halaman -->
+                
                 <div class="text-center mb-6">
                     <a href="/" class="mx-auto">
                         <img src="{{ asset('asset/logo sd bringin01.png') }}" alt="Logo Sekolah" class="w-20 h-20 mx-auto">
@@ -13,11 +13,11 @@
                     <p class="text-gray-600 mt-2">Masukkan email Anda untuk mendapatkan tautan reset kata sandi.</p>
                 </div>
 
-                <!-- Form Forgot Password -->
+                
                 <form method="POST" action="{{ route('password.email') }}">
                     @csrf
 
-                    <!-- Email Address -->
+                    
                     <div class="space-y-2">
                         <x-input-label for="email" :value="__('Email')" />
                         <x-text-input 
@@ -39,7 +39,7 @@
                     </div>
                 </form>
 
-                <!-- Informasi Tambahan -->
+                
                 <div class="mt-4 text-center text-sm text-gray-600">
                     {{ __('Jika Anda ingat kata sandi Anda, ') }}
                     <a href="{{ route('login') }}" class="text-sekolah-hijau font-semibold hover:text-sekolah-hijau-dark">

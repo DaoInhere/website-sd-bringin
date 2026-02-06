@@ -11,7 +11,7 @@
         {{-- Background Image Baru --}}
         {{-- Catatan: Jika ingin pakai gambar sendiri, ganti URL di bawah dengan {{ asset('asset/nama-file-anda.jpg') }} --}}
         <div class="absolute inset-0 bg-cover z-0"
-             style="background-image: url('{{ asset('asset/bannerEkstrakurikuler.png') }}'); filter: blur(3px);">
+            style="background-image: url('{{ asset('asset/bannerEkstrakurikuler.png') }}'); filter: blur(3px);">
         </div>
 
         <div class="relative z-20 h-full flex flex-col items-center justify-center text-center px-4">
@@ -44,7 +44,7 @@
                     <div class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition duration-300 group hover:-translate-y-1 flex flex-col">
                         <div class="h-48 bg-gray-200 relative overflow-hidden">
                             <img src="{{ $extracurricular->image_url }}"
-                                 class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                                class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
                         </div>
                         <div class="p-6 flex flex-col justify-between flex-grow">
                             <div>
