@@ -27,7 +27,7 @@ class PageController extends Controller
         $teachers = Teacher::all();
         $headmaster = Teacher::where('position', 'Kepala Sekolah')->first();
 
-        $extracurriculars = Schedule::where('type', 'Ekstrakurikuler')->get();
+        $extracurriculars = Schedule::where('type', 'Ekstrakurikuler')->take(8)->get();
         
         // Kirim semua data ke halaman depan
         return view('frontend.home', compact('posts', 'herobanners', 'galleries', 'teachers', 'headmaster', 'extracurriculars'));
@@ -40,14 +40,6 @@ class PageController extends Controller
 
     public function schoolVisionMission() {
         return view('frontend.profile.schoolVisionMission');
-    }
-
-    public function struktur() {
-        return view('frontend.profile.struktur');
-    }
-
-    public function sarana() {
-        return view('frontend.profile.sarana');
     }
 
     public function extracurriculars() {
@@ -164,7 +156,7 @@ class PageController extends Controller
                     ->values();
             }
 
-            return view('schedule', [
+            return view('frontend.information.schedule', [
                 'schedules'  => $schedulesByDay,
                 'class'      => $class,
                 'curriculum' => $curriculum,

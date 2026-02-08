@@ -2,7 +2,6 @@
 
 @section('content')
 <main class="pb-16">
-    {{-- HERO --}}
     <section class="relative">
         <div class="relative h-[220px] sm:h-[260px] overflow-hidden">
             <img
@@ -26,7 +25,6 @@
         </div>
     </section>
 
-    {{-- CONTENT --}}
     <section class="mx-auto mt-10 max-w-7xl px-4 sm:px-6 lg:px-8">
         <div class="flex items-center justify-between gap-4 flex-wrap">
             <a

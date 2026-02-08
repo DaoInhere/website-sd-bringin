@@ -3,7 +3,6 @@
 @section('content')
 
 <main class="pb-16">
-    {{-- HERO --}}
     <section class="relative">
         <div class="relative h-[320px] sm:h-[380px] lg:h-[420px] overflow-hidden">
             <img
@@ -25,7 +24,6 @@
         </div>
     </section>
 
-    {{-- Filter --}}
     <section class="mx-auto mt-10 max-w-7xl px-4 sm:px-6 lg:px-8">
         <form method="GET" action="{{ url()->current() }}#beritapengumuman">
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
@@ -33,7 +31,7 @@
                     <label class="block text-sm font-semibold text-gray-700 mb-2">Filter Tahun</label>
                     <div class="relative">
                         <button type="button"
-                                class="w-full rounded-xl border border-gray-300 bg-white px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-sekolah-hijau/40 shadow-sm hover:border-sekolah-hijau transition flex items-center justify-between">
+                            class="w-full rounded-xl border border-gray-300 bg-white px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-sekolah-hijau/40 shadow-sm hover:border-sekolah-hijau transition flex items-center justify-between">
                             <span>{{ request('tahun', 'Semua Tahun') }}</span>
                             <i class="fas fa-chevron-down text-sm"></i>
                         </button>
@@ -46,29 +44,29 @@
                             </li>
 
                             @foreach ($years as $year)
-                                <li>
-                                    <button type="submit" name="tahun" value="{{ $year }}" class="block w-full px-6 py-3 text-left text-gray-700 hover:text-sekolah-hijau hover:bg-gray-50 transition font-medium">
-                                        {{ $year }}
-                                    </button>
-                                </li>
+                            <li>
+                                <button type="submit" name="tahun" value="{{ $year }}" class="block w-full px-6 py-3 text-left text-gray-700 hover:text-sekolah-hijau hover:bg-gray-50 transition font-medium">
+                                    {{ $year }}
+                                </button>
+                            </li>
                             @endforeach
                         </ul>
                     </div>
                 </div>
 
-            @if(request('kategori'))
+                @if(request('kategori'))
                 <input type="hidden" name="kategori" value="{{ request('kategori') }}">
-            @endif
+                @endif
 
-            </form>
+        </form>
 
-            <form method="GET" action="{{ url()->current() }}#beritapengumuman">
+        <form method="GET" action="{{ url()->current() }}#beritapengumuman">
             <div>
                 <div class="relative group">
                     <label class="block text-sm font-semibold text-gray-700 mb-2">Filter Kategori</label>
                     <div class="relative">
                         <button type="button"
-                                class="w-full rounded-xl border border-gray-300 bg-white px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-sekolah-hijau/40 shadow-sm hover:border-sekolah-hijau transition flex items-center justify-between">
+                            class="w-full rounded-xl border border-gray-300 bg-white px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-sekolah-hijau/40 shadow-sm hover:border-sekolah-hijau transition flex items-center justify-between">
                             <span>{{ ucfirst(request('kategori', 'Berita')) }}</span>
                             <i class="fas fa-chevron-down text-sm"></i>
                         </button>
@@ -91,39 +89,37 @@
             </div>
 
             @if(request('tahun'))
-                <input type="hidden" name="tahun" value="{{ request('tahun') }}">
+            <input type="hidden" name="tahun" value="{{ request('tahun') }}">
             @endif
 
-            </form>
+        </form>
     </section>
 
-    {{-- Content --}}
     <section class="mx-auto mt-10 max-w-7xl px-4 sm:px-6 lg:px-8">
         @if($posts->isEmpty())
-            <div class="rounded-2xl bg-white p-6 text-center text-gray-600 shadow-sm ring-1 ring-black/5">
-                <div class="alert alert-info d-inline-block">Tidak ada data.</div>
-            </div>
+        <div class="rounded-2xl bg-white p-6 text-center text-gray-600 shadow-sm ring-1 ring-black/5">
+            <div class="alert alert-info d-inline-block">Tidak ada data.</div>
+        </div>
         @else
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                {{-- Cards --}}
-                @foreach($posts as $post)
-                <div class="card relative group rounded-2xl bg-white shadow-lg overflow-hidden">
-                    <img
-                        src="{{ $post->image_url }}"
-                        class="w-full h-64 object-cover" />
-                    <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition duration-300"></div>
-                    <div class="absolute bottom-5 left-5 right-5 p-5 text-white text-center opacity-0 group-hover:opacity-100 transition duration-300">
-                        <h3 class="text-lg font-bold text-white">{{ Str::limit($post->title, 50) }}</h3>
-                        <p class="text-sm mt-2">{{ $post->category }}</p>
-                        <p class="text-sm mt-2">{{ $post->created_at->diffForHumans() }}</p>
-                        <a href="#" class="mt-4 inline-block bg-sekolah-hijau hover:bg-sekolah-hijau-dark text-white py-2 px-4 rounded-full"
-                            onclick="openModal('{{ $post->title }}', '{{ $post->created_at->translatedFormat('d F Y') }}', '{{ json_encode($post->content) }}', '{{ $post->image_url }}');">
-                            Baca Selengkapnya
-                        </a>
-                    </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            @foreach($posts as $post)
+            <div class="card relative group rounded-2xl bg-white shadow-lg overflow-hidden">
+                <img
+                    src="{{ $post->image_url }}"
+                    class="w-full h-64 object-cover" />
+                <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition duration-300"></div>
+                <div class="absolute bottom-5 left-5 right-5 p-5 text-white text-center opacity-0 group-hover:opacity-100 transition duration-300">
+                    <h3 class="text-lg font-bold text-white">{{ Str::limit($post->title, 50) }}</h3>
+                    <p class="text-sm mt-2">{{ $post->category }}</p>
+                    <p class="text-sm mt-2">{{ $post->created_at->diffForHumans() }}</p>
+                    <a href="#" class="mt-4 inline-block bg-sekolah-hijau hover:bg-sekolah-hijau-dark text-white py-2 px-4 rounded-full"
+                        onclick="openModal('{{ $post->title }}', '{{ $post->created_at->translatedFormat('d F Y') }}', '{{ json_encode($post->content) }}', '{{ $post->image_url }}');">
+                        Baca Selengkapnya
+                    </a>
                 </div>
-                @endforeach
             </div>
+            @endforeach
+        </div>
         @endif
         <div class="mt-6">
             {{ $posts->appends(request()->only(['tahun','kategori']))->links() }}
@@ -131,7 +127,6 @@
     </section>
 </main>
 
-{{-- Modal Container --}}
 <div id="modal" class="fixed inset-0 z-50 hidden bg-black/70 flex justify-center items-center">
     <div class="bg-white rounded-xl max-w-2xl w-full p-8 overflow-y-auto max-h-[80vh]">
         <button onclick="closeModal()" class="absolute top-10 right-10 text-white bg-red-500 hover:bg-red-600 rounded-full p-2">
@@ -144,7 +139,6 @@
     </div>
 </div>
 
-{{-- JavaScript --}}
 <script>
     function openModal(title, created_at, content, imgSrc) {
         document.getElementById('modal-title').textContent = title;

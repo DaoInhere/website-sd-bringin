@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use App\Models\User;
-use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
@@ -41,9 +40,7 @@ class PostController extends Controller
     // --- 2. FITUR TAMBAH (CREATE) ---
     public function create()
     {
-        // Ambil data kategori untuk dropdown
-        $categories = Category::all();
-        return view('backend.menuAdmin.posts.create', compact('categories'));
+        return view('backend.menuAdmin.posts.create');
     }
 
     public function store(Request $request)
@@ -77,9 +74,8 @@ class PostController extends Controller
     public function edit(string $id)
     {
         $post = Post::findOrFail($id);
-        $categories = Category::all();
         
-        return view('backend.menuAdmin.posts.edit', compact('post', 'categories'));
+        return view('backend.menuAdmin.posts.edit', compact('post'));
     }
 
     // Proses Simpan Perubahan
