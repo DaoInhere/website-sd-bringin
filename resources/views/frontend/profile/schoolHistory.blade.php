@@ -2,20 +2,20 @@
 
 @section('content')
 <main class="pb-16">
-    {{-- HERO / HEADER --}}
+    
     <section class="relative">
         <div class="relative h-[320px] sm:h-[380px] lg:h-[420px] overflow-hidden">
-            {{-- Background image (yang diblur) --}}
+        
             <img
                 src="{{ asset('asset/galeri foto.jpg') }}"
                 alt="Galeri SDN 1 Bringin"
                 class="absolute inset-0 h-full w-full object-cover blur-sm scale-110"
             />
 
-            {{-- Overlay gelap biar teks kebaca --}}
+        
             <div class="absolute inset-0 bg-black/40"></div>
 
-            {{-- Teks (tidak blur) --}}
+            
             <div class="relative z-10 flex h-full items-center justify-center px-4 sm:px-6 lg:px-8">
                 <div class="text-center">
                     <h2 class="text-4xl sm:text-5xl font-extrabold tracking-tight text-white drop-shadow">
@@ -29,11 +29,10 @@
         </div>
     </section>
 
-    {{-- CONTENT --}}
     <section class="mx-auto mt-10 max-w-7xl px-4 sm:px-6 lg:px-8">
         <div class="rounded-2xl bg-sekolah-hijau shadow-xl ring-1 ring-black/5">
             <div class="grid grid-cols-1 gap-10 p-6 sm:p-10 lg:grid-cols-12">
-                {{-- TEXT --}}
+            
                 <div class="lg:col-span-7">
                     <h3 class="text-3xl font-semibold text-white">SDN 1 BRINGIN</h3>
 
@@ -72,7 +71,7 @@
                     </div>
                 </div>
 
-                {{-- IMAGE / SIDE PANEL --}}
+                
                 <div class="lg:col-span-5">
                     <div class="overflow-hidden rounded-2xl bg-white/10 ring-1 ring-white/15">
                         <img
