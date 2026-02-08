@@ -2,7 +2,7 @@
 
 @section('content')
 <main class="bg-white">
-    {{-- HERO SLIDER --}}
+    
 <section id="hero-slider" class="relative h-[520px] sm:h-[600px] overflow-hidden group bg-gray-100">
     <div class="h-full overflow-hidden">
         <div id="slider-track" class="flex h-full transition-transform duration-700 ease-in-out">
@@ -49,7 +49,7 @@
         <i class="fas fa-chevron-right text-xl" aria-hidden="true"></i>
     </button>
 
-    {{-- DOTS (dinamis) --}}
+
     @php
         $dotCount = $herobanners->isEmpty() ? 1 : $herobanners->count();
     @endphp
@@ -62,7 +62,7 @@
     </div>
 </section>
 
-    {{-- 3 VALUE CARDS --}}
+
     <section class="relative -mt-16 z-20 px-4">
         <div class="mx-auto max-w-7xl overflow-hidden">
             <div class="grid grid-cols-1 md:grid-cols-3 shadow-2xl rounded-2xl overflow-hidden hover:bg-sekolah-kuning">
@@ -85,7 +85,7 @@
         </div>
     </section>
 
-    {{-- SAMBUTAN --}}
+    
     <section class="py-20 bg-white">
         <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div class="flex flex-col md:flex-row items-center justify-center gap-10 lg:gap-14">
@@ -122,7 +122,7 @@
         </div>
     </section>
 
-    {{-- PROGRAM UNGGULAN --}}
+
     <section class="py-20 bg-gray-50">
         <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
