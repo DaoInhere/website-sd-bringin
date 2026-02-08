@@ -11,18 +11,8 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-2xl p-6">
 
-                {{-- ALERT SUCCESS --}}
-                @if (session('success'))
-                <div class="mb-5 rounded-xl bg-emerald-50 p-4 text-emerald-800 ring-1 ring-emerald-200">
-                    {{ session('success') }}
-                </div>
-                @endif
-
-                {{-- TOP BAR: tombol tambah + sorting UI + pagination --}}
                 <div class="mb-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
-                    {{-- KIRI --}}
                     <div class="flex flex-wrap items-center gap-3">
-                        {{-- tombol tambah (TETAP ADA) --}}
                         <a href="{{ route('schedules.create') }}"
                             style="background-color: #16a34a; color: white; padding: 10px 20px; border-radius: 5px; text-decoration: none; display: inline-block; font-weight: bold;">
                             + Tambah Jadwal Baru
@@ -47,12 +37,18 @@
                     </form>
                 </div>
 
+                @if (session('success'))
+                <div class="mb-5 rounded-xl bg-emerald-50 p-4 text-emerald-800 ring-1 ring-emerald-200">
+                    {{ session('success') }}
+                </div>
+                @endif
+
                 <div class="mb-4">
                     {{ $schedules->appends(request()->only(['find','sort','dir']))->links() }}
                 </div>
 
                 {{-- TABLE --}}
-                <div class="overflow-x-auto  ring-1 ring-gray-200">
+                <div class="overflow-x-auto ring-1 ring-gray-200">
                     <table class="w-full border-collapse">
                         <thead class="bg-gray-50 text-gray-700 text-sm">
                             <tr>

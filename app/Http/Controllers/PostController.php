@@ -10,7 +10,6 @@ use Illuminate\Support\Facades\Storage;
 
 class PostController extends Controller
 {
-    // --- 1. FITUR BACA (READ) ---
     public function index()
     {
         $sort = request('sort', 'author');
@@ -37,7 +36,6 @@ class PostController extends Controller
         return view('backend.menuAdmin.posts.index', compact('posts', 'sort', 'dir'));
     }
 
-    // --- 2. FITUR TAMBAH (CREATE) ---
     public function create()
     {
         return view('backend.menuAdmin.posts.create');
@@ -45,7 +43,6 @@ class PostController extends Controller
 
     public function store(Request $request)
     {
-        // Validasi input
         $request->validate([
             'image'     => 'required|image|mimes:jpeg,png,jpg|max:2048',
             'title'     => 'required|min:5',
@@ -53,10 +50,9 @@ class PostController extends Controller
             'content'   => 'required|min:10'
         ]);
 
-        // Upload gambar ke folder public/posts
+        // Upload gambar
         $imagePath = $request->file('image')->store('posts', 'public');
 
-        // Simpan ke database
         Post::create([
             'user_id' => Auth::id(),
             'image'     => $imagePath,
@@ -67,10 +63,7 @@ class PostController extends Controller
 
         return redirect()->route('posts.index')->with(['success' => 'Berita Berhasil Disimpan!']);
     }
-
-    // --- 3. FITUR EDIT (UPDATE) ---
     
-    // Tampilkan Halaman Edit
     public function edit(string $id)
     {
         $post = Post::findOrFail($id);
@@ -78,7 +71,6 @@ class PostController extends Controller
         return view('backend.menuAdmin.posts.edit', compact('post'));
     }
 
-    // Proses Simpan Perubahan
     public function update(Request $request, string $id)
     {
         $request->validate([
@@ -90,7 +82,6 @@ class PostController extends Controller
 
         $post = Post::findOrFail($id);
 
-        // LOGIKA GANTI GAMBAR
         if ($request->hasFile('image')) {
             
             // Upload gambar baru
@@ -118,19 +109,16 @@ class PostController extends Controller
         return redirect()->route('posts.index')->with(['success' => 'Data Berhasil Diubah!']);
     }
 
-    // --- 4. FITUR HAPUS (DELETE) ---
     public function destroy(string $id)
     {
         // Cari data berdasarkan ID
         $post = Post::findOrFail($id);
 
-        // Hapus file gambar dari folder storage
+        // Hapus file gambar
         Storage::delete('public/' . $post->image);
 
-        // Hapus data dari database
         $post->delete();
 
-        // Kembali ke index
         return redirect()->route('posts.index')->with(['success' => 'Berita Berhasil Dihapus!']);
     }
 }

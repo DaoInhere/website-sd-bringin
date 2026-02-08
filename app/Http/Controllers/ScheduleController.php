@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Storage;
 
 class ScheduleController extends Controller
 {
-    // 1. DAFTAR JADWAL
+    // DAFTAR JADWAL
     public function index()
     {
         $sort = request('sort', 'id');
@@ -29,13 +29,13 @@ class ScheduleController extends Controller
     }
 
 
-    // 2. FORM TAMBAH
+    // FORM TAMBAH
     public function create()
     {
         return view('backend.menuAdmin.schedules.create');
     }
 
-    // 3. PROSES SIMPAN
+    // PROSES SIMPAN
     public function store(Request $request)
     {
         $request->validate([
@@ -70,14 +70,14 @@ class ScheduleController extends Controller
         return redirect()->route('schedules.index')->with(['success' => 'Data Jadwal Berhasil Disimpan!']);
     }
 
-    // 4. FORM EDIT
+    // FORM EDIT
     public function edit(string $id)
     {
         $schedule = Schedule::where('id', $id)->firstOrFail();
         return view('backend.menuAdmin.schedules.edit', compact('schedule'));
     }
 
-    // 5. PROSES UPDATE
+    // PROSES UPDATE
     public function update(Request $request, string $id)
     {
         $request->validate([
@@ -131,7 +131,7 @@ class ScheduleController extends Controller
         return redirect()->route('schedules.index')->with(['success' => 'Data Jadwal Berhasil Diubah!']);
     }
 
-    // 6. HAPUS DATA
+    // HAPUS DATA
     public function destroy(string $id)
     {
         $schedule = Schedule::where('id', $id)->firstOrFail();
