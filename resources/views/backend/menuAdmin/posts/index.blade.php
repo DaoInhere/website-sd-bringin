@@ -9,7 +9,6 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg p-6">
 
-                {{-- TOP BAR --}}
                 <div class="mb-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
                     <a href="{{ route('posts.create') }}"
                        style="background-color: #16a34a; color: white; padding: 10px 20px; border-radius: 5px; text-decoration: none; display: inline-block; font-weight: bold;">
@@ -32,6 +31,12 @@
                     
                     </form>
                 </div>
+
+                @if (session('success'))
+                <div class="mb-5 rounded-xl bg-emerald-50 p-4 text-emerald-800 ring-1 ring-emerald-200">
+                    {{ session('success') }}
+                </div>
+                @endif
 
                 <div class="mb-4">
                     {{ $posts->appends(request()->only(['find','sort','dir']))->links() }}

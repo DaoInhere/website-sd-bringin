@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Storage;
 
 class HeroBannerController extends Controller
 {
-    // 1. DAFTAR TABEL
+
     public function index()
     {
         $sort = request('sort', 'title');
@@ -27,13 +27,13 @@ class HeroBannerController extends Controller
         return view('backend.menuAdmin.herobanners.index', compact('herobanners', 'sort', 'dir'));
     }
 
-    // 2. FORM UPLOAD
+
     public function create()
     {
         return view('backend.menuAdmin.herobanners.create');
     }
 
-    // 3. SIMPAN FOTO
+
     public function store(Request $request)
     {
         $request->validate([
@@ -43,7 +43,6 @@ class HeroBannerController extends Controller
             'dim' => 'required|boolean',
         ]);
 
-        // Simpan ke folder 'galleries' di storage public
         $imagePath = $request->file('image')->store('herobanners', 'public');
 
         HeroBanner::create([
@@ -56,14 +55,14 @@ class HeroBannerController extends Controller
         return redirect()->route('herobanners.index')->with(['success' => 'Banner Berhasil Diupload!']);
     }
 
-    // 4. FORM EDIT
+
     public function edit(string $id)
     {
         $herobanner = HeroBanner::findOrFail($id);
         return view('backend.menuAdmin.herobanners.edit', compact('herobanner'));
     }
 
-    // 5. UPDATE FOTO
+
     public function update(Request $request, string $id)
     {
         $request->validate([
@@ -80,7 +79,7 @@ class HeroBannerController extends Controller
             $imagePath = $request->file('image')->store('herobanners', 'public');
             // Hapus lama
             Storage::delete('public/' . $herobanner->image);
-            // Update DB
+
             $herobanner->update([
                 'image' => $imagePath,
                 'title' => $request->title,
@@ -99,7 +98,7 @@ class HeroBannerController extends Controller
         return redirect()->route('herobanners.index')->with(['success' => 'Banner Berhasil Diperbarui!']);
     }
 
-    // 6. HAPUS FOTO
+
     public function destroy(string $id)
     {
         $herobanner = HeroBanner::findOrFail($id);

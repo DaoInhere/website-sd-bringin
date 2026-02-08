@@ -191,7 +191,7 @@
                     </div>
 
                     <div class="mb-4">
-                        <x-required-label class="block text-gray-700 font-bold mb-2">Deskripsi</x-required-label>
+                        <label class="block text-gray-700 font-bold mb-2">Deskripsi</label>
                         <textarea name="description" rows="10" class="w-full border p-2 rounded" placeholder="Deskripsi ekstrakurikuler" required>{{ old('description', $schedule->description) }}</textarea>
                     </div>
 
