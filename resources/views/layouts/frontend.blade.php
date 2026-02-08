@@ -115,7 +115,6 @@
                 @endauth
             </div>
 
-            <!-- Mobile hamburger button -->
             <div class="lg:hidden flex items-center">
                 <button id="mobile-menu-button" aria-expanded="false" aria-controls="mobile-menu"
                     class="p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-sekolah-hijau">
@@ -133,13 +132,11 @@
             </div>
         </div>
 
-        <!-- Mobile Menu (hidden by default) -->
         <div id="mobile-menu" class="lg:hidden hidden border-t border-gray-100 bg-white">
             <div class="px-4 pt-4 pb-6 space-y-2">
                 <a href="{{ route('public.home') }}"
                     class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-50">Beranda</a>
 
-                <!-- collapsible Profil -->
                 <div>
                     <button
                         class="w-full flex justify-between items-center px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-50 mobile-sub-toggle"
@@ -156,7 +153,6 @@
                     </div>
                 </div>
 
-                <!-- collapsible Kesiswaan -->
                 <div>
                     <button
                         class="w-full flex justify-between items-center px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-50 mobile-sub-toggle"
@@ -172,7 +168,6 @@
                     </div>
                 </div>
 
-                <!-- collapsible Informasi -->
                 <div>
                     <button
                         class="w-full flex justify-between items-center px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-50 mobile-sub-toggle"

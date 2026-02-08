@@ -2,7 +2,7 @@
 
 @section('content')
 <main class="pb-16">
-    {{-- HERO / HEADER --}}
+    
     <section class="relative">
         <div class="relative h-[320px] sm:h-[380px] lg:h-[420px] overflow-hidden">
             <img
@@ -25,13 +25,13 @@
         </div>
     </section>
 
-    {{-- CONTENT --}}
+    
     <section class="mx-auto mt-10 max-w-7xl px-4 sm:px-6 lg:px-8">
         <div class="rounded-2xl bg-sekolah-hijau shadow-xl ring-1 ring-black/5">
             <div class="p-6 sm:p-10">
-                {{-- GRID: Visi+Misi (left) | Logo+Tujuan (right) --}}
+                
                 <div class="grid grid-cols-1 gap-8 lg:grid-cols-12">
-                    {{-- LEFT --}}
+                
                     <div class="lg:col-span-8 space-y-6">
                         {{-- VISI --}}
                         <div class="rounded-2xl bg-white/10 p-6 ring-1 ring-white/15">
@@ -66,9 +66,7 @@
                         </div>
                     </div>
 
-                    {{-- RIGHT --}}
                     <div class="lg:col-span-4 space-y-6">
-                        {{-- LOGO --}}
                         <div class="rounded-2xl bg-white/10 ring-1 ring-white/15 p-6">
                             <img
                                 src="{{ asset('asset/logo sd bringin01.png') }}"
@@ -96,7 +94,7 @@
                     </div>
                 </div>
 
-                {{-- NILAI-NILAI ORGANISASI: FULL WIDTH (di luar grid) --}}
+                {{-- NILAI-NILAI ORGANISASI --}}
                 <div class="mt-8 rounded-2xl bg-white/10 p-6 ring-1 ring-white/15">
                     <div class="flex items-center gap-3">
                         <div class="flex h-10 w-10 items-center justify-center rounded-xl bg-white/15 ring-1 ring-white/20">
