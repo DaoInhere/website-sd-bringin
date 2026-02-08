@@ -3,7 +3,6 @@
 @section('content')
 <main class="pb-16 bg-gray-50">
 
-    {{-- Hero --}}
     <section class="relative">
         <div class="relative h-[320px] sm:h-[380px] lg:h-[420px] overflow-hidden">
             <img
@@ -26,10 +25,10 @@
         </div>
     </section>
 
-    {{-- Konten Utama --}}
+
     <section class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 mt-10 space-y-10">
 
-        {{-- Syarat Umum --}}
+
         <div class="bg-white p-6 rounded-xl shadow-md">
             <h2 class="text-2xl font-bold text-gray-800 mb-4">1. Syarat Umum</h2>
             <ul class="list-disc list-inside text-gray-700 space-y-2">
@@ -40,7 +39,7 @@
             </ul>
         </div>
 
-        {{-- Dokumen Administrasi --}}
+
         <div class="bg-white p-6 rounded-xl shadow-md">
             <h2 class="text-2xl font-bold text-gray-800 mb-4">2. Dokumen Administrasi</h2>
             <p class="text-gray-700 mb-3">Pastikan semua dokumen sudah lengkap dan difotokopi sebelum dikirim/dimuat ke sistem PPDB:</p>
@@ -54,7 +53,7 @@
             </ul>
         </div>
 
-        {{-- Ketentuan Usia --}}
+
         <div class="bg-white p-6 rounded-xl shadow-md">
             <h2 class="text-2xl font-bold text-gray-800 mb-4">3. Ketentuan Usia</h2>
             <p class="text-gray-700">Persyaratan usia peserta didik diatur dalam Permendikbud terbaru:</p>
@@ -65,7 +64,7 @@
             </ul>
         </div>
 
-        {{-- Ketentuan/Pengecualian --}}
+
         <div class="bg-white p-6 rounded-xl shadow-md">
             <h2 class="text-2xl font-bold text-gray-800 mb-4">4. Ketentuan & Pengecualian</h2>
             <ul class="list-disc list-inside text-gray-700 space-y-2">
@@ -75,7 +74,7 @@
             </ul>
         </div>
 
-        {{-- Tips Penting --}}
+
         <div class="bg-white p-6 rounded-xl shadow-md">
             <h2 class="text-2xl font-bold text-gray-800 mb-4">5. Tips Penting untuk Orang Tua</h2>
             <ul class="list-disc list-inside text-gray-700 space-y-2">

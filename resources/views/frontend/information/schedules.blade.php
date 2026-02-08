@@ -2,7 +2,6 @@
 
 @section('content')
 <main class="pb-16">
-    {{-- HERO --}}
     <section class="relative">
         <div class="relative h-[320px] sm:h-[380px] lg:h-[420px] overflow-hidden">
             <img
@@ -25,7 +24,6 @@
         </div>
     </section>
 
-    {{-- CONTENT --}}
     <section class="mx-auto mt-10 max-w-7xl px-4 sm:px-6 lg:px-8">
         <div class="space-y-3">
             @forelse ($curriculums as $index => $curriculum)
@@ -37,7 +35,6 @@
                             <span class="font-semibold text-gray-900">{{ $curriculum }}</span>
                         @endif
 
-                        {{-- icon caret --}}
                         <span class="ml-3 inline-flex h-9 w-9 items-center justify-center rounded-xl bg-gray-50 ring-1 ring-black/5">
                             <svg class="h-5 w-5 text-gray-700 transition-transform duration-200 group-open:rotate-180"
                                  viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
