@@ -136,7 +136,7 @@
                             class="achievement-item rounded-2xl bg-white shadow-sm ring-1 ring-black/5 overflow-hidden group"
                             data-year="{{ $year }}"
                             data-search="{{ $searchText }}">
-                            \
+
                             <button
                                 type="button"
                                 class="relative h-44 sm:h-48 w-full overflow-hidden text-left"
