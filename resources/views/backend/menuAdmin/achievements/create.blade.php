@@ -12,7 +12,6 @@
                 <form action="{{ route('achievements.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
 
-                    {{-- NAMA ACARA --}}
                     <div class="mb-4">
                         <x-required-label class="block text-gray-700 font-bold mb-2">Nama Acara / Event</x-required-label>
                         <input type="text" name="title" value="{{ old('title') }}"
@@ -23,7 +22,6 @@
                         @enderror
                     </div>
 
-                    {{-- NAMA LOMBA --}}
                     <div class="mb-4">
                         <x-required-label class="block text-gray-700 font-bold mb-2">Nama Lomba</x-required-label>
                         <input type="text" name="name" value="{{ old('name') }}"
@@ -34,10 +32,13 @@
                         @enderror
                     </div>
 
-                    {{-- KATEGORI --}}
                     <div class="mb-4">
                         <x-required-label class="block text-gray-700 font-bold mb-2">Kategori</x-required-label>
                         <select name="category" class="w-full border p-2 rounded bg-white @error('category') border-red-500 @enderror" required>
+                            <option value="" selected hidden>
+                                -- Pilih kategori --
+                            </option>
+
                             <option value="Olahraga" {{ old('category') == 'Olahraga' ? 'selected' : '' }}>Olahraga</option>
                             <option value="Seni" {{ old('category') == 'Seni' ? 'selected' : '' }}>Seni</option>
                             <option value="Kreativitas" {{ old('category') == 'Kreativitas' ? 'selected' : '' }}>Kreativitas</option>
@@ -50,10 +51,12 @@
                         @enderror
                     </div>
 
-                    {{-- TINGKAT --}}
                     <div class="mb-4">
                         <x-required-label class="block text-gray-700 font-bold mb-2">Tingkat</x-required-label>
                         <select name="level" class="w-full border p-2 rounded bg-white @error('level') border-red-500 @enderror" required>
+                            <option value="" selected hidden>
+                                -- Pilih tingkat --
+                            </option>
                             <option value="Kecamatan" {{ old('level') == 'Kecamatan' ? 'selected' : '' }}>Kecamatan</option>
                             <option value="Kabupaten/Kota" {{ old('level') == 'Kabupaten/Kota' ? 'selected' : '' }}>Kabupaten/Kota</option>
                             <option value="Provinsi" {{ old('level') == 'Provinsi' ? 'selected' : '' }}>Provinsi</option>
@@ -65,7 +68,6 @@
                         @enderror
                     </div>
 
-                    {{-- POSISI JUARA --}}
                     <div class="mb-4">
                         <x-required-label class="block text-gray-700 font-bold mb-2">Posisi Juara</x-required-label>
                         <input type="text" name="position" value="{{ old('position') }}"
@@ -76,7 +78,6 @@
                         @enderror
                     </div>
 
-                    {{-- PENGHARGAAN --}}
                     <div class="mb-4">
                         <x-required-label class="block text-gray-700 font-bold mb-2">Penghargaan</x-required-label>
                         <input type="text" name="award" value="{{ old('award') }}"
@@ -87,7 +88,6 @@
                         @enderror
                     </div>
 
-                    {{-- TANGGAL --}}
                     <div class="mb-4">
                         <x-required-label class="block text-gray-700 font-bold mb-2">Tanggal</x-required-label>
                         <input type="date" name="date" value="{{ old('date') }}"
@@ -97,7 +97,6 @@
                         @enderror
                     </div>
 
-                    {{-- DESKRIPSI --}}
                     <div class="mb-4">
                         <label class="block text-gray-700 font-bold mb-2">Deskripsi</label>
                         <textarea name="description" rows="5" 
@@ -108,7 +107,6 @@
                         @enderror
                     </div>
 
-                    {{-- FOTO --}}
                     <div class="mb-6">
                         <label class="block text-gray-700 font-bold mb-2">Foto Dokumentasi</label>
                         <input type="file" name="image" 
