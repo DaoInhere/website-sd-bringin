@@ -8,8 +8,6 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg p-6">
-
-                {{-- TOP BAR: tombol tambah + search --}}
                 <div class="mb-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
                     <a href="{{ route('herobanners.create') }}"
                        style="background-color: #16a34a; color: white; padding: 10px 20px; border-radius: 5px; text-decoration: none; display: inline-block; font-weight: bold;">
@@ -20,7 +18,7 @@
                         <div class="relative">
                             <input type="text" name="find" value="{{ request('find') }}"
                                    placeholder="Cari banner..."
-                                   class="w-full sm:w-72 pl-10 pr-10 py-2.5 rounded-xl border" />
+                                   class="w-full sm:w-72 pl-5 pr-10 py-2.5 rounded-xl border" />
                         </div>
 
                     @if(request('sort'))

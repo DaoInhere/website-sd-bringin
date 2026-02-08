@@ -66,9 +66,7 @@
                         </div>
                     </div>
 
-                    {{-- RIGHT --}}
                     <div class="lg:col-span-4 space-y-6">
-                        {{-- LOGO --}}
                         <div class="rounded-2xl bg-white/10 ring-1 ring-white/15 p-6">
                             <img
                                 src="{{ asset('asset/logo sd bringin01.png') }}"
@@ -96,7 +94,7 @@
                     </div>
                 </div>
 
-                {{-- NILAI-NILAI ORGANISASI: FULL WIDTH (di luar grid) --}}
+                {{-- NILAI-NILAI ORGANISASI --}}
                 <div class="mt-8 rounded-2xl bg-white/10 p-6 ring-1 ring-white/15">
                     <div class="flex items-center gap-3">
                         <div class="flex h-10 w-10 items-center justify-center rounded-xl bg-white/15 ring-1 ring-white/20">
