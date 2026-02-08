@@ -3,13 +3,9 @@
 @section('content')
 <main class="bg-gray-50">
 
-    {{-- 1. HERO SECTION (JUDUL HALAMAN DENGAN BANNER BARU) --}}
     <section class="relative h-[320px] sm:h-[380px] lg:h-[420px] overflow-hidden">
-        {{-- Overlay Gelap agar teks terbaca --}}
         <div class="absolute inset-0 bg-black/40 z-10"></div>
 
-        {{-- Background Image Baru --}}
-        {{-- Catatan: Jika ingin pakai gambar sendiri, ganti URL di bawah dengan {{ asset('asset/nama-file-anda.jpg') }} --}}
         <div class="absolute inset-0 bg-cover z-0"
             style="background-image: url('{{ asset('asset/bannerEkstrakurikuler.png') }}'); filter: blur(3px);">
         </div>
@@ -25,7 +21,7 @@
         </div>
     </section>
 
-    {{-- 2. DAFTAR EKSTRAKURIKULER (GRID SYSTEM) --}}
+    {{-- DAFTAR EKSTRAKURIKULER--}}
     <section class="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
         <div class="text-center mb-12">
             <h2 class="text-3xl font-bold text-gray-800">Pilihan Kegiatan</h2>
@@ -38,7 +34,7 @@
                     Belum ada jadwal ekstrakurikuler.
                 </div>
             @else
-                <div class="grid grid-cols-3 gap-6">
+                <div class="grid grid-cols-[repeat(auto-fit,minmax(150px,250px))] gap-4 justify-center">
                     @foreach($extracurriculars as $extracurricular)
 
                     <div class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition duration-300 group hover:-translate-y-1 flex flex-col">
