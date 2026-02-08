@@ -25,7 +25,7 @@
     </section>
 
     <section class="mx-auto mt-10 max-w-7xl px-4 sm:px-6 lg:px-8">
-        <form method="GET" action="{{ url()->current() }}#beritapengumuman">
+        <form method="GET" action="{{ url()->current() }}">
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <div class="relative group">
                     <label class="block text-sm font-semibold text-gray-700 mb-2">Filter Tahun</label>
@@ -60,7 +60,7 @@
 
         </form>
 
-        <form method="GET" action="{{ url()->current() }}#beritapengumuman">
+        <form method="GET" action="{{ url()->current() }}   ">
             <div>
                 <div class="relative group">
                     <label class="block text-sm font-semibold text-gray-700 mb-2">Filter Kategori</label>
