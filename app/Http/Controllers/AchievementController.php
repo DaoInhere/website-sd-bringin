@@ -65,8 +65,9 @@ class AchievementController extends Controller
         return redirect()->route('achievements.index')->with('success', 'Data Prestasi berhasil ditambahkan!');
     }
 
-    public function edit(Achievement $achievement)
+    public function edit(string $id)
     {
+        $achievement = Achievement::findOrFail($id);
         return view('backend.menuAdmin.achievements.edit', compact('achievement'));
     }
 
@@ -108,8 +109,9 @@ class AchievementController extends Controller
         return redirect()->route('achievements.index')->with('success', 'Data berhasil diperbarui!');
     }
 
-    public function destroy(Achievement $achievement)
+    public function destroy(string $id)
     {
+        $achievement = Achievement::findOrFail($id);
         if ($achievement->image) {
             Storage::delete('public/' . $achievement->image);
         }
