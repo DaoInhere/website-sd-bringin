@@ -61,9 +61,9 @@ class ScheduleFactory extends Factory
         $curriculum = ($subject === 'Upacara')
             ? 'Semua'
             : fake()->randomElement([
-                '2024/2025',
-                '2025/2026',
-                '2026/2027',
+                2006,
+                2013,
+                2022,
             ]);
 
         return [

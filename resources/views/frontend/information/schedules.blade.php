@@ -30,9 +30,9 @@
                 <details class="group rounded-2xl bg-white shadow-sm ring-1 ring-black/5 overflow-hidden transition-all duration-500">
                     <summary class="cursor-pointer list-none px-5 py-4 flex items-center justify-between">
                         @if ($loop->first)
-                            <span class="font-semibold text-gray-900">{{ $curriculum }} (Terbaru)</span>
+                            <span class="font-semibold text-gray-900">Kurikulum {{ $curriculum }} (Terbaru)</span>
                         @else
-                            <span class="font-semibold text-gray-900">{{ $curriculum }}</span>
+                            <span class="font-semibold text-gray-900">Kurikulum {{ $curriculum }}</span>
                         @endif
 
                         <span class="ml-3 inline-flex h-9 w-9 items-center justify-center rounded-xl bg-gray-50 ring-1 ring-black/5">

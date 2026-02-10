@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('class')->default('0');
             $table->string('type');
             $table->string('uniform')->nullable();
-            $table->string('curriculum');
+            $table->integer('curriculum');
             $table->string('description')->nullable();
             $table->string('image')->nullable();
             $table->timestamps();

@@ -22,7 +22,7 @@ class ScheduleSeeder extends Seeder
             'subject' => 'Upacara',
             'type' => 'Kegiatan',
             'uniform' => 'Merah Putih',
-            'curriculum' => 'Semua',
+            'curriculum' => 0,
             'created_at' => now(),
             'updated_at' => now()
         ]);
@@ -34,7 +34,7 @@ class ScheduleSeeder extends Seeder
             'subject' => 'Istirahat',
             'type' => 'Kegiatan',
             'uniform' => '-',
-            'curriculum' => 'Semua',
+            'curriculum' => 0,
             'created_at' => now(),
             'updated_at' => now()
         ]);
@@ -47,7 +47,7 @@ class ScheduleSeeder extends Seeder
             'type' => 'UTS',
             'class' => '1',
             'uniform' => 'Merah Putih',
-            'curriculum' => '2025/2026',
+            'curriculum' => 2013,
             'created_at' => now(),
             'updated_at' => now()
         ]);
@@ -60,7 +60,7 @@ class ScheduleSeeder extends Seeder
             'type' => 'UAS',
             'class' => '2',
             'uniform' => 'Olahraga',
-            'curriculum' => '2025/2026',
+            'curriculum' => 2013,
             'created_at' => now(),
             'updated_at' => now()
         ]);
@@ -75,7 +75,7 @@ class ScheduleSeeder extends Seeder
             'uniform' => 'Pramuka',
             'description' => 'Membentuk karakter disiplin, mandiri, dan cinta tanah air melalui kegiatan kepramukaan yang menyenangkan.',
             'image' => 'gambarPramuka.png',
-            'curriculum' => 'Semua',
+            'curriculum' => 0,
             'created_at' => now(),
             'updated_at' => now()
         ]);
@@ -90,7 +90,7 @@ class ScheduleSeeder extends Seeder
             'uniform' => 'Bebas',
             'description' => 'Mengembangkan kemampuan futsal',
             'image' => 'gambarFutsal.png',
-            'curriculum' => 'Semua',
+            'curriculum' => 0,
             'created_at' => now(),
             'updated_at' => now()
         ]);

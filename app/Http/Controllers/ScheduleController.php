@@ -46,7 +46,7 @@ class ScheduleController extends Controller
             'class' => 'required|string|max:255',
             'type' => 'required|string|max:255',
             'uniform' => 'nullable|string|max:255',
-            'curriculum' => 'required|string|max:255',
+            'curriculum' => 'required|integer',
             'image' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
             'description' => 'nullable|string|max:255',
         ]);
@@ -90,7 +90,7 @@ class ScheduleController extends Controller
             'class' => 'required|string|max:255',
             'type' => 'required|string|max:255',
             'uniform' => 'nullable|string|max:255',
-            'curriculum' => 'required|string|max:255',
+            'curriculum' => 'required|integer',
             'image' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
             'description' => 'nullable|string|max:255',
         ]);

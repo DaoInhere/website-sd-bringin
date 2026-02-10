@@ -85,7 +85,7 @@
 
                                 <td class="p-3 text-xs italic text-gray-600">{{ $schedule->uniform == null ? '-' : $schedule->uniform }}</td>
 
-                                <td class="p-3 text-xs font-semibold text-gray-800">{{ $schedule->curriculum }}</td>
+                                <td class="p-3 text-xs font-semibold text-gray-800">{{ $schedule->curriculum == 0 ? 'Semua' : $schedule->curriculum }}</td>
 
                                 <td class="p-3">
                                     <div class="flex items-center justify-center gap-2">

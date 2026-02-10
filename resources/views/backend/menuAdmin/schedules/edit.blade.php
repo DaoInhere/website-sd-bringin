@@ -76,8 +76,7 @@
 
                     <div class="mb-4">
                         <x-required-label class="block text-gray-700 font-bold mb-2">Kurikulum</x-required-label>
-                        <input type="text" name="curriculum" value="{{ old('curriculum', $schedule->curriculum) }}" class="w-full border p-2 rounded" placeholder="Contoh: 2025/2026" required>
-                        <p class="text-sm text-gray-500 mt-1">Format: 0000/0000</p> 
+                        <input type="number" name="curriculum" value="{{ old('curriculum', $schedule->curriculum) }}" class="w-full border p-2 rounded" placeholder="Contoh: 2013" required>
                     </div>
 
                     <button type="submit" 
@@ -100,7 +99,7 @@
                     @csrf
                     @method('PUT')
                     <input type="hidden" name="type" value="Kegiatan">
-                    <input type="hidden" name="curriculum" value="Semua">
+                    <input type="hidden" name="curriculum" value="0">
 
                     <div class="flex gap-3 items-end w-full">
                         <div>
@@ -169,7 +168,7 @@
                     @method('PUT')
 
                     <input type="hidden" name="type" value="Ekstrakurikuler">
-                    <input type="hidden" name="curriculum" value="Semua">
+                    <input type="hidden" name="curriculum" value="0">
                     <input type="hidden" name="class" value="0">
 
                     <div class="flex gap-3 items-end w-full">
