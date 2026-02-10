@@ -14,11 +14,21 @@
                     @csrf
                     @method('PUT')
 
-                    <div class="mb-4">
-                        <x-required-label class="block text-gray-700 font-bold mb-2">Jam</x-required-label>
-                        <input type="text" name="hour" value="{{ old('hour', $schedule->hour) }}" class="w-full border p-2 rounded" placeholder="00:00 - 00:00" required>
-                    <p class="text-sm text-gray-500 mt-1">Format: 00:00 - 00:00</p>
+                    <div class="flex gap-3 items-end w-full">
+                        <div>
+                            <x-required-label class="block text-gray-700 font-bold mb-2">Jam Mulai</x-required-label>
+                            <input type="time" name="hourStart" value="{{ old('hourStart', $schedule->hourStart->format('H:i')) }}" class="w-20 border p-2 rounded" required>
+                        </div>
+                        <div>
+                            <p class="mb-2 mr-2">-</p>
+                        </div>
+                        <div>
+                            <x-required-label class="block text-gray-700 font-bold mb-2">Jam Akhir</x-required-label>
+                            <input type="time" name="hourEnd" value="{{ old('hourEnd', $schedule->hourEnd->format('H:i')) }}" class="w-20 border p-2 rounded" required> 
+                        </div>
                     </div>
+                    <p class="text-sm text-gray-500 mt-2 mb-4">Format: Jam . Menit</p> 
+
                     <div class="mb-4">
                         <x-required-label class="block text-gray-700 font-bold mb-2">Hari</x-required-label>
                         @php
@@ -92,11 +102,21 @@
                     <input type="hidden" name="type" value="Kegiatan">
                     <input type="hidden" name="curriculum" value="Semua">
 
-                    <div class="mb-4">
-                        <x-required-label class="block text-gray-700 font-bold mb-2">Jam</x-required-label>
-                        <input type="text" name="hour" value="{{ old('hour', $schedule->hour) }}" class="w-full border p-2 rounded" placeholder="00:00 - 00:00" required>
-                    <p class="text-sm text-gray-500 mt-1">Format: 00:00 - 00:00</p>
+                    <div class="flex gap-3 items-end w-full">
+                        <div>
+                            <x-required-label class="block text-gray-700 font-bold mb-2">Jam Mulai</x-required-label>
+                            <input type="time" name="hourStart" value="{{ old('hourStart', $schedule->hourStart->format('H:i')) }}" class="w-20 border p-2 rounded" required>
+                        </div>
+                        <div>
+                            <p class="mb-2 mr-2">-</p>
+                        </div>
+                        <div>
+                            <x-required-label class="block text-gray-700 font-bold mb-2">Jam Akhir</x-required-label>
+                            <input type="time" name="hourEnd" value="{{ old('hourEnd', $schedule->hourEnd->format('H:i')) }}" class="w-20 border p-2 rounded" required> 
+                        </div>
                     </div>
+                    <p class="text-sm text-gray-500 mt-2 mb-4">Format: Jam . Menit</p> 
+                    
                     <div class="mb-4">
                         <x-required-label class="block text-gray-700 font-bold mb-2">Hari</x-required-label>
 
@@ -152,11 +172,21 @@
                     <input type="hidden" name="curriculum" value="Semua">
                     <input type="hidden" name="class" value="0">
 
-                    <div class="mb-4">
-                        <x-required-label class="block text-gray-700 font-bold mb-2">Jam</x-required-label>
-                        <input type="text" name="hour" value="{{ old('hour', $schedule->hour) }}" class="w-full border p-2 rounded" placeholder="00:00 - 00:00" required>
-                    <p class="text-sm text-gray-500 mt-1">Format: 00:00 - 00:00</p>
+                    <div class="flex gap-3 items-end w-full">
+                        <div>
+                            <x-required-label class="block text-gray-700 font-bold mb-2">Jam Mulai</x-required-label>
+                            <input type="time" name="hourStart" value="{{ old('hourStart', $schedule->hourStart->format('H:i')) }}" class="w-20 border p-2 rounded" required>
+                        </div>
+                        <div>
+                            <p class="mb-2 mr-2">-</p>
+                        </div>
+                        <div>
+                            <x-required-label class="block text-gray-700 font-bold mb-2">Jam Akhir</x-required-label>
+                            <input type="time" name="hourEnd" value="{{ old('hourEnd', $schedule->hourEnd->format('H:i')) }}" class="w-20 border p-2 rounded" required> 
+                        </div>
                     </div>
+                    <p class="text-sm text-gray-500 mt-2 mb-4">Format: Jam . Menit</p>
+                    
                     <div class="mb-4">
                         <x-required-label class="block text-gray-700 font-bold mb-2">Hari</x-required-label>
                         @php

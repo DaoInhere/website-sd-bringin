@@ -13,7 +13,8 @@ return new class extends Migration
     {
         Schema::create('schedules', function (Blueprint $table) {
             $table->id();
-            $table->string('hour');
+            $table->time('hourStart');
+            $table->time('hourEnd');
             $table->string('day');
             $table->string('subject');
             $table->string('class')->default('0');
@@ -22,7 +23,6 @@ return new class extends Migration
             $table->string('curriculum');
             $table->string('description')->nullable();
             $table->string('image')->nullable();
-            // $table->unique(['day', 'class', 'hour']);
             $table->timestamps();
         });
     }

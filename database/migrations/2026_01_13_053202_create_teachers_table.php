@@ -10,11 +10,9 @@ return new class extends Migration
     {
         Schema::create('teachers', function (Blueprint $table) {
             $table->id('nip');
-            
-            $table->string('name');              // Nama Guru
+            $table->string('name');
             $table->string('position');     
-            $table->string('photo')->nullable(); // Foto
-
+            $table->string('photo')->nullable();
             $table->timestamps();
         });
     }

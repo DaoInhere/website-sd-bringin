@@ -141,7 +141,7 @@ class PageController extends Controller
                 ->when($class !== '0', fn ($q) => $q->whereIn('class', [$class, '0']))
                 ->when($curriculum !== 'Semua', fn ($q) => $q->whereIn('curriculum', [$curriculum, 'Semua']))
                 ->when($type !== '-', fn ($q) => $q->whereIn('type', [$type, '-']))
-                ->orderBy('hour')
+                ->orderBy('hourStart')
                 ->get();
 
             $days = ['Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat'];
@@ -152,7 +152,7 @@ class PageController extends Controller
                 $schedulesByDay[$day] = $schedules
                     ->where('day', $day)
                     ->merge($globalSchedules)
-                    ->sortBy('hour')
+                    ->sortBy('hourStart')
                     ->values();
             }
 

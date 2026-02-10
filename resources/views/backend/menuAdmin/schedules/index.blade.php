@@ -53,7 +53,7 @@
                         <thead class="bg-gray-50 text-gray-700 text-sm">
                             <tr>
                                 <x-sort-table col="id" label="ID" class="text-center" :sort="$sort" :dir="$dir" />
-                                <x-sort-table col="hour" label="Jam" class="text-center" :sort="$sort" :dir="$dir" />
+                                <x-sort-table col="hourStart" label="Jam" class="text-center" :sort="$sort" :dir="$dir" />
                                 <x-sort-table col="day" label="Hari" class="text-center" :sort="$sort" :dir="$dir" />
                                 <x-sort-table col="subject" label="Kegiatan / Mapel" class="text-left" :sort="$sort" :dir="$dir" />
                                 <x-sort-table col="class" label="Kelas" class="text-center" :sort="$sort" :dir="$dir" />
@@ -69,7 +69,7 @@
                             <tr class="text-center hover:bg-gray-50 transition">
                                 <td class="p-3 text-xs text-gray-500">{{ $schedule->id }}</td>
 
-                                <td class="p-3 font-bold text-sm text-gray-900">{{ $schedule->hour }}</td>
+                                <td class="p-3 font-bold text-sm text-gray-900">{{ $schedule->hourStart->format('H:i') }} - {{  $schedule->hourEnd->format('H:i') }}</td>
 
                                 <td class="p-3 text-sm text-gray-700">{{ $schedule->day }}</td>
 
@@ -83,7 +83,7 @@
 
                                 <td class="p-3 text-xs uppercase text-gray-700">{{ $schedule->type }}</td>
 
-                                <td class="p-3 text-xs italic text-gray-600">{{ $schedule->uniform }}</td>
+                                <td class="p-3 text-xs italic text-gray-600">{{ $schedule->uniform == null ? '-' : $schedule->uniform }}</td>
 
                                 <td class="p-3 text-xs font-semibold text-gray-800">{{ $schedule->curriculum }}</td>
 

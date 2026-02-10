@@ -89,7 +89,7 @@
                                             {{ $schedule->class }}
                                         </td>
                                         <td class="px-5 py-3 font-medium text-gray-900 whitespace-nowrap">
-                                            {{ $schedule->hour }}
+                                            {{ $schedule->hourStart->format('H:i') }} - {{  $schedule->hourEnd->format('H:i') }}
                                         </td>
                                         <td class="px-5 py-3 text-gray-700">
                                             {{ $schedule->subject }}
@@ -99,7 +99,7 @@
                                         </td>
                                     @else
                                         <td class="px-5 py-3 font-medium text-gray-900 whitespace-nowrap">
-                                            {{ $schedule->hour }}
+                                            {{ $schedule->hourStart->format('H:i') }} - {{  $schedule->hourEnd->format('H:i') }}
                                         </td>
                                         <td class="px-5 py-3 text-gray-700">
                                             {{ $schedule->subject }}

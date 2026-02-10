@@ -20,16 +20,23 @@ class ScheduleFactory extends Factory
         static $used = [];
 
         $days = ['Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat'];
-        $hours = [
-            '07:00 - 08:00',
-            '08:00 - 09:00',
-            '09:00 - 10:00',
+        $hoursStart = [
+            '07:00',
+            '08:00',
+            '09:00',
+        ];
+
+        $hoursEnd = [
+            '10:00',
+            '11:00',
+            '12:00',
         ];
 
         do {
             $day  = fake()->randomElement($days);
-            $hour = fake()->randomElement($hours);
-            $key  = $day.'|'.$hour;
+            $hourStart = fake()->randomElement($hoursStart);
+            $hourEnd = fake()->randomElement($hoursEnd);
+            $key  = $day.'|'.$hourStart.'|'.$hourEnd;
         } while (isset($used[$key]));
 
         $used[$key] = true;
@@ -61,7 +68,8 @@ class ScheduleFactory extends Factory
 
         return [
             'day'     => $day,
-            'hour'    => $hour,
+            'hourStart'    => $hourStart,
+            'hourEnd'    => $hourEnd,
             'subject' => $subject,
             'type' => $type,
             'class'   => fake()->numberBetween(1, 6),

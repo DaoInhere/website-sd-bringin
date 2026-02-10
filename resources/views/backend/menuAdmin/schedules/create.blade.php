@@ -30,11 +30,19 @@
                 <form action="{{ route('schedules.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
 
-                    <div class="mb-4">
-                        <x-required-label class="block text-gray-700 font-bold mb-2">Jam</x-required-label>
-                        <input type="text" name="hour" class="w-full border p-2 rounded" value="00:00 - 00:00" placeholder="00:00 - 00:00" required>
-                    <p class="text-sm text-gray-500 mt-1">Format: 00:00 - 00:00</p>
+                <div class="flex gap-6 justify-center w-full">
+                    <div>
+                        <x-required-label class="block text-gray-700 font-bold mb-2">Jam Mulai</x-required-label>
+                        <input type="time" name="hourStart" class="w-20 border p-2 rounded" required>
                     </div>
+                    
+                    <div>
+                        <x-required-label class="block text-gray-700 font-bold mb-2">Jam Akhir</x-required-label>
+                        <input type="time" name="hourEnd" class="w-20 border p-2 rounded" required> 
+                    </div>
+                </div>
+                <p class="text-sm text-gray-500 text-center mt-2">Format: Jam . Menit</p> 
+
                     <div class="mb-4">
                         <x-required-label class="block text-gray-700 font-bold mb-2">Hari</x-required-label>
                         <select name="day" class="w-full border p-2 rounded bg-white" required>
@@ -109,11 +117,19 @@
                     <input type="hidden" name="type" value="Kegiatan">
                     <input type="hidden" name="curriculum" value="Semua">
 
-                    <div class="mb-4">
-                        <x-required-label class="block text-gray-700 font-bold mb-2">Jam</x-required-label>
-                        <input type="text" name="hour" class="w-full border p-2 rounded" value="00:00 - 00:00" placeholder="00:00 - 00:00" required>
-                    <p class="text-sm text-gray-500 mt-1">Format: 00:00 - 00:00</p>
+                    <div class="flex gap-6 justify-center w-full">
+                        <div>
+                            <x-required-label class="block text-gray-700 font-bold mb-2">Jam Mulai</x-required-label>
+                            <input type="time" name="hourStart" class="w-20 border p-2 rounded" required>
+                        </div>
+                        
+                        <div>
+                            <x-required-label class="block text-gray-700 font-bold mb-2">Jam Akhir</x-required-label>
+                            <input type="time" name="hourEnd" class="w-20 border p-2 rounded" required> 
+                        </div>
                     </div>
+                    <p class="text-sm text-gray-500 text-center mt-2">Format: Jam . Menit</p> 
+
                     <div class="mb-4">
                         <x-required-label class="block text-gray-700 font-bold mb-2">Hari</x-required-label>
                         <select name="day" class="w-full border p-2 rounded bg-white" required>
@@ -173,11 +189,18 @@
                     <input type="hidden" name="curriculum" value="Semua">
                     <input type="hidden" name="class" value="0">
 
-                    <div class="mb-4">
-                        <x-required-label class="block text-gray-700 font-bold mb-2">Jam</x-required-label>
-                        <input type="text" name="hour" class="w-full border p-2 rounded" value="00:00 - 00:00" placeholder="00:00 - 00:00" required>
-                        <p class="text-sm text-gray-500 mt-1">Format: 00:00 - 00:00</p>
+                    <div class="flex gap-6 justify-center w-full">
+                        <div>
+                            <x-required-label class="block text-gray-700 font-bold mb-2">Jam Mulai</x-required-label>
+                            <input type="time" name="hourStart" class="w-20 border p-2 rounded" required>
+                        </div>
+                        
+                        <div>
+                            <x-required-label class="block text-gray-700 font-bold mb-2">Jam Akhir</x-required-label>
+                            <input type="time" name="hourEnd" class="w-20 border p-2 rounded" required> 
+                        </div>
                     </div>
+                    <p class="text-sm text-gray-500 text-center mt-2">Format: Jam . Menit</p> 
 
                     <div class="mb-4">
                         <x-required-label class="block text-gray-700 font-bold mb-2">Hari</x-required-label>

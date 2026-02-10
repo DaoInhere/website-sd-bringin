@@ -16,7 +16,8 @@ class ScheduleSeeder extends Seeder
     {
         // Query Tambah Data
         Schedule::create([
-            'hour' => '07:00 - 08:00',
+            'hourStart' => '07:00',
+            'hourEnd' => '08:00',
             'day' => 'Senin',
             'subject' => 'Upacara',
             'type' => 'Kegiatan',
@@ -27,7 +28,8 @@ class ScheduleSeeder extends Seeder
         ]);
 
         Schedule::create([
-            'hour' => '09:00 - 09:30',
+            'hourStart' => '09:00',
+            'hourEnd' => '09:30',
             'day' => 'Semua',
             'subject' => 'Istirahat',
             'type' => 'Kegiatan',
@@ -38,7 +40,8 @@ class ScheduleSeeder extends Seeder
         ]);
 
         Schedule::create([
-            'hour' => '07:00 - 08:00',
+            'hourStart' => '07:00',
+            'hourEnd' => '08:00',
             'day' => 'Senin',
             'subject' => 'Matematika',
             'type' => 'UTS',
@@ -50,7 +53,8 @@ class ScheduleSeeder extends Seeder
         ]);
 
         Schedule::create([
-            'hour' => '07:00 - 08:00',
+            'hourStart' => '07:00',
+            'hourEnd' => '08:00',
             'day' => 'Selasa',
             'subject' => 'Olahraga',
             'type' => 'UAS',
@@ -62,7 +66,8 @@ class ScheduleSeeder extends Seeder
         ]);
         
         Schedule::create([
-            'hour' => '15:00 - 16:00',
+            'hourStart' => '15:00',
+            'hourEnd' => '16:00',
             'day' => 'Jumat',
             'subject' => 'Pramuka',
             'type' => 'Ekstrakurikuler',
@@ -76,7 +81,8 @@ class ScheduleSeeder extends Seeder
         ]);
 
         Schedule::create([
-            'hour' => '10:00 - 11:00',
+            'hourStart' => '10:00',
+            'hourEnd' => '11:00',
             'day' => 'Sabtu',
             'subject' => 'Futsal',
             'type' => 'Ekstrakurikuler',
