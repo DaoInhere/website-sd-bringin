@@ -29,6 +29,7 @@
                 
                 <form action="{{ route('schedules.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
+                <input type="hidden" id="subject_hidden" name="subject">
 
                 <div class="flex gap-3 items-end w-full">
                     <div>
@@ -62,7 +63,17 @@
 
                     <div class="mb-4">
                         <x-required-label class="block text-gray-700 font-bold mb-2">Mata Pelajaran</x-required-label>
-                        <input type="text" name="subject" class="w-full border p-2 rounded" placeholder="Contoh: Matematika / IPA / IPS" required>
+                        {{-- Dropdown --}}
+                        <select id="subject_select" class="w-full border p-2 rounded bg-white" onchange="toggleSubjectInput(this)">
+                            <option value="">-- Pilih Mata Pelajaran --</option>
+                            <option value="Matematika">Matematika</option>
+                            <option value="IPA">IPA</option>
+                            <option value="IPS">IPS</option>
+                            <option value="Bahasa Indonesia">Bahasa Indonesia</option>
+                            <option value="custom">Custom</option>
+                        </select>
+                        {{-- Input custom --}}
+                        <input type="text" id="subject_input" name="subject" class="w-full border p-2 rounded mt-2 hidden" placeholder="Masukkan mata pelajaran">
                     </div>
 
                     <div class="mb-4">
@@ -336,6 +347,26 @@
             behavior: 'smooth',
             block: 'start'
         });
+    }
+
+    function toggleSubjectInput(select) {
+        const textInput = document.getElementById('subject_input');
+        const hiddenInput = document.getElementById('subject_hidden');
+
+        if (select.value === 'custom') {
+            textInput.classList.remove('hidden');
+            textInput.disabled = false;
+            textInput.required = true;
+
+            hiddenInput.value = '';
+        } else {
+            textInput.classList.add('hidden');
+            textInput.disabled = true;
+            textInput.required = false;
+            textInput.value = '';
+
+            hiddenInput.value = select.value;
+        }
     }
 </script>
 

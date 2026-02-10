@@ -13,6 +13,7 @@
                 <form action="{{ route('schedules.update', $schedule->id) }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
+                    <input type="hidden" id="subject_hidden" name="subject" value="{{ old('subject', $schedule->subject) }}">
 
                     <div class="flex gap-3 items-end w-full">
                         <div>
@@ -44,9 +45,22 @@
                         </select>
                     </div>
 
+                    @php
+                        $defaultSubjects = ['Matematika', 'IPA', 'IPS', 'Bahasa Indonesia'];
+                    @endphp
+
                     <div class="mb-4">
                         <x-required-label class="block text-gray-700 font-bold mb-2">Mata Pelajaran</x-required-label>
-                        <input type="text" name="subject" value="{{ old('subject', $schedule->subject) }}" class="w-full border p-2 rounded" placeholder="Contoh: Matematika / IPA / IPS" required>
+                        {{-- Dropdown --}}
+                        <select id="subject_select" class="w-full border p-2 rounded bg-white" onchange="toggleSubjectInput(this)">
+                            <option value="Matematika" {{ $selected === 'Matematika' ? 'selected' : '' }}>Matematika</option>
+                            <option value="IPA" {{ $selected === 'IPA' ? 'selected' : '' }}>IPA</option>
+                            <option value="IPS" {{ $selected === 'IPS' ? 'selected' : '' }}>IPS</option>
+                            <option value="Bahasa Indonesia" {{ $selected === 'Bahasa Indonesia' ? 'selected' : '' }}>Bahasa Indonesia</option>
+                            <option value="custom" {{ ($selected !== '' && $selected !== 'Matematika' && $selected !== 'IPA' && $selected !== 'IPS' && $selected !== 'Bahasa Indonesia') ? 'selected' : '' }}>Custom</option>
+                        </select>
+                        {{-- Input custom --}}
+                        <input type="text" id="subject_input" value="{{ old('subject', $schedule->subject) }}" name="subject" class="w-full border p-2 rounded mt-2 hidden" placeholder="Masukkan mata pelajaran">
                     </div>
 
                     <div class="mb-4">
@@ -242,4 +256,38 @@
         </div>
     </div>
 @endif
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const select = document.getElementById('subject_select');
+        const hiddenInput = document.getElementById('subject_hidden');
+
+        if (select && hiddenInput) {
+            select.value = hiddenInput.value || select.value;
+            toggleSubjectInput(select);
+        }
+    });
+
+    function toggleSubjectInput(select) {
+        const textInput = document.getElementById('subject_input');
+        const hiddenInput = document.getElementById('subject_hidden');
+
+        if (!textInput || !hiddenInput) return;
+
+        if (select.value === 'custom') {
+            textInput.classList.remove('hidden');
+            textInput.disabled = false;
+            textInput.required = true;
+            textInput.value = hiddenInput.value;
+            textInput.oninput = () => hiddenInput.value = textInput.value;
+        } else {
+            textInput.classList.add('hidden');
+            textInput.disabled = true;
+            textInput.required = false;
+            textInput.value = '';
+            hiddenInput.value = select.value;
+        }
+    }
+</script>
+
 </x-app-layout>
