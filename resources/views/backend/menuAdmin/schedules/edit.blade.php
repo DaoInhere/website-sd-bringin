@@ -57,7 +57,7 @@
                             <option value="IPA" {{ $selected === 'IPA' ? 'selected' : '' }}>IPA</option>
                             <option value="IPS" {{ $selected === 'IPS' ? 'selected' : '' }}>IPS</option>
                             <option value="Bahasa Indonesia" {{ $selected === 'Bahasa Indonesia' ? 'selected' : '' }}>Bahasa Indonesia</option>
-                            <option value="custom" {{ ($selected !== '' && $selected !== 'Matematika' && $selected !== 'IPA' && $selected !== 'IPS' && $selected !== 'Bahasa Indonesia') ? 'selected' : '' }}>Custom</option>
+                            <option value="custom" {{ ($selected !== '' && $selected !== 'Matematika' && $selected !== 'IPA' && $selected !== 'IPS' && $selected !== 'Bahasa Indonesia') ? 'selected' : '' }}>Kustom</option>
                         </select>
                         {{-- Input custom --}}
                         <input type="text" id="subject_input" value="{{ old('subject', $schedule->subject) }}" name="subject" class="w-full border p-2 rounded mt-2 hidden" placeholder="Masukkan mata pelajaran">
@@ -262,17 +262,28 @@
         const select = document.getElementById('subject_select');
         const hiddenInput = document.getElementById('subject_hidden');
 
-        if (select && hiddenInput) {
-            select.value = hiddenInput.value || select.value;
-            toggleSubjectInput(select);
+        if (!select || !hiddenInput) return;
+
+        let found = false;
+        for (let option of select.options) {
+            if (option.value === hiddenInput.value) {
+                found = true;
+                break;
+            }
         }
+
+        if (!found && hiddenInput.value) {
+            select.value = 'custom';
+        } else {
+            select.value = hiddenInput.value;
+        }
+
+        toggleSubjectInput(select);
     });
 
     function toggleSubjectInput(select) {
         const textInput = document.getElementById('subject_input');
         const hiddenInput = document.getElementById('subject_hidden');
-
-        if (!textInput || !hiddenInput) return;
 
         if (select.value === 'custom') {
             textInput.classList.remove('hidden');

@@ -70,7 +70,7 @@
                             <option value="IPA">IPA</option>
                             <option value="IPS">IPS</option>
                             <option value="Bahasa Indonesia">Bahasa Indonesia</option>
-                            <option value="custom">Custom</option>
+                            <option value="custom">Kustom</option>
                         </select>
                         {{-- Input custom --}}
                         <input type="text" id="subject_input" name="subject" class="w-full border p-2 rounded mt-2 hidden" placeholder="Masukkan mata pelajaran">
@@ -237,7 +237,7 @@
 
                     <div class="mb-4">
                         <x-required-label class="block text-gray-700 font-bold mb-2">Kegiatan Ekstrakurikuler</x-required-label>
-                        <input type="text" name="subject" class="w-full border p-2 rounded" placeholder="Contoh: Matematika / IPA / IPS" required>
+                        <input type="text" name="subject" class="w-full border p-2 rounded" placeholder="Contoh: Sepak Bola" required>
                     </div>
 
                     <div class="mb-4">
