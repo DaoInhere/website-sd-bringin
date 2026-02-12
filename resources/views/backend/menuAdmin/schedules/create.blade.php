@@ -67,8 +67,12 @@
                         <select id="subject_select" class="w-full border p-2 rounded bg-white" onchange="toggleSubjectInput(this)">
                             <option value="">-- Pilih Mata Pelajaran --</option>
                             <option value="Matematika">Matematika</option>
-                            <option value="IPA">IPA</option>
-                            <option value="IPS">IPS</option>
+                            <option value="Pendidikan Agama">Pendidikan Agama</option>
+                            <option value="IPA">Ilmu Pengetahuan Alam (IPA)</option>
+                            <option value="IPS">Ilmu Pengetahuan Sosial (IPS)</option>
+                            <option value="PPKN">Pendidikan Pancasila dan Kewarganegaraan (PPKn)</option>
+                            <option value="PJOK">Pendidikan Jasmani, Olahraga dan Kesehatan (PJOK)</option>
+                            <option value="SBDP">Seni Budaya dan Prakarya (SBDP)</option>
                             <option value="Bahasa Indonesia">Bahasa Indonesia</option>
                             <option value="custom">Kustom</option>
                         </select>

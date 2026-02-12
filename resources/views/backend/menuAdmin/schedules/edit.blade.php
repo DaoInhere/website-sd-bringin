@@ -46,7 +46,7 @@
                     </div>
 
                     @php
-                        $defaultSubjects = ['Matematika', 'IPA', 'IPS', 'Bahasa Indonesia'];
+                        $dropdownSubjects = ['Matematika', 'Pendidikan Agama', 'IPA', 'IPS', 'PPKN', 'PJOK', 'SBDP', 'Bahasa Indonesia'];
                     @endphp
 
                     <div class="mb-4">
@@ -54,10 +54,14 @@
                         {{-- Dropdown --}}
                         <select id="subject_select" class="w-full border p-2 rounded bg-white" onchange="toggleSubjectInput(this)">
                             <option value="Matematika" {{ $selected === 'Matematika' ? 'selected' : '' }}>Matematika</option>
-                            <option value="IPA" {{ $selected === 'IPA' ? 'selected' : '' }}>IPA</option>
-                            <option value="IPS" {{ $selected === 'IPS' ? 'selected' : '' }}>IPS</option>
+                            <option value="Pendidikan Agama" {{ $selected === 'Pendidikan Agama' ? 'selected' : '' }}>Pendidikan Agama</option>
+                            <option value="IPA" {{ $selected === 'IPA' ? 'selected' : '' }}>Ilmu Pengetahuan Alam (IPA)</option>
+                            <option value="IPS" {{ $selected === 'IPS' ? 'selected' : '' }}>Ilmu Pengetahuan Sosial (IPS)</option>
+                            <option value="PPKN" {{ $selected === 'PPKN' ? 'selected' : '' }}>Pendidikan Pancasila dan Kewarganegaraan (PPKn)</option>
+                            <option value="PJOK" {{ $selected === 'PJOK' ? 'selected' : '' }}>Pendidikan Jasmani, Olahraga dan Kesehatan (PJOK)</option>
+                            <option value="SBDP" {{ $selected === 'SBDP' ? 'selected' : '' }}>Seni Budaya dan Prakarya (SBDP)</option>
                             <option value="Bahasa Indonesia" {{ $selected === 'Bahasa Indonesia' ? 'selected' : '' }}>Bahasa Indonesia</option>
-                            <option value="custom" {{ ($selected !== '' && $selected !== 'Matematika' && $selected !== 'IPA' && $selected !== 'IPS' && $selected !== 'Bahasa Indonesia') ? 'selected' : '' }}>Kustom</option>
+                            <option value="custom" {{ ($selected !== '' && !in_array($selected, $dropdownSubjects)) ? 'selected' : '' }}>Kustom</option>
                         </select>
                         {{-- Input custom --}}
                         <input type="text" id="subject_input" value="{{ old('subject', $schedule->subject) }}" name="subject" class="w-full border p-2 rounded mt-2 hidden" placeholder="Masukkan mata pelajaran">
