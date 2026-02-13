@@ -44,7 +44,7 @@
     overflow: hidden;
   }
 
-  /* --- MODAL LIGHTBOX (RESPONSIF) --- */
+  
   .lightbox-overlay {
     @apply fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-10;
   }

@@ -2,7 +2,7 @@
 
 @section('content')
     <main class="bg-white">
-        {{-- HERO SLIDER --}}
+    
         <section id="hero-slider" class="relative h-[520px] sm:h-[600px] overflow-hidden group bg-gray-100">
             <div class="h-full overflow-hidden">
                 <div id="slider-track" class="flex h-full transition-transform duration-700 ease-in-out">
@@ -41,7 +41,7 @@
                 </div>
             </div>
 
-            {{-- NAV BUTTONS --}}
+        
             <button id="prevBtn" type="button" aria-label="Sebelumnya"
                 class="absolute top-1/2 left-2 md:left-6 -translate-y-1/2 bg-white/90 w-12 h-12 rounded-xl flex items-center justify-center text-gray-800 hover:bg-sekolah-hijau hover:text-white transition duration-300 shadow-lg opacity-0 group-hover:opacity-100 z-20">
                 <i class="fas fa-chevron-left text-xl" aria-hidden="true"></i>
@@ -52,7 +52,7 @@
                 <i class="fas fa-chevron-right text-xl" aria-hidden="true"></i>
             </button>
 
-            {{-- DOTS (dinamis) --}}
+        
             @php
                 $dotCount = $herobanners->isEmpty() ? 1 : $herobanners->count();
             @endphp
@@ -66,7 +66,7 @@
             </div>
         </section>
 
-        {{-- 3 VALUE CARDS --}}
+    
         <section class="relative -mt-16 z-20 px-4">
             <div class="mx-auto max-w-7xl overflow-hidden">
                 <div class="grid grid-cols-1 md:grid-cols-3 shadow-2xl rounded-2xl overflow-hidden hover:bg-sekolah-kuning">
@@ -137,7 +137,7 @@
             </div>
         </section>
 
-        {{-- PROGRAM UNGGULAN --}}
+    
         <section class="py-20 bg-gray-50">
             <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                 <div class="text-center mb-16">
@@ -175,7 +175,7 @@
             </div>
         </section>
 
-        {{-- KEUNGGULAN --}}
+    
         <section class="py-20 bg-white border-t border-gray-100">
             <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                 <div class="text-center mb-16">
