@@ -14,22 +14,10 @@ return new class extends Migration
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
-
-            // 1. RELASI KATEGORI
-            // Kita sederhanakan penulisan foreign key-nya
-            // $table->foreignId('category_id')->constrained('categories')->onDelete('cascade');
-            
-            // 2. DATA BERITA (Sesuai Form Input Kita)
             $table->string('image')->nullable();
             $table->string('title');
             $table->string('category');
             $table->text('content');
-
-            // $table->date('startAt');
-            // $table->string('slug');
-            // $table->string("excerpt");
-            // $table->string('status');
-
             $table->timestamps();
         });
     }

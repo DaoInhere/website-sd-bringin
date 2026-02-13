@@ -13,12 +13,23 @@
                 <form action="{{ route('schedules.update', $schedule->id) }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
+                    <input type="hidden" id="subject_hidden" name="subject" value="{{ old('subject', $schedule->subject) }}">
 
-                    <div class="mb-4">
-                        <x-required-label class="block text-gray-700 font-bold mb-2">Jam</x-required-label>
-                        <input type="text" name="hour" value="{{ old('hour', $schedule->hour) }}" class="w-full border p-2 rounded" placeholder="00:00 - 00:00" required>
-                    <p class="text-sm text-gray-500 mt-1">Format: 00:00 - 00:00</p>
+                    <div class="flex gap-3 items-end w-full">
+                        <div>
+                            <x-required-label class="block text-gray-700 font-bold mb-2">Jam Mulai</x-required-label>
+                            <input type="time" name="hourStart" value="{{ old('hourStart', $schedule->hourStart->format('H:i')) }}" class="w-20 border p-2 rounded" required>
+                        </div>
+                        <div>
+                            <p class="mb-2 mr-2">-</p>
+                        </div>
+                        <div>
+                            <x-required-label class="block text-gray-700 font-bold mb-2">Jam Akhir</x-required-label>
+                            <input type="time" name="hourEnd" value="{{ old('hourEnd', $schedule->hourEnd->format('H:i')) }}" class="w-20 border p-2 rounded" required> 
+                        </div>
                     </div>
+                    <p class="text-sm text-gray-500 mt-2 mb-4">Format: Jam . Menit</p> 
+
                     <div class="mb-4">
                         <x-required-label class="block text-gray-700 font-bold mb-2">Hari</x-required-label>
                         @php
@@ -34,9 +45,26 @@
                         </select>
                     </div>
 
+                    @php
+                        $dropdownSubjects = ['Matematika', 'Pendidikan Agama', 'IPA', 'IPS', 'PPKN', 'PJOK', 'SBDP', 'Bahasa Indonesia'];
+                    @endphp
+
                     <div class="mb-4">
                         <x-required-label class="block text-gray-700 font-bold mb-2">Mata Pelajaran</x-required-label>
-                        <input type="text" name="subject" value="{{ old('subject', $schedule->subject) }}" class="w-full border p-2 rounded" placeholder="Contoh: Matematika / IPA / IPS" required>
+                        {{-- Dropdown --}}
+                        <select id="subject_select" class="w-full border p-2 rounded bg-white" onchange="toggleSubjectInput(this)">
+                            <option value="Matematika" {{ $selected === 'Matematika' ? 'selected' : '' }}>Matematika</option>
+                            <option value="Pendidikan Agama" {{ $selected === 'Pendidikan Agama' ? 'selected' : '' }}>Pendidikan Agama</option>
+                            <option value="IPA" {{ $selected === 'IPA' ? 'selected' : '' }}>Ilmu Pengetahuan Alam (IPA)</option>
+                            <option value="IPS" {{ $selected === 'IPS' ? 'selected' : '' }}>Ilmu Pengetahuan Sosial (IPS)</option>
+                            <option value="PPKN" {{ $selected === 'PPKN' ? 'selected' : '' }}>Pendidikan Pancasila dan Kewarganegaraan (PPKn)</option>
+                            <option value="PJOK" {{ $selected === 'PJOK' ? 'selected' : '' }}>Pendidikan Jasmani, Olahraga dan Kesehatan (PJOK)</option>
+                            <option value="SBDP" {{ $selected === 'SBDP' ? 'selected' : '' }}>Seni Budaya dan Prakarya (SBDP)</option>
+                            <option value="Bahasa Indonesia" {{ $selected === 'Bahasa Indonesia' ? 'selected' : '' }}>Bahasa Indonesia</option>
+                            <option value="custom" {{ ($selected !== '' && !in_array($selected, $dropdownSubjects)) ? 'selected' : '' }}>Kustom</option>
+                        </select>
+                        {{-- Input custom --}}
+                        <input type="text" id="subject_input" value="{{ old('subject', $schedule->subject) }}" name="subject" class="w-full border p-2 rounded mt-2 hidden" placeholder="Masukkan mata pelajaran">
                     </div>
 
                     <div class="mb-4">
@@ -66,8 +94,7 @@
 
                     <div class="mb-4">
                         <x-required-label class="block text-gray-700 font-bold mb-2">Kurikulum</x-required-label>
-                        <input type="text" name="curriculum" value="{{ old('curriculum', $schedule->curriculum) }}" class="w-full border p-2 rounded" placeholder="Contoh: 2025/2026" required>
-                        <p class="text-sm text-gray-500 mt-1">Format: 0000/0000</p> 
+                        <input type="number" name="curriculum" value="{{ old('curriculum', $schedule->curriculum) }}" class="w-full border p-2 rounded" placeholder="Contoh: 2013" required>
                     </div>
 
                     <button type="submit" 
@@ -90,13 +117,23 @@
                     @csrf
                     @method('PUT')
                     <input type="hidden" name="type" value="Kegiatan">
-                    <input type="hidden" name="curriculum" value="Semua">
+                    <input type="hidden" name="curriculum" value="0">
 
-                    <div class="mb-4">
-                        <x-required-label class="block text-gray-700 font-bold mb-2">Jam</x-required-label>
-                        <input type="text" name="hour" value="{{ old('hour', $schedule->hour) }}" class="w-full border p-2 rounded" placeholder="00:00 - 00:00" required>
-                    <p class="text-sm text-gray-500 mt-1">Format: 00:00 - 00:00</p>
+                    <div class="flex gap-3 items-end w-full">
+                        <div>
+                            <x-required-label class="block text-gray-700 font-bold mb-2">Jam Mulai</x-required-label>
+                            <input type="time" name="hourStart" value="{{ old('hourStart', $schedule->hourStart->format('H:i')) }}" class="w-20 border p-2 rounded" required>
+                        </div>
+                        <div>
+                            <p class="mb-2 mr-2">-</p>
+                        </div>
+                        <div>
+                            <x-required-label class="block text-gray-700 font-bold mb-2">Jam Akhir</x-required-label>
+                            <input type="time" name="hourEnd" value="{{ old('hourEnd', $schedule->hourEnd->format('H:i')) }}" class="w-20 border p-2 rounded" required> 
+                        </div>
                     </div>
+                    <p class="text-sm text-gray-500 mt-2 mb-4">Format: Jam . Menit</p> 
+                    
                     <div class="mb-4">
                         <x-required-label class="block text-gray-700 font-bold mb-2">Hari</x-required-label>
 
@@ -149,14 +186,24 @@
                     @method('PUT')
 
                     <input type="hidden" name="type" value="Ekstrakurikuler">
-                    <input type="hidden" name="curriculum" value="Semua">
+                    <input type="hidden" name="curriculum" value="0">
                     <input type="hidden" name="class" value="0">
 
-                    <div class="mb-4">
-                        <x-required-label class="block text-gray-700 font-bold mb-2">Jam</x-required-label>
-                        <input type="text" name="hour" value="{{ old('hour', $schedule->hour) }}" class="w-full border p-2 rounded" placeholder="00:00 - 00:00" required>
-                    <p class="text-sm text-gray-500 mt-1">Format: 00:00 - 00:00</p>
+                    <div class="flex gap-3 items-end w-full">
+                        <div>
+                            <x-required-label class="block text-gray-700 font-bold mb-2">Jam Mulai</x-required-label>
+                            <input type="time" name="hourStart" value="{{ old('hourStart', $schedule->hourStart->format('H:i')) }}" class="w-20 border p-2 rounded" required>
+                        </div>
+                        <div>
+                            <p class="mb-2 mr-2">-</p>
+                        </div>
+                        <div>
+                            <x-required-label class="block text-gray-700 font-bold mb-2">Jam Akhir</x-required-label>
+                            <input type="time" name="hourEnd" value="{{ old('hourEnd', $schedule->hourEnd->format('H:i')) }}" class="w-20 border p-2 rounded" required> 
+                        </div>
                     </div>
+                    <p class="text-sm text-gray-500 mt-2 mb-4">Format: Jam . Menit</p>
+                    
                     <div class="mb-4">
                         <x-required-label class="block text-gray-700 font-bold mb-2">Hari</x-required-label>
                         @php
@@ -213,4 +260,49 @@
         </div>
     </div>
 @endif
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const select = document.getElementById('subject_select');
+        const hiddenInput = document.getElementById('subject_hidden');
+
+        if (!select || !hiddenInput) return;
+
+        let found = false;
+        for (let option of select.options) {
+            if (option.value === hiddenInput.value) {
+                found = true;
+                break;
+            }
+        }
+
+        if (!found && hiddenInput.value) {
+            select.value = 'custom';
+        } else {
+            select.value = hiddenInput.value;
+        }
+
+        toggleSubjectInput(select);
+    });
+
+    function toggleSubjectInput(select) {
+        const textInput = document.getElementById('subject_input');
+        const hiddenInput = document.getElementById('subject_hidden');
+
+        if (select.value === 'custom') {
+            textInput.classList.remove('hidden');
+            textInput.disabled = false;
+            textInput.required = true;
+            textInput.value = hiddenInput.value;
+            textInput.oninput = () => hiddenInput.value = textInput.value;
+        } else {
+            textInput.classList.add('hidden');
+            textInput.disabled = true;
+            textInput.required = false;
+            textInput.value = '';
+            hiddenInput.value = select.value;
+        }
+    }
+</script>
+
 </x-app-layout>

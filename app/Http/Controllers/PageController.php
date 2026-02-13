@@ -134,25 +134,25 @@ class PageController extends Controller
             }
 
             $class = $request->query('kelas', '0');
-            $curriculum = $request->query('kurikulum', 'Semua');
+            $curriculum = $request->query('kurikulum', 0);
             $type = $request->query('tipe', '-'); 
 
             $schedules = Schedule::where('type', '!=', 'Ekstrakurikuler')
                 ->when($class !== '0', fn ($q) => $q->whereIn('class', [$class, '0']))
-                ->when($curriculum !== 'Semua', fn ($q) => $q->whereIn('curriculum', [$curriculum, 'Semua']))
+                ->when($curriculum !== 0, fn ($q) => $q->whereIn('curriculum', [$curriculum, 0]))
                 ->when($type !== '-', fn ($q) => $q->whereIn('type', [$type, '-']))
-                ->orderBy('hour')
+                ->orderBy('hourStart')
                 ->get();
 
             $days = ['Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat'];
-            $globalSchedules = $schedules->where('day', 'Semua');
+            $globalSchedules = $schedules->where('day', 0);
             $schedulesByDay = collect();
 
             foreach ($days as $day) {
                 $schedulesByDay[$day] = $schedules
                     ->where('day', $day)
                     ->merge($globalSchedules)
-                    ->sortBy('hour')
+                    ->sortBy('hourStart')
                     ->values();
             }
 
@@ -165,19 +165,19 @@ class PageController extends Controller
         }
 
         $curriculums = Schedule::select('curriculum')
-            ->where('curriculum', '!=', 'Semua')
+            ->where('curriculum', '!=', 0)
             ->distinct()
             ->orderByRaw('CAST(curriculum AS UNSIGNED) DESC')
             ->pluck('curriculum')
             ->values();
 
-        $curriculum = $request->query('kurikulum', 'Semua');
+        $curriculum = $request->query('kurikulum', 0);
 
         $classes = Schedule::select('class')
             ->where('class', '!=', '0') // 0 = Semua
             ->when(
-                $curriculum !== 'Semua',
-                fn ($q) => $q->whereIn('curriculum', [$curriculum, 'Semua'])
+                $curriculum !== 0,
+                fn ($q) => $q->whereIn('curriculum', [$curriculum, 0])
             )
             ->distinct()
             ->orderByRaw('CAST(class AS UNSIGNED)')

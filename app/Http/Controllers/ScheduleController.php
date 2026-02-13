@@ -15,7 +15,7 @@ class ScheduleController extends Controller
         $sort = request('sort', 'id');
         $dir  = request('dir', 'desc');
 
-        $allowed = ['id', 'hour', 'day', 'subject', 'class', 'type', 'uniform', 'curriculum'];
+        $allowed = ['id', 'hourStart', 'hourEnd', 'day', 'subject', 'class', 'type', 'uniform', 'curriculum'];
 
         if (!in_array($sort, $allowed)) $sort = 'id';
         if (!in_array($dir, ['asc', 'desc'])) $dir = 'desc';
@@ -39,13 +39,14 @@ class ScheduleController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'hour'    => 'required|string|max:255',
+            'hourStart'    => 'required|date_format:H:i',
+            'hourEnd'    => 'required|date_format:H:i',
             'day' => 'required|string|max:255',
             'subject' => 'required|string|max:255',
             'class' => 'required|string|max:255',
             'type' => 'required|string|max:255',
             'uniform' => 'nullable|string|max:255',
-            'curriculum' => 'required|string|max:255',
+            'curriculum' => 'required|integer',
             'image' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
             'description' => 'nullable|string|max:255',
         ]);
@@ -56,7 +57,8 @@ class ScheduleController extends Controller
         }
 
         Schedule::create([
-            'hour'    => $request->hour,
+            'hourStart'    => $request->hourStart,
+            'hourEnd'    => $request->hourEnd,
             'day' => $request->day,
             'subject' => $request->subject,
             'class' => $request->class,
@@ -81,13 +83,14 @@ class ScheduleController extends Controller
     public function update(Request $request, string $id)
     {
         $request->validate([
-            'hour'    => 'required|string|max:255',
+            'hourStart'    => 'required|date_format:H:i',
+            'hourEnd'    => 'required|date_format:H:i',
             'day' => 'required|string|max:255',
             'subject' => 'required|string|max:255',
             'class' => 'required|string|max:255',
             'type' => 'required|string|max:255',
             'uniform' => 'nullable|string|max:255',
-            'curriculum' => 'required|string|max:255',
+            'curriculum' => 'required|integer',
             'image' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
             'description' => 'nullable|string|max:255',
         ]);
@@ -105,7 +108,8 @@ class ScheduleController extends Controller
 
             // Update database dengan gambar baru
             $schedule->update([
-                'hour'    => $request->hour,
+                'hourStart'    => $request->hourStart,
+                'hourEnd'    => $request->hourEnd,
                 'day' => $request->day,
                 'subject' => $request->subject,
                 'class' => $request->class,
@@ -117,7 +121,8 @@ class ScheduleController extends Controller
             ]);
         } else {
             $schedule->update([
-                'hour'    => $request->hour,
+                'hourStart'    => $request->hourStart,
+                'hourEnd'    => $request->hourEnd,
                 'day' => $request->day,
                 'subject' => $request->subject,
                 'class' => $request->class,

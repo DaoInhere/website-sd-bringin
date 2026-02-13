@@ -52,7 +52,7 @@
                                 </p>
                             </div>
                             <div class="relative bottom-0 border-t pt-4 flex justify-between items-center text-sm text-gray-500">
-                                <span><i class="far fa-clock mr-1"></i>{{ $extracurricular->day}}, {{ $extracurricular->hour}}</span>
+                                <span><i class="far fa-clock mr-1"></i>{{ $extracurricular->day}}, {{ $extracurricular->hourStart->format('H:i')}} - {{ $extracurricular->hourEnd->format('H:i')}}</span>
                             </div>
                         </div>
                     </div>
