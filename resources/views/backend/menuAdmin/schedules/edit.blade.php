@@ -18,14 +18,14 @@
                     <div class="flex gap-3 items-end w-full">
                         <div>
                             <x-required-label class="block text-gray-700 font-bold mb-2">Jam Mulai</x-required-label>
-                            <input type="time" name="hourStart" value="{{ old('hourStart', $schedule->hourStart->format('H:i')) }}" class="w-20 border p-2 rounded" required>
+                            <input type="time" name="hourStart" value="{{ old('hourStart', $schedule->hourStart->format('H:i')) }}" class="w-30 border p-2 rounded" required>
                         </div>
                         <div>
                             <p class="mb-2 mr-2">-</p>
                         </div>
                         <div>
                             <x-required-label class="block text-gray-700 font-bold mb-2">Jam Akhir</x-required-label>
-                            <input type="time" name="hourEnd" value="{{ old('hourEnd', $schedule->hourEnd->format('H:i')) }}" class="w-20 border p-2 rounded" required> 
+                            <input type="time" name="hourEnd" value="{{ old('hourEnd', $schedule->hourEnd->format('H:i')) }}" class="w-30 border p-2 rounded" required> 
                         </div>
                     </div>
                     <p class="text-sm text-gray-500 mt-2 mb-4">Format: Jam . Menit</p> 
@@ -122,14 +122,14 @@
                     <div class="flex gap-3 items-end w-full">
                         <div>
                             <x-required-label class="block text-gray-700 font-bold mb-2">Jam Mulai</x-required-label>
-                            <input type="time" name="hourStart" value="{{ old('hourStart', $schedule->hourStart->format('H:i')) }}" class="w-20 border p-2 rounded" required>
+                            <input type="time" name="hourStart" value="{{ old('hourStart', $schedule->hourStart->format('H:i')) }}" class="w-30 border p-2 rounded" required>
                         </div>
                         <div>
                             <p class="mb-2 mr-2">-</p>
                         </div>
                         <div>
                             <x-required-label class="block text-gray-700 font-bold mb-2">Jam Akhir</x-required-label>
-                            <input type="time" name="hourEnd" value="{{ old('hourEnd', $schedule->hourEnd->format('H:i')) }}" class="w-20 border p-2 rounded" required> 
+                            <input type="time" name="hourEnd" value="{{ old('hourEnd', $schedule->hourEnd->format('H:i')) }}" class="w-30 border p-2 rounded" required> 
                         </div>
                     </div>
                     <p class="text-sm text-gray-500 mt-2 mb-4">Format: Jam . Menit</p> 
@@ -192,14 +192,14 @@
                     <div class="flex gap-3 items-end w-full">
                         <div>
                             <x-required-label class="block text-gray-700 font-bold mb-2">Jam Mulai</x-required-label>
-                            <input type="time" name="hourStart" value="{{ old('hourStart', $schedule->hourStart->format('H:i')) }}" class="w-20 border p-2 rounded" required>
+                            <input type="time" name="hourStart" value="{{ old('hourStart', $schedule->hourStart->format('H:i')) }}" class="w-30 border p-2 rounded" required>
                         </div>
                         <div>
                             <p class="mb-2 mr-2">-</p>
                         </div>
                         <div>
                             <x-required-label class="block text-gray-700 font-bold mb-2">Jam Akhir</x-required-label>
-                            <input type="time" name="hourEnd" value="{{ old('hourEnd', $schedule->hourEnd->format('H:i')) }}" class="w-20 border p-2 rounded" required> 
+                            <input type="time" name="hourEnd" value="{{ old('hourEnd', $schedule->hourEnd->format('H:i')) }}" class="w-30 border p-2 rounded" required> 
                         </div>
                     </div>
                     <p class="text-sm text-gray-500 mt-2 mb-4">Format: Jam . Menit</p>
