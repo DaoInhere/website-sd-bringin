@@ -58,7 +58,7 @@
 
                     <div class="mb-4">
                         <x-required-label class="block text-gray-700 font-bold mb-2">Tanggal</x-required-label>
-                        <input type="date" name="date" value="{{ old('date', $achievement->date) }}" class="w-full border p-2 rounded" required>
+                        <input type="date" name="date" value="{{ old('date', $achievement->date->format('Y-m-d')) }}" class="w-full border p-2 rounded" required>
                     </div>
 
                     <div class="mb-4">
